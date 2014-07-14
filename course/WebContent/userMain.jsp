@@ -10,26 +10,26 @@
 	//var myfrom=document.getElementById("myform1");
 
 	
-	function addCoursetype()
+	function addUser()
 	{
 		var myform=document.forms[0];
-		myform.action="addCoursetype_success";
+		myform.action="user/addUser_success";
 		myform.method="post";
 		myform.submit();
 	}
 	
-	function modifyCoursetype()
+	function modifyUser()
 	{
 		var myform=document.forms[0];
-		myform.action="coursetype/modifyCoursetype_success";
+		myform.action="user/modifyUser_success";
 		myform.method="post";
 		myform.submit();
 	}
 	
-	function deleteCoursetype()
+	function deleteUser()
 	{
 		var myform=document.forms[0];
-		myform.action="coursetype/deleteCoursetype_success";
+		myform.action="user/deleteUser_success";
 		myform.method="post";
 		myform.submit();
 	}
@@ -40,13 +40,12 @@
 </head>
 <body>
 <form id="myform1" >
-	性质：<input type="text" name="coursetype.quality" >
-	是否需要重考：<input type="radio" name="coursetype.reexamine" />是<input type="radio" name="coursetype.reexamine" />否
-	
-	是否需要重修:<input type="text" name="coursetype.retake" />
-	课程类别：<input type="text" name="coursetype.type" />	
-	课程类别码：<input type="text" name="coursetype.typecore" />
-	<input type="button" name="btnadd" onclick="addCoursetype()" value="增加" />
+	用户名：<input type="text" name="user.name" /><br />
+	密码：<input type="text" name="user.password" /><br />
+	年龄：<input type="text" name="user.age" /><br />
+	<input type="button" name="btnadd" onclick="addUser()" value="增加" />
+	<input type="button" name="btnmodify" onclick="modifyUser()" value="修改" />
+	<input type="button" name="btndel" onclick="deleteUser()" value="删除"  />
  </form>
 </body>
 </html>

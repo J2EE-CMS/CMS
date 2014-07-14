@@ -55,13 +55,22 @@
 		</action>
 	</package> 
 	
-	<!-- 课程类别和培养类别的对应关系 -->
+	<!-- 课程类别和培养类别的对应关系 
 	<package name="relationActions" namespace="/" extends="abstract_struts">
 		<action name="*_*" class="relationAction" method="{1}">
-			<result name="success" type="redirect">/{2}.jsp</result>
+			<result name="success">/success.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
 		</action>
-	</package> 
+	</package> -->
+	
+	<package name="relationActions" namespace="/" extends="abstract_struts">
+		<action name="relation_*" class="relationAction" method="{1}">
+			<result name="success">/temp.jsp</result>
+			<result name="fail">/fail.jsp</result>
+			<interceptor-ref name="myInterceptor" />
+		</action>
+	</package>
+	
 	
 </struts>

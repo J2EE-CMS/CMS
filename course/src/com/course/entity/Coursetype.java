@@ -9,12 +9,25 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "course_type")
 public class Coursetype {
-	private int id;
+	private Integer id;
 	private String typecore;
 	private String type;
 	private String quality;
 	private String reexamine;
 	private String retake;
+	
+	public Coursetype(){
+		
+	}
+	
+	public Coursetype(Integer id,String typecore,String type,String quality,String reexamine,String retake){
+		this.id = id;
+		this.typecore = typecore;
+		this.type = type;
+		this.quality = quality;
+		this.reexamine = reexamine;
+		this.retake = retake;
+	}
 	
 	@Column(name="typecore", length=10, nullable=false)
 	public String getTypecore (){
@@ -65,7 +78,7 @@ public class Coursetype {
 	//采用数据库自增方式生成主键
 	//@GeneratedValue(strategy=GenerationType.AUTO)
 	@GeneratedValue
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 

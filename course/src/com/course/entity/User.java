@@ -9,10 +9,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "p_user")
 public class User {
-	private int id;
+	private Integer id;
 	private String name;
 	private String password;
-	private int age;
+	private Integer age;
 	
 
 	@Column(name="name", length=30, nullable=false, unique=true)
@@ -34,7 +34,7 @@ public class User {
 	}
 
 	@Column(name="age", length=10)
-	public int getAge() {
+	public Integer getAge() {
 		return age;
 	}
 
@@ -49,11 +49,11 @@ public class User {
 	//采用数据库自增方式生成主键
 	//@GeneratedValue(strategy=GenerationType.AUTO)
 	@GeneratedValue
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 }

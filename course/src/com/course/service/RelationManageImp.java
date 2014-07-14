@@ -2,8 +2,11 @@ package com.course.service;
 
 import javax.annotation.Resource;
 
+import java.util.List;
+
 import com.course.dao.IRelationDao;
 import com.course.entity.Relation;
+
 
 public class RelationManageImp implements IRelationManage {
 
@@ -17,17 +20,19 @@ public class RelationManageImp implements IRelationManage {
 	public void setRelationDao(IRelationDao relationDao) {
 		this.relationDao = relationDao;
 	}
-
+	
+	
 	@Override
 	public void modifyRelation(Relation relation) {
 		relationDao.modifyRelation(relation);
 	}
 	
-	/*
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
-	public void findRelation(Relation relation) {
-		
-	}*/
+	public List getAllRelations() {
+		return relationDao.getAllRelations();
+	}
 	
 	
 	//test

@@ -1,5 +1,7 @@
 package com.course.action;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import com.course.entity.Coursetype;
@@ -9,6 +11,8 @@ import com.opensymphony.xwork2.ActionSupport;
 public class CoursetypeAction extends ActionSupport  {
 	
 	private Coursetype coursetype;
+	private List<Coursetype> courses;
+	private Integer id;
 	
 	@Resource
 	private ICoursetypeManage coursetypeM;
@@ -38,7 +42,7 @@ public class CoursetypeAction extends ActionSupport  {
 	
 	public String deleteCoursetype()
 	{
-		coursetypeM.deleteCoursetype(coursetype);
+		coursetypeM.deleteCoursetype(id);
 		return "success";
 	}
 	
@@ -46,6 +50,10 @@ public class CoursetypeAction extends ActionSupport  {
 	{
 		coursetypeM.modifyCoursetype(coursetype);
 		return "success";
+	}
+	
+	public List<Coursetype> getAllCoursetypes(){
+		return courses;
 	}
 	
 }

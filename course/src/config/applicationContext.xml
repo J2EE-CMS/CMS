@@ -22,13 +22,14 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-
+	<!-- <property name="configLocation" value="classpath:hibernate.cfg.xml" />   -->
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
-				<prop key="default_schema">ssh</prop>
+				<prop key="default_schema">course</prop>
+				<prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop>
 			</props>
 		</property>
 		<property name="annotatedClasses">
@@ -42,6 +43,7 @@
 	</bean>
 	
 	
+	  
 	<!-- 					分割线							 -->
 	<!-- Spring管理Struts2的Interceptor -->
 	<bean name="checkLoginInterceptor" class="com.course.interceptor.CheckLogin" scope="prototype"></bean>
@@ -52,13 +54,9 @@
 	<!--  <bean name="userMainAction" class="com.opensymphony.xwork2.ActionSupport" scope="prototype"></bean>  -->
 
 	<!-- 课程类别 -->
-	<bean name="coursetypeAction" class="com.course.action.CoursetypeAction" scope="prototype">
-		<!-- <property name="coursetypeManage" ref="coursetypeManage"></property>  -->
-	</bean>
+	<bean name="coursetypeAction" class="com.course.action.CoursetypeAction" scope="prototype"></bean>
 	
-	<bean name="coursetypeManage" class="com.course.service.CoursetypeManageImp">
-		<!-- <property name="coursetypeDao" ref="coursetypeDao"></property>  -->
-	</bean>
+	<bean name="coursetypeManage" class="com.course.service.CoursetypeManageImp"></bean>
 	
 	<bean name="coursetypeDao" class="com.course.dao.CoursetypeDaoImp">
 		<property name="sessionFactory" ref="sessionFactory" />
@@ -72,6 +70,7 @@
 	<bean name="relationDao" class="com.course.dao.RelationDaoImp">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	
 	<!-- 						分割线							 -->
 
 
@@ -85,13 +84,18 @@
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	
+	
 
 	<!-- 事务的传播特性 -->
 	<tx:advice id="txadvice" transaction-manager="transactionManager">
 		<tx:attributes>
+			<tx:method name="save*" propagation="REQUIRED"/> 
 			<tx:method name="add*" propagation="REQUIRED" />
 			<tx:method name="delete*" propagation="REQUIRED" />
 			<tx:method name="modify*" propagation="REQUIRED" />
+			<tx:method name="get*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="find*" propagation="REQUIRED" read-only="true" />
 			
 			 <!--hibernate4必须配置为开启事务 否则 getCurrentSession()获取不到-->
 			<tx:method name="*" propagation="REQUIRED" read-only="true" />
@@ -102,7 +106,7 @@
 	<aop:config>
 	  <!-- 只对业务逻辑层实施事务 -->
 		<aop:pointcut id="allManagerMethod"
-			expression="execution(* com.course.service.*.*(..))" />
+			expression="execution(* com.course.dao.*.*(..))" />
 		<aop:advisor pointcut-ref="allManagerMethod" advice-ref="txadvice" />
 	</aop:config>
 
