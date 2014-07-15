@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+
+	<!-- Spring管理Struts2的Action -->
+	<bean name="loginAction" class="com.course.action.LoginAction" scope="prototype"></bean>
+	<bean name="courseMainAction" class="com.opensymphony.xwork2.ActionSupport" scope="prototype"></bean>
+	<bean name="courseAction" class="com.course.action.CourseAction" scope="prototype">
+	<!--
+	<bean name="userMainAction" class="com.opensymphony.xwork2.ActionSupport" scope="prototype"></bean>
+	<bean name="userAction" class="com.jialin.action.UserAction" scope="prototype">
+	-->
+		<!-- <property name="userManage" ref="userManage"></property> -->
+	</bean>
+
+	<!-- Spring管理Struts2的Interceptor -->
+	<bean name="checkLoginInterceptor" class="com.course.interceptor.CheckLogin" scope="prototype"></bean>
+
+	<bean name="courseManage" class="com.course.service.CourseManageImp">
+		<!-- <property name="userDao" ref="userDao"></property> -->
+	</bean>
+	
+	<bean name="courseDao" class="com.course.dao.CourseDaoImp">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!--
+	<bean name="userManage" class="com.jialin.service.UserManageImp">
+	-->
+		<!-- <property name="userDao" ref="userDao"></property> -->
+	<!--  
+	</bean>
+	
+	<bean name="userDao" class="com.jialin.dao.UserDaoImp">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	-->
+</beans>
