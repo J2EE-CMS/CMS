@@ -11,7 +11,7 @@ coursemanage
 <br />
 
 
-Structures（待补）
+Structures
 ----------
 
 ``` bash
