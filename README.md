@@ -67,11 +67,11 @@ course
 │      │      │      RelationManageImp.class
 │      │      │      
 │      │      └─util
-│      │              PageModel.class
+│      │              PageModel.class    ##暂时不用
 │      │              
 │      └─config
 │              applicationContext.xml
-│              hibernate.cfg.xml
+│              hibernate.cfg.xml    ##暂时不用
 │              struts.xml
 │              
 ├─src
@@ -115,7 +115,7 @@ course
 │  │              
 │  └─config
 │          applicationContext.xml
-│          hibernate.cfg.xml
+│          hibernate.cfg.xml    ##暂时不用
 │          struts.xml
 │          
 └─WebContent
