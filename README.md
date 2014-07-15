@@ -10,8 +10,6 @@ coursemanage
 <br />
 <br />
 
-<pre name="code" class="html"></pre>
-<br />
 
 Structures（待补）
 ----------
