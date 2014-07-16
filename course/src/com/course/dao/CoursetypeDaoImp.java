@@ -2,11 +2,13 @@ package com.course.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
  
-import org.springframework.transaction.annotation.Transactional;  
+
+import org.hibernate.criterion.Restrictions;
 
 import com.course.entity.Coursetype;
 
@@ -30,16 +32,36 @@ public class CoursetypeDaoImp implements ICoursetypeDao {
 	
 	@Override
 	public void deleteCoursetype(Integer id){
-		//getSession().clear();
+		//根据主键查找 时，可以使用get()和load()方法 
+		//Coursetype coursetype = (Coursetype)sessionFactory.getCurrentSession().get(Coursetype.class, id);
 		//sessionFactory.getCurrentSession().delete(coursetype);
-		Coursetype coursetype = (Coursetype)sessionFactory.getCurrentSession().get(Coursetype.class, id);
+		
+		//根据非主键查找时，使用hql/Criteria
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Coursetype.class);
+		//eq:=;lt:<；。。。。
+		criteria.add(Restrictions.eq("id", id));
+		//criteria.add(Restrictions.eq("type", type));
+		
+		Coursetype coursetype = (Coursetype)criteria.uniqueResult();
 		sessionFactory.getCurrentSession().delete(coursetype);
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public void modifyCoursetype(Coursetype coursetype) {
-		getSession().clear();
-		sessionFactory.getCurrentSession().update(coursetype);
+		//根据主键修改
+		//getSession().clear();
+		//sessionFactory.getCurrentSession().update(coursetype);
+		
+		//根据非主键修改，hql方法见梁炎的部分，这里改用Criteria
+		//Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Coursetype.class);
+		//criteria.add(Restrictions.eq("id", coursetype.getId()));
+		
+		Query query = sessionFactory.getCurrentSession().createQuery("from Coursetype where id=?");
+		query.setInteger(0, coursetype.getId());
+		Coursetype costype = (Coursetype )query.uniqueResult();
+		costype.setCoursetype(coursetype);		
+		
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -49,4 +71,7 @@ public class CoursetypeDaoImp implements ICoursetypeDao {
 		return query.list();
 	}
 	
+
+
+
 }

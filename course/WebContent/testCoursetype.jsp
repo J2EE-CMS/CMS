@@ -21,7 +21,7 @@
 	function modifyCoursetype()
 	{
 		var myform=document.forms[0];
-		myform.action="coursetype/modifyCoursetype_success";
+		myform.action="modifyCoursetype_success";
 		myform.method="post";
 		myform.submit();
 	}
@@ -29,24 +29,28 @@
 	function deleteCoursetype()
 	{
 		var myform=document.forms[0];
-		myform.action="coursetype/deleteCoursetype_success";
+		myform.action="deleteCoursetype_success";
 		myform.method="post";
 		myform.submit();
 	}
 	
-	
+
 
 </script>
 </head>
 <body>
 <form id="myform1" >
 	性质：<input type="text" name="coursetype.quality" >
-	是否需要重考：<input type="radio" name="coursetype.reexamine" />是<input type="radio" name="coursetype.reexamine" />否
-	
+	是否需要重考：<input type="text" name="coursetype.reexamine" />
 	是否需要重修:<input type="text" name="coursetype.retake" />
 	课程类别：<input type="text" name="coursetype.type" />	
 	课程类别码：<input type="text" name="coursetype.typecore" />
 	<input type="button" name="btnadd" onclick="addCoursetype()" value="增加" />
+	
+	<s:hidden name="coursetype.id"></s:hidden>
+	<input type="button" name="btnadd" onclick="modifyCoursetype()" value="修改" />
+	<input type="button" name="btnadd" onclick="deleteCoursetype()" value="删除" />
+	<input type="button" name="btnadd" onclick="getAllCoursetypes()" value="查询所有结果" />
  </form>
 </body>
 </html>

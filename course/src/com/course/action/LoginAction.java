@@ -5,7 +5,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
-import org.springframework.web.client.HttpServerErrorException;
 
 import com.course.entity.User;
 import com.opensymphony.xwork2.ActionContext;
@@ -22,6 +21,7 @@ public class LoginAction extends ActionSupport {
 		this.user = user;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public String execute() throws Exception {
 		

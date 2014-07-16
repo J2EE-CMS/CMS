@@ -2,8 +2,6 @@ package com.course.util;
 
 import java.util.List;
 
-import com.course.entity.Relation;;
-
 public class PageModel {
 	private List datas;
 	

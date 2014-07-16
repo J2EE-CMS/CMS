@@ -1,7 +1,5 @@
 package com.course.action;
 
-import static org.junit.Assert.*;
-
 import java.util.List;
 
 import org.junit.BeforeClass;
@@ -18,17 +16,27 @@ public class CoursetypeActionTest {
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		@SuppressWarnings("resource")
 		ApplicationContext cxt=new ClassPathXmlApplicationContext("/config/applicationContext.xml");
 		coursetypeDao = (ICoursetypeDao) cxt.getBean("coursetypeDao");
 	}
 
+	/*  -----------------  π¶ƒ‹≤‚ ‘     --------------------  */
 	/*
-	 * ◊¢ ÕµÙ£¨±‹√‚÷ÿ∏¥∂®“Â‘Ï≥…≥ÂÕª
+	 * 
 	@Test
-	public void addRelation() {
-		coursetypeDao.addCoursetype(new Coursetype("temp1", "temp2","temp3","temp4","temp5"));
+	public void addCoursetype() {
+		coursetypeDao.addCoursetype(new Coursetype(null,"temp10", "temp20","temp30","temp40","temp50"));
 	}
-	*/
+	 */
+	
+	
+	@Test
+	public void modifyCoursetype() {
+		coursetypeDao.modifyCoursetype(new Coursetype(11,"te","sda","c","k","sad"));
+		System.out.println("modify success!");
+	}
+	
 	
 	@Test
 	public void getAllCoursetypes() {
@@ -40,17 +48,17 @@ public class CoursetypeActionTest {
 		}
 	}
 	
-	
-	@Test
-	public void modifyCoursetype() {
-		coursetypeDao.modifyCoursetype(new Coursetype(2,"f","u","c","k","!"));
-		System.out.println("test");
-	}
-	
+	/*
 	@Test
 	public void deleteCoursetype() {
-		coursetypeDao.deleteCoursetype(3);
+		coursetypeDao.deleteCoursetype(12);
 	}
+	*/
+	/*  -----------------  π¶ƒ‹≤‚ ‘Ω· ¯     --------------------  */
 	
+	
+	
+	/*  -----------------  “Ï≥£≤‚ ‘ ‰»Î≤‚ ‘  [¥˝≤π]   --------------------  */
+	/*  -----------------  “Ï≥£≤‚ ‘ ‰»Î≤‚ ‘Ω· ¯     --------------------  */
 
 }

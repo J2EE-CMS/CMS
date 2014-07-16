@@ -32,7 +32,7 @@
 	<!-- 			分割线 				-->
 	<package name="loginAction" namespace="/" extends="abstract_struts">
 		<action name="login" class="loginAction">
-			<result name="success" type="redirect">/testRelation.jsp</result>
+			<result name="success" type="redirect">/testCoursetype.jsp</result>
 			<result name="fail">/login.jsp</result>
 		</action>
 	</package>
@@ -49,21 +49,22 @@
 	 <!-- 课程类别 -->
 	<package name="coursetypeActions" namespace="/" extends="abstract_struts">
 		<action name="*_*" class="coursetypeAction" method="{1}">
-			<result name="success" type="redirect">/{2}.jsp</result>
+			<result name="success" type="redirect">/success.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
 		</action>
 	</package> 
 	
-	<!-- 课程类别和培养类别的对应关系 
+	<!-- 课程类别和培养类别的对应关系   
 	<package name="relationActions" namespace="/" extends="abstract_struts">
 		<action name="*_*" class="relationAction" method="{1}">
 			<result name="success">/success.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
 		</action>
-	</package> -->
+	</package>  --> 
 	
+	<!-- 
 	<package name="relationActions" namespace="/" extends="abstract_struts">
 		<action name="relation_*" class="relationAction" method="{1}">
 			<result name="success">/temp.jsp</result>
@@ -71,6 +72,6 @@
 			<interceptor-ref name="myInterceptor" />
 		</action>
 	</package>
-	
+	 -->
 	
 </struts>

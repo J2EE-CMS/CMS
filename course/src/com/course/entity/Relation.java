@@ -2,11 +2,9 @@ package com.course.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "type_relation")
@@ -21,8 +19,15 @@ public class Relation {
 		
 	}
 	
+	public void setRelation (Relation temp) {
+		this.id = temp.id;
+		this.grade = temp.grade;
+		this.devtype = temp.devtype;
+		this.type = temp.type;
+	}
+	
 	public Relation(Integer grade,String devtype,String type) {
-		//this.id = id;
+		this.id = id;
 		this.grade = grade;
 		this.devtype = devtype;
 		this.type = type;
