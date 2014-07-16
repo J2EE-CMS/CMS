@@ -22,6 +22,9 @@
 	</package>
 	
 	<package name="homeOp" namespace="/" extends="abstract_struts">
+		<action name="course_findCourse" class="courseAction" method="findCourse">
+	        <result name="findcourse">/class_manage.jsp</result>
+	    </action>
 		<action name="course_*" class="courseAction" method="{1}">
 			<result name="success" type="redirect">/class_manage.jsp</result>
 			<result name="fail">/fail.jsp</result>

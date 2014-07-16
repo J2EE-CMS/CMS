@@ -56,7 +56,7 @@ public class CourseAction {
 	
 	public String findCourse(){
 		foundCourse = courseManage.findCourse(course);
-		return "success";
+		return "findcourse";
 	}
 	
 	public String findAllCourse(){

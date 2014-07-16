@@ -55,6 +55,14 @@
 	</head>
 	
 	<body>
+		<ul style="background-color:black" class="nav nav-tabs">
+			<li><a href="#"><strong>课程库管理</strong></a></li>
+			<li><a href="#">新增</a></li>
+			<li><a href="#">修改</a></li>
+			<li><a href="#">删除</a></li>
+			<li><a href="#">查询</a></li>
+			<li><a href="#">导出</a></li>		       
+		</ul>
 		<form id="courseform" >
 			<table class="table table-bordered">
 				<thead>
@@ -90,13 +98,13 @@
             </thead>
             <tbody class="text-center">
 	            <s:iterator value="foundCourse" var="course">
-	            	<tr> 
-				        <td><s:property value="#course.name"/></td>
-	                    <td><s:property value="#course.place"/></td>
-	                    <td><s:property value="#course.time"/></td>
-	                    <td><s:property value="#course.isDegree"/></td>
-			    	</tr>
-	            </s:iterator>
+		                <tr>
+		                    <td><s:property value="#course.name"/></td>
+		                    <td><s:property value="#course.place"/></td>
+		                    <td><s:property value="#course.time"/></td>
+		                    <td><s:property value="#course.isDegree"/></td>
+		                </tr>
+		            </s:iterator>
 			</tbody>
 	    </table>	
 	    
