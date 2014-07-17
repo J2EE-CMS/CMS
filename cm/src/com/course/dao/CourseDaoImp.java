@@ -30,7 +30,14 @@ public class CourseDaoImp implements ICourseDao{
 	
 	@Override
 	public void modifyCourse(Course course){
-		getSession().update(course);
+		String hql = "from Course as c where c.name=?";
+		Query query = getSession().createQuery(hql);
+		query.setString(0, course.getName());
+		Course c = (Course)query.uniqueResult();
+		c.setPlace(course.getPlace());
+		c.setTime(course.getTime());
+		c.setIsDegree(course.getIsDegree());
+		getSession().update(c);
 	}
 	
 	public void deleteCourse(Course course){

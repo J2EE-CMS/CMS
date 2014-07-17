@@ -1,7 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@ taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<!--禁止缩放，适合设备尺寸-->
 		<meta name="viewport" content="width=device-width, 
 									   initial-scle=1.0,
@@ -23,7 +26,8 @@
 			<li><a href="#">删除</a></li>
 			<li><a href="#">查询</a></li>
 			<li><a href="#">导出</a></li>	
-			<li><a href="#">提交</a></li>	       
+			<li><a href="#">提交</a></li>	
+			<li class="pull-right"><form action="home.jsp"><input style="background-color:yellow; width:60px; height:40px" type="submit" value="返回"/></form></li>  	       
 		</ul>
 		<div class="table-responsive">
 			<table class="table table-bordered">
@@ -59,39 +63,38 @@
 						-->
 					</tr>
 				</tbody>
-			</div>
-			<thead>
-				<tr>
-					<th class="text-center">课程类型</th>
-					<th class="text-center">周学时</th>
-					<th class="text-center">课程门类</th>
-					<th class="text-center">课程简介</th>
-					<th class="text-center">先修课程</th>
-					<th class="text-center">课程负责人</th>
-					<th class="text-center">是否学位课</th>
-				</tr>
-			</thead>
-			<tbody class="text-center">
-				<tr>
-					<td><input type="text" name="type" /></td>
-					<td><input type="text" name="w_time" /></td>
-					<td><input type="text" name="category" /></td>
-					<td><input type="text" name="introduce" /></td>
-					<td><input type="text" name="prerequisite" /></td>
-					<td><input type="text" name="manager" /></td>
-					<td>
-						<input type="radio" name="reexam" value="exam" />是<input type="radio" name="reexam" value="nexam" />否
-					</td>
-				</tr>
-			</tbody>
-		</table>
+				<thead>
+					<tr>
+						<th class="text-center">课程类型</th>
+						<th class="text-center">周学时</th>
+						<th class="text-center">课程门类</th>
+						<th class="text-center">课程简介</th>
+						<th class="text-center">先修课程</th>
+						<th class="text-center">课程负责人</th>
+						<th class="text-center">是否学位课</th>
+					</tr>
+				</thead>
+				<tbody class="text-center">
+					<tr>
+						<td><input type="text" name="type" /></td>
+						<td><input type="text" name="w_time" /></td>
+						<td><input type="text" name="category" /></td>
+						<td><input type="text" name="introduce" /></td>
+						<td><input type="text" name="prerequisite" /></td>
+						<td><input type="text" name="manager" /></td>
+						<td>
+							<input type="radio" name="reexam" value="exam" />是<input type="radio" name="reexam" value="nexam" />否
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 		<p align="center">
-			<button type="button" onclick="submit()">提交</button>
 			<button type="button" onclick="add()">添加</button>
-			<button type="button" onclick="findall()">查询</button>
 			<button type="button" onclick="modify()">修改</button>
 			<button type="button" onclick="Delete()">删除</button>
-			<button type="button"><a href="home.jsp">返回</a></button>
+			<button type="button" onclick="findall()">查询</button>
+			<button type="button" onclick="submit()">提交</button>
 		</p>
 		<div class="table-responsive">
 			<table class="table table-hover table-bordered">

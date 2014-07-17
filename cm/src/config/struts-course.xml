@@ -25,19 +25,19 @@
 		<action name="course_findCourse" class="courseAction" method="findCourse">
 	        <result name="findcourse">/class_manage.jsp</result>
 	    </action>
+	    
 		<action name="course_*" class="courseAction" method="{1}">
-			<result name="success" type="redirect">/class_manage.jsp</result>
+			<result name="success" type="redirect">/class_manage</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
 		</action>
-	    <action name="showallcourse" class="courseAction" method="findAllCourse">
-	        <result name="showallcourse">/class_manage.jsp</result>
-	    </action>
-		<action name="class_manage" >
-			<result name="success">/class_manage.jsp</result>
+		
+		<action name="class_manage" class="courseAction" method="findAllCourse">
+			<result name="showallcourse">/class_manage.jsp</result>
 		</action>
+		
 		<action name="*" >
-			<result name="success">/{1}.html</result>
+			<result name="success">/{1}.jsp</result>
 			<!-- <result name="success" type="redirectAction">class</result> -->
 		</action>
 		<!-- 

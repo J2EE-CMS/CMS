@@ -1,7 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@ taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<!--禁止缩放，适合设备尺寸-->
 		<meta name="viewport" content="width=device-width, 
 									   initial-scle=1.0,
@@ -21,7 +24,8 @@
 			<li><a href="#">新增</a></li>
 			<li><a href="#">修改</a></li>
 			<li><a href="#">删除</a></li>
-			<li><a href="#">查询</a></li>       
+			<li><a href="#">查询</a></li>	
+			<li class="pull-right"><form action="home.jsp"><input style="background-color:yellow; width:60px; height:40px" type="submit" value="返回"/></form></li>         
 		</ul>
 		<div class="table-responsive">
 			<table class="table table-bordered">
@@ -31,29 +35,29 @@
 						<th class="text-center">课程类别细类名称</th>
 						<th class="text-center">所属课程类别</th>
 						<th class="text-center">序号</th>
-						<th class="text-center">是否公共细类</th>
+						<th class="text-center" >是否公共细类</th>
 						<th class="text-center">设立单位</th>
 						<th class="text-center">备注</th>
 					</tr>
 				</thead>
 				<tbody class="text-center">
 					<tr>
-						<td><input type="text" name="code" /></td>
-						<td><input type="text" name="name" /></td>
+						<td><input type="text" name="code" style="width:140px"/></td>
+						<td><input type="text" name="name" style="width:120px"/></td>
 						<td>
-							<select style="width:100px">
+							<select style="width:80px">
 								<option>公必</option>
 								<option>专必</option>
 								<option>公选</option>
 								<option>专选</option>
 							</select>
 						</td>
-						<td><input type="text" name="number" /></td>
+						<td><input type="text" name="number" style="width:100px"/></td>
 						<td>
 							<input type="radio" name="reexam" value="exam" />是<br>
 							<input type="radio" name="reexam" value="nexam" />否
 						</td>
-						<td><input type="text" name="place" /></td>
+						<td><input type="text" name="place" style="width:100px"/></td>
 						<td><input type="text" name="description" /></td>
 					</tr>
 				</tbody>
@@ -63,8 +67,7 @@
 			<button type="button" onclick="add()">添加</button>
 			<button type="button" onclick="findall()">查询</button>
 			<button type="button" onclick="modify()">修改</button>
-			<button type="button" onclick="Delete()">删除</button>
-			<button type="button"><a href="home.jsp">返回</a></button>
+			<button type="button" onclick="delete()">删除</button>
 		</p>
 		<div class="table-responsive">
 			<table class="table table-hover table-bordered">

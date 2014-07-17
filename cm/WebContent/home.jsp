@@ -50,7 +50,6 @@
 				先修关系 <b class="caret"></b>
 				</a>
 				<ul class="dropdown-menu">
-					<li><form action="relation_manage"><input type="submit" name="relation_manage" value="先修关系管理"  /></form></li>
 					<li><form action="relation_apply"><input type="submit" name="relation_apply" value="先修关系申请"  /></form></li>
 					<li><form action="relation_check"><input type="submit" name="relation_check" value="先修关系审批"  /></form></li>
 				</ul>

@@ -1,7 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@ taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<!--禁止缩放，适合设备尺寸-->
 		<meta name="viewport" content="width=device-width, 
 									   initial-scle=1.0,
@@ -21,9 +24,10 @@
 	<body>
 		<ul style="background-color:black" class="nav nav-tabs">
 			<li><a href="#"><strong>新增课程管理审批</strong></a></li>
-			<li><a href="#">审批</a></li>
 			<li><a href="#">查询</a></li>
-			<li><a href="#">导出</a></li>       
+			<li><a href="#">审批</a></li>
+			<li><a href="#">导出</a></li>	
+			<li class="pull-right"><form action="home.jsp"><input style="background-color:yellow; width:60px; height:40px" type="submit" value="返回"/></form></li>         
 		</ul>
 		<div class="table-responsive">
 			<table class="table table-bordered">
@@ -68,8 +72,7 @@
 		<p align="center">
 			<button type="button" onclick="findall()">查询</button>
 			<button type="button" onclick="modify()">审批</button>
-			<button type="button" onclick="Delete()">导出</button>
-			<button type="button"><a href="home.jsp">返回</a></button>
+			<button type="button" onclick="delete()">导出</button>
 		</p>
 		<div class="table-responsive">
 			<table class="table table-hover table-bordered">
