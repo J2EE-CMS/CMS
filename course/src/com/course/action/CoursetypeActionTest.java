@@ -23,7 +23,7 @@ public class CoursetypeActionTest {
 
 	/*  -----------------  功能测试     --------------------  */
 	/*
-	 * 
+	 * 注释掉，避免测试时影响其他数据
 	@Test
 	public void addCoursetype() {
 		coursetypeDao.addCoursetype(new Coursetype(null,"temp10", "temp20","temp30","temp40","temp50"));
@@ -49,6 +49,7 @@ public class CoursetypeActionTest {
 	}
 	
 	/*
+	 * 注释掉，避免重复删除同一字段报错
 	@Test
 	public void deleteCoursetype() {
 		coursetypeDao.deleteCoursetype(12);

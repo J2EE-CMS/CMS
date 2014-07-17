@@ -52,8 +52,9 @@ public class CoursetypeAction extends ActionSupport  {
 		return "success";
 	}
 	
-	public List<Coursetype> getAllCoursetypes(){
-		return courses;
+	public String getAllCoursetypes(){
+		courses = coursetypeM.getAllCoursetypes();
+		return "success";
 	}
 	
 }

@@ -44,9 +44,10 @@ public class RelationAction extends ActionSupport {
 	
 	/*   -----------------     ·Ö¸îÏß          -----------------------*/
 	
-	public List<Relation> getAllRelations() {
+	public String getAllRelations() {
 		//relationManage.getAllRelations(relation);
-		return relations;
+		relations = relationManage.getAllRelations();
+		return SUCCESS;
 	}
 
 	
