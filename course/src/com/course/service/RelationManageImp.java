@@ -34,6 +34,10 @@ public class RelationManageImp implements IRelationManage {
 		return relationDao.getAllRelations();
 	}
 	
+	public List<Relation> findByGrade(Integer grade) {
+		return relationDao.findByGrade(grade);
+	}
+	
 	
 	//test
 	@Override

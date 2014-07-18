@@ -28,7 +28,7 @@ public class RelationDaoImp implements IRelationDao {
 	public void modifyRelation(Relation relation) {
 		//getSession().clear();
 		//essionFactory.getCurrentSession().update(relation);
-		Query query = sessionFactory.getCurrentSession().createQuery("from Coursetype where id=?");
+		Query query = sessionFactory.getCurrentSession().createQuery("from Relation where id=?");
 		query.setInteger(0, relation.getId());
 		Relation costype = (Relation )query.uniqueResult();
 		costype.setRelation(relation);	
@@ -43,20 +43,12 @@ public class RelationDaoImp implements IRelationDao {
 		return query.list();
 	}
 	
-	/*
-	public List<Relation> findByGrade(Integer grade) {
-		Query query = sessionFactory.getCurrentSession().createQuery("from Relation where id=1");  		
-		 List<Relation> list = query.list();
-		 for(Relation relation :list){
-		 	System.out.println(relation.getGrade());
-		 }
-	}*/
 	
-	/*
-	public void delete(Integer id) {
-		Relation relation = (Relation)sessionFactory.getCurrentSession().get(Relation.class, id);
-		sessionFactory.getCurrentSession().delete(relation);
-	}*/
+	public List<Relation> findByGrade(Integer grade) {
+		Query query = sessionFactory.getCurrentSession().createQuery("from Relation where grade=?");
+		query.setInteger(0, grade);
+		return query.list();
+	}
 	
 	/*   -----------------------   */
 	

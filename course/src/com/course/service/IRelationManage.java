@@ -11,6 +11,7 @@ public interface IRelationManage {
 	
 	
 	public List<Relation> getAllRelations();
+	public List<Relation> findByGrade(Integer grade);
 	
 	//test
 	public void addRelation(Relation relation);

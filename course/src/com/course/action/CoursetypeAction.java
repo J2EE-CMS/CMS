@@ -11,21 +11,13 @@ import com.opensymphony.xwork2.ActionSupport;
 public class CoursetypeAction extends ActionSupport  {
 	
 	private Coursetype coursetype;
-	private List<Coursetype> courses;
-	private Integer id;
+	List<Coursetype> courses;
 	
 	@Resource
 	private ICoursetypeManage coursetypeM;
 
-	public void setICoursetypeM (ICoursetypeManage coursetypeM) {
-		this.coursetypeM = coursetypeM;
-	}
 	
-	public ICoursetypeManage getICoursetypeM() {
-		return coursetypeM;
-	}
-	
-	
+
 	public Coursetype getCoursetype() {
 		return coursetype;
 	}
@@ -34,6 +26,23 @@ public class CoursetypeAction extends ActionSupport  {
 		this.coursetype = coursetype;
 	}
 
+	public List<Coursetype> getCourses() {
+		return courses;
+	}
+
+	public void setCourses(List<Coursetype> courses) {
+		this.courses = courses;
+	}
+
+	public ICoursetypeManage getCoursetypeM() {
+		return coursetypeM;
+	}
+
+	public void setCoursetypeM(ICoursetypeManage coursetypeM) {
+		this.coursetypeM = coursetypeM;
+	}
+
+		
 	public String addCoursetype()
 	{		
 		coursetypeM.addCoursetype(coursetype);
@@ -42,11 +51,11 @@ public class CoursetypeAction extends ActionSupport  {
 	
 	public String deleteCoursetype()
 	{
-		coursetypeM.deleteCoursetype(id);
+		coursetypeM.deleteCoursetype(coursetype);
 		return "success";
 	}
 	
-	public String modifyCourseType()
+	public String modifyCoursetype()
 	{
 		coursetypeM.modifyCoursetype(coursetype);
 		return "success";
@@ -56,5 +65,6 @@ public class CoursetypeAction extends ActionSupport  {
 		courses = coursetypeM.getAllCoursetypes();
 		return "success";
 	}
+
 	
 }

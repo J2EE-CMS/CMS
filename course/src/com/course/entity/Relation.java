@@ -2,6 +2,7 @@ package com.course.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -64,6 +65,7 @@ public class Relation {
 	@Id
 	//采用数据库自增方式生成主键
 	//@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue
 	public Integer getId() {
 		return id;
 	}

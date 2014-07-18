@@ -29,7 +29,7 @@ public class RelationActionTest {
 		relationDao.addRelation(new Relation(22, "temp3", "temp3"));
 	}*/
 	
-	
+	/*
 	@Test
 	public void getAllRelations() {
 		List<Relation> list = relationDao.getAllRelations();
@@ -39,6 +39,8 @@ public class RelationActionTest {
 					"\t"+list.get(i).getType()+"\n");
 		}
 	}
+	*/
+	
 	/*
 	@Test
 	public void modifyRelation() {
@@ -46,4 +48,14 @@ public class RelationActionTest {
 		System.out.println("test");
 	}
 	*/
+	
+	@Test
+	public void findByGrade() {
+		List<Relation> list = relationDao.findByGrade(22);
+		System.out.println(list.size());
+		for(int i=0;i<list.size();i++){
+			System.out.println( list.get(i).getId()+"\t"+list.get(i).getGrade()+"\t"+list.get(i).getDevtype()+
+					"\t"+list.get(i).getType()+"\n");
+		}
+	}
 }

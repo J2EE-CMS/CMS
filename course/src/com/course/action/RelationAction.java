@@ -18,8 +18,21 @@ public class RelationAction extends ActionSupport {
 	
 	private List<Relation> relations;
 	
+	private Integer grade;
+	
 	@Resource
 	private IRelationManage relationManage;
+
+	
+	
+	
+	public Integer getGrade() {
+		return grade;
+	}
+
+	public void setGrade(Integer grade) {
+		this.grade = grade;
+	}
 
 	public Relation getRelation() {
 		return relation;
@@ -27,6 +40,14 @@ public class RelationAction extends ActionSupport {
 
 	public void setRelation(Relation relation) {
 		this.relation = relation;
+	}
+
+	public List<Relation> getRelations() {
+		return relations;
+	}
+
+	public void setRelations(List<Relation> relations) {
+		this.relations = relations;
 	}
 
 	public IRelationManage getRelationManage() {
@@ -37,25 +58,29 @@ public class RelationAction extends ActionSupport {
 		this.relationManage = relationManage;
 	}
 	
-	public String midifyRelation() {
+	
+	/*   -----------------     分割线          -----------------------*/
+	
+	
+
+	public String getAllRelations() {
+		//relationManage.getAllRelations(relation);
+		relations = relationManage.getAllRelations();
+		return "success";
+	}
+
+	public String modifyRelation() {
 		relationManage.modifyRelation(relation);
 		return "success";
 	}
 	
-	/*   -----------------     分割线          -----------------------*/
-	
-	public String getAllRelations() {
-		//relationManage.getAllRelations(relation);
-		relations = relationManage.getAllRelations();
-		return SUCCESS;
-	}
-
-	
-	/*   -----------------     分割线          -----------------------*/
-	//test
 	public String addRelation() {
 		relationManage.addRelation(relation);
 		return "success";
 	}
 		
+	public String findByGrade() {
+		relations = relationManage.findByGrade(grade);
+		return "success";
+	}
 }

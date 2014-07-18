@@ -31,7 +31,7 @@ public class CoursetypeDaoImp implements ICoursetypeDao {
 	}
 	
 	@Override
-	public void deleteCoursetype(Integer id){
+	public void deleteCoursetype(Coursetype coursetype){
 		//根据主键查找 时，可以使用get()和load()方法 
 		//Coursetype coursetype = (Coursetype)sessionFactory.getCurrentSession().get(Coursetype.class, id);
 		//sessionFactory.getCurrentSession().delete(coursetype);
@@ -39,10 +39,10 @@ public class CoursetypeDaoImp implements ICoursetypeDao {
 		//根据非主键查找时，使用hql/Criteria
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Coursetype.class);
 		//eq:=;lt:<；。。。。
-		criteria.add(Restrictions.eq("id", id));
+		criteria.add(Restrictions.eq("id", coursetype.getId()));
 		//criteria.add(Restrictions.eq("type", type));
 		
-		Coursetype coursetype = (Coursetype)criteria.uniqueResult();
+		coursetype = (Coursetype)criteria.uniqueResult();
 		sessionFactory.getCurrentSession().delete(coursetype);
 	}
 	

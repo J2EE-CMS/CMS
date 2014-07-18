@@ -26,8 +26,8 @@ public class CoursetypeManageImp implements ICoursetypeManage {
 	}
 	
 	@Override
-	public void deleteCoursetype (Integer id) {
-		coursetypeDao.deleteCoursetype (id);
+	public void deleteCoursetype (Coursetype coursetype) {
+		coursetypeDao.deleteCoursetype (coursetype);
 	}
 	
 	@Override
@@ -36,7 +36,7 @@ public class CoursetypeManageImp implements ICoursetypeManage {
 	}
 	
 	@Override
-	public List<Coursetype> getAllCoursetypes(){
+	public List<Coursetype> getAllCoursetypes() {
 		return coursetypeDao.getAllCoursetypes();
 	}
 	
