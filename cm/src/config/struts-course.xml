@@ -9,9 +9,8 @@
 	<package name="loginAction" namespace="/" extends="abstract_struts">
 	
 		<action name="login" class="loginAction">
-			<result name="success">/home.jsp</result>
 			<result name="success" type="redirectAction">home</result>
-			<result name="fail">/fail.jsp</result>
+			<result name="fail">/login.jsp</result>
 		</action>
 
 		<!-- 该action只负责跳转，用struts提供的ActionSupport -->

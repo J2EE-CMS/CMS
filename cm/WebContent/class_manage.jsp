@@ -71,14 +71,42 @@
 						<th class="text-center">开设单位</th>
 						<th class="text-center">总学时</th>
 						<th class="text-center">是否学位课</th>
-		            </tr>
-            	</thead>
+						<th class="text-center">课程英文名称</th>
+						<th class="text-center">课程简称</th>
+						<th class="text-center">学分</th>
+					</tr>
+				</thead>
             	<tbody class="text-center">
 					<tr>
 						<td><input type="text" name="course.name"></td>
 						<td><input type="text" name="course.place"></td>
 						<td><input type="text" name="course.time"></td>
 						<td><input type="text" name="course.isDegree"/></td>
+						<td><input type="text" name="course.enName"></td>
+						<td><input type="text" name="course.sName"></td>
+						<td><input type="text" name="course.score"></td>
+					</tr>
+				</tbody>
+				<thead>
+					<tr>
+						<th class="text-center">总学时描述</th>
+						<th class="text-center">课程类别</th>
+						<th class="text-center">周学时</th>
+						<th class="text-center">课程门类</th>
+						<th class="text-center">简介</th>
+						<th class="text-center">先修课程</th>
+						<th class="text-center">课程负责人</th>
+		            </tr>
+            	</thead>
+				<tbody>
+					<tr>
+						<td><input type="text" name="course.timeDesc"/></td>
+						<td><input type="text" name="course.type"></td>
+						<td><input type="text" name="course.wTime"></td>
+						<td><input type="text" name="course.category"></td>
+						<td><input type="text" name="course.introduce"/></td>
+						<td><input type="text" name="course.prerequisite"></td>
+						<td><input type="text" name="course.manager"></td>
 					</tr>
 				</tbody>
 			</table>
@@ -94,23 +122,50 @@
 					<th class="text-center">开设单位</th>
 					<th class="text-center">总学时</th>
 					<th class="text-center">是否学位课</th>
-	            </tr>
-            </thead>
+					<th class="text-center">课程英文名称</th>
+					<th class="text-center">课程简称</th>
+					<th class="text-center">学分</th>
+				</tr>
+			</thead>
             <tbody class="text-center">
 	            <s:iterator value="foundCourse" var="course">
-		                <tr>
-		                    <td><s:property value="#course.name"/></td>
-		                    <td><s:property value="#course.place"/></td>
-		                    <td><s:property value="#course.time"/></td>
-		                    <td><s:property value="#course.isDegree"/></td>
-		                </tr>
-		            </s:iterator>
+	                <tr>
+	                    <td><s:property value="#course.name"/></td>
+	                    <td><s:property value="#course.place"/></td>
+	                    <td><s:property value="#course.time"/></td>
+	                    <td><s:property value="#course.isDegree"/></td>
+	                    <td><s:property value="#course.enName"/></td>
+	                    <td><s:property value="#course.sName"/></td>
+	                    <td><s:property value="#course.score"/></td>
+	                </tr>
+		        </s:iterator>
+			</tbody>
+			<thead>
+				<tr>
+					<th class="text-center">总学时描述</th>
+					<th class="text-center">课程类别</th>
+					<th class="text-center">周学时</th>
+					<th class="text-center">课程门类</th>
+					<th class="text-center">简介</th>
+					<th class="text-center">先修课程</th>
+					<th class="text-center">课程负责人</th>
+	            </tr>
+            </thead>
+		    <tbody class="text-center">
+	            <s:iterator value="foundCourse" var="course">
+	                <tr>
+	                    <td><s:property value="#course.timeDesc"/></td>
+	                    <td><s:property value="#course.type"/></td>
+	                    <td><s:property value="#course.wTime"/></td>
+	                    <td><s:property value="#course.category"/></td>
+	                    <td><s:property value="#course.introduce"/></td>
+	                    <td><s:property value="#course.prerequisite"/></td>
+	                    <td><s:property value="#course.manager"/></td>
+	                </tr>
+		        </s:iterator>
 			</tbody>
 	    </table>	
 	    
-		<form action="showallcourse" method="post" >
-			<input type="submit" value="show">
-		</form>
 		<div class="table-responsive">
 			<table class="table table-hover table-bordered">
 	            <thead>
@@ -119,7 +174,10 @@
 						<th class="text-center">开设单位</th>
 						<th class="text-center">总学时</th>
 						<th class="text-center">是否学位课</th>
-		            </tr>
+						<th class="text-center">课程英文名称</th>
+						<th class="text-center">课程简称</th>
+						<th class="text-center">学分</th>
+					</tr>
 	            </thead>
 	            <tbody class="text-center">
 		            <s:iterator value="allCourse" var="course">
@@ -128,6 +186,33 @@
 		                    <td><s:property value="#course.place"/></td>
 		                    <td><s:property value="#course.time"/></td>
 		                    <td><s:property value="#course.isDegree"/></td>
+		                    <td><s:property value="#course.enName"/></td>
+		                    <td><s:property value="#course.sName"/></td>
+		                    <td><s:property value="#course.score"/></td>
+		                </tr>
+		        	</s:iterator>
+				</tbody>
+				<thead>
+		            <tr>
+						<th class="text-center">总学时描述</th>
+						<th class="text-center">课程类别</th>
+						<th class="text-center">周学时</th>
+						<th class="text-center">课程门类</th>
+						<th class="text-center">简介</th>
+						<th class="text-center">先修课程</th>
+						<th class="text-center">课程负责人</th>
+		            </tr>
+	            </thead>
+				<tbody class="text-center">
+	            	<s:iterator value="allCourse" var="course">
+	                	<tr>
+		                    <td><s:property value="#course.timeDesc"/></td>
+		                    <td><s:property value="#course.type"/></td>
+		                    <td><s:property value="#course.wTime"/></td>
+		                    <td><s:property value="#course.category"/></td>
+		                    <td><s:property value="#course.introduce"/></td>
+		                    <td><s:property value="#course.prerequisite"/></td>
+		                    <td><s:property value="#course.manager"/></td>
 		                </tr>
 		            </s:iterator>
 	            </tbody>
