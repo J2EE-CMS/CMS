@@ -14,9 +14,9 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/ssh2_test" />
+		<property name="url" value="jdbc:mysql://localhost:3306/test" />
 		<property name="username" value="root" />
-		<property name="password" value="123456" />
+		<property name="password" value="11331048" />
 	</bean>
 	<!-- 定义sessionFactory -->
 	<bean id="sessionFactory"
@@ -27,8 +27,10 @@
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="default_schema">courseManage</prop>
+				<prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop>
 			</props>
 		</property>
 		<!-- 映射文件 -->
@@ -36,12 +38,14 @@
 			<list>
 				<value>config/User.cfg.xml</value>
 				<value>config/Course.cfg.xml</value>
+				<value>config/Courseapply.cfg.xml</value>
 			</list>
 		</property>
 		<property name="annotatedClasses">
 			<list>
 				<value>com.coursemanage.entity.User</value>
 				<value>com.coursemanage.entity.Course</value>
+				<value>com.coursemanage.entity.Courseapply</value>
 			</list>
 		</property>
 	</bean>
@@ -59,6 +63,7 @@
 			<tx:method name="add*" propagation="REQUIRED" />
 			<tx:method name="delete*" propagation="REQUIRED" />
 			<tx:method name="modify*" propagation="REQUIRED" />
+			<tx:method name="query*" propagation="REQUIRED"/>
 			
 			 <!--hibernate4必须配置为开启事务 否则 getCurrentSession()获取不到-->
 			<tx:method name="*" propagation="REQUIRED" read-only="true" />
@@ -69,7 +74,7 @@
 	<aop:config>
 	  <!-- 只对业务逻辑层实施事务 -->
 		<aop:pointcut id="allManagerMethod"
-			expression="execution(* com.coursemanage.service.*.*(..))" />
+			expression="execution(* com.coursemanage.dao.*.*(..))" />
 		<aop:advisor pointcut-ref="allManagerMethod" advice-ref="txadvice" />
 	</aop:config>
 

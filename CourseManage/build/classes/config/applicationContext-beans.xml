@@ -18,6 +18,7 @@
 
 	<bean name="userManage" class="com.coursemanage.service.UserManageImp"></bean>
 	<bean name="courseManage" class="com.coursemanage.service.CourseManageImp"></bean>
+	<bean name="courseapplyManage" class="com.coursemanage.service.CourseapplyManageImp"></bean>
 	
 	<bean name="userDao" class="com.coursemanage.dao.UserDaoImp">
 		<property name="sessionFactory" ref="sessionFactory" />
@@ -25,6 +26,9 @@
 	<bean name="courseDao" class="com.coursemanage.dao.CourseDaoImp">
 	    <property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-
+	<bean name="courseapplyDao" class="com.coursemanage.dao.CourseapplyDaoImp">
+	    <property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
 	
 </beans>

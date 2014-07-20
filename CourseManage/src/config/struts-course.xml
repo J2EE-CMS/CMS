@@ -14,4 +14,12 @@
 		</action>
 	</package>
 
+	<package name="courseapplyActions" namespace="/courseapply" extends="abstract_struts">
+		<action name="*_*" class="courseapplyAction" method="{1}">
+			<result name="success" type="redirect">/{2}.jsp</result>
+			<result name="fail">/fail.jsp</result>
+			<interceptor-ref name="myInterceptor" />
+		</action>
+	</package>
+	
 </struts>

@@ -12,7 +12,7 @@ public class Course {
 	int sub_course_type_module, sub_course_type, course_type;
 	String course_time, course_time_info;
 	String course_info;
-	int course_head;//ͨ课程负责人
+	String course_head;//ͨ课程负责人
 	String approval_time;
 	boolean degree;//(是否学士学位，医科选填)
 	int status;//
@@ -95,10 +95,10 @@ public class Course {
 	public void setCourse_info(String course_info) {
 		this.course_info = course_info;
 	}
-	public int getCourse_head() {
+	public String getCourse_head() {
 		return course_head;
 	}
-	public void setCourse_head(int course_head) {
+	public void setCourse_head(String course_head) {
 		this.course_head = course_head;
 	}
 	public String getApproval_time() {
