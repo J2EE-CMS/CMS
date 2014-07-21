@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	
+	<!-- 将Action的创建交给spring来管理 -->  
+    <constant name="struts.objectFactory" value="spring" />  
+	
+	<!-- 更改struts2请求Action的后缀名，默认为action。若想去掉后缀，设为","即可 -->
+	<constant name="struts.action.extension" value=","></constant>
+
+	<package name="abstract_struts" abstract="true" extends="struts-default"
+		namespace="/">
+		<interceptors>
+			<interceptor name="checkLogin" class="checkLoginInterceptor" />
+			<interceptor-stack name="myInterceptor">
+				<interceptor-ref name="checkLogin" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+
+		<!-- <default-interceptor-ref name="myInterceptor" /> -->
+
+		<global-results>
+			<result name="checkLoginFail">/login.jsp</result>
+		</global-results>
+	</package>
+	
+	<package name="loginAction" namespace="/" extends="abstract_struts">
+		<action name="login" class="loginAction">
+			<result name="success" type="redirect">courseMain</result>
+			<result name="fail">/login.jsp</result>
+		</action>
+
+		<!-- 该action只负责跳转，用struts提供的ActionSupport -->
+		<action name="courseMain">
+			<result name="success">/courseManage.jsp</result>
+			<interceptor-ref name="myInterceptor" />
+		</action>
+	</package>
+
+	<!-- 包含的配置文件 -->
+	<include file="/config/struts-user.xml"></include>
+	<include file="/config/struts-course.xml"></include>
+	<include file="/config/struts-coursetype.xml"></include>
+	<include file="/config/struts-relation.xml"></include>
+	<include file="/config/struts-subtype.xml"></include>
+	<include file="/config/struts-subtypemodule.xml"></include>
+	<include file="/config/struts-precourse.xml"></include>
+	
+</struts>
