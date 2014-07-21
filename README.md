@@ -257,28 +257,21 @@ course
                 c3p0-0.9.2.1.jar
                 cglib-nodep-2.1_3.jar
                 commons-dbcp.jar
-                commons-fileupload-1.2.2.jar
                 commons-fileupload-1.3.1.jar
-                commons-io-2.0.1.jar
                 commons-io-2.2.jar
                 commons-lang3-3.1.jar
-                commons-logging-1.1.1.jar
                 commons-logging-1.1.3.jar
                 commons-pool.jar
                 dom4j-1.6.1.jar
                 freemarker-2.3.19.jar
                 hibernate-c3p0-4.2.14.Final.jar
-                hibernate-commons-annotations-4.0.1.Final.jar
                 hibernate-commons-annotations-4.0.2.Final.jar
-                hibernate-core-4.1.9.Final.jar
                 hibernate-core-4.2.14.Final.jar
                 hibernate-entitymanager-4.2.14.Final.jar
                 hibernate-envers-4.2.14.Final.jar
                 hibernate-jpa-2.0-api-1.0.1.Final.jar
                 jackson-core-asl-1.9.2.jar
                 jackson-mapper-asl-1.9.2.jar
-                javassist-3.11.0.GA.jar
-                javassist-3.17.1-GA.jar
                 javassist-3.18.1-GA.jar
                 jboss-logging-3.1.0.GA.jar
                 jboss-transaction-api_1.1_spec-1.0.1.Final.jar
@@ -286,52 +279,38 @@ course
                 lucene-core-3.6.2.jar
                 mchange-commons-java-0.2.3.4.jar
                 mysql-connector-java-5.1.13-bin.jar
-                ognl-3.0.5.jar
                 ognl-3.0.6.jar
                 ojdbc14.jar
                 paranamer-2.3.jar
                 servlet-api.jar
                 slf4j-api-1.6.1.jar
                 snappy-java-1.0.4.1.jar
-                spring-aop-3.2.1.RELEASE.jar
                 spring-aop-3.2.9.RELEASE.jar
                 spring-aspects-3.2.9.RELEASE.jar
-                spring-beans-3.2.1.RELEASE.jar
                 spring-beans-3.2.9.RELEASE.jar
                 spring-build-src-3.2.9.RELEASE.jar
-                spring-context-3.2.1.RELEASE.jar
                 spring-context-3.2.9.RELEASE.jar
                 spring-context-support-3.2.9.RELEASE.jar
-                spring-core-3.2.1.RELEASE.jar
                 spring-core-3.2.9.RELEASE.jar
-                spring-expression-3.2.1.RELEASE.jar
                 spring-expression-3.2.9.RELEASE.jar
                 spring-framework-bom-3.2.9.RELEASE.jar
                 spring-instrument-3.2.9.RELEASE.jar
                 spring-instrument-tomcat-3.2.9.RELEASE.jar
-                spring-jdbc-3.2.1.RELEASE.jar
                 spring-jdbc-3.2.9.RELEASE.jar
                 spring-jms-3.2.9.RELEASE.jar
-                spring-orm-3.2.1.RELEASE.jar
                 spring-orm-3.2.9.RELEASE.jar
                 spring-oxm-3.2.9.RELEASE.jar
                 spring-struts-3.2.9.RELEASE.jar
-                spring-test-3.2.1.RELEASE.jar
                 spring-test-3.2.9.RELEASE.jar
-                spring-tx-3.2.1.RELEASE.jar
                 spring-tx-3.2.9.RELEASE.jar
-                spring-web-3.2.1.RELEASE.jar
                 spring-web-3.2.9.RELEASE.jar
                 spring-webmvc-3.2.9.RELEASE.jar
                 spring-webmvc-portlet-3.2.9.RELEASE.jar
                 struts2-core-2.3.16.3.jar
-                struts2-core-2.3.4.1.jar
                 struts2-json-plugin-2.3.16.3.jar
                 struts2-spring-plugin-2.3.16.3.jar
-                struts2-spring-plugin-2.3.4.1.jar
                 web.xml
                 xwork-core-2.3.16.3.jar
-                xwork-core-2.3.4.1.jar
 .
 
 ```
