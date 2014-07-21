@@ -21,7 +21,6 @@ $ tree .
 course
 │  .classpath
 │  .project
-│  a.txt
 │  
 ├─.settings
 │      .jsdtscope
