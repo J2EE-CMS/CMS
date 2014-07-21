@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>	
+	<!-- 与spring集成的写法，action等交予spring管理 -->
+	
+	<!-- 课程类别细类 -->
+	<package name="subtypeActions" namespace="/" extends="abstract_struts">
+		<action name="*_*" class="subtypeAction" method="{1}">
+			<result name="success" type="redirect">/testSubtype</result>
+			<result name="fail">/fail.jsp</result>
+			<interceptor-ref name="myInterceptor" />
+		</action>
+		<action name="testSubtype" class="subtypeAction" method="getAllSubtypes">
+			<result name="success">/testSubtype.jsp</result>
+			<result name="fail">/fail.jsp</result>
+			<interceptor-ref name="myInterceptor" />
+		</action>
+	</package>
+	
+	
+</struts>

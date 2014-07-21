@@ -28,69 +28,26 @@
 		</global-results>
 	</package>
 	
-	
-	<!-- 			 课程类别管理  				
 	<package name="loginAction" namespace="/" extends="abstract_struts">
 		<action name="login" class="loginAction">
-			<result name="success" type="redirectAction">getAllCoursetypes_success</result>
+			<result name="success" type="redirect">courseMain</result>
 			<result name="fail">/login.jsp</result>
 		</action>
-		<action name="getAllCoursetypes_success" class="coursetypeAction" method="getAllCoursetypes">
-			<result name="success">/testCoursetype.jsp</result>
-			<result name="fail">/fail.jsp</result>
+
+		<!-- 该action只负责跳转，用struts提供的ActionSupport -->
+		<action name="courseMain">
+			<result name="success">/courseManage.jsp</result>
 			<interceptor-ref name="myInterceptor" />
-		</action> 
+		</action>
 	</package>
-	-->
-	
-	<!-- 课程类别与培养类别的对应关系  -->  
-		<package name="loginAction" namespace="/" extends="abstract_struts">
-		<action name="login" class="loginAction">
-			<result name="success" type="redirect">/temp.jsp</result>
-			<result name="fail">/login.jsp</result>
-		</action>
-		<!-- 查询所有结果
-		<action name="getAllRelations_success" class="relationAction" method="getAllRelations">
-			<result name="success">/testRelation.jsp</result>
-			<result name="fail">/fail.jsp</result>
-			<interceptor-ref name="myInterceptor" />
-		</action>  -->
-		<action name="findByGrade_success" class="relationAction" method="findByGrade">
-			<result name="success">/temp.jsp</result>
-			<result name="fail">/fail.jsp</result>
-			<interceptor-ref name="myInterceptor" />
-		</action> 
-	</package>
-	
-	
-	 <!-- 课程类别   --> 
-	<!-- <package name="coursetypeActions" namespace="/" extends="abstract_struts">   -->
-		
-		<!-- 备用
-		<action name="getAllCoursetypes_success" class="coursetypeAction" method="getAllCoursetypes">
-			<result name="success">/testCoursetype.jsp</result>
-			<result name="fail">/fail.jsp</result>
-			<interceptor-ref name="myInterceptor" />
-		</action> 
-		-->
-		
-		<!--  
-		<action name="*_*" class="coursetypeAction" method="{1}">
-			<result name="success">/success.jsp</result>
-			<result name="fail">/fail.jsp</result>
-			<interceptor-ref name="myInterceptor" />
-		</action>
-	</package> -->
-	
-	<!-- 课程类别和培养类别的对应关系  --> 
-	<package name="relationActions" namespace="/" extends="abstract_struts">
-		<action name="*_*" class="relationAction" method="{1}">
-			<result name="success">/success.jsp</result>
-			<result name="fail">/fail.jsp</result>
-			<interceptor-ref name="myInterceptor" />
-		</action>
-	</package>   
-	
-	
+
+	<!-- 包含的配置文件 -->
+	<include file="/config/struts-user.xml"></include>
+	<include file="/config/struts-course.xml"></include>
+	<include file="/config/struts-coursetype.xml"></include>
+	<include file="/config/struts-relation.xml"></include>
+	<include file="/config/struts-subtype.xml"></include>
+	<include file="/config/struts-subtypemodule.xml"></include>
+	<include file="/config/struts-precourse.xml"></include>
 	
 </struts>

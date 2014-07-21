@@ -16,5 +16,7 @@
 	<classpathentry kind="lib" path="E:/myeclipse/mysql-connector-java-3.1.13-bin.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="E:/myeclipse/javassist-3.15.0-GA.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse/workspace/CourseManage/WebContent/WEB-INF/lib/xwork-core-2.3.4.1.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse/workspace/CourseManage/WebContent/WEB-INF/lib/spring-context-3.2.1.RELEASE.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

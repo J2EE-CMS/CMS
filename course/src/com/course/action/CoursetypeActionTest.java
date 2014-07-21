@@ -33,7 +33,7 @@ public class CoursetypeActionTest {
 	
 	@Test
 	public void modifyCoursetype() {
-		coursetypeDao.modifyCoursetype(new Coursetype(11,"te","sda","c","k","sad"));
+		coursetypeDao.modifyCoursetype(new Coursetype(1,"te","sda","c","k","sad"));
 		System.out.println("modify success!");
 	}
 	
