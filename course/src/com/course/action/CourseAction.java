@@ -1,6 +1,7 @@
 package com.course.action;
 
 import javax.annotation.Resource;
+import java.util.*;
 
 import com.course.entity.Course;
 import com.course.service.ICourseManage;
@@ -8,16 +9,21 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class CourseAction extends ActionSupport {
 	private Course cos;
-
+	List<Course> allCourse;
+	
 	@Resource  
 	private ICourseManage courseManage;
-
+	
 	public Course getCos() {
 		return cos;
 	}
 	public void setCos(Course cos) {
 		this.cos = cos;
 	}
+	public List<Course> getAllCourse(){
+		return allCourse;
+	}
+	
 	public ICourseManage getCourseManage() {
 		return courseManage;
 	}
@@ -54,4 +60,8 @@ public class CourseAction extends ActionSupport {
 		return "success";
 	}
 	
+	public String findAllCourse(){
+		allCourse = courseManage.findAllCourse();
+		return "allcourse";
+	}
 }

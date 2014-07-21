@@ -22,7 +22,7 @@ public class CourseDaoImp implements ICourseDao{
 	}
 
 	@Override
-	public void AddCourse(Course cos) {
+	public void addCourse(Course cos) {
 		System.out.println("------CourseDaoImp.AddCourse------");
 		getInfo(cos);
 		getSession().save(cos);
@@ -94,6 +94,9 @@ public class CourseDaoImp implements ICourseDao{
 			getInfo(c);
 		}
 		
+	}
+	public List<Course> findAllCourse(){
+		return getSession().createQuery("from Course").list();
 	}
 	private void getInfo(Course cos){
 		System.out.println("Course id:"+cos.getId()+"\t"

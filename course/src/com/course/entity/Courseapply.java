@@ -17,7 +17,7 @@ public class Courseapply {
 	String course_info;
 	String course_head;
 	boolean degree;
-	
+	/*
 	public Courseapply(){
 		
 	}
@@ -42,7 +42,7 @@ public class Courseapply {
 		this.course_head = course_head;
 		this.degree = degree;
 	}
-	
+	*/
 	public void setCourseapply(Courseapply courseapp){
 		this.id = courseapp.getId();
 		this.status = courseapp.getStatus();

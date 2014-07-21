@@ -1,16 +1,19 @@
 package com.course.action;
 
-import java.util.List;
+import java.util.*;
+
+import javax.annotation.Resource;
 
 import com.course.entity.Courseapply;
 import com.course.service.ICourseapplyManage;
 
 public class CourseapplyAction {
 	private Courseapply courseapply;
+	List<Courseapply> courseapplys;
 	
+	@Resource
 	private ICourseapplyManage courseapplyManage;
 	
-	List<Courseapply> courseapplys;
 
 	public Courseapply getCourseapply() {
 		return courseapply;
@@ -53,8 +56,9 @@ public class CourseapplyAction {
 	}
 	
 	public String queryAllCourseapply(){
+		courseapplys = new ArrayList<Courseapply>();
 		courseapplys = courseapplyManage.queryAllCourseapply();
-		return "success";
+		return "allcourseapply";
 	}
 
 	

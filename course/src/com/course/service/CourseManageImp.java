@@ -1,7 +1,7 @@
 package com.course.service;
 
 import javax.annotation.Resource;
-
+import java.util.*;
 import com.course.dao.ICourseDao;
 import com.course.entity.Course;
 
@@ -21,7 +21,7 @@ public class CourseManageImp implements ICourseManage {
 	@Override
 	public void addCourse(Course cos) {
 		System.out.println("------CourseManageImp.addCourse------");
-		courseDao.AddCourse(cos);
+		courseDao.addCourse(cos);
 	}
 
 	@Override
@@ -42,5 +42,7 @@ public class CourseManageImp implements ICourseManage {
 		System.out.println("------CourseManageImp.queryCourse------");
 		courseDao.queryCourse(cos);
 	}
-
+	public List<Course> findAllCourse(){
+		return courseDao.findAllCourse();
+	}
 }

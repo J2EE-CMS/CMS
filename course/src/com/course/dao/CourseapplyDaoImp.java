@@ -24,7 +24,7 @@ public class CourseapplyDaoImp implements ICourseapplyDao {
 
 	@Override
 	public void addCourseapply (Courseapply courseapply) {
-		//courseapply.setStatus(0);
+		courseapply.setStatus(0);
 		this.getSession().save(courseapply);
 	}
 	

@@ -36,6 +36,7 @@
 	</bean>
 	
 	<!-- 课程库申请与审批 -->
+	<bean name="courseapplyAction" class="com.course.action.CourseapplyAction" scope="prototype"></bean>
 	<bean name="courseapplyManage" class="com.course.service.CourseapplyManageImp"></bean>
 	
 	<bean name="courseapplyDao" class="com.course.dao.CourseapplyDaoImp">

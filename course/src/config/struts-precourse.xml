@@ -7,7 +7,7 @@
 	<!-- 与spring集成的写法，action等交予spring管理 -->
 	
 	<!-- 			 课程类别管理  			-->	
-	<package name="precourseActions" namespace="/" extends="abstract_struts">
+	<package name="precourseActions" namespace="/precourse" extends="abstract_struts">
 		<action name="*_*" class="precourseAction" method="{1}">
 			<result name="success" type="redirect">/testSubtype</result>
 			<result name="fail">/fail.jsp</result>

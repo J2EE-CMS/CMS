@@ -30,17 +30,47 @@
 	
 	<package name="loginAction" namespace="/" extends="abstract_struts">
 		<action name="login" class="loginAction">
-			<result name="success" type="redirect">courseMain</result>
+			<result name="success" type="redirect">home</result>
 			<result name="fail">/login.jsp</result>
 		</action>
 
 		<!-- 该action只负责跳转，用struts提供的ActionSupport -->
-		<action name="courseMain">
-			<result name="success">/courseManage.jsp</result>
+		<action name="home">
+			<result name="success">/home.jsp</result>
 			<interceptor-ref name="myInterceptor" />
 		</action>
 	</package>
 
+	<package name="homeAction" namespace="/" extends="abstract_struts">
+		<action name="class_manage" class="courseAction" method="findAllCourse">
+			<result name="allcourse">/class_manage.jsp</result>
+		</action>
+		<action name="class_apply" class="courseapplyAction" method="queryAllCourseapply">
+			<result name="allcourseapply">/class_apply.jsp</result>
+		</action>
+		<action name="class_check" >
+			<result name="success">/class_check.jsp</result>
+		</action>
+		<action name="type_manage" >
+			<result name="success">/type_manage.jsp</result>
+		</action>
+		<action name="detail_type" >
+			<result name="success">/detail_type.jsp</result>
+		</action>
+		<action name="detail_model" >
+			<result name="success">/detail_model.jsp</result>
+		</action>
+		<action name="training_class" >
+			<result name="success">/training_class.jsp</result>
+		</action>
+		<action name="relation_apply" >
+			<result name="success">/relation_apply.jsp</result>
+		</action>
+		<action name="relation_check" >
+			<result name="success">/relation_check.jsp</result>
+		</action>
+	</package>
+	
 	<!-- 包含的配置文件 -->
 	<include file="/config/struts-user.xml"></include>
 	<include file="/config/struts-course.xml"></include>

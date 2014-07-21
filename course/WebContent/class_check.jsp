@@ -27,7 +27,7 @@
 			<li><a href="#">查询</a></li>
 			<li><a href="#">审批</a></li>
 			<li><a href="#">导出</a></li>	
-			<li class="pull-right"><form action="home.jsp"><input style="background-color:yellow; width:60px; height:40px" type="submit" value="返回"/></form></li>         
+			<li class="pull-right"><a href="home">返回</a></li> 
 		</ul>
 		<div class="table-responsive">
 			<table class="table table-bordered">
