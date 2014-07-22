@@ -4,16 +4,28 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>	
-	<!-- 与spring集成的写法，action等交予spring管理 -->
-	
-	<!-- 			 课程类别管理  			-->	
 	<package name="coursetypeActions" namespace="/" extends="abstract_struts">
-		<action name="coursetype_*" class="coursetypeAction" method="{1}">
+		<action name="coursetype_*" class="coursetypeAction" method="addCoursetype">
 			<result name="success" type="redirectAction">type_manage</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
 		</action>
 	</package>
 	
+	<package name="courseActions" namespace="/" extends="abstract_struts">
+		<action name="course_*" class="courseAction" method="{1}">
+			<result name="success" type="redirectAction">class_manage</result>
+			<result name="fail">/fail.jsp</result>
+			<interceptor-ref name="myInterceptor" />
+		</action>
+	</package>
+
+	<package name="courseapplyActions" namespace="/" extends="abstract_struts">
+		<action name="courseapply_*" class="courseapplyAction" method="{1}">
+			<result name="success" type="redirectAction">class_apply</result>
+			<result name="fail">/fail.jsp</result>
+			<interceptor-ref name="myInterceptor" />
+		</action>
+	</package>
 	
 </struts>

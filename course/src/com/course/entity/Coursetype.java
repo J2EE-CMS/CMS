@@ -15,6 +15,7 @@ public class Coursetype {
 	private String quality;
 	private String reexamine;
 	private String retake;
+	
 	/*
 	public Coursetype(){
 		
@@ -29,6 +30,7 @@ public class Coursetype {
 		this.retake = retake;
 	}
 	*/
+	/*
 	public void setCoursetype(Coursetype cos){
 		this.type = cos.type;
 		this.typecore = cos.typecore;
@@ -36,7 +38,7 @@ public class Coursetype {
 		this.reexamine = cos.reexamine;
 		this.retake = cos.retake;
 	}
-	
+	*/
 	@Column(name="typecore", length=10, nullable=false)
 	public String getTypecore (){
 		return typecore;

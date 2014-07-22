@@ -2,43 +2,63 @@ package com.course.action;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.course.dao.ICoursetypeDao;
 import com.course.entity.Coursetype;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations={"classpath:/config/applicationContext-beans.xml",
+		"classpath:/config/applicationContext-common.xml"})
 public class CoursetypeActionTest {
-
-	private static ICoursetypeDao coursetypeDao;
+	@Resource
+	private  CoursetypeAction test;
+	//private static ICoursetypeDao coursetypeDao;
+	//Coursetype temp;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		@SuppressWarnings("resource")
-		ApplicationContext cxt=new ClassPathXmlApplicationContext("/config/applicationContext.xml");
-		coursetypeDao = (ICoursetypeDao) cxt.getBean("coursetypeDao");
+		//@SuppressWarnings("resource")
+		//String[] configs = {"/config/applicationContext-beans.xml","/config/applicationContext-common.xml"};
+		//ApplicationContext cxt = new ClassPathXmlApplicationContext(configs);
+	//	coursetypeDao = (ICoursetypeDao) cxt.getBean("coursetypeDao");
 	}
 
 	/*  -----------------  功能测试     --------------------  */
-	/*
-	 * 注释掉，避免测试时影响其他数据
+	/* 注释掉，避免测试时影响其他数据 */
 	@Test
 	public void addCoursetype() {
-		coursetypeDao.addCoursetype(new Coursetype(null,"temp10", "temp20","temp30","temp40","temp50"));
+		//test =  new CoursetypeAction();
+		Coursetype temp = new Coursetype();
+		temp.setId(3);
+		temp.setTypecore("sd");
+		temp.setQuality("d");
+		temp.setType("sss");
+		temp.setReexamine("false");
+		temp.setRetake("true");
+		test.setCoursetype(temp);
+		test.addCoursetype();
+	//	coursetypeDao.addCoursetype(new Coursetype(8,"temp1", "temp2","temp3","temp4","temp5"));
 	}
-	 */
+	 
 	
-	
+	/*
 	@Test
 	public void modifyCoursetype() {
 		//coursetypeDao.modifyCoursetype(new Coursetype(1,"te","sda","c","k","sad"));
 		System.out.println("modify success!");
 	}
+	*/
 	
-	
-	@Test
+	/*@Test
 	public void getAllCoursetypes() {
 		List<Coursetype> list = coursetypeDao.getAllCoursetypes();
 		System.out.println(list.size());
@@ -47,7 +67,7 @@ public class CoursetypeActionTest {
 					"\t"+list.get(i).getQuality()+"\t"+list.get(i).getReexamine()+"\t"+list.get(i).getRetake()+"\n");
 		}
 	}
-	
+	*/
 	/*
 	 * 注释掉，避免重复删除同一字段报错
 	@Test

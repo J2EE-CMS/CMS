@@ -6,8 +6,9 @@ import javax.annotation.Resource;
 
 import com.course.entity.Courseapply;
 import com.course.service.ICourseapplyManage;
+import com.opensymphony.xwork2.ActionSupport;
 
-public class CourseapplyAction {
+public class CourseapplyAction extends ActionSupport{
 	private Courseapply courseapply;
 	List<Courseapply> courseapplys;
 	

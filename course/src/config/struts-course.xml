@@ -4,7 +4,6 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>	
-	<!-- 与spring集成的写法，action等交予spring管理 -->
 	
 	<package name="courseActions" namespace="/" extends="abstract_struts">
 		<action name="course_*" class="courseAction" method="{1}">

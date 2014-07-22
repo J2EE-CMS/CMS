@@ -8,6 +8,7 @@ import com.course.service.ICourseManage;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CourseAction extends ActionSupport {
+	
 	private Course cos;
 	List<Course> allCourse;
 	

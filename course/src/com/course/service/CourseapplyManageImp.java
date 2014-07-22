@@ -8,6 +8,7 @@ import com.course.dao.ICourseapplyDao;
 import com.course.entity.Courseapply;
 
 public class CourseapplyManageImp implements ICourseapplyManage {
+	
 	@Resource
 	private ICourseapplyDao courseapplyDao;
 
