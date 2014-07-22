@@ -26,7 +26,7 @@
 				<ul class="dropdown-menu">
 					<li><a href="type_manage">类别管理</a></li>
 					<li><a href="detail_type">课程细类</a></li>
-					<li><a href="detail_model">细类模块</a></li>
+					<li><a href="detail_module">细类模块</a></li>
 				</ul>
 			</li>
 			<li class="dropdown">

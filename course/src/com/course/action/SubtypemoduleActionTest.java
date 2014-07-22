@@ -20,14 +20,13 @@ public class SubtypemoduleActionTest {
 	}
 
 	
-
 	@Test
 	public void addSubtypemodule() {
-		subtypemoduleDao.addSubtypemodule(new Subtypemodule(null, "temp1", "temp2","temp3","temp4","temp5","temp6"));
+	//	subtypemoduleDao.addSubtypemodule(new Subtypemodule(null, "temp1", "temp2","temp3","temp4","temp5","temp6"));
 	}
 	
 	
-	@Test
+//	@Test
 	public void getAllSubtypemodules() {
 		List<Subtypemodule> list = subtypemoduleDao.getAllSubtypemodules();
 		System.out.println(list.size());

@@ -27,7 +27,7 @@ public class CoursetypeDaoImp implements ICoursetypeDao {
 	
 	@Override
 	public void addCoursetype(Coursetype coursetype) {
-		this.getSession().persist(coursetype);
+		this.getSession().save(coursetype);
 	}
 	
 	@Override

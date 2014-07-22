@@ -9,17 +9,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "sub_type")
 public class Subtype {
-	private Integer id;				//序号
+	private int id;				//序号
 	private String subtypecode;		//课程细类码
 	private String subtypename;		//课程细类名
 	private String belongtotype;	//所属课程类别
 	private String ispublicsubtype;	//是否公共细类
 	private String department;		//设立单位
-	
-	public Subtype(){
-		
-	}
-	
+	/*
 	public Subtype(Integer id,String subtypecode,String subtypename,String belongtotype,String ispublicsubtype,String department){
 		this.id = id;
 		this.subtypecode = subtypecode;
@@ -28,13 +24,13 @@ public class Subtype {
 		this.ispublicsubtype = ispublicsubtype;
 		this.department = department;
 	}
-	
+	*/
 	@Column(name="subtypecode", length=10, nullable=false)
-	public String getSubtypecode (){
+	public String getSubtypecode(){
 		return subtypecode;
 	}
 	
-	public void setSubtypecode (String subtypecode) {
+	public void setSubtypecode(String subtypecode) {
 		this.subtypecode = subtypecode;
 	}
 	
@@ -43,21 +39,21 @@ public class Subtype {
 		return subtypename;
 	}
 	
-	public void setSubtypename (String subtypename) {
+	public void setSubtypename(String subtypename) {
 		this.subtypename = subtypename;
 	}
 	
 	@Column(name="belongtotype", length=30, nullable=false)
-	public String getBelongtotype () {
+	public String getBelongtotype() {
 		return belongtotype;
 	}
 	
-	public void setBelongtotype (String belongtotype) {
+	public void setBelongtotype(String belongtotype) {
 		this.belongtotype = belongtotype;
 	}
 	
 	@Column(name="ispublicsubtype", length=10, nullable=false)
-	public String getIspublicsubtype () {
+	public String getIspublicsubtype() {
 		return ispublicsubtype;
 	}
 	
@@ -66,7 +62,7 @@ public class Subtype {
 	}
 	
 	@Column(name="department", length=10, nullable=false)
-	public String getDepartment () {
+	public String getDepartment() {
 		return department;
 	}
 	
@@ -78,7 +74,7 @@ public class Subtype {
 	//采用数据库自增方式生成主键
 	//@GeneratedValue(strategy=GenerationType.AUTO)
 	@GeneratedValue
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 

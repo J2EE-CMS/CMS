@@ -100,7 +100,7 @@ public class SubtypeAction extends ActionSupport  {
 	
 	public String getAllSubtypes(){
 		setSubtypeList(subtypeManage.getAllSubtypes());
-		return "success";
+		return "allsubtype";
 	}
 	
 	public String findBySubtypename(String name){

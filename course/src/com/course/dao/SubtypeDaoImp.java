@@ -23,7 +23,7 @@ public class SubtypeDaoImp implements ISubtypeDao {
 	
 	@Override
 	public void addSubtype(Subtype subtype) {
-		getSession().persist(subtype);
+		getSession().save(subtype);
 	}
 	
 	@Override

@@ -13,6 +13,32 @@
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<script src="js/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+		
+			function addCoursetype()
+			{
+				var myform=document.forms[0];
+				myform.action="coursetype_addCoursetype";
+				myform.method="post";
+				myform.submit();
+			}
+			
+			function modifyCoursetype()
+			{
+				var myform=document.forms[0];
+				myform.action="coursetype_modifyCoursetype";
+				myform.method="post";
+				myform.submit();
+			}
+			
+			function deleteCoursetype()
+			{
+				var myform=document.forms[0];
+				myform.action="coursetype_deleteCoursetype";
+				myform.method="post";
+				myform.submit();
+			}
+		</script>
 		<style>
 	      	body {background-color:yellow;}
 	      	thead {background-color:green;}
@@ -27,7 +53,7 @@
 			<li><a href="#">导出</a></li>	
 			<li class="pull-right"><form action="home.jsp"><input style="background-color:yellow; width:60px; height:40px" type="submit" value="返回"/></form></li>       
 		</ul>
-		<div class="table-responsive">
+		<form id="coursetypeform" >
 			<table class="table table-bordered">
 				<thead>
 					<tr>
@@ -41,7 +67,13 @@
 				</thead>
 				<tbody class="text-center">
 					<tr>
-						<td><input type="text" name="code" /></td>
+						<td><input type="text" name="coursetype.typecore" /></td>
+						<td><input type="text" name="coursetype.type" /></td>
+						<td><input type="text" name="coursetype.quality" /></td>
+						<td><input type="text" name="coursetype.id" /></td>
+						<td><input type="text" name="coursetype.reexamine" /></td>
+						<td><input type="text" name="coursetype.retake" /></td>
+						<!-- 
 						<td>
 							<select class="col-md-12">
 								<option>公必</option>
@@ -50,26 +82,22 @@
 								<option>专选</option>
 							</select>
 						</td>
-						<td><input type="text" name="description" /></td>
-						<td><input type="text" name="number" /></td>
 						<td>
 							<input type="radio" name="reexam" value="exam" />重考<br>
 							<input type="radio" name="reexam" value="nexam" />不重考
-						</td>
+						</td> 			
 						<td>
 							<input type="radio" name="relearn" value="learn" />重修<br>
 							<input type="radio" name="relearn" value="nlearn" />不重修
 						</td>
+						-->		
 					</tr>
 				</tbody>
 			</table>
-		</div>
-		<div align="center">
-			<button type="button" onclick="add()">添加</button>
-			<button type="button" onclick="findall()">查询</button>
-			<button type="button" onclick="modify()">修改</button>
-			<button type="button" onclick="delete()">删除</button>
-		</div>
+		</form>
+		<input type="submit" name="coursetypeadd" value="添加" onclick="addCoursetype()" >
+		<input type="submit" name="coursetypemodify" value="修改" onclick="modifyCoursetype()" >
+		<input type="submit" name="coursetypedelete" value="删除" onclick="deleteCoursetype()" >
 		<div class="table-responsive">
 			<table class="table table-hover table-bordered">
 				<thead>
@@ -83,22 +111,16 @@
 					</tr>
 				</thead>
 				<tbody class="text-center">
-					<tr>
-						<td>课程类别码1</td>
-						<td>课程类别1</td>
-						<td>课程性质1</td>
-						<td>序号1</td>
-						<td>是</td>
-						<td>是</td>
-					</tr>
-					<tr>
-						<td>课程类别码2</td>
-						<td>课程类别2</td>
-						<td>课程性质2</td>
-						<td>序号2</td>
-						<td>否</td>
-						<td>否</td>
-					</tr>
+					<s:iterator value="coursetypes" var="coursetype">
+		                <tr>
+		                    <td><s:property value="#coursetype.typecore"/></td>
+		                    <td><s:property value="#coursetype.type"/></td>
+		                    <td><s:property value="#coursetype.quality"/></td>
+		                    <td><s:property value="#coursetype.id"/></td>
+		                    <td><s:property value="#coursetype.reexamine"/></td>
+		                    <td><s:property value="#coursetype.retake"/></td>
+		                </tr>
+		        	</s:iterator>
 				</tbody>
 			</table>
 		</div>

@@ -9,13 +9,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "course_type")
 public class Coursetype {
-	private Integer id;
+	private int id;
 	private String typecore;
 	private String type;
 	private String quality;
 	private String reexamine;
 	private String retake;
-	
+	/*
 	public Coursetype(){
 		
 	}
@@ -28,6 +28,7 @@ public class Coursetype {
 		this.reexamine = reexamine;
 		this.retake = retake;
 	}
+	*/
 	public void setCoursetype(Coursetype cos){
 		this.type = cos.type;
 		this.typecore = cos.typecore;
@@ -85,11 +86,11 @@ public class Coursetype {
 	//采用数据库自增方式生成主键
 	//@GeneratedValue(strategy=GenerationType.AUTO)
 	@GeneratedValue
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 }
