@@ -10,10 +10,22 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class SubtypemoduleAction extends ActionSupport  {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	public List<Subtypemodule> getAllsubtypemodules() {
+		return allsubtypemodules;
+	}
+
+	public void setAllsubtypemodules(List<Subtypemodule> allsubtypemodules) {
+		this.allsubtypemodules = allsubtypemodules;
+	}
+
+	public ISubtypemoduleManage getSubtypemoduleM() {
+		return SubtypemoduleM;
+	}
+
+	public void setSubtypemoduleM(ISubtypemoduleManage subtypemoduleM) {
+		SubtypemoduleM = subtypemoduleM;
+	}
+
 	private Subtypemodule subtypemodule;
 	private List<Subtypemodule> allsubtypemodules;
 	private Integer id;
@@ -38,6 +50,14 @@ public class SubtypemoduleAction extends ActionSupport  {
 		this.subtypemodule = subtypemodule;
 	}
 
+	public List<Subtypemodule> getSubtypemodules() {
+		return allsubtypemodules;
+	}
+
+	public void setSubtypemodules(List<Subtypemodule> subtypemodules) {
+		this.allsubtypemodules = subtypemodules;
+	}
+	
 	public String addSubtypemodule()
 	{		
 		System.out.println("print "+subtypemodule.getId()+subtypemodule.getModule_name());
@@ -49,14 +69,6 @@ public class SubtypemoduleAction extends ActionSupport  {
 	{
 		SubtypemoduleM.deleteSubtypemodule(id);
 		return "success";
-	}
-	
-	public List<Subtypemodule> getSubtypemodules() {
-		return allsubtypemodules;
-	}
-
-	public void setSubtypemodules(List<Subtypemodule> subtypemodules) {
-		this.allsubtypemodules = subtypemodules;
 	}
 
 	public String modifySubtypemodule()
