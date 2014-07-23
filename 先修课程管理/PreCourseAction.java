@@ -56,7 +56,7 @@ public class PreCourseAction {
 		this.pcourseManage = pcourseManage;
 	}
 
-	private void string2list(){
+	private void string2list(int isapply){//0表示申请，1表示申请通过，-1申请不通过
 		String[] relationsGroup;
 		relationsGroup=relationString.split("!");
 		pcoslist = new ArrayList<PreCourse>();
@@ -88,7 +88,7 @@ public class PreCourseAction {
 			   pcos.setPcos(preCourseName[i]);
 			   pcos.setSn(sn);
 			   sn++;
-			   pcos.setStatus(1);
+			   pcos.setStatus(isapply);
 			   pcos.setOp((optemp.charAt(i)=='&')?1:0);
 			   pcoslist.add(pcos);
 			  // System.out.println(pcos.getPrecourse() + pcos.getOp()+pcos.getStatus());
@@ -102,7 +102,7 @@ public class PreCourseAction {
 			   pcos.setPcos(preCourseName[preCourseName.length-1]);
 			   pcos.setSn(sn);
 			   sn++;
-			   pcos.setStatus(1);
+			   pcos.setStatus(isapply);
 			   pcos.setOp(-1);
 			   pcoslist.add(pcos);
 			  // System.out.println(pcos.getPrecourse() + pcos.getOp()+pcos.getStatus());
@@ -114,19 +114,64 @@ public class PreCourseAction {
 	}
 	public void addPreCourse(){
 	    System.out.println("------addPreCourseAction------");
-	    this.string2list();
+	    this.string2list(1);
 	    for(int i=0;i<pcoslist.size();i++){
 	    	pcourseManage.addPreCourse(pcoslist.get(i));
 	    }
 	}
+	public void applyPreCourse(){
+		System.out.println("------applyPreCourseAction------");
+		this.string2list(0);
+		for(int i=0;i<pcoslist.size();i++){
+	    	pcourseManage.addPreCourse(pcoslist.get(i));
+	    }
+	}
+	public void approvePreCourse(){
+		System.out.println("------approvePreCourseA------");
+		
+	}
+	
 	public void queryPreCourse(){
 		System.out.println("------queryPerCourseAction------");
 		pcoslist = new ArrayList<PreCourse>();
 		pcoslist = pcourseManage.queryPreCourse(cos);
-		for(int i=0;i<pcoslist.size();i++){
-			System.out.println(pcoslist.get(i).getPcos()+' '+pcoslist.get(i).getOp());
-		}
+		//for(int i=0;i<pcoslist.size();i++){
+		//	System.out.println(pcoslist.get(i).getPcos()+' '+pcoslist.get(i).getOp());
+		//}
 	}
+	public String queryPreCourseResultString(){
+		pcoslist = new ArrayList<PreCourse>();
+		pcoslist = pcourseManage.queryPreCourse(cos);
+		if(pcoslist.isEmpty())
+			return null;
+		
+		PreCourse lastrecord = new PreCourse();
+		lastrecord.setGroup_number(-1);;
+		PreCourse currentrecord = new PreCourse();
+		String res = "";
+		
+		for(int i=0; i <pcoslist.size(); i++){
+			if(lastrecord.getGroup_number()==-1){
+				currentrecord = pcoslist.get(i);
+				res += "( " + currentrecord.getPcos() +" ";
+				lastrecord = pcoslist.get(i);
+			}
+			else{
+				currentrecord = pcoslist.get(i);
+				if(currentrecord.getGroup_number() != lastrecord.getGroup_number()){
+					res += ") "+((lastrecord.getOp()==1)?"and":"or")+" ( "+currentrecord.getPcos()+" ";
+				}
+				else{
+					res += ((lastrecord.getOp()==1)?"and":"or")+" "+currentrecord.getPcos()+" ";
+					}
+				
+				}
+				lastrecord = currentrecord;
+				}
+		res +=")";
+		return res;
+}
+		
 	public void deletePreCourse(){
 		System.out.println("------deletePreCourseAction------");
 		pcourseManage.deletePreCourse(cos);

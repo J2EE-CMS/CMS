@@ -24,24 +24,30 @@ public class PreCourseActionTest {
 	public static void setUpBeforeClass() throws Exception {
 	}
 
-//	@Test
+	@Test
 	public void testAddPreCourse() {
-		preCourseAction.setRelationString("A|B!C|D");
-		preCourseAction.setOp("&");
+		preCourseAction.setRelationString("A!B!C&D");
+		preCourseAction.setOp("&&");
 		Course cos = new Course();
-		cos.setId(3);
+		cos.setId(9);
 		preCourseAction.setCos(cos);
 		preCourseAction.addPreCourse();
 	}
-
-//	@Test
+	@Test
+	public void queryPreCourseResultString() {
+		Course cos = new Course();
+		cos.setId(9);
+		preCourseAction.setCos(cos);
+		System.out.println(preCourseAction.queryPreCourseResultString());
+	}
+	//@Test
 	public void testQueryPreCourse() {
 		Course cos = new Course();
 		cos.setId(3);
 		preCourseAction.setCos(cos);
 		preCourseAction.queryPreCourse();
 	}
-
+	
 //	@Test
 	public void testDeletePreCourse() {
 		Course cos = new Course();
@@ -50,7 +56,7 @@ public class PreCourseActionTest {
 		preCourseAction.deletePreCourse();
 	}
 
-	@Test
+	//@Test
 	public void testModifyPreCourse() {
 		preCourseAction.setRelationString("aa&bb!cc&cd");
 		preCourseAction.setOp("|");
