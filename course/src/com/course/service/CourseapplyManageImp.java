@@ -46,6 +46,11 @@ public class CourseapplyManageImp implements ICourseapplyManage {
 	}
 	
 	@Override
+	public List<Courseapply> queryCourseapply(Courseapply courseapply){
+		return courseapplyDao.queryCourseapply(courseapply);
+	}
+	
+	@Override
 	public List<Courseapply> queryAllCourseapproval(){
 		return courseapplyDao.queryAllCourseapproval();
 	}
@@ -53,6 +58,11 @@ public class CourseapplyManageImp implements ICourseapplyManage {
 	@Override
 	public void approvalCourseapply(Courseapply courseapply){
 		courseapplyDao.approvalCourseapply(courseapply);
+	}
+	
+	@Override
+	public List<Courseapply> queryCourseapproval(Courseapply courseapply){
+		return courseapplyDao.queryCourseapproval(courseapply);
 	}
 	
 }

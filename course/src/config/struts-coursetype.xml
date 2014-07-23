@@ -5,27 +5,12 @@
 
 <struts>	
 	<package name="coursetypeActions" namespace="/" extends="abstract_struts">
-		<action name="coursetype_*" class="coursetypeAction" method="addCoursetype">
+		<action name="coursetype_*" class="coursetypeAction" method="{1}">
 			<result name="success" type="redirectAction">type_manage</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
 		</action>
 	</package>
 	
-	<package name="courseActions" namespace="/" extends="abstract_struts">
-		<action name="course_*" class="courseAction" method="{1}">
-			<result name="success" type="redirectAction">class_manage</result>
-			<result name="fail">/fail.jsp</result>
-			<interceptor-ref name="myInterceptor" />
-		</action>
-	</package>
-
-	<package name="courseapplyActions" namespace="/" extends="abstract_struts">
-		<action name="courseapply_*" class="courseapplyAction" method="{1}">
-			<result name="success" type="redirectAction">class_apply</result>
-			<result name="fail">/fail.jsp</result>
-			<interceptor-ref name="myInterceptor" />
-		</action>
-	</package>
 	
 </struts>

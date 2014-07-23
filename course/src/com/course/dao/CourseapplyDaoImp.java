@@ -60,13 +60,53 @@ public class CourseapplyDaoImp implements ICourseapplyDao {
 		courseapply.setStatus(1);
 	}
 	
-	
-	/*
+
 	@Override
 	public List<Courseapply> queryCourseapply(Courseapply courseapply) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Courseapply.class);
+		
+		if(courseapply.getInstitute_course_id() != 0){
+			criteria.add(Restrictions.eq("institute_course_id", courseapply.getInstitute_course_id()));
+		}
+		
+		if(courseapply.getC_course_name()!=null && !courseapply.getC_course_name().equals("")){
+			criteria.add(Restrictions.eq("c_course_name", courseapply.getC_course_name()));
+		}
+		
+		if(courseapply.getE_course_name()!=null && !courseapply.getE_course_name().equals("")){
+			criteria.add(Restrictions.eq("e_course_name", courseapply.getE_course_name()));
+		}
+		
+		if(courseapply.getBrief_course_name() !=null && !courseapply.getBrief_course_name().equals("")){
+			criteria.add(Restrictions.eq("brief_course_name", courseapply.getBrief_course_name()));
+		}
+		
+		if(courseapply.getFaculty()!=null && !courseapply.getFaculty().equals("")){
+			criteria.add(Restrictions.eq("faculty", courseapply.getFaculty()));
+		}
+		
+		if(courseapply.getCredit() != 0){
+			criteria.add(Restrictions.eq("credit", courseapply.getFaculty()));
+		}
+		
+		if(courseapply.getCourse_type() != 0){
+			criteria.add(Restrictions.eq("course_type", courseapply.getCourse_type()));
+		}
+		
+		if(courseapply.getSub_course_type() != 0){
+			criteria.add(Restrictions.eq("sub_course_type", courseapply.getSub_course_type()));
+		}
+		
+		if(courseapply.getSub_course_type_module() != 0){
+			criteria.add(Restrictions.eq("sub_course_type_module", courseapply.getSub_course_type_module()));
+		}
+		
+		criteria.add(Restrictions.or(Restrictions.eq("status", 0),Restrictions.eq("status", 1)));
+		
+		List<Courseapply> list = criteria.list();
+		return list;
 		
 	}
-	*/
 	
 	/*  ========  审批      ========  */
 	@Override
@@ -84,8 +124,51 @@ public class CourseapplyDaoImp implements ICourseapplyDao {
 		}
 	}
 	
-	/*
+	
 	@Override
-	public List<Courseapply> queryCourseapproval(Courseapply courseapply)
-	*/
+	public List<Courseapply> queryCourseapproval(Courseapply courseapply){
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Courseapply.class);
+		
+		if(courseapply.getInstitute_course_id() != 0){
+			criteria.add(Restrictions.eq("institute_course_id", courseapply.getInstitute_course_id()));
+		}
+		
+		if(courseapply.getC_course_name()!=null && !courseapply.getC_course_name().equals("")){
+			criteria.add(Restrictions.eq("c_course_name", courseapply.getC_course_name()));
+		}
+		
+		if(courseapply.getE_course_name()!=null && !courseapply.getE_course_name().equals("")){
+			criteria.add(Restrictions.eq("e_course_name", courseapply.getE_course_name()));
+		}
+		
+		if(courseapply.getBrief_course_name() !=null && !courseapply.getBrief_course_name().equals("")){
+			criteria.add(Restrictions.eq("brief_course_name", courseapply.getBrief_course_name()));
+		}
+		
+		if(courseapply.getFaculty()!=null && !courseapply.getFaculty().equals("")){
+			criteria.add(Restrictions.eq("faculty", courseapply.getFaculty()));
+		}
+		
+		if(courseapply.getCredit() != 0){
+			criteria.add(Restrictions.eq("credit", courseapply.getFaculty()));
+		}
+		
+		if(courseapply.getCourse_type() != 0){
+			criteria.add(Restrictions.eq("course_type", courseapply.getCourse_type()));
+		}
+		
+		if(courseapply.getSub_course_type() != 0){
+			criteria.add(Restrictions.eq("sub_course_type", courseapply.getSub_course_type()));
+		}
+		
+		if(courseapply.getSub_course_type_module() != 0){
+			criteria.add(Restrictions.eq("sub_course_type_module", courseapply.getSub_course_type_module()));
+		}
+		
+		criteria.add(Restrictions.or(Restrictions.eq("status", 2),Restrictions.eq("status", 3)));
+		
+		List<Courseapply> list = criteria.list();
+		return list;
+	}
+	
 }
