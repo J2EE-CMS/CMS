@@ -22,14 +22,13 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-	<!-- <property name="configLocation" value="classpath:hibernate.cfg.xml" />   -->
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.format_sql">true</prop> 
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
-				<prop key="default_schema">course</prop>
+				<prop key="default_schema">test</prop>
 				<prop key="connection.autocommit">true</prop>
 				<prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop>
 			</props>
@@ -38,10 +37,11 @@
 		<!-- 映射文件 -->
 		<property name="mappingResources">
 			<list>
-				<value>config/Course.cfg.xml</value>
-				<value>config/Courseapply.cfg.xml</value>
-				<value>config/User.cfg.xml</value>
-				<value>config/PreCourse.cfg.xml</value>
+				<value>com/course/entity/User.hbm.xml</value>
+				<value>com/course/entity/Course.hbm.xml</value>
+				<value>com/course/entity/Coursetype.hbm.xml</value>
+				<value>com/course/entity/Courseapply.hbm.xml</value>
+				<value>com/course/entity/PreCourse.hbm.xml</value>
 			</list>
 		</property>
 		
@@ -49,13 +49,13 @@
 		<!-- 不要忘记配置这里  -->
 			<list>
 				<value>com.course.entity.User</value>
+				<value>com.course.entity.Course</value>
 				<value>com.course.entity.Coursetype</value>
+				<value>com.course.entity.Courseapply</value>
+				<value>com.course.entity.PreCourse</value>
 				<value>com.course.entity.Relation</value>
 				<value>com.course.entity.Subtype</value>
 				<value>com.course.entity.Subtypemodule</value>
-				<value>com.course.entity.Course</value>
-				<value>com.course.entity.Courseapply</value>
-				<value>com.course.entity.PreCourse</value>
 			</list>
 		</property>
 		
