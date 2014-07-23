@@ -10,7 +10,7 @@ coursemanage
     2014.7.15        第四次更新：待整合「cm（李坚辉），CourseManage（梁炎），course（陈雪）」
     2014.7.20        第五次更新：课程类别和课程类别的对应关系简单地实现&测试；课程库申请审批简单实现&附junit测试
     2014.7.21        第六次更新：代码整合
-    2014.7.23      第七次更新：优化文件结构</pre>
+    2014.7.23        第七次更新：优化文件目录结构</pre>
 <br />
 <br />
 
@@ -20,9 +20,10 @@ Structures
 
 ``` bash
 $ tree .
-course
+course.
 │  .classpath
 │  .project
+│  a.txt
 │  
 ├─.settings
 │      .jsdtscope
@@ -36,86 +37,96 @@ course
 ├─build
 │  └─classes
 │      ├─com
-│      │  └─course
-│      │      ├─action
-│      │      │      CourseAction.class
-│      │      │      CourseapplyAction.class
-│      │      │      CourseapplyActionTest.class
-│      │      │      CoursetypeAction.class
-│      │      │      CoursetypeActionTest.class
-│      │      │      LoginAction.class
-│      │      │      PreCourseAction.class
-│      │      │      PreCourseActionTest.class
-│      │      │      RelationAction.class
-│      │      │      RelationActionTest.class
-│      │      │      SubtypeAction.class
-│      │      │      SubtypeActionTest.class
-│      │      │      SubtypemoduleAction.class
-│      │      │      SubtypemoduleActionTest.class
-│      │      │      UserAction.class
-│      │      │      
-│      │      ├─dao
-│      │      │      CourseapplyDaoImp.class
-│      │      │      CourseDaoImp.class
-│      │      │      CoursetypeDaoImp.class
-│      │      │      ICourseapplyDao.class
-│      │      │      ICourseDao.class
-│      │      │      ICoursetypeDao.class
-│      │      │      IPreCourseDao.class
-│      │      │      IRelationDao.class
-│      │      │      ISubtypeDao.class
-│      │      │      ISubtypemoduleDao.class
-│      │      │      IUserDao.class
-│      │      │      PreCourseDaoImp.class
-│      │      │      RelationDaoImp.class
-│      │      │      SubtypeDaoImp.class
-│      │      │      SubtypemoduleDaoImp.class
-│      │      │      UserDaoImp.class
-│      │      │      
-│      │      ├─entity
-│      │      │      Course.class
-│      │      │      Courseapply.class
-│      │      │      Coursetype.class
-│      │      │      PreCourse.class
-│      │      │      Relation.class
-│      │      │      Subtype.class
-│      │      │      Subtypemodule.class
-│      │      │      User.class
-│      │      │      
-│      │      ├─exception
-│      │      │      MyException.class
-│      │      │      
-│      │      ├─filter
-│      │      │      CharsetEncodingFilter.class
-│      │      │      
-│      │      ├─interceptor
-│      │      │      CheckLogin.class
-│      │      │      
-│      │      └─service
-│      │              CourseapplyManageImp.class
-│      │              CourseManageImp.class
-│      │              CoursetypeManageImp.class
-│      │              ICourseapplyManage.class
-│      │              ICourseManage.class
-│      │              ICoursetypeManage.class
-│      │              IPreCourseManage.class
-│      │              IRelationManage.class
-│      │              ISubtypeManage.class
-│      │              ISubtypemoduleManage.class
-│      │              IUserManage.class
-│      │              PreCourseManageImp.class
-│      │              RelationManageImp.class
-│      │              SubtypeManageImp.class
-│      │              SubtypemoduleManageImp.class
-│      │              UserManageImp.class
-│      │              
+│      │  ├─course
+│      │  │  ├─action
+│      │  │  │      CourseAction.class
+│      │  │  │      CourseapplyAction.class
+│      │  │  │      CoursetypeAction.class
+│      │  │  │      LoginAction.class
+│      │  │  │      PreCourseAction.class
+│      │  │  │      RelationAction.class
+│      │  │  │      SubtypeAction.class
+│      │  │  │      SubtypemoduleAction.class
+│      │  │  │      UserAction.class
+│      │  │  │      
+│      │  │  ├─dao
+│      │  │  │  │  ICourseapplyDao.class
+│      │  │  │  │  ICourseDao.class
+│      │  │  │  │  ICoursetypeDao.class
+│      │  │  │  │  IPreCourseDao.class
+│      │  │  │  │  IRelationDao.class
+│      │  │  │  │  ISubtypeDao.class
+│      │  │  │  │  ISubtypemoduleDao.class
+│      │  │  │  │  IUserDao.class
+│      │  │  │  │  
+│      │  │  │  └─impl
+│      │  │  │          CourseapplyDaoImp.class
+│      │  │  │          CourseDaoImp.class
+│      │  │  │          CoursetypeDaoImp.class
+│      │  │  │          PreCourseDaoImp.class
+│      │  │  │          RelationDaoImp.class
+│      │  │  │          SubtypeDaoImp.class
+│      │  │  │          SubtypemoduleDaoImp.class
+│      │  │  │          UserDaoImp.class
+│      │  │  │          
+│      │  │  ├─entity
+│      │  │  │      Course.class
+│      │  │  │      Course.hbm.xml
+│      │  │  │      Courseapply.class
+│      │  │  │      Courseapply.hbm.xml
+│      │  │  │      Coursetype.class
+│      │  │  │      Coursetype.hbm.xml
+│      │  │  │      PreCourse.class
+│      │  │  │      PreCourse.hbm.xml
+│      │  │  │      Relation.class
+│      │  │  │      Relation.hbm.xml
+│      │  │  │      Subtype.class
+│      │  │  │      Subtype.hbm.xml
+│      │  │  │      Subtypemodule.class
+│      │  │  │      Subtypemodule.hbm.xml
+│      │  │  │      User.class
+│      │  │  │      User.hbm.xml
+│      │  │  │      
+│      │  │  ├─exception
+│      │  │  │      MyException.class
+│      │  │  │      
+│      │  │  ├─filter
+│      │  │  │      CharsetEncodingFilter.class
+│      │  │  │      
+│      │  │  ├─interceptor
+│      │  │  │      CheckLogin.class
+│      │  │  │      
+│      │  │  └─service
+│      │  │      │  ICourseapplyManage.class
+│      │  │      │  ICourseManage.class
+│      │  │      │  ICoursetypeManage.class
+│      │  │      │  IPreCourseManage.class
+│      │  │      │  IRelationManage.class
+│      │  │      │  ISubtypeManage.class
+│      │  │      │  ISubtypemoduleManage.class
+│      │  │      │  IUserManage.class
+│      │  │      │  
+│      │  │      └─impl
+│      │  │              CourseapplyManageImp.class
+│      │  │              CourseManageImp.class
+│      │  │              CoursetypeManageImp.class
+│      │  │              PreCourseManageImp.class
+│      │  │              RelationManageImp.class
+│      │  │              SubtypeManageImp.class
+│      │  │              SubtypemoduleManageImp.class
+│      │  │              UserManageImp.class
+│      │  │              
+│      │  └─test
+│      │          CourseapplyActionTest.class
+│      │          CoursetypeActionTest.class
+│      │          PreCourseActionTest.class
+│      │          RelationActionTest.class
+│      │          SubtypeActionTest.class
+│      │          SubtypemoduleActionTest.class
+│      │          
 │      └─config
 │              applicationContext-beans.xml
 │              applicationContext-common.xml
-│              Course.cfg.xml
-│              Courseapply.cfg.xml
-│              hibernate.cfg.xml
-│              PreCourse.cfg.xml
 │              struts-course.xml
 │              struts-coursetype.xml
 │              struts-precourse.xml
@@ -124,90 +135,99 @@ course
 │              struts-subtypemodule.xml
 │              struts-user.xml
 │              struts.xml
-│              User.cfg.xml
 │              
 ├─src
 │  ├─com
-│  │  └─course
-│  │      ├─action
-│  │      │      CourseAction.java
-│  │      │      CourseapplyAction.java
-│  │      │      CourseapplyActionTest.java
-│  │      │      CoursetypeAction.java
-│  │      │      CoursetypeActionTest.java
-│  │      │      LoginAction.java
-│  │      │      PreCourseAction.java
-│  │      │      PreCourseActionTest.java
-│  │      │      RelationAction.java
-│  │      │      RelationActionTest.java
-│  │      │      SubtypeAction.java
-│  │      │      SubtypeActionTest.java
-│  │      │      SubtypemoduleAction.java
-│  │      │      SubtypemoduleActionTest.java
-│  │      │      UserAction.java
-│  │      │      
-│  │      ├─dao
-│  │      │      CourseapplyDaoImp.java
-│  │      │      CourseDaoImp.java
-│  │      │      CoursetypeDaoImp.java
-│  │      │      ICourseapplyDao.java
-│  │      │      ICourseDao.java
-│  │      │      ICoursetypeDao.java
-│  │      │      IPreCourseDao.java
-│  │      │      IRelationDao.java
-│  │      │      ISubtypeDao.java
-│  │      │      ISubtypemoduleDao.java
-│  │      │      IUserDao.java
-│  │      │      PreCourseDaoImp.java
-│  │      │      RelationDaoImp.java
-│  │      │      SubtypeDaoImp.java
-│  │      │      SubtypemoduleDaoImp.java
-│  │      │      UserDaoImp.java
-│  │      │      
-│  │      ├─entity
-│  │      │      Course.java
-│  │      │      Courseapply.java
-│  │      │      Coursetype.java
-│  │      │      PreCourse.java
-│  │      │      Relation.java
-│  │      │      Subtype.java
-│  │      │      Subtypemodule.java
-│  │      │      User.java
-│  │      │      
-│  │      ├─exception
-│  │      │      MyException.java
-│  │      │      
-│  │      ├─filter
-│  │      │      CharsetEncodingFilter.java
-│  │      │      
-│  │      ├─interceptor
-│  │      │      CheckLogin.java
-│  │      │      
-│  │      └─service
-│  │              CourseapplyManageImp.java
-│  │              CourseManageImp.java
-│  │              CoursetypeManageImp.java
-│  │              ICourseapplyManage.java
-│  │              ICourseManage.java
-│  │              ICoursetypeManage.java
-│  │              IPreCourseManage.java
-│  │              IRelationManage.java
-│  │              ISubtypeManage.java
-│  │              ISubtypemoduleManage.java
-│  │              IUserManage.java
-│  │              PreCourseManageImp.java
-│  │              RelationManageImp.java
-│  │              SubtypeManageImp.java
-│  │              SubtypemoduleManageImp.java
-│  │              UserManageImp.java
-│  │              
+│  │  ├─course
+│  │  │  ├─action
+│  │  │  │      CourseAction.java
+│  │  │  │      CourseapplyAction.java
+│  │  │  │      CoursetypeAction.java
+│  │  │  │      LoginAction.java
+│  │  │  │      PreCourseAction.java
+│  │  │  │      RelationAction.java
+│  │  │  │      SubtypeAction.java
+│  │  │  │      SubtypemoduleAction.java
+│  │  │  │      UserAction.java
+│  │  │  │      
+│  │  │  ├─dao
+│  │  │  │  │  ICourseapplyDao.java
+│  │  │  │  │  ICourseDao.java
+│  │  │  │  │  ICoursetypeDao.java
+│  │  │  │  │  IPreCourseDao.java
+│  │  │  │  │  IRelationDao.java
+│  │  │  │  │  ISubtypeDao.java
+│  │  │  │  │  ISubtypemoduleDao.java
+│  │  │  │  │  IUserDao.java
+│  │  │  │  │  
+│  │  │  │  └─impl
+│  │  │  │          CourseapplyDaoImp.java
+│  │  │  │          CourseDaoImp.java
+│  │  │  │          CoursetypeDaoImp.java
+│  │  │  │          PreCourseDaoImp.java
+│  │  │  │          RelationDaoImp.java
+│  │  │  │          SubtypeDaoImp.java
+│  │  │  │          SubtypemoduleDaoImp.java
+│  │  │  │          UserDaoImp.java
+│  │  │  │          
+│  │  │  ├─entity
+│  │  │  │      Course.hbm.xml
+│  │  │  │      Course.java
+│  │  │  │      Courseapply.hbm.xml
+│  │  │  │      Courseapply.java
+│  │  │  │      Coursetype.hbm.xml
+│  │  │  │      Coursetype.java
+│  │  │  │      PreCourse.hbm.xml
+│  │  │  │      PreCourse.java
+│  │  │  │      Relation.hbm.xml
+│  │  │  │      Relation.java
+│  │  │  │      Subtype.hbm.xml
+│  │  │  │      Subtype.java
+│  │  │  │      Subtypemodule.hbm.xml
+│  │  │  │      Subtypemodule.java
+│  │  │  │      User.hbm.xml
+│  │  │  │      User.java
+│  │  │  │      
+│  │  │  ├─exception
+│  │  │  │      MyException.java
+│  │  │  │      
+│  │  │  ├─filter
+│  │  │  │      CharsetEncodingFilter.java
+│  │  │  │      
+│  │  │  ├─interceptor
+│  │  │  │      CheckLogin.java
+│  │  │  │      
+│  │  │  └─service
+│  │  │      │  ICourseapplyManage.java
+│  │  │      │  ICourseManage.java
+│  │  │      │  ICoursetypeManage.java
+│  │  │      │  IPreCourseManage.java
+│  │  │      │  IRelationManage.java
+│  │  │      │  ISubtypeManage.java
+│  │  │      │  ISubtypemoduleManage.java
+│  │  │      │  IUserManage.java
+│  │  │      │  
+│  │  │      └─impl
+│  │  │              CourseapplyManageImp.java
+│  │  │              CourseManageImp.java
+│  │  │              CoursetypeManageImp.java
+│  │  │              PreCourseManageImp.java
+│  │  │              RelationManageImp.java
+│  │  │              SubtypeManageImp.java
+│  │  │              SubtypemoduleManageImp.java
+│  │  │              UserManageImp.java
+│  │  │              
+│  │  └─test
+│  │          CourseapplyActionTest.java
+│  │          CoursetypeActionTest.java
+│  │          PreCourseActionTest.java
+│  │          RelationActionTest.java
+│  │          SubtypeActionTest.java
+│  │          SubtypemoduleActionTest.java
+│  │          
 │  └─config
 │          applicationContext-beans.xml
 │          applicationContext-common.xml
-│          Course.cfg.xml
-│          Courseapply.cfg.xml
-│          hibernate.cfg.xml
-│          PreCourse.cfg.xml
 │          struts-course.xml
 │          struts-coursetype.xml
 │          struts-precourse.xml
@@ -216,7 +236,6 @@ course
 │          struts-subtypemodule.xml
 │          struts-user.xml
 │          struts.xml
-│          User.cfg.xml
 │          
 └─WebContent
     │  class_apply.jsp
@@ -224,6 +243,8 @@ course
     │  class_manage.jsp
     │  courseMan.jsp
     │  detail_model.jsp
+    │  detail_module.jsp
+    │  detail_module1.jsp
     │  detail_type.jsp
     │  fail.jsp
     │  home.jsp
