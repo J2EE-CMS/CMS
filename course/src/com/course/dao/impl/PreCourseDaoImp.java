@@ -6,14 +6,12 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
-import org.hibernate.hql.internal.ast.tree.ResultVariableRefNode;
 
 import com.course.dao.IPreCourseDao;
 import com.course.entity.Course;
 import com.course.entity.PreCourse;
-import com.opensymphony.xwork2.config.entities.ResultTypeConfig;
 
-public class PreCourseDaoImp implements IPreCourseDao{
+public class PreCourseDaoImp implements IPreCourseDao {
 
 	private SessionFactory sessionFactory;
 
@@ -30,17 +28,17 @@ public class PreCourseDaoImp implements IPreCourseDao{
 		getSession().save(pcos);
 	}
 
-	//@Override
-	//public void modifyPreCourse(PreCourse pcos) {
-		
-//	}
+	// @Override
+	// public void modifyPreCourse(PreCourse pcos) {
+
+	// }
 
 	@Override
-	public void deletePreCourse(Course cos) {		
+	public void deletePreCourse(Course cos) {
 		Criteria crit = getSession().createCriteria(PreCourse.class);
-		crit.add(Restrictions.eq("course",cos.getId()));
+		crit.add(Restrictions.eq("course", cos.getId()));
 		List<PreCourse> list = crit.list();
-		for(PreCourse pcos:list){
+		for (PreCourse pcos : list) {
 			getSession().delete(pcos);
 		}
 	}
@@ -48,9 +46,9 @@ public class PreCourseDaoImp implements IPreCourseDao{
 	@Override
 	public List<PreCourse> queryPreCourse(Course cos) {
 		Criteria crit = getSession().createCriteria(PreCourse.class);
-		if(cos!=null){
-		    crit.add(Restrictions.eq("course", cos.getId()));
-		    crit.add(Restrictions.eq("status",1));    
+		if (cos != null) {
+			crit.add(Restrictions.eq("course", cos.getId()));
+			// crit.add(Restrictions.eq("status",1));
 		}
 		List<PreCourse> list = crit.list();
 		return list;

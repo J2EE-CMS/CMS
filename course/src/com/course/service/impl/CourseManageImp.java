@@ -1,8 +1,9 @@
 package com.course.service.impl;
 
-import javax.annotation.Resource;
+import java.util.Date;
+import java.util.List;
 
-import java.util.*;
+import javax.annotation.Resource;
 
 import com.course.dao.ICourseDao;
 import com.course.entity.Course;
@@ -10,9 +11,9 @@ import com.course.service.ICourseManage;
 
 public class CourseManageImp implements ICourseManage {
 
-	@Resource  
-	private ICourseDao courseDao;	
-	
+	@Resource
+	private ICourseDao courseDao;
+
 	public ICourseDao getCourseDao() {
 		return courseDao;
 	}
@@ -33,7 +34,6 @@ public class CourseManageImp implements ICourseManage {
 		courseDao.modifyCourse(cos);
 	}
 
-
 	@Override
 	public void deleteCourse(Course cos) {
 		System.out.println("------CourseManageImp.deleteCourse------");
@@ -41,11 +41,15 @@ public class CourseManageImp implements ICourseManage {
 	}
 
 	@Override
-	public void queryCourse(Course cos) {
+	public List<Course> queryCourse(Course cos, Date begin_time, Date end_time) {
 		System.out.println("------CourseManageImp.queryCourse------");
-		courseDao.queryCourse(cos);
+		return courseDao.queryCourse(cos, begin_time, end_time);
 	}
-	public List<Course> findAllCourse(){
+
+	@Override
+	public List<Course> findAllCourse() {
+		System.out.println("------CourseManageImp.findAllCourse------");
 		return courseDao.findAllCourse();
 	}
+
 }

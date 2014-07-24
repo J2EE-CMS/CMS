@@ -6,17 +6,17 @@
 <struts>	
 	
 	<package name="courseActions" namespace="/" extends="abstract_struts">
-		<action name="course_queryCourse" class="courseAction" method="queryCourse">
-			<result name="querycourse" type="redirect">/class_manage.jsp</result>
-			<result name="fail">/fail.jsp</result>
-			<interceptor-ref name="myInterceptor" />
-		</action>
-		<action name="course_*" class="courseAction" method="{1}">
-			<result name="success" type="redirectAction">class_manage</result>
-			<result name="fail">/fail.jsp</result>
-			<interceptor-ref name="myInterceptor" />
-		</action>
-	</package>
+        <action name="course_queryCourse" class="courseAction" method="queryCourse">
+            <result name="success" >/class_manage.jsp</result>
+            <result name="fail">/fail.jsp</result>
+            <interceptor-ref name="myInterceptor" />
+        </action>
+        <action name="course_*" class="courseAction" method="{1}">
+            <result name="success" type="redirectAction">class_manage</result>
+            <result name="fail">/fail.jsp</result>
+            <interceptor-ref name="myInterceptor" />
+        </action>
+    </package>
 
 
 

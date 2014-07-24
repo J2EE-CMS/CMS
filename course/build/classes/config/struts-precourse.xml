@@ -7,14 +7,9 @@
 	<!-- 与spring集成的写法，action等交予spring管理 -->
 	
 	<!-- 			 课程类别管理  			-->	
-	<package name="preCourseActions" namespace="/" extends="abstract_struts">
-		<action name="precourse_queryPreCourse" class="preCourseAction" method="">
-			<result name="queryprecourse" type="redirect">/relation_apply.jsp</result>
-			<result name="fail">/fail.jsp</result>
-			<interceptor-ref name="myInterceptor" />
-		</action>
+	<package name="precourseActions" namespace="" extends="abstract_struts">
 		<action name="precourse_*" class="preCourseAction" method="{1}">
-			<result name="success" type="redirectAction">relation_apply</result>
+			<result name="success" type="redirect">/testSubtype</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
 		</action>

@@ -1,7 +1,5 @@
 package com.test;
 
-import static org.junit.Assert.*;
-
 import javax.annotation.Resource;
 
 import org.junit.BeforeClass;
@@ -14,28 +12,37 @@ import com.course.action.PreCourseAction;
 import com.course.entity.Course;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:/config/applicationContext-beans.xml",
-		"classpath:/config/applicationContext-common.xml"})
+@ContextConfiguration(locations = {
+		"classpath:/config/applicationContext-beans.xml",
+		"classpath:/config/applicationContext-common.xml" })
 public class PreCourseActionTest {
 
 	@Resource
 	PreCourseAction preCourseAction;
-	
+
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
 
-//	@Test
+	// @Test
 	public void testAddPreCourse() {
-		preCourseAction.setRelationString("A|B!C|D");
-		preCourseAction.setOp("&");
+		preCourseAction.setRelationString("A!B!C&D");
+		preCourseAction.setOp("&&");
 		Course cos = new Course();
-		cos.setId(3);
+		cos.setId(9);
 		preCourseAction.setCos(cos);
 		preCourseAction.addPreCourse();
 	}
 
-	@Test
+	// @Test
+	public void queryPreCourseResultString() {
+		Course cos = new Course();
+		cos.setId(9);
+		preCourseAction.setCos(cos);
+		System.out.println(preCourseAction.queryPreCourseResultString());
+	}
+
+	// @Test
 	public void testQueryPreCourse() {
 		Course cos = new Course();
 		cos.setId(3);
@@ -43,7 +50,7 @@ public class PreCourseActionTest {
 		preCourseAction.queryPreCourse();
 	}
 
-//	@Test
+	// @Test
 	public void testDeletePreCourse() {
 		Course cos = new Course();
 		cos.setId(3);
@@ -51,9 +58,9 @@ public class PreCourseActionTest {
 		preCourseAction.deletePreCourse();
 	}
 
-	//@Test
+	// @Test
 	public void testModifyPreCourse() {
-		preCourseAction.setRelationString("aa&Bb!cc&cd");
+		preCourseAction.setRelationString("aa&bb!cc&cd");
 		preCourseAction.setOp("|");
 		Course cos = new Course();
 		cos.setId(4);
@@ -61,4 +68,25 @@ public class PreCourseActionTest {
 		preCourseAction.modifyPreCourse();
 	}
 
+	// @Test
+	public void testApplyPreCourse() {
+		System.out.println("applyTest");
+		preCourseAction.setRelationString("A!B!C|D");
+		preCourseAction.setOp("&&");
+		Course cos = new Course();
+		cos.setId(2);
+		preCourseAction.setCos(cos);
+		preCourseAction.applyPreCourse();
+	}
+
+	@Test
+	public void testApprovePreCourse() {
+		System.out.println("approveTest");
+		Course cos = new Course();
+		cos.setId(2);
+		preCourseAction.setIsApprove(-1);
+		preCourseAction.setCos(cos);
+		preCourseAction.approvePreCourse();
+
+	}
 }

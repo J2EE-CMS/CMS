@@ -77,7 +77,7 @@
 				</thead>
             	<tbody class="text-center">
 					<tr>
-						<td><input type="text" name="course"></td>
+						<td><input type="text" name="cosid"></td>
 						<td><input type="text" name="relationString"></td>
 						<td><input type="text" name="op"></td>
 					</tr>

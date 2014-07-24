@@ -33,7 +33,7 @@
 			function findCourse()
 			{
 				var myform=document.forms[0];
-				myform.action="course/course_findCourse_success";
+				myform.action="course/course_queryCourse";
 				myform.method="post";
 				myform.submit();
 			}
