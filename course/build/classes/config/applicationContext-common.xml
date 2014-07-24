@@ -14,9 +14,9 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/test" />
+		<property name="url" value="jdbc:mysql://localhost:3306/course" />
 		<property name="username" value="root" />
-		<property name="password" value="sysu123" />
+		<property name="password" value="1234" />
 	</bean>
 
 	<bean id="sessionFactory"
@@ -42,6 +42,9 @@
 				<value>com/course/entity/Coursetype.hbm.xml</value>
 				<value>com/course/entity/Courseapply.hbm.xml</value>
 				<value>com/course/entity/PreCourse.hbm.xml</value>
+				<value>com/course/entity/Relation.hbm.xml</value>
+				<value>com/course/entity/Subtype.hbm.xml</value>
+				<value>com/course/entity/Subtypemodule.hbm.xml</value>
 			</list>
 		</property>
 		

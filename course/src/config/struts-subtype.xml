@@ -8,11 +8,13 @@
 	
 	<!-- 课程类别细类 -->
 	<package name="subtypeActions" namespace="/" extends="abstract_struts">
-		<action name="subtype_querySubtype" class="subtypeAction" method="">
-			<result name="querysubtype" type="redirect">/detail_type.jsp</result>
+		
+		<action name="subtype_querySubtypes" class="subtypeAction" method="querySubtypes">
+			<result name="querySubtypes">/detail_type.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
 		</action>
+		
 		<action name="subtype_*" class="subtypeAction" method="{1}">
 			<result name="success" type="redirectAction">detail_type</result>
 			<result name="fail">/fail.jsp</result>

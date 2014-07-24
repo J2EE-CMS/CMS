@@ -49,29 +49,42 @@ public class SubtypeDaoImp implements ISubtypeDao {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Subtype> findBySubtypename(String name){ 
-		String hql = "from Subtype where subtypename like ?";
+	public List<Subtype> querySubtypes(Subtype subtype){
+		String hql = "from Subtype where subtypecode like ? and " + 
+				"subtypename like ? and belongtotype like ? and " + 
+				"ispublicsubtype like ? and department like ?";
 		Query query = getSession().createQuery(hql);
-		query.setString(0, "%"+name+"%");
+		if(subtype.getSubtypecode() != null){
+			query.setString(0, "%"+subtype.getSubtypecode()+"%");
+		}else{
+			query.setString(0, "");
+		}
+		if(subtype.getSubtypename() != null){
+			query.setString(1, "%"+subtype.getSubtypename()+"%");
+		}else{
+			query.setString(1, "");
+		}
+		if(subtype.getBelongtotype() != null){
+			query.setString(2, "%"+subtype.getBelongtotype()+"%");
+		}else{
+			query.setString(2, "");
+		}
+		if(subtype.getSubtypename() != null){
+			query.setString(3, "%"+subtype.getIspublicsubtype()+"%");
+		}else{
+			query.setString(3, "");
+		}
+		if(subtype.getSubtypename() != null){
+			query.setString(4, "%"+subtype.getDepartment()+"%");
+		}else{
+			query.setString(4, "");
+		}
+		
+		List<Subtype> List = query.list();
+		for(Subtype sub : List){
+			System.out.println(sub.getId());
+		}
+		
 		return query.list();
 	}
-	
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Subtype> findByBelongtotype(String name){ 
-		String hql = "from Subtype where belongtotype like ?";
-		Query query = getSession().createQuery(hql);
-		query.setString(0, "%"+name+"%");
-		return query.list();
-	}
-	
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Subtype> findByDepartment(String name){ 
-		String hql = "from Subtype where department like ?";
-		Query query = getSession().createQuery(hql);
-		query.setString(0, "%"+name+"%");
-		return query.list();
-	}
-	
 }

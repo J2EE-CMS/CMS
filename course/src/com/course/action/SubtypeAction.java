@@ -21,10 +21,6 @@ public class SubtypeAction extends ActionSupport  {
 	private static final long serialVersionUID = 1L;
 	private Subtype subtype;
 	private List<Subtype> subtypeList;
-	private List<Subtype> findBySubtypenameList;
-	private List<Subtype> findByBelongtotypeList;
-	private List<Subtype> findByDepartmentList;
-
 	
 	@Resource
 	private ISubtypeManage subtypeManage;
@@ -54,31 +50,7 @@ public class SubtypeAction extends ActionSupport  {
 		this.subtypeList = subtypeList;
 	}
 
-	public List<Subtype> getFindBySubtypenameList() {
-		return findBySubtypenameList;
-	}
-
-	public void setFindBySubtypenameList(List<Subtype> findBySubtypenameList) {
-		this.findBySubtypenameList = findBySubtypenameList;
-	}
-
-	public List<Subtype> getFindByBelongtotypeList() {
-		return findByBelongtotypeList;
-	}
-
-	public void setFindByBelongtotypeList(List<Subtype> findByBelongtotypeList) {
-		this.findByBelongtotypeList = findByBelongtotypeList;
-	}
-
-	public List<Subtype> getFindByDepartmentList() {
-		return findByDepartmentList;
-	}
-
-	public void setFindByDepartmentList(List<Subtype> findByDepartmentList) {
-		this.findByDepartmentList = findByDepartmentList;
-	}
-
-	//·½·¨
+	//Methods
 	public String addSubtype()
 	{		
 		subtypeManage.addSubtype(subtype);
@@ -96,26 +68,15 @@ public class SubtypeAction extends ActionSupport  {
 		subtypeManage.modifySubtype(subtype);
 		return "success";
 	}
+
+	public String querySubtypes(){
+		setSubtypeList(subtypeManage.querySubtypes(subtype));
+		return "querySubtypes";
+	}
 	
 	public String getAllSubtypes(){
 		setSubtypeList(subtypeManage.getAllSubtypes());
 		return "allsubtype";
 	}
-	
-	public String findBySubtypename(String name){
-		setFindBySubtypenameList(subtypeManage.findBySubtypename(name));
-		return "success";
-	}
-	
-	public String findByBelongtotype(String name){
-		setFindByBelongtotypeList(subtypeManage.findByBelongtotype(name));
-		return "success";
-	}
-	
-	public String findByDepartment(String name){
-		setFindByDepartmentList(subtypeManage.findByDepartment(name));
-		return "success";
-	}
-
 
 }

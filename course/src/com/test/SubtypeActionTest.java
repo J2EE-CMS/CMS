@@ -54,38 +54,4 @@ public class SubtypeActionTest {
 		}
 	}
 	
-	
-	@Test
-	public void findBySubtypename(){
-		List<Subtype> list = subtypeDao.findBySubtypename(new String("通识"));
-		System.out.println("<-- findBySubtypename() -->");
-		System.out.println(list.size());
-        for(Subtype subtype:list){  
-            System.out.println(subtype.getId()+"\t"+subtype.getSubtypecode()+"\t"+subtype.getSubtypename()+
-					"\t"+subtype.getBelongtotype()+"\t"+subtype.getIspublicsubtype()+"\t"+subtype.getDepartment()+"\n");  
-        } 
-	}
-
-	
-	@Test
-	public void findByBelongtotype(){
-		List<Subtype> list = subtypeDao.findByBelongtotype(new String("专选"));
-		System.out.println("<-- findByBelongtotype() -->");
-		System.out.println(list.size());
-        for(Subtype subtype:list){  
-            System.out.println(subtype.getId()+"\t"+subtype.getSubtypecode()+"\t"+subtype.getSubtypename()+
-					"\t"+subtype.getBelongtotype()+"\t"+subtype.getIspublicsubtype()+"\t"+subtype.getDepartment()+"\n");  
-        } 
-	}
-	
-	@Test
-	public void findByDepartment(){
-		List<Subtype> list = subtypeDao.findByDepartment(new String("软院"));
-		System.out.println("<-- findByDepartment() -->");
-		System.out.println(list.size());
-        for(Subtype subtype:list){  
-            System.out.println(subtype.getId()+"\t"+subtype.getSubtypecode()+"\t"+subtype.getSubtypename()+
-					"\t"+subtype.getBelongtotype()+"\t"+subtype.getIspublicsubtype()+"\t"+subtype.getDepartment()+"\n");  
-        } 
-	}
 }

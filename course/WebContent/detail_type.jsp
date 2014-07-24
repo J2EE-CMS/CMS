@@ -39,10 +39,10 @@
 				myform.submit();
 			}
 	
-			function querySubtype()
+			function querySubtypes()
 			{
 				var myform=document.forms[0];
-				myform.action="subtype_querySubtype";
+				myform.action="subtype_querySubtypes";
 				myform.method="post";
 				myform.submit();
 			}
@@ -103,7 +103,9 @@
 		<input type="submit" name="subtypeadd" value="添加" onclick="addSubtype()" >
 		<input type="submit" name="subtypemodify" value="修改" onclick="modifySubtype()" >
 		<input type="submit" name="subtypedelete" value="删除" onclick="deleteSubtype()" >
-		<input type="submit" name="subtypequery" value="查询" onclick="querySubtype()" >
+		<input type="submit" name="subtypequery" value="查询" onclick="querySubtypes()" >
+		
+		
 		<div class="table-responsive">
 			<table class="table table-hover table-bordered">
 				<thead>
@@ -130,5 +132,7 @@
 				</tbody>
 			</table>
 		</div>
+		
+		
 	</body>
 </html>

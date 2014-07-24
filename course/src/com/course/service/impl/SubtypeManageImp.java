@@ -35,26 +35,15 @@ public class SubtypeManageImp implements ISubtypeManage {
 	public void modifySubtype (Subtype subtype) {
 		subtypeDao.modifySubtype (subtype);
 	}
+
+	@Override
+	public List<Subtype> querySubtypes(Subtype subtype){
+		return subtypeDao.querySubtypes(subtype);
+	}
 	
 	@Override
 	public List<Subtype> getAllSubtypes(){
 		return subtypeDao.getAllSubtypes();
 	}
-	
-	@Override
-	public List<Subtype> findBySubtypename(String name){
-		return subtypeDao.findBySubtypename(name);
-	}
-	
-	@Override
-	public List<Subtype> findByBelongtotype(String name){
-		return subtypeDao.findByBelongtotype(name);
-	}
-	
-	@Override
-	public List<Subtype> findByDepartment(String name){
-		return subtypeDao.findByDepartment(name);
-	}
-	
 	
 }
