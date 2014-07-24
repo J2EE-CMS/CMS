@@ -13,7 +13,6 @@ import org.hibernate.criterion.Restrictions;
 import com.course.entity.Coursetype;
 
 public class CoursetypeDaoImp implements ICoursetypeDao {
-
 	
 	private SessionFactory sessionFactory;
 	
@@ -27,7 +26,8 @@ public class CoursetypeDaoImp implements ICoursetypeDao {
 	
 	@Override
 	public void addCoursetype(Coursetype coursetype) {
-		this.getSession().persist(coursetype);
+		getSession().save(coursetype);
+		getSession().flush();
 	}
 	
 	@Override
@@ -46,7 +46,7 @@ public class CoursetypeDaoImp implements ICoursetypeDao {
 		sessionFactory.getCurrentSession().delete(coursetype);
 	}
 	
-	@SuppressWarnings("unchecked")
+	
 	@Override
 	public void modifyCoursetype(Coursetype coursetype) {
 		//根据主键修改
@@ -60,11 +60,10 @@ public class CoursetypeDaoImp implements ICoursetypeDao {
 		Query query = sessionFactory.getCurrentSession().createQuery("from Coursetype where id=?");
 		query.setInteger(0, coursetype.getId());
 		Coursetype costype = (Coursetype )query.uniqueResult();
-		costype.setCoursetype(coursetype);		
+		//costype.setCoursetype(coursetype);		
 		
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<Coursetype> getAllCoursetypes(){
 		Query query = sessionFactory.getCurrentSession().createQuery("from Coursetype");

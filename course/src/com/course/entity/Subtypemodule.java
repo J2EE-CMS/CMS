@@ -9,14 +9,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "subtypemodule")
 public class Subtypemodule {
-	private Integer id;
+	private int id;
 	private String module_name;
 	private String subtype_code;
 	private String subtype_name;
 	private String course_type;
 	private String version;
 	private String public_subtype;
-
+	/*
 	public Subtypemodule(){
 		
 	}
@@ -30,14 +30,14 @@ public class Subtypemodule {
 		this.version = version;
 		this.public_subtype = public_subtype;
 	}
-	
+	*/
 	
 	@Column(name="Module_name", length=30, nullable=false)
-	public String getModule_name (){
+	public String getModule_name(){
 		return module_name;
 	}
 	
-	public void setModule_name (String module_name) {
+	public void setModule_name(String module_name) {
 		this.module_name = module_name;
 	}
 	
@@ -46,30 +46,30 @@ public class Subtypemodule {
 		return subtype_code;
 	}
 	
-	public void setSubtype_code (String subtype_code) {
+	public void setSubtype_code(String subtype_code) {
 		this.subtype_code = subtype_code;
 	}
 	
 	@Column(name="subtype_name", length=30, nullable=false)
-	public String getSubtype_name () {
+	public String getSubtype_name() {
 		return subtype_name;
 	}
 	
-	public void setSubtype_name (String subtype_name) {
+	public void setSubtype_name(String subtype_name) {
 		this.subtype_name = subtype_name;
 	}
 	
 	@Column(name="course_type", length=30, nullable=false)
-	public String getCourse_type () {
+	public String getCourse_type() {
 		return course_type;
 	}
 	
-	public void setCourse_type (String course_type) {
+	public void setCourse_type(String course_type) {
 			this.course_type = course_type;
 	}
 	
 	@Column(name="version", length=10, nullable=false)
-	public String getVersion () {
+	public String getVersion() {
 		return version;
 	}
 	
@@ -79,7 +79,7 @@ public class Subtypemodule {
 	
 	
 	@Column(name="public_subtype", length=10, nullable=false)
-	public String getPublic_subtype () {
+	public String getPublic_subtype() {
 		return public_subtype;
 	}
 	
@@ -92,7 +92,7 @@ public class Subtypemodule {
 	//采用数据库自增方式生成主键
 	//@GeneratedValue(strategy=GenerationType.AUTO)
 	@GeneratedValue
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 

@@ -34,7 +34,7 @@ public class PreCourseActionTest {
 		preCourseAction.addPreCourse();
 	}
 
-//	@Test
+	@Test
 	public void testQueryPreCourse() {
 		Course cos = new Course();
 		cos.setId(3);
@@ -50,7 +50,7 @@ public class PreCourseActionTest {
 		preCourseAction.deletePreCourse();
 	}
 
-	@Test
+	//@Test
 	public void testModifyPreCourse() {
 		preCourseAction.setRelationString("aa&Bb!cc&cd");
 		preCourseAction.setOp("|");

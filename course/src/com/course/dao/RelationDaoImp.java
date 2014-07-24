@@ -56,6 +56,6 @@ public class RelationDaoImp implements IRelationDao {
 	@Override
 	public void addRelation(Relation relation){
 		//getSession().save(relation);
-		sessionFactory.getCurrentSession().persist(relation);
+		sessionFactory.getCurrentSession().save(relation);
 	}
 }

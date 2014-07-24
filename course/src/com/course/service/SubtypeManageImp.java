@@ -21,8 +21,8 @@ public class SubtypeManageImp implements ISubtypeManage {
 	}
 	
 	@Override
-	public void addSubtype (Subtype subtype) {
-		subtypeDao.addSubtype (subtype);
+	public void addSubtype(Subtype subtype) {
+		subtypeDao.addSubtype(subtype);
 	}
 	
 	@Override

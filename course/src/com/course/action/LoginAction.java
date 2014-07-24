@@ -29,7 +29,7 @@ public class LoginAction extends ActionSupport {
 		
 		System.out.println(request.getCharacterEncoding());
 		
-		if("root".equals(user.getName()) && "11331048".equals(user.getPassword()))
+		if("root".equals(user.getName()) && "root123".equals(user.getPassword()))
 		{
 			Map session=ActionContext.getContext().getSession();
 			session.put("user.name", user.getName());

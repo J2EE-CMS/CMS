@@ -8,7 +8,9 @@ coursemanage
     2014.7.14        第二次更新：更新课程类别和培养类别的对应关系（增查改，含junit4测试）
     2014.7.14        第三次更新：补上课程类别管理junit4测试
     2014.7.15        第四次更新：待整合「cm（李坚辉），CourseManage（梁炎），course（陈雪）」
-    2014.7.20      第五次更新：课程类别和课程类别的对应关系简单地实现&测试；课程库申请审批简单实现&附junit测试</pre>
+    2014.7.20        第五次更新：课程类别和课程类别的对应关系简单地实现&测试；课程库申请审批简单实现&附junit测试
+    2014.7.21        第六次更新：代码整合
+    2014.7.23        第七次更新：优化文件目录结构（见分支cx），测试无问题后进行修改</pre>
 <br />
 <br />
 
@@ -18,13 +20,14 @@ Structures
 
 ``` bash
 $ tree .
-course
+course.
 │  .classpath
 │  .project
-│  tree.txt
+│  a.txt
 │  
 ├─.settings
 │      .jsdtscope
+│      org.eclipse.core.resources.prefs
 │      org.eclipse.jdt.core.prefs
 │      org.eclipse.wst.common.component
 │      org.eclipse.wst.common.project.facet.core.xml
@@ -34,99 +37,233 @@ course
 ├─build
 │  └─classes
 │      ├─com
-│      │  └─course
-│      │      ├─action
-│      │      │      CoursetypeAction.class
-│      │      │      CoursetypeActionTest.class
-│      │      │      LoginAction.class
-│      │      │      RelationAction.class
-│      │      │      RelationActionTest.class
-│      │      │      
-│      │      ├─dao
-│      │      │      CoursetypeDaoImp.class
-│      │      │      ICoursetypeDao.class
-│      │      │      IRelationDao.class
-│      │      │      RelationDaoImp.class
-│      │      │      
-│      │      ├─entity
-│      │      │      Coursetype.class
-│      │      │      Relation.class
-│      │      │      User.class
-│      │      │      
-│      │      ├─exception
-│      │      │      MyException.class
-│      │      │      
-│      │      ├─filter
-│      │      │      CharsetEncodingFilter.class
-│      │      │      
-│      │      ├─interceptor
-│      │      │      CheckLogin.class
-│      │      │      
-│      │      ├─service
-│      │      │      CoursetypeManageImp.class
-│      │      │      ICoursetypeManage.class
-│      │      │      IRelationManage.class
-│      │      │      RelationManageImp.class
-│      │      │      
-│      │      └─util
-│      │              PageModel.class    ##暂时不用
-│      │              
+│      │  ├─course
+│      │  │  ├─action
+│      │  │  │      CourseAction.class
+│      │  │  │      CourseapplyAction.class
+│      │  │  │      CoursetypeAction.class
+│      │  │  │      LoginAction.class
+│      │  │  │      PreCourseAction.class
+│      │  │  │      RelationAction.class
+│      │  │  │      SubtypeAction.class
+│      │  │  │      SubtypemoduleAction.class
+│      │  │  │      UserAction.class
+│      │  │  │      
+│      │  │  ├─dao
+│      │  │  │  │  ICourseapplyDao.class
+│      │  │  │  │  ICourseDao.class
+│      │  │  │  │  ICoursetypeDao.class
+│      │  │  │  │  IPreCourseDao.class
+│      │  │  │  │  IRelationDao.class
+│      │  │  │  │  ISubtypeDao.class
+│      │  │  │  │  ISubtypemoduleDao.class
+│      │  │  │  │  IUserDao.class
+│      │  │  │  │  
+│      │  │  │  └─impl
+│      │  │  │          CourseapplyDaoImp.class
+│      │  │  │          CourseDaoImp.class
+│      │  │  │          CoursetypeDaoImp.class
+│      │  │  │          PreCourseDaoImp.class
+│      │  │  │          RelationDaoImp.class
+│      │  │  │          SubtypeDaoImp.class
+│      │  │  │          SubtypemoduleDaoImp.class
+│      │  │  │          UserDaoImp.class
+│      │  │  │          
+│      │  │  ├─entity
+│      │  │  │      Course.class
+│      │  │  │      Course.hbm.xml
+│      │  │  │      Courseapply.class
+│      │  │  │      Courseapply.hbm.xml
+│      │  │  │      Coursetype.class
+│      │  │  │      Coursetype.hbm.xml
+│      │  │  │      PreCourse.class
+│      │  │  │      PreCourse.hbm.xml
+│      │  │  │      Relation.class
+│      │  │  │      Relation.hbm.xml
+│      │  │  │      Subtype.class
+│      │  │  │      Subtype.hbm.xml
+│      │  │  │      Subtypemodule.class
+│      │  │  │      Subtypemodule.hbm.xml
+│      │  │  │      User.class
+│      │  │  │      User.hbm.xml
+│      │  │  │      
+│      │  │  ├─exception
+│      │  │  │      MyException.class
+│      │  │  │      
+│      │  │  ├─filter
+│      │  │  │      CharsetEncodingFilter.class
+│      │  │  │      
+│      │  │  ├─interceptor
+│      │  │  │      CheckLogin.class
+│      │  │  │      
+│      │  │  └─service
+│      │  │      │  ICourseapplyManage.class
+│      │  │      │  ICourseManage.class
+│      │  │      │  ICoursetypeManage.class
+│      │  │      │  IPreCourseManage.class
+│      │  │      │  IRelationManage.class
+│      │  │      │  ISubtypeManage.class
+│      │  │      │  ISubtypemoduleManage.class
+│      │  │      │  IUserManage.class
+│      │  │      │  
+│      │  │      └─impl
+│      │  │              CourseapplyManageImp.class
+│      │  │              CourseManageImp.class
+│      │  │              CoursetypeManageImp.class
+│      │  │              PreCourseManageImp.class
+│      │  │              RelationManageImp.class
+│      │  │              SubtypeManageImp.class
+│      │  │              SubtypemoduleManageImp.class
+│      │  │              UserManageImp.class
+│      │  │              
+│      │  └─test
+│      │          CourseapplyActionTest.class
+│      │          CoursetypeActionTest.class
+│      │          PreCourseActionTest.class
+│      │          RelationActionTest.class
+│      │          SubtypeActionTest.class
+│      │          SubtypemoduleActionTest.class
+│      │          
 │      └─config
-│              applicationContext.xml
-│              hibernate.cfg.xml    ##暂时不用
+│              applicationContext-beans.xml
+│              applicationContext-common.xml
+│              struts-course.xml
+│              struts-coursetype.xml
+│              struts-precourse.xml
+│              struts-relation.xml
+│              struts-subtype.xml
+│              struts-subtypemodule.xml
+│              struts-user.xml
 │              struts.xml
 │              
 ├─src
 │  ├─com
-│  │  └─course
-│  │      ├─action
-│  │      │      CoursetypeAction.java
-│  │      │      CoursetypeActionTest.java
-│  │      │      LoginAction.java
-│  │      │      RelationAction.java
-│  │      │      RelationActionTest.java
-│  │      │      
-│  │      ├─dao
-│  │      │      CoursetypeDaoImp.java
-│  │      │      ICoursetypeDao.java
-│  │      │      IRelationDao.java
-│  │      │      RelationDaoImp.java
-│  │      │      
-│  │      ├─entity
-│  │      │      Coursetype.java
-│  │      │      Relation.java
-│  │      │      User.java
-│  │      │      
-│  │      ├─exception
-│  │      │      MyException.java
-│  │      │      
-│  │      ├─filter
-│  │      │      CharsetEncodingFilter.java
-│  │      │      
-│  │      ├─interceptor
-│  │      │      CheckLogin.java
-│  │      │      
-│  │      ├─service
-│  │      │      CoursetypeManageImp.java
-│  │      │      ICoursetypeManage.java
-│  │      │      IRelationManage.java
-│  │      │      RelationManageImp.java
-│  │      │      
-│  │      └─util
-│  │              PageModel.java
-│  │              
+│  │  ├─course
+│  │  │  ├─action
+│  │  │  │      CourseAction.java
+│  │  │  │      CourseapplyAction.java
+│  │  │  │      CoursetypeAction.java
+│  │  │  │      LoginAction.java
+│  │  │  │      PreCourseAction.java
+│  │  │  │      RelationAction.java
+│  │  │  │      SubtypeAction.java
+│  │  │  │      SubtypemoduleAction.java
+│  │  │  │      UserAction.java
+│  │  │  │      
+│  │  │  ├─dao
+│  │  │  │  │  ICourseapplyDao.java
+│  │  │  │  │  ICourseDao.java
+│  │  │  │  │  ICoursetypeDao.java
+│  │  │  │  │  IPreCourseDao.java
+│  │  │  │  │  IRelationDao.java
+│  │  │  │  │  ISubtypeDao.java
+│  │  │  │  │  ISubtypemoduleDao.java
+│  │  │  │  │  IUserDao.java
+│  │  │  │  │  
+│  │  │  │  └─impl
+│  │  │  │          CourseapplyDaoImp.java
+│  │  │  │          CourseDaoImp.java
+│  │  │  │          CoursetypeDaoImp.java
+│  │  │  │          PreCourseDaoImp.java
+│  │  │  │          RelationDaoImp.java
+│  │  │  │          SubtypeDaoImp.java
+│  │  │  │          SubtypemoduleDaoImp.java
+│  │  │  │          UserDaoImp.java
+│  │  │  │          
+│  │  │  ├─entity
+│  │  │  │      Course.hbm.xml
+│  │  │  │      Course.java
+│  │  │  │      Courseapply.hbm.xml
+│  │  │  │      Courseapply.java
+│  │  │  │      Coursetype.hbm.xml
+│  │  │  │      Coursetype.java
+│  │  │  │      PreCourse.hbm.xml
+│  │  │  │      PreCourse.java
+│  │  │  │      Relation.hbm.xml
+│  │  │  │      Relation.java
+│  │  │  │      Subtype.hbm.xml
+│  │  │  │      Subtype.java
+│  │  │  │      Subtypemodule.hbm.xml
+│  │  │  │      Subtypemodule.java
+│  │  │  │      User.hbm.xml
+│  │  │  │      User.java
+│  │  │  │      
+│  │  │  ├─exception
+│  │  │  │      MyException.java
+│  │  │  │      
+│  │  │  ├─filter
+│  │  │  │      CharsetEncodingFilter.java
+│  │  │  │      
+│  │  │  ├─interceptor
+│  │  │  │      CheckLogin.java
+│  │  │  │      
+│  │  │  └─service
+│  │  │      │  ICourseapplyManage.java
+│  │  │      │  ICourseManage.java
+│  │  │      │  ICoursetypeManage.java
+│  │  │      │  IPreCourseManage.java
+│  │  │      │  IRelationManage.java
+│  │  │      │  ISubtypeManage.java
+│  │  │      │  ISubtypemoduleManage.java
+│  │  │      │  IUserManage.java
+│  │  │      │  
+│  │  │      └─impl
+│  │  │              CourseapplyManageImp.java
+│  │  │              CourseManageImp.java
+│  │  │              CoursetypeManageImp.java
+│  │  │              PreCourseManageImp.java
+│  │  │              RelationManageImp.java
+│  │  │              SubtypeManageImp.java
+│  │  │              SubtypemoduleManageImp.java
+│  │  │              UserManageImp.java
+│  │  │              
+│  │  └─test
+│  │          CourseapplyActionTest.java
+│  │          CoursetypeActionTest.java
+│  │          PreCourseActionTest.java
+│  │          RelationActionTest.java
+│  │          SubtypeActionTest.java
+│  │          SubtypemoduleActionTest.java
+│  │          
 │  └─config
-│          applicationContext.xml
-│          hibernate.cfg.xml    ##暂时不用
+│          applicationContext-beans.xml
+│          applicationContext-common.xml
+│          struts-course.xml
+│          struts-coursetype.xml
+│          struts-precourse.xml
+│          struts-relation.xml
+│          struts-subtype.xml
+│          struts-subtypemodule.xml
+│          struts-user.xml
 │          struts.xml
 │          
 └─WebContent
+    │  class_apply.jsp
+    │  class_check.jsp
+    │  class_manage.jsp
+    │  courseMan.jsp
+    │  detail_model.jsp
+    │  detail_module.jsp
+    │  detail_module1.jsp
+    │  detail_type.jsp
     │  fail.jsp
+    │  home.jsp
+    │  index.jsp
     │  login.jsp
+    │  relation_apply.jsp
+    │  relation_check.jsp
     │  success.jsp
-    │  testCoursetype.jsp
-    │  userMain.jsp
+    │  training_class.jsp
+    │  type_manage.jsp
     │  
+    ├─css
+    │      bootstrap.min.css
+    │      
+    ├─js
+    │      bootstrap.min.js
+    │      jquery-2.1.1.min.js
+    │      jquery.min.js
+    │      
     ├─META-INF
     │      MANIFEST.MF
     │      
@@ -139,45 +276,63 @@ course
                 aspectjrt.jar
                 aspectjweaver.jar
                 avro-1.6.3.jar
+                c3p0-0.9.2.1.jar
                 cglib-nodep-2.1_3.jar
                 commons-dbcp.jar
-                commons-fileupload-1.2.2.jar
-                commons-io-2.0.1.jar
+                commons-fileupload-1.3.1.jar
+                commons-io-2.2.jar
                 commons-lang3-3.1.jar
-                commons-logging-1.1.1.jar
+                commons-logging-1.1.3.jar
                 commons-pool.jar
                 dom4j-1.6.1.jar
                 freemarker-2.3.19.jar
-                hibernate-commons-annotations-4.0.1.Final.jar
-                hibernate-core-4.1.9.Final.jar
+                hibernate-c3p0-4.2.14.Final.jar
+                hibernate-commons-annotations-4.0.2.Final.jar
+                hibernate-core-4.2.14.Final.jar
+                hibernate-entitymanager-4.2.14.Final.jar
+                hibernate-envers-4.2.14.Final.jar
                 hibernate-jpa-2.0-api-1.0.1.Final.jar
                 jackson-core-asl-1.9.2.jar
                 jackson-mapper-asl-1.9.2.jar
-                javassist-3.17.1-GA.jar
+                javassist-3.18.1-GA.jar
                 jboss-logging-3.1.0.GA.jar
+                jboss-transaction-api_1.1_spec-1.0.1.Final.jar
                 jta-1.1.jar
                 lucene-core-3.6.2.jar
+                mchange-commons-java-0.2.3.4.jar
                 mysql-connector-java-5.1.13-bin.jar
-                ognl-3.0.5.jar
+                ognl-3.0.6.jar
                 ojdbc14.jar
                 paranamer-2.3.jar
                 servlet-api.jar
                 slf4j-api-1.6.1.jar
                 snappy-java-1.0.4.1.jar
-                spring-aop-3.2.1.RELEASE.jar
-                spring-beans-3.2.1.RELEASE.jar
-                spring-context-3.2.1.RELEASE.jar
-                spring-core-3.2.1.RELEASE.jar
-                spring-expression-3.2.1.RELEASE.jar
-                spring-jdbc-3.2.1.RELEASE.jar
-                spring-orm-3.2.1.RELEASE.jar
-                spring-test-3.2.1.RELEASE.jar
-                spring-tx-3.2.1.RELEASE.jar
-                spring-web-3.2.1.RELEASE.jar
-                struts2-core-2.3.4.1.jar
-                struts2-spring-plugin-2.3.4.1.jar
+                spring-aop-3.2.9.RELEASE.jar
+                spring-aspects-3.2.9.RELEASE.jar
+                spring-beans-3.2.9.RELEASE.jar
+                spring-build-src-3.2.9.RELEASE.jar
+                spring-context-3.2.9.RELEASE.jar
+                spring-context-support-3.2.9.RELEASE.jar
+                spring-core-3.2.9.RELEASE.jar
+                spring-expression-3.2.9.RELEASE.jar
+                spring-framework-bom-3.2.9.RELEASE.jar
+                spring-instrument-3.2.9.RELEASE.jar
+                spring-instrument-tomcat-3.2.9.RELEASE.jar
+                spring-jdbc-3.2.9.RELEASE.jar
+                spring-jms-3.2.9.RELEASE.jar
+                spring-orm-3.2.9.RELEASE.jar
+                spring-oxm-3.2.9.RELEASE.jar
+                spring-struts-3.2.9.RELEASE.jar
+                spring-test-3.2.9.RELEASE.jar
+                spring-tx-3.2.9.RELEASE.jar
+                spring-web-3.2.9.RELEASE.jar
+                spring-webmvc-3.2.9.RELEASE.jar
+                spring-webmvc-portlet-3.2.9.RELEASE.jar
+                struts2-core-2.3.16.3.jar
+                struts2-json-plugin-2.3.16.3.jar
+                struts2-spring-plugin-2.3.16.3.jar
                 web.xml
-                xwork-core-2.3.4.1.jar
+                xwork-core-2.3.16.3.jar
 .
 
 ```

@@ -24,25 +24,25 @@
 				课程类别 <b class="caret"></b>
 				</a>
 				<ul class="dropdown-menu">
-					<li><form action="type_manage"><input type="submit" name="type_manage" value="类别管理"  /></form></li>
-					<li><form action="detail_type"><input type="submit" name="detail_type" value="课程细类"  /></form></li>
-					<li><form action="detail_model"><input type="submit" name="detail_model" value="细类模块"  /></form></li>
+					<li><a href="type_manage">类别管理</a></li>
+					<li><a href="detail_type">课程细类</a></li>
+					<li><a href="detail_module">细类模块</a></li>
 				</ul>
 			</li>
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">培养类别 <b class="caret"></b>
 				</a>
 				<ul class="dropdown-menu">
-					<li><form action="training_class"><input type="submit" name="training_class" value="课程类别与培养类别对应"  /></form></li>
+					<li><a href="training_class">课程类别与培养类别对应</a></li>
 				</ul>
 			</li>
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">课程库 <b class="caret"></b>
 				</a>
 				<ul class="dropdown-menu">
-					<li><form action="class_manage"><input type="submit" name="class_manage" value="课程库管理"  /></form></li>
-					<li><form action="class_apply"><input type="submit" name="class_apply" value="新增课程申请"  /></form></li>
-					<li><form action="class_check"><input type="submit" name="class_check" value="新增课程审批"  /></form></li>
+					<li><a href="class_manage">课程库管理</a></li>
+					<li><a href="class_apply">新增课程申请</a></li>
+					<li><a href="class_check">新增课程审批</a></li>
 				</ul>
 			</li>
 			<li class="dropdown">
@@ -50,12 +50,12 @@
 				先修关系 <b class="caret"></b>
 				</a>
 				<ul class="dropdown-menu">
-					<li><form action="relation_apply"><input type="submit" name="relation_apply" value="先修关系申请"  /></form></li>
-					<li><form action="relation_check"><input type="submit" name="relation_check" value="先修关系审批"  /></form></li>
+					<li><a href="relation_apply">先修关系申请</a></li>
+					<li><a href="relation_check">先修关系审批</a></li>
 				</ul>
 			</li>
 		</ul>
-		<p>欢迎登录！</p>
+		<p align="center" style="margin:80px; font-size:24px">欢迎登录！</p>
 		<script src="js/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 	</body>

@@ -1,7 +1,6 @@
 package com.course.service;
 
 import java.util.List;
-
 import com.course.entity.Coursetype;
 
 public interface ICoursetypeManage {

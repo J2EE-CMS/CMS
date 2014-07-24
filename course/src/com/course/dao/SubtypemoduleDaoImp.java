@@ -25,7 +25,10 @@ public class SubtypemoduleDaoImp implements ISubtypemoduleDao {
 	
 	@Override
 	public void addSubtypemodule(Subtypemodule subtypemodule) {
-		this.getSession().persist(subtypemodule);
+		if(subtypemodule != null){
+			this.getSession().save(subtypemodule);
+		}
+		System.out.println("null");
 	}
 	
 	@Override

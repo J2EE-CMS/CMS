@@ -21,8 +21,9 @@ public class CoursetypeManageImp implements ICoursetypeManage {
 	}
 	
 	@Override
-	public void addCoursetype (Coursetype coursetype) {
-		coursetypeDao.addCoursetype (coursetype);
+	public void addCoursetype(Coursetype coursetype) {
+		//System.out.println("ctmIMP"+coursetype.getQuality());
+		coursetypeDao.addCoursetype(coursetype);
 	}
 	
 	@Override

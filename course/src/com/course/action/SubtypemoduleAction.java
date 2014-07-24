@@ -15,7 +15,7 @@ public class SubtypemoduleAction extends ActionSupport  {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Subtypemodule subtypemodule;
-	private List<Subtypemodule> courses;
+	private List<Subtypemodule> allsubtypemodules;
 	private Integer id;
 	
 	@Resource
@@ -31,7 +31,7 @@ public class SubtypemoduleAction extends ActionSupport  {
 	
 	
 	public Subtypemodule getSubtypemodule() {
-		return subtypemodule;
+		return subtypemodule;  
 	}
 
 	public void setSubtypemodule(Subtypemodule subtypemodule) {
@@ -40,7 +40,8 @@ public class SubtypemoduleAction extends ActionSupport  {
 
 	public String addSubtypemodule()
 	{		
-		SubtypemoduleM.addSubtypemodule(subtypemodule);
+		System.out.println("print "+subtypemodule.getId()+subtypemodule.getModule_name());
+		SubtypemoduleM.addSubtypemodule(subtypemodule);	
 		return "success";
 	}
 	
@@ -50,14 +51,23 @@ public class SubtypemoduleAction extends ActionSupport  {
 		return "success";
 	}
 	
+	public List<Subtypemodule> getSubtypemodules() {
+		return allsubtypemodules;
+	}
+
+	public void setSubtypemodules(List<Subtypemodule> subtypemodules) {
+		this.allsubtypemodules = subtypemodules;
+	}
+
 	public String modifySubtypemodule()
 	{
 		SubtypemoduleM.modifySubtypemodule(subtypemodule);
 		return "success";
 	}
 	
-	public List<Subtypemodule> getAllSubtypemodules(){
-		return courses;
+	public String getAllSubtypemodules(){
+		allsubtypemodules = SubtypemoduleM.getAllSubtypemodules();
+		return "allsubtypemodule";
 	}
 	
 }

@@ -1,6 +1,6 @@
 package com.course.action;
 
-import java.util.List;
+import java.util.*;
 
 import javax.annotation.Resource;
 
@@ -11,13 +11,11 @@ import com.opensymphony.xwork2.ActionSupport;
 public class CoursetypeAction extends ActionSupport  {
 	
 	private Coursetype coursetype;
-	List<Coursetype> courses;
+	private List<Coursetype> coursetypes;
 	
 	@Resource
-	private ICoursetypeManage coursetypeM;
-
-	
-
+	private ICoursetypeManage coursetypeManage;
+		
 	public Coursetype getCoursetype() {
 		return coursetype;
 	}
@@ -26,44 +24,50 @@ public class CoursetypeAction extends ActionSupport  {
 		this.coursetype = coursetype;
 	}
 
-	public List<Coursetype> getCourses() {
-		return courses;
+	public List<Coursetype> getCoursetypes() {
+		return coursetypes;
 	}
 
-	public void setCourses(List<Coursetype> courses) {
-		this.courses = courses;
+	public void setCoursetypes(List<Coursetype> coursetypes) {
+		this.coursetypes = coursetypes;
 	}
 
-	public ICoursetypeManage getCoursetypeM() {
-		return coursetypeM;
+	public ICoursetypeManage getCoursetypeManage() {
+		return coursetypeManage;
 	}
 
-	public void setCoursetypeM(ICoursetypeManage coursetypeM) {
-		this.coursetypeM = coursetypeM;
+	public void setCoursetypeManage(ICoursetypeManage coursetypeManage) {
+		this.coursetypeManage = coursetypeManage;
 	}
+	
 
-		
 	public String addCoursetype()
-	{		
-		coursetypeM.addCoursetype(coursetype);
+	{
+		System.out.println("-------CoursetypeAction add------");
+		if(coursetypeManage!=null){
+		coursetypeManage.addCoursetype(coursetype);
+		}
+		else{
+			System.out.println("coursetypeManage is null");
+		}
 		return "success";
 	}
 	
 	public String deleteCoursetype()
 	{
-		coursetypeM.deleteCoursetype(coursetype);
+		coursetypeManage.deleteCoursetype(coursetype);
 		return "success";
 	}
 	
 	public String modifyCoursetype()
 	{
-		coursetypeM.modifyCoursetype(coursetype);
+		coursetypeManage.modifyCoursetype(coursetype);
 		return "success";
 	}
 	
 	public String getAllCoursetypes(){
-		courses = coursetypeM.getAllCoursetypes();
-		return "success";
+		coursetypes = coursetypeManage.getAllCoursetypes();
+		return "allcoursetype";
 	}
 
 	
