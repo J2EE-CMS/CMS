@@ -61,7 +61,8 @@
 			<li><a href="#">修改</a></li>
 			<li><a href="#">删除</a></li>
 			<li><a href="#">查询</a></li>
-			<li><a href="#">导出</a></li>		       
+			<li><a href="#">导出</a></li>	
+			<li class="pull-right"><a href="home">返回</a></li> 	       
 		</ul>
 		<form id="courseform" >
 			<table class="table table-bordered">
@@ -115,7 +116,7 @@
 			<input type="submit" name="courseadd" value="添加" onclick="addCourse()" >
 			<input type="submit" name="coursemodify" value="修改" onclick="modifyCourse()" >
 			<input type="submit" name="coursedelete" value="删除" onclick="deleteCourse()" >
-			<input type="submit" name="coursefind" value="查询" onclick="findCourse()" >
+			<input type="submit" name="coursequery" value="查询" onclick="queryCourse()" >
 		</form>
 	    
 		<div class="table-responsive">

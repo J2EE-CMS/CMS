@@ -8,8 +8,13 @@
 	
 	<!-- 课程类别与培养类别的对应关系  -->  
 	<package name="relationActions" namespace="/" extends="abstract_struts">
+		<action name="relation_queryRelation" class="relationAction" method="">
+			<result name="queryrelation" type="redirect">/training_class.jsp</result>
+			<result name="fail">/fail.jsp</result>
+			<interceptor-ref name="myInterceptor" />
+		</action>
 		<action name="relation_*" class="relationAction" method="{1}">
-			<result name="success" type="redirect">/testSubtype</result>
+			<result name="success" type="redirectAction">training_class</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
 		</action>

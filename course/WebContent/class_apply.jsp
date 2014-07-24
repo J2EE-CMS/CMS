@@ -38,6 +38,14 @@
 				myform.method="post";
 				myform.submit();
 			}
+			
+			function queryCourseapply()
+			{
+				var myform=document.forms[0];
+				myform.action="courseapply_queryCourseapply";
+				myform.method="post";
+				myform.submit();
+			}
 		</script>
 		<style>
 	      	body {background-color:yellow;}
@@ -107,7 +115,62 @@
 			<input type="submit" name="courseapplyadd" value="添加" onclick="addCourseapply()" >
 			<input type="submit" name="courseapplymodify" value="修改" onclick="modifyCourseapply()" >
 			<input type="submit" name="courseapplydelete" value="删除" onclick="deleteCourseapply()" >
+			<input type="submit" name="courseapplyquery" value="查询" onclick="queryCourseapply()" >
 		</form>
+		<!--  
+		<div id="found" class="table-responsive">
+			<table class="table table-hover table-bordered">
+				<thead>
+		            <tr>
+		            	<th class="text-center">院系课程号</th>
+		                <th class="text-center">课程中文名</th>
+						<th class="text-center">课程英文名</th>
+						<th class="text-center">课程简称</th>
+						<th class="text-center">开设单位</th>
+						<th class="text-center">学分</th>						
+						<th class="text-center">课程细类模块</th>
+					</tr>
+	            </thead>
+	            <tbody class="text-center">
+		            <s:iterator value="courseapplys" var="courseapply">
+		                <tr>
+		                    <td><s:property value="#courseapply.institute_course_id"/></td>
+		                    <td><s:property value="#courseapply.c_course_name"/></td>
+		                    <td><s:property value="courseapply.e_course_name"/></td>
+		                    <td><s:property value="#courseapply.brief_course_name"/></td>
+		                    <td><s:property value="#ccourseapply.aculty"/></td>
+		                    <td><s:property value="#courseapply.credit"/></td>
+		                    <td><s:property value="#courseapply.sub_course_type_module"/></td>
+		                </tr>
+		        	</s:iterator>
+				</tbody>
+				<thead>
+		            <tr>
+						<th class="text-center">课程细类</th>
+						<th class="text-center">课程类别</th>
+						<th class="text-center">总学时</th>
+						<th class="text-center">总学时描述</th>
+						<th class="text-center">简介</th>
+						<th class="text-center">课程负责人</th>
+						<th class="text-center">是否学位课</th>
+		            </tr>
+	            </thead>
+				<tbody class="text-center">
+	            	<s:iterator value="courseapplys" var="courseapply">
+	                	<tr>
+		                    <td><s:property value="#courseapply.sub_course_type"/></td>
+		                    <td><s:property value="#courseapply.course_type"/></td>
+		                    <td><s:property value="#courseapply.course_time"/></td>
+		                    <td><s:property value="#courseapply.course_time_info"/></td>
+		                    <td><s:property value="#courseapply.course_info"/></td>
+		                    <td><s:property value="#courseapply.course_head"/></td>
+		                    <td><s:property value="#courseapply.degree"/></td>
+		                </tr>
+		            </s:iterator>
+	            </tbody>
+			</table>
+		</div>
+		-->
 		<div class="table-responsive">
 			<table class="table table-hover table-bordered">
 				<thead>

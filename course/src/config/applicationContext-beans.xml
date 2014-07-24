@@ -11,80 +11,81 @@
 
 	<!-- Spring管理Struts2的Action -->
 	<bean name="loginAction" class="com.course.action.LoginAction" scope="prototype"></bean>
+	
 	<bean name="userMainAction" class="com.opensymphony.xwork2.ActionSupport" scope="prototype"></bean>
     
-	<!-- Spring管理Struts2的Interceptor -->
 	<!-- 登录检测 -->
 	<bean name="checkLoginInterceptor" class="com.course.interceptor.CheckLogin" scope="prototype"></bean>
 	
 	<!-- 用户管理 -->
 	<bean name="userAction" class="com.course.action.UserAction" scope="prototype"></bean>
 	
-	<bean name="userManage" class="com.course.service.UserManageImp"></bean>
+	<bean name="userManage" class="com.course.service.impl.UserManageImp"></bean>
 	
-	<bean name="userDao" class="com.course.dao.UserDaoImp">
+	<bean name="userDao" class="com.course.dao.impl.UserDaoImp">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
 	<!-- 课程库 -->
 	<bean name="courseAction" class="com.course.action.CourseAction" scope="prototype"></bean>
 	
-	<bean name="courseManage" class="com.course.service.CourseManageImp"></bean>
+	<bean name="courseManage" class="com.course.service.impl.CourseManageImp"></bean>
 	
-	<bean name="courseDao" class="com.course.dao.CourseDaoImp">
+	<bean name="courseDao" class="com.course.dao.impl.CourseDaoImp">
 	    <property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
 	<!-- 课程库申请与审批 -->
 	<bean name="courseapplyAction" class="com.course.action.CourseapplyAction" scope="prototype"></bean>
-	<bean name="courseapplyManage" class="com.course.service.CourseapplyManageImp"></bean>
 	
-	<bean name="courseapplyDao" class="com.course.dao.CourseapplyDaoImp">
+	<bean name="courseapplyManage" class="com.course.service.impl.CourseapplyManageImp"></bean>
+	
+	<bean name="courseapplyDao" class="com.course.dao.impl.CourseapplyDaoImp">
 	    <property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
 	<!-- 课程类别 -->
 	<bean name="coursetypeAction" class="com.course.action.CoursetypeAction" scope="prototype"></bean>
 	
-	<bean name="coursetypeManage" class="com.course.service.CoursetypeManageImp"></bean>
+	<bean name="coursetypeManage" class="com.course.service.impl.CoursetypeManageImp"></bean>
 	
-	<bean name="coursetypeDao" class="com.course.dao.CoursetypeDaoImp">
+	<bean name="coursetypeDao" class="com.course.dao.impl.CoursetypeDaoImp">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
 	<!-- 课程类别与培养关系 -->
 	<bean name="relationAction" class="com.course.action.RelationAction" scope="prototype"></bean>
 	
-	<bean name="relationManage" class="com.course.service.RelationManageImp"></bean>
+	<bean name="relationManage" class="com.course.service.impl.RelationManageImp"></bean>
 	
-	<bean name="relationDao" class="com.course.dao.RelationDaoImp">
+	<bean name="relationDao" class="com.course.dao.impl.RelationDaoImp">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
 	<!-- 课程类别细类 -->
 	<bean name="subtypeAction" class="com.course.action.SubtypeAction" scope="prototype"></bean>
 	
-	<bean name="subtypeManage" class="com.course.service.SubtypeManageImp"></bean>
+	<bean name="subtypeManage" class="com.course.service.impl.SubtypeManageImp"></bean>
 	
-	<bean name="subtypeDao" class="com.course.dao.SubtypeDaoImp">
+	<bean name="subtypeDao" class="com.course.dao.impl.SubtypeDaoImp">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
 	<!-- 课程类别细类模块  -->
 	<bean name="subtypemoduleAction" class="com.course.action.SubtypemoduleAction" scope="prototype"></bean>
 	
-	<bean name="subtypemoduleManage" class="com.course.service.SubtypemoduleManageImp"></bean>
+	<bean name="subtypemoduleManage" class="com.course.service.impl.SubtypemoduleManageImp"></bean>
 	
-	<bean name="subtypemoduleDao" class="com.course.dao.SubtypemoduleDaoImp">
+	<bean name="subtypemoduleDao" class="com.course.dao.impl.SubtypemoduleDaoImp">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
 	<!-- 先修课程 -->
 	<bean name="preCourseAction" class="com.course.action.PreCourseAction" scope="prototype"></bean>
 	
-	<bean name="precourseManage" class="com.course.service.PreCourseManageImp"></bean>
+	<bean name="precourseManage" class="com.course.service.impl.PreCourseManageImp"></bean>
 	
-	<bean name="preCourseDao" class="com.course.dao.PreCourseDaoImp">
+	<bean name="preCourseDao" class="com.course.dao.impl.PreCourseDaoImp">
 	    <property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 </beans>

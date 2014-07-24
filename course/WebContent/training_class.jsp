@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
-<!DOCTYPE html>
+<!DOCTYPE html >
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -11,62 +11,78 @@
 									   maximum-scale=1.0,
 									   user-scalable=no">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<script src="js/jquery.min.js"></script>
+        <script src="js/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+		
+			function addRelation()
+			{
+				var myform=document.forms[0];
+				myform.action="relation_addRelation";
+				myform.method="post";
+				myform.submit();
+			}
+			
+			function modifyRelation()
+			{
+				var myform=document.forms[0];
+				myform.action="relation_modifyRelation";
+				myform.method="post";
+				myform.submit();
+			}
+			
+			function deleteRelation()
+			{
+				var myform=document.forms[0];
+				myform.action="relation_deleteRelation";
+				myform.method="post";
+				myform.submit();
+			}
+	
+			function queryRelation()
+			{
+				var myform=document.forms[0];
+				myform.action="relation_queryRelation";
+				myform.method="post";
+				myform.submit();
+			}
+		</script>
+		
 		<style>
-	      	body {background-color:yellow;}
 	      	thead {background-color:green;}
-	    </style>
+		</style>
+		
 	</head>
+	
 	<body>
 		<ul style="background-color:black" class="nav nav-tabs">
 			<li><a href="#"><strong>培养类别管理</strong></a></li>
 			<li><a href="#">修改</a></li>
 			<li><a href="#">查询</a></li>
-			<li class="pull-right"><form action="home.jsp"><input style="background-color:yellow; width:60px; height:40px" type="submit" value="返回"/></form></li>       
+			<li class="pull-right"><a href="home">返回</a></li> 
 		</ul>
-		<div class="table-responsive">
+		<form id="courseform" >
 			<table class="table table-bordered">
 				<thead>
-					<tr>
-						<th class="text-center">年级</th>
+		            <tr>
+		            	<th class="text-center">年级</th>
 						<th class="text-center">培养类别</th>
 						<th class="text-center">课程类别</th>
 					</tr>
 				</thead>
-				<tbody class="text-center">
+            	<tbody class="text-center">
 					<tr>
-						<td><input type="text" name="grade" /></td>
-						<td>
-							<select class="col-md-12">
-								<option>主修</option>
-								<option>双专业</option>
-								<option>双学位</option>
-								<option>辅修</option>
-							</select>
-						</td>
-						<td>
-							<select class="col-md-12">
-								<option>公必</option>
-								<option>专必</option>
-								<option>公选</option>
-								<option>专选</option>
-								<option>双选</option>
-								<option>双必</option>
-								<option>实践</option>
-								<option>辅修</option>
-								<option>任选</option>
-								<option>必选</option>
-							</select>
-						</td>						
+						<td><input type="text" name="relation.grade"></td>
+						<td><input type="text" name="relation.devtype"></td>
+						<td><input type="text" name="relation.type"></td>
 					</tr>
 				</tbody>
 			</table>
-		</div>
-		<div align="center">
-			<button type="button" onclick="findall()">查询</button>
-			<button type="button" onclick="modify()">修改</button>
-		</div>
+			<input type="submit" name="relationadd" value="添加" onclick="addRelation()" >
+			<input type="submit" name="relationmodify" value="修改" onclick="modifyRelation()" >
+			<input type="submit" name="relationquery" value="修改" onclick="queryRelation()" >
+		</form>
+	    
 		<div class="table-responsive">
 			<table class="table table-hover table-bordered">
 				<thead>
@@ -77,16 +93,13 @@
 					</tr>
 				</thead>
 				<tbody class="text-center">
-					<tr>
-						<td>年纪1</td>
-						<td>培养类别1</td>
-						<td>课程类别1</td>
-					</tr>
-					<tr>
-						<td>年纪2</td>
-						<td>培养类别2</td>
-						<td>课程类别2</td>
-					</tr>
+					<s:iterator value="relations" var="relation">
+		                <tr>
+		                    <td><s:property value="#relation.grade"/></td>
+		                    <td><s:property value="#relation.devtype"/></td>
+		                    <td><s:property value="#relation.type"/></td>
+		                </tr>
+		        	</s:iterator>
 				</tbody>
 			</table>
 		</div>

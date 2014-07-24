@@ -39,10 +39,17 @@
 				myform.submit();
 			}
 	
-			
+			function queryCoursetype()
+			{
+				var myform=document.forms[0];
+				myform.action="coursetype_queryCoursetype";
+				myform.method="post";
+				myform.submit();
+			}
 		</script>
 		
 		<style>
+			body {background-color:yellow;}
 	      	thead {background-color:green;}
 		</style>
 		
@@ -54,7 +61,7 @@
 			<li><a href="#">新增</a></li>
 			<li><a href="#">修改</a></li>
 			<li><a href="#">删除</a></li>
-	       
+	       	<li class="pull-right"><a href="home">返回</a></li> 
 		</ul>
 		<form id="courseform" >
 			<table class="table table-bordered">
@@ -82,6 +89,7 @@
 			<input type="submit" name="coursetypeadd" value="添加" onclick="addCoursetype()" >
 			<input type="submit" name="coursetypemodify" value="修改" onclick="modifyCoursetype()" >
 			<input type="submit" name="coursetypedelete" value="删除" onclick="deleteCoursetype()" >
+			<input type="submit" name="coursetypequery" value="查询" onclick="queryCoursetype()" >
 		</form>
 	    
 		<div class="table-responsive">

@@ -66,7 +66,7 @@ public class RelationAction extends ActionSupport {
 	public String getAllRelations() {
 		//relationManage.getAllRelations(relation);
 		relations = relationManage.getAllRelations();
-		return "success";
+		return "allrelation";
 	}
 
 	public String modifyRelation() {

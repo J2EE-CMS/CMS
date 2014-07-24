@@ -68,6 +68,11 @@ public class CourseapplyAction extends ActionSupport{
 		return "success";
 	}
 	
+	public String queryCourseapply(){
+		courseapplys = new ArrayList<Courseapply>();
+		courseapplys = courseapplyManage.queryCourseapply(courseapply);
+		return "queryCourseapply";
+	}
 	
 	public String queryAllCourseapproval(){
 		courseapplys = courseapplyManage.queryAllCourseapproval();
@@ -77,6 +82,12 @@ public class CourseapplyAction extends ActionSupport{
 	public String approvalCourseapply(){
 		courseapplyManage.approvalCourseapply(courseapply);
 		return "success";
+	}
+	
+	public String queryCourseapproval(){
+		courseapplys = new ArrayList<Courseapply>();
+		courseapplys = courseapplyManage.queryCourseapproval(courseapply);
+		return "queryCourseapproval";
 	}
 	
 }

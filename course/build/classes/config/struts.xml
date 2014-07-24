@@ -60,10 +60,10 @@
 		<action name="detail_module" class="subtypemoduleAction" method="getAllSubtypemodules">
 			<result name="allsubtypemodule">/detail_module.jsp</result>
 		</action>
-		<action name="training_class" >
-			<result name="success">/training_class.jsp</result>
+		<action name="training_class" class="relationAction" method="getAllRelations">
+			<result name="allrelation">/training_class.jsp</result>
 		</action>
-		<action name="relation_apply" >
+		<action name="relation_apply">
 			<result name="success">/relation_apply.jsp</result>
 		</action>
 		<action name="relation_check" >

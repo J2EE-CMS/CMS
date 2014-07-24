@@ -1,13 +1,5 @@
 package com.course.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "course_type")
 public class Coursetype {
 	private int id;
 	private String typecore;
@@ -30,7 +22,7 @@ public class Coursetype {
 		this.retake = retake;
 	}
 	*/
-	/*
+	
 	public void setCoursetype(Coursetype cos){
 		this.type = cos.type;
 		this.typecore = cos.typecore;
@@ -38,8 +30,15 @@ public class Coursetype {
 		this.reexamine = cos.reexamine;
 		this.retake = cos.retake;
 	}
-	*/
-	@Column(name="typecore", length=10, nullable=false)
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	public String getTypecore (){
 		return typecore;
 	}
@@ -48,7 +47,6 @@ public class Coursetype {
 		this.typecore = typecore;
 	}
 	
-	@Column(name="type", length=30, nullable=false)
 	public String getType() {
 		return type;
 	}
@@ -57,7 +55,6 @@ public class Coursetype {
 		this.type = type;
 	}
 	
-	@Column(name="quality", length=30, nullable=false)
 	public String getQuality () {
 		return quality;
 	}
@@ -66,7 +63,6 @@ public class Coursetype {
 		this.quality = quality;
 	}
 	
-	@Column(name="reexamine", length=10, nullable=false)
 	public String getReexamine () {
 		return reexamine;
 	}
@@ -75,7 +71,6 @@ public class Coursetype {
 			this.reexamine = reexamine;
 	}
 	
-	@Column(name="retake", length=10, nullable=false)
 	public String getRetake () {
 		return retake;
 	}
@@ -84,15 +79,5 @@ public class Coursetype {
 			this.retake = retake;
 	}
 	
-	@Id
-	//采用数据库自增方式生成主键
-	//@GeneratedValue(strategy=GenerationType.AUTO)
-	@GeneratedValue
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 }

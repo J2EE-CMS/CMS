@@ -10,9 +10,9 @@ public interface ICourseapplyDao {
 	public void deleteCourseapply(Courseapply courseapply);
 	public List<Courseapply> queryAllCourseapply();
 	public void commitCourseapply(Courseapply courseapply);
-	//public List<Courseapply> queryCourseapply(Courseapply courseapply)
+	public List<Courseapply> queryCourseapply(Courseapply courseapply);
 	
 	public List<Courseapply> queryAllCourseapproval();
 	public void approvalCourseapply(Courseapply courseapply);
-	//public List<Courseapply> queryCourseapproval(Courseapply courseapply)
+	public List<Courseapply> queryCourseapproval(Courseapply courseapply);
 }

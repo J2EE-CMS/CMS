@@ -8,6 +8,11 @@
 	
 	<!-- 课程类别细类模块  -->
 	<package name="subtypemoduleActions" namespace="/" extends="abstract_struts">
+		<action name="subtypemodule_querySubtypemodule" class="subtypemoduleAction" method="">
+			<result name="querysubtypemodule" type="redirect">/detail_module.jsp</result>
+			<result name="fail">/fail.jsp</result>
+			<interceptor-ref name="myInterceptor" />
+		</action>
 		<action name="subtypemodule_*" class="subtypemoduleAction" method="{1}">
 			<result name="success" type="redirectAction">detail_module</result>
 			<result name="fail">/fail.jsp</result>
