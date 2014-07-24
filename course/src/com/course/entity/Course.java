@@ -17,6 +17,7 @@ public class Course {
 	boolean degree;//(是否学士学位，医科�?�?
 	int status;//
 	String info;
+	
 	public int getId() {
 		return id;
 	}

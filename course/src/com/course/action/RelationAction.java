@@ -17,22 +17,9 @@ public class RelationAction extends ActionSupport {
 	private Relation relation;
 	
 	private List<Relation> relations;
-	
-	private Integer grade;
-	
+		
 	@Resource
 	private IRelationManage relationManage;
-
-	
-	
-	
-	public Integer getGrade() {
-		return grade;
-	}
-
-	public void setGrade(Integer grade) {
-		this.grade = grade;
-	}
 
 	public Relation getRelation() {
 		return relation;
@@ -66,7 +53,7 @@ public class RelationAction extends ActionSupport {
 	public String getAllRelations() {
 		//relationManage.getAllRelations(relation);
 		relations = relationManage.getAllRelations();
-		return "allrelation";
+		return "success";
 	}
 
 	public String modifyRelation() {
@@ -80,7 +67,7 @@ public class RelationAction extends ActionSupport {
 	}
 		
 	public String findByGrade() {
-		relations = relationManage.findByGrade(grade);
+		relations = relationManage.findByGrade(relation);
 		return "success";
 	}
 }

@@ -9,7 +9,7 @@ public interface IRelationDao {
 	
 
 	public List<Relation> getAllRelations();
-	public List<Relation> findByGrade(Integer grade);
+	public List<Relation> findByGrade(Relation relation);
 	
 	//test
 	public void addRelation(Relation relation);

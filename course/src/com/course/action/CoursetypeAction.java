@@ -45,7 +45,7 @@ public class CoursetypeAction extends ActionSupport  {
 	{
 		System.out.println("-------CoursetypeAction add------");
 		if(coursetypeManage!=null){
-		coursetypeManage.addCoursetype(coursetype);
+			coursetypeManage.addCoursetype(coursetype);
 		}
 		else{
 			System.out.println("coursetypeManage is null");

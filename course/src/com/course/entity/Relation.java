@@ -1,14 +1,5 @@
 package com.course.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-
-@Entity
-@Table(name = "type_relation")
 public class Relation {
 	private Integer id;
 	private Integer grade;
@@ -34,7 +25,6 @@ public class Relation {
 		this.type = type;
 	}
 	
-	@Column(name="grade", length=10,nullable=false, unique=true)
 	public Integer getGrade() {
 		return grade;
 	}
@@ -43,7 +33,6 @@ public class Relation {
 	}
 	
 	
-	@Column(name="devtype", length=30, nullable=false,unique=true)
 	public String getDevtype() {
 		return devtype;
 	}
@@ -51,7 +40,6 @@ public class Relation {
 		this.devtype = devtype;
 	}
 	
-	@Column(name="type", length=30, nullable=false,unique=true)
 	public String getType() {
 		return type;
 	}
@@ -59,13 +47,6 @@ public class Relation {
 		this.type = type;
 	}
 
-
-
-
-	@Id
-	//采用数据库自增方式生成主键
-	//@GeneratedValue(strategy=GenerationType.AUTO)
-	@GeneratedValue
 	public Integer getId() {
 		return id;
 	}

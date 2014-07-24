@@ -1,20 +1,13 @@
 package com.course.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "sub_type")
 public class Subtype {
-	private int id;				//序号
-	private String subtypecode;		//课程细类码
-	private String subtypename;		//课程细类名
-	private String belongtotype;	//所属课程类别
-	private String ispublicsubtype;	//是否公共细类
-	private String department;		//设立单位
+	private int id;					//脨貌潞脜
+	private String subtypecode;		//驴脦鲁脤脧赂脌脿脗毛
+	private String subtypename;		//驴脦鲁脤脧赂脌脿脙没
+	private String belongtotype;	//脣霉脢么驴脦鲁脤脌脿卤冒
+	private String ispublicsubtype;	//脢脟路帽鹿芦鹿虏脧赂脌脿
+	private String department;		//脡猫脕垄碌楼脦禄
+
 	/*
 	public Subtype(Integer id,String subtypecode,String subtypename,String belongtotype,String ispublicsubtype,String department){
 		this.id = id;
@@ -25,7 +18,15 @@ public class Subtype {
 		this.department = department;
 	}
 	*/
-	@Column(name="subtypecode", length=10, nullable=false)
+	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	public String getSubtypecode(){
 		return subtypecode;
 	}
@@ -34,7 +35,6 @@ public class Subtype {
 		this.subtypecode = subtypecode;
 	}
 	
-	@Column(name="subtypename", length=30, nullable=false)
 	public String getSubtypename() {
 		return subtypename;
 	}
@@ -43,7 +43,6 @@ public class Subtype {
 		this.subtypename = subtypename;
 	}
 	
-	@Column(name="belongtotype", length=30, nullable=false)
 	public String getBelongtotype() {
 		return belongtotype;
 	}
@@ -52,7 +51,6 @@ public class Subtype {
 		this.belongtotype = belongtotype;
 	}
 	
-	@Column(name="ispublicsubtype", length=10, nullable=false)
 	public String getIspublicsubtype() {
 		return ispublicsubtype;
 	}
@@ -60,8 +58,7 @@ public class Subtype {
 	public void setIspublicsubtype(String ispublicsubtype) {
 		this.ispublicsubtype = ispublicsubtype;
 	}
-	
-	@Column(name="department", length=10, nullable=false)
+
 	public String getDepartment() {
 		return department;
 	}
@@ -70,15 +67,4 @@ public class Subtype {
 		this.department = department;
 	}
 	
-	@Id
-	//采用数据库自增方式生成主键
-	//@GeneratedValue(strategy=GenerationType.AUTO)
-	@GeneratedValue
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 }

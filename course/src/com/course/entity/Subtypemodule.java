@@ -1,13 +1,5 @@
 package com.course.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "subtypemodule")
 public class Subtypemodule {
 	private int id;
 	private String module_name;
@@ -32,7 +24,6 @@ public class Subtypemodule {
 	}
 	*/
 	
-	@Column(name="Module_name", length=30, nullable=false)
 	public String getModule_name(){
 		return module_name;
 	}
@@ -41,7 +32,6 @@ public class Subtypemodule {
 		this.module_name = module_name;
 	}
 	
-	@Column(name="subtype_code", length=30, nullable=false)
 	public String getSubtype_code() {
 		return subtype_code;
 	}
@@ -50,7 +40,6 @@ public class Subtypemodule {
 		this.subtype_code = subtype_code;
 	}
 	
-	@Column(name="subtype_name", length=30, nullable=false)
 	public String getSubtype_name() {
 		return subtype_name;
 	}
@@ -59,7 +48,6 @@ public class Subtypemodule {
 		this.subtype_name = subtype_name;
 	}
 	
-	@Column(name="course_type", length=30, nullable=false)
 	public String getCourse_type() {
 		return course_type;
 	}
@@ -68,7 +56,6 @@ public class Subtypemodule {
 			this.course_type = course_type;
 	}
 	
-	@Column(name="version", length=10, nullable=false)
 	public String getVersion() {
 		return version;
 	}
@@ -78,7 +65,6 @@ public class Subtypemodule {
 	}
 	
 	
-	@Column(name="public_subtype", length=10, nullable=false)
 	public String getPublic_subtype() {
 		return public_subtype;
 	}
@@ -87,11 +73,6 @@ public class Subtypemodule {
 			this.public_subtype = public_subtype;
 	}
 	
-
-	@Id
-	//采用数据库自增方式生成主键
-	//@GeneratedValue(strategy=GenerationType.AUTO)
-	@GeneratedValue
 	public int getId() {
 		return id;
 	}

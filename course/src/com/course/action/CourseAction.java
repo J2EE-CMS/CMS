@@ -58,7 +58,7 @@ public class CourseAction extends ActionSupport {
 	{
 		System.out.println("-------courseAction.queryCourse------");
 		courseManage.queryCourse(cos);
-		return "querycourse";
+		return "success";
 	}
 	
 	public String findAllCourse(){
