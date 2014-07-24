@@ -10,6 +10,9 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class SubtypemoduleAction extends ActionSupport  {
 	
+	private Subtypemodule subtypemodule;
+	private List<Subtypemodule> allsubtypemodules;
+	
 	public List<Subtypemodule> getAllsubtypemodules() {
 		return allsubtypemodules;
 	}
@@ -26,10 +29,6 @@ public class SubtypemoduleAction extends ActionSupport  {
 		SubtypemoduleM = subtypemoduleM;
 	}
 
-	private Subtypemodule subtypemodule;
-	private List<Subtypemodule> allsubtypemodules;
-	private Integer id;
-	
 	@Resource
 	private ISubtypemoduleManage SubtypemoduleM;
 
@@ -50,25 +49,25 @@ public class SubtypemoduleAction extends ActionSupport  {
 		this.subtypemodule = subtypemodule;
 	}
 
-	public List<Subtypemodule> getSubtypemodules() {
-		return allsubtypemodules;
-	}
-
-	public void setSubtypemodules(List<Subtypemodule> subtypemodules) {
-		this.allsubtypemodules = subtypemodules;
-	}
-	
 	public String addSubtypemodule()
 	{		
-		System.out.println("print "+subtypemodule.getId()+subtypemodule.getModule_name());
+		//System.out.println("print "+subtypemodule.getId()+subtypemodule.getModule_name());
 		SubtypemoduleM.addSubtypemodule(subtypemodule);	
 		return "success";
 	}
 	
 	public String deleteSubtypemodule()
 	{
-		SubtypemoduleM.deleteSubtypemodule(id);
+		SubtypemoduleM.deleteSubtypemodule(subtypemodule);
 		return "success";
+	}
+	
+	public List<Subtypemodule> getSubtypemodules() {
+		return allsubtypemodules;
+	}
+
+	public void setSubtypemodules(List<Subtypemodule> subtypemodules) {
+		this.allsubtypemodules = subtypemodules;
 	}
 
 	public String modifySubtypemodule()

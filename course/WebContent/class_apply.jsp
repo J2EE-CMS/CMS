@@ -189,9 +189,9 @@
 		                <tr>
 		                    <td><s:property value="#courseapply.institute_course_id"/></td>
 		                    <td><s:property value="#courseapply.c_course_name"/></td>
-		                    <td><s:property value="courseapply.e_course_name"/></td>
+		                    <td><s:property value="#courseapply.e_course_name"/></td>
 		                    <td><s:property value="#courseapply.brief_course_name"/></td>
-		                    <td><s:property value="#ccourseapply.aculty"/></td>
+		                    <td><s:property value="#courseapply.faculty"/></td>
 		                    <td><s:property value="#courseapply.credit"/></td>
 		                    <td><s:property value="#courseapply.sub_course_type_module"/></td>
 		                </tr>

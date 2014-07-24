@@ -4,12 +4,12 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>	
-	<!-- 与spring集成的写法，action等交予spring管理 -->
 	
 	<!-- 课程类别与培养类别的对应关系  -->  
 	<package name="relationActions" namespace="/" extends="abstract_struts">
-		<action name="relation_queryRelation" class="relationAction" method="">
-			<result name="queryrelation" type="redirect">/training_class.jsp</result>
+	
+		<action name="relation_queryRelation" class="relationAction" method="findByGrade">
+			<result name="queryrelation">/training_class.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
 		</action>
@@ -18,12 +18,7 @@
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
 		</action>
-		<action name="testSubtype" class="subtypeAction" method="getAllSubtypes">
-			<result name="success">/home.jsp</result>
-			<result name="fail">/fail.jsp</result>
-			<interceptor-ref name="myInterceptor" />
-		</action>
+		
 	</package>
-	
 	
 </struts>

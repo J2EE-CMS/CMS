@@ -75,6 +75,7 @@ public class CourseapplyAction extends ActionSupport{
 	}
 	
 	public String queryAllCourseapproval(){
+		courseapplys = new ArrayList<Courseapply>();
 		courseapplys = courseapplyManage.queryAllCourseapproval();
 		return "success";
 	}

@@ -31,16 +31,17 @@ public class CourseapplyDaoImp implements ICourseapplyDao {
 	
 	@Override
 	public void modifyCourseapply(Courseapply courseapply) {
-		Query query = sessionFactory.getCurrentSession().createQuery("from Courseapply where id=?");
-		query.setInteger(0, courseapply.getId());
-		Courseapply temp = (Courseapply)query.uniqueResult();
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Courseapply.class);
+		criteria.add(Restrictions.eq("c_course_name", courseapply.getC_course_name()));
+		Courseapply temp = (Courseapply)criteria.uniqueResult();
+		temp.setStatus(0);
 		temp.setCourseapply(courseapply);
 	}
 	
 	@Override
 	public void deleteCourseapply(Courseapply courseapply){
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Courseapply.class);
-		criteria.add(Restrictions.eq("id", courseapply.getId()));
+		criteria.add(Restrictions.eq("c_course_name", courseapply.getC_course_name()));
 		courseapply = (Courseapply)criteria.uniqueResult();
 		sessionFactory.getCurrentSession().delete(courseapply);
 	}

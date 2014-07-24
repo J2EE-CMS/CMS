@@ -62,15 +62,20 @@ public class RelationActionTest {
 	}
 	*/
 	
-	/*
+	
 	@Test
 	public void findByGrade() {
-		List<Relation> list = relationDao.findByGrade(22);
-		System.out.println(list.size());
+		Relation temp = new Relation();
+		temp.setGrade(2);
+		test.setRelation(temp);
+		test.findByGrade();
+		
+		List<Relation> list = test.getRelations();
 		for(int i=0;i<list.size();i++){
 			System.out.println( list.get(i).getId()+"\t"+list.get(i).getGrade()+"\t"+list.get(i).getDevtype()+
 					"\t"+list.get(i).getType()+"\n");
 		}
+		
 	}
-	*/
+	
 }

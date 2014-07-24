@@ -65,6 +65,7 @@
 			<table class="table table-bordered">
 				<thead>
 		            <tr>
+		            	<th class="text-center">序号</th>
 		            	<th class="text-center">年级</th>
 						<th class="text-center">培养类别</th>
 						<th class="text-center">课程类别</th>
@@ -72,6 +73,7 @@
 				</thead>
             	<tbody class="text-center">
 					<tr>
+						<td><input type="text" name="relation.id"></td>
 						<td><input type="text" name="relation.grade"></td>
 						<td><input type="text" name="relation.devtype"></td>
 						<td><input type="text" name="relation.type"></td>
@@ -80,13 +82,14 @@
 			</table>
 			<input type="submit" name="relationadd" value="添加" onclick="addRelation()" >
 			<input type="submit" name="relationmodify" value="修改" onclick="modifyRelation()" >
-			<input type="submit" name="relationquery" value="修改" onclick="queryRelation()" >
+			<input type="submit" name="relationquery" value="查询" onclick="queryRelation()" >
 		</form>
 	    
 		<div class="table-responsive">
 			<table class="table table-hover table-bordered">
 				<thead>
 					<tr>
+						<th class="text-center">序号</th>
 						<th class="text-center">年级</th>
 						<th class="text-center">培养类别</th>
 						<th class="text-center">课程类别</th>
@@ -95,6 +98,7 @@
 				<tbody class="text-center">
 					<s:iterator value="relations" var="relation">
 		                <tr>
+		                	<td><s:property value="#relation.id"/></td>
 		                    <td><s:property value="#relation.grade"/></td>
 		                    <td><s:property value="#relation.devtype"/></td>
 		                    <td><s:property value="#relation.type"/></td>

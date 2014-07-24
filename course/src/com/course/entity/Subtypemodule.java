@@ -24,6 +24,16 @@ public class Subtypemodule {
 	}
 	*/
 	
+	public void setSubtypemodule(Subtypemodule temp){
+		//this.id = temp.getId();	
+		this.module_name = temp.getModule_name();
+		this.subtype_code = temp.getSubtype_code();
+		this.subtype_name = temp.getSubtype_name();
+		this.course_type = temp.getCourse_type();
+		this.version = temp.getVersion();
+		this.public_subtype = temp.getPublic_subtype();
+	}
+	
 	public String getModule_name(){
 		return module_name;
 	}

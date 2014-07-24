@@ -6,6 +6,7 @@ import com.course.entity.Relation;
 import com.course.service.IRelationManage;
 import com.opensymphony.xwork2.ActionSupport;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -52,8 +53,9 @@ public class RelationAction extends ActionSupport {
 
 	public String getAllRelations() {
 		//relationManage.getAllRelations(relation);
+		relations = new ArrayList<Relation>();
 		relations = relationManage.getAllRelations();
-		return "success";
+		return "allrelation";
 	}
 
 	public String modifyRelation() {
@@ -67,7 +69,8 @@ public class RelationAction extends ActionSupport {
 	}
 		
 	public String findByGrade() {
+		relations = new ArrayList<Relation>();
 		relations = relationManage.findByGrade(relation);
-		return "success";
+		return "queryrelation";
 	}
 }

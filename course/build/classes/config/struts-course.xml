@@ -18,9 +18,11 @@
 		</action>
 	</package>
 
+
+
 	<package name="courseapplyActions" namespace="/" extends="abstract_struts">
 		<action name="courseapply_queryCourseapply" class="courseapplyAction" method="queryCourseapply">
-			<result name="queryCourseapply" type="redirect">/class_apply.jsp</result>
+			<result name="queryCourseapply">/class_apply.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
 		</action>

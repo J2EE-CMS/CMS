@@ -18,6 +18,7 @@ public class Courseapply {
 	String course_head;
 	boolean degree;
 	
+	
 	public Courseapply(){
 		
 	}
@@ -43,8 +44,9 @@ public class Courseapply {
 		this.degree = degree;
 	}
 	
+	
 	public void setCourseapply(Courseapply courseapp){
-		this.id = courseapp.getId();
+		//this.id = courseapp.getId();
 		this.status = courseapp.getStatus();
 		this.apply_time = courseapp.getApply_time();
 		this.approval_time = courseapp.getApproval_time();

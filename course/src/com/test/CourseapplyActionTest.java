@@ -39,11 +39,20 @@ public class CourseapplyActionTest {
 	//@Test
 	public void addCourseapply() {
 		Courseapply temp = new Courseapply();
-		temp.setCourseapply(new Courseapply(5,2,null,null,1,"q","w","e","r",1,1,1,1,"t","Y","u","i",false));
+		temp.setC_course_name("q");
+		temp.setBrief_course_name("fk");
 		test.setCourseapply(temp);
 		test.addCourseapply();
 	}
 	
+	
+	//@Test
+	public void modifyCourseapply(){
+		Courseapply temp = new Courseapply();
+		temp.setCourseapply(new Courseapply(4,0,null,null,0,"q","w","e","r",0,0,0,0,"t","Y","u","i",false));
+		test.setCourseapply(temp);
+		test.modifyCourseapply();
+	}
 	
 	/*
 	@Test
@@ -75,7 +84,7 @@ public class CourseapplyActionTest {
 	*/
 	
 	
-	@Test
+	//@Test
 	public void queryCourseapply(){
 		Courseapply temp = new Courseapply();
 		//temp.setCourseapply(new Courseapply(0,0,null,null,0,"","","e","",0,0,0,0,"","","","",false));
