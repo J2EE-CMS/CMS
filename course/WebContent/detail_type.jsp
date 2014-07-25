@@ -48,8 +48,8 @@
 			}
 		</script>
 		<style>
-	      	body {background-color:yellow;}
-	      	thead {background-color:green;}
+			thead {background-color:green;}
+	      	body {background-color:;}
 	    </style>
 	</head>
 	<body>
@@ -65,10 +65,10 @@
 			<table class="table table-bordered">
 				<thead>
 					<tr>
+						<th class="text-center">序号</th>
 						<th class="text-center">课程类别细类码</th>
 						<th class="text-center">课程类别细类名称</th>
 						<th class="text-center">所属课程类别</th>
-						<th class="text-center">序号</th>
 						<th class="text-center" >是否公共细类</th>
 						<th class="text-center">设立单位</th>
 					</tr>
@@ -89,10 +89,11 @@
 							<input type="radio" name="reexam" value="nexam" />否
 						</td> 
 						-->
+						
+						<td><input type="text" name="subtype.id" style="width:100px"/></td>
 						<td><input type="text" name="subtype.subtypecode" style="width:100px"/></td>
 						<td><input type="text" name="subtype.subtypename" style="width:100px"/></td>
 						<td><input type="text" name="subtype.belongtotype" /></td>
-						<td><input type="text" name="subtype.id" style="width:100px"/></td>
 						<td><input type="text" name="subtype.ispublicsubtype" style="width:100px"/></td>
 						<td><input type="text" name="subtype.department" style="width:100px"/></td>
 						
@@ -110,10 +111,10 @@
 			<table class="table table-hover table-bordered">
 				<thead>
 					<tr>
+						<th class="text-center">序号</th>
 						<th class="text-center">课程类别细类码</th>
 						<th class="text-center">课程类别细类名称</th>
 						<th class="text-center">所属课程类别</th>
-						<th class="text-center">序号</th>
 						<th class="text-center" >是否公共细类</th>
 						<th class="text-center">设立单位</th>
 					</tr>
@@ -121,10 +122,10 @@
 				<tbody class="text-center">
 					<s:iterator value="subtypeList" var="subtype">
 		                <tr>
+		                    <td><s:property value="#subtype.id"/></td>
 		                    <td><s:property value="#subtype.subtypecode"/></td>
 		                    <td><s:property value="#subtype.subtypename"/></td>
 		                    <td><s:property value="#subtype.belongtotype"/></td>
-		                    <td><s:property value="#subtype.id"/></td>
 		                    <td><s:property value="#subtype.ispublicsubtype"/></td>
 		                    <td><s:property value="#subtype.department"/></td>
 		                </tr>
