@@ -28,11 +28,9 @@ $ tree .
 course.
 │  .classpath
 │  .project
-│  a.txt
 │  
 ├─.settings
 │      .jsdtscope
-│      org.eclipse.core.resources.prefs
 │      org.eclipse.jdt.core.prefs
 │      org.eclipse.wst.common.component
 │      org.eclipse.wst.common.project.facet.core.xml
@@ -249,7 +247,6 @@ course.
     │  courseMan.jsp
     │  detail_model.jsp
     │  detail_module.jsp
-    │  detail_module1.jsp
     │  detail_type.jsp
     │  fail.jsp
     │  home.jsp
@@ -336,7 +333,6 @@ course.
                 struts2-core-2.3.16.3.jar
                 struts2-json-plugin-2.3.16.3.jar
                 struts2-spring-plugin-2.3.16.3.jar
-                web.xml
                 xwork-core-2.3.16.3.jar
 .
 
