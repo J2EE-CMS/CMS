@@ -38,8 +38,6 @@
 						<th class="text-center">课程中文名称</th>
 						<th class="text-center">课程英文名称</th>
 						<th class="text-center">课程简称</th>
-						<th class="text-center">开设单位</th>
-						<th class="text-center">课程类别</th>
 					</tr>
 				</thead>
 				<tbody class="text-center">
@@ -49,12 +47,12 @@
 						<td><input type="text" name="ch_name" /></td>
 						<td><input type="text" name="en_name" /></td>
 						<td><input type="text" name="s_name" /></td>
-						<td><input type="text" name="place" /></td>
-						<td><input type="text" name="type" /></td>
 					</tr>
 				</tbody>
 				<thead>
 					<tr>				
+						<th class="text-center">开设单位</th>
+						<th class="text-center">课程类别</th>
 						<th class="text-center">学分</th>
 						<th class="text-center">总学时</th>
 						<th class="text-center">总学时备注</th>
@@ -62,6 +60,8 @@
 				</thead>
 				<tbody class="text-center">
 					<tr>
+						<td><input type="text" name="place" /></td>
+						<td><input type="text" name="type" /></td>
 						<td><input type="text" name="score" /></td>
 						<td><input type="text" name="t_time" /></td>
 						<td><input type="text" name="t_time_desc" /></td>
@@ -84,11 +84,6 @@
 						<th class="text-center">课程中文名称</th>
 						<th class="text-center">课程英文名称</th>
 						<th class="text-center">课程简称</th>
-						<th class="text-center">开设单位</th>
-						<th class="text-center">课程类别</th>
-						<th class="text-center">学分</th>
-						<th class="text-center">总学时</th>
-						<th class="text-center">总学时备注</th>
 					</tr>
 				</thead>
 				<tbody class="text-center">
@@ -99,11 +94,6 @@
 						<td>课程中文名称1</td>
 						<td>课程英文名称1</td>
 						<td>课程简称1</td>
-						<td>开设单位1</td>
-						<td>课程类别1</td>
-						<td>学分1</td>
-						<td>总学时1</td>
-						<td>总学时备注1</td>
 					</tr>
 					<tr>
 						<td>未通过</td>
@@ -112,6 +102,26 @@
 						<td>课程中文名称2</td>
 						<td>课程英文名称2</td>
 						<td>课程简称2</td>
+					</tr>
+				</tbody>
+				<thead>
+					<tr>
+						<th class="text-center">开设单位</th>
+						<th class="text-center">课程类别</th>
+						<th class="text-center">学分</th>
+						<th class="text-center">总学时</th>
+						<th class="text-center">总学时备注</th>
+					</tr>
+				</thead>
+				<tbody class="text-center">
+					<tr>
+						<td>开设单位1</td>
+						<td>课程类别1</td>
+						<td>学分1</td>
+						<td>总学时1</td>
+						<td>总学时备注1</td>
+					</tr>
+					<tr>
 						<td>开设单位2</td>
 						<td>课程类别2</td>
 						<td>学分2</td>

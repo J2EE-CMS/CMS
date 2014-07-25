@@ -11,115 +11,28 @@
 									   maximum-scale=1.0,
 									   user-scalable=no">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
-        <script src="js/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script type="text/javascript">
-		
-			function addCourse()
-			{
-				var myform=document.forms[0];
-				myform.action="course_addCourse";
-				myform.method="post";
-				myform.submit();
-			}
-			
-			function modifyCourse()
-			{
-				var myform=document.forms[0];
-				myform.action="course_modifyCourse";
-				myform.method="post";
-				myform.submit();
-			}
-			
-			function deleteCourse()
-			{
-				var myform=document.forms[0];
-				myform.action="course_deleteCourse";
-				myform.method="post";
-				myform.submit();
-			}
-	
-			function queryCourse()
-			{
-				var myform=document.forms[0];
-				myform.action="course/course_queryCourse";
-				myform.method="post";
-				myform.submit();
-			}
-		</script>
 		
 		<style>
-	      	thead {background-color:green;}
+	      	#bg{background-color:#8FB0D1;position:relative;}
+	      	#win{filter:alpha(opacity=80);opacity:0.80;position:absolute;left:20%;top:30%;z-index:1002;margin:-100px -100px 0;border:4px #000 solid;background:#FFF;display:none;}
+	      	#fade{-moz-opacity:0.50;filter:alpha(opacity=50);opacity:0.50;width:100%;height:100%;position:fixed;left:0%;top:0%;background-color:#f5f5f5;z-index:1001;display:none;}
+	      	#bg thead{background-color:green;}
+	      	#win thead{background-color:yellow;}
 		</style>
 		
 	</head>
 	
 	<body>
-		<ul style="background-color:black" class="nav nav-tabs">
-			<li><a href="#"><strong>课程库管理</strong></a></li>
-			<li><a href="#">新增</a></li>
-			<li><a href="#">修改</a></li>
-			<li><a href="#">删除</a></li>
-			<li><a href="#">查询</a></li>
-			<li><a href="#">导出</a></li>	
-			<li class="pull-right"><a href="home">返回</a></li> 	       
-		</ul>
-		<form id="courseform" >
-			<table class="table table-bordered">
-				<thead>
-		            <tr>
-		            	<th class="text-center">院系课程号</th>
-		                <th class="text-center">课程中文名</th>
-						<th class="text-center">课程英文名</th>
-						<th class="text-center">课程简称</th>
-						<th class="text-center">开设单位</th>
-						<th class="text-center">学分</th>						
-						<th class="text-center">课程细类模块</th>
-						<th class="text-center">课程细类</th>
-					</tr>
-				</thead>
-            	<tbody class="text-center">
-					<tr>
-						<td><input type="text" name="cos.institute_course"></td>
-						<td><input type="text" name="cos.c_course_name"></td>
-						<td><input type="text" name="cos.e_course_name"></td>
-						<td><input type="text" name="cos.brief_course_name"/></td>
-						<td><input type="text" name="cos.faculty"></td>
-						<td><input type="text" name="cos.credit"></td>
-						<td><input type="text" name="cos.sub_course_type_module"></td>
-						<td><input type="text" name="cos.sub_course_type"></td>
-					</tr>
-				</tbody>
-				<thead>
-					<tr>
-						<th class="text-center">课程类别</th>
-						<th class="text-center">总学时</th>
-						<th class="text-center">总学时描述</th>
-						<th class="text-center">简介</th>
-						<th class="text-center">课程负责人</th>
-						<th class="text-center">是否学位课</th>
-						<th class="text-center">备注</th>
-		            </tr>
-            	</thead>
-				<tbody>
-					<tr>
-						<td><input type="text" name="cos.course_type"/></td>
-						<td><input type="text" name="cos.course_time"></td>
-						<td><input type="text" name="cos.course_time_info"></td>
-						<td><input type="text" name="cos.course_info"></td>
-						<td><input type="text" name="cos.course_head"/></td>
-						<td><input type="text" name="cos.degree"></td>
-						<td><input type="text" name="cos.info"></td>
-					</tr>
-				</tbody>
-			</table>
-			<input type="submit" name="courseadd" value="添加" onclick="addCourse()" >
-			<input type="submit" name="coursemodify" value="修改" onclick="modifyCourse()" >
-			<input type="submit" name="coursedelete" value="删除" onclick="deleteCourse()" >
-			<input type="submit" name="coursequery" value="查询" onclick="queryCourse()" >
-		</form>
-	    
-		<div class="table-responsive">
+		<div id="bg">
+			<ul style="background-color:black" class="nav nav-tabs">
+				<li><a href="#"><strong>课程库管理</strong></a></li>
+				<li><a href="javascript:void(0);" onclick="Winopen('ADD')">新增</a></li>
+				<li><a href="javascript:void(0);" onclick="Winopen('MODIFY')">修改</a></li>
+				<li><a href="javascript:void(0);" onclick="Winopen('QUERY')">查询</a></li>
+				<li><a href="javascript:void(0);" onclick="Winopen('DELETE')">删除</a></li>
+				<li><a href="#">导出</a></li>	
+				<li class="pull-right"><a href="home">返回</a></li> 	       
+			</ul>
 			<table class="table table-hover table-bordered">
 	            <thead>
 		            <tr>
@@ -171,7 +84,164 @@
 		                </tr>
 		            </s:iterator>
 	            </tbody>
-	        </table>	
+	        </table>
 	    </div>
+		<div id="win">
+			<form id="courseform" >
+				<table class="table table-bordered">
+					<thead>
+			            <tr>
+			            	<th class="text-center">院系课程号</th>
+			                <th class="text-center">课程中文名</th>
+							<th class="text-center">课程英文名</th>
+							<th class="text-center">课程简称</th>
+						</tr>
+					</thead>
+	            	<tbody class="text-center">
+						<tr>
+							<td><input type="text" name="cos.institute_course"></td>
+							<td><input type="text" name="cos.c_course_name"></td>
+							<td><input type="text" name="cos.e_course_name"></td>
+							<td><input type="text" name="cos.brief_course_name"/></td>
+						</tr>
+					</tbody>
+					<thead>
+			            <tr>
+							<th class="text-center">开设单位</th>
+							<th class="text-center">学分</th>						
+							<th class="text-center">课程细类模块</th>
+							<th class="text-center">课程细类</th>
+						</tr>
+					</thead>
+	            	<tbody class="text-center">
+						<tr>
+							<td><input type="text" name="cos.faculty"></td>
+							<td><input type="text" name="cos.credit"></td>
+							<td><input type="text" name="cos.sub_course_type_module"></td>
+							<td><input type="text" name="cos.sub_course_type"></td>
+						</tr>
+					</tbody>
+					<thead>
+						<tr>
+							<th class="text-center">课程类别</th>
+							<th class="text-center">总学时</th>
+							<th class="text-center">总学时描述</th>
+							<th class="text-center">简介</th>
+			            </tr>
+	            	</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" name="cos.course_type"/></td>
+							<td><input type="text" name="cos.course_time"></td>
+							<td><input type="text" name="cos.course_time_info"></td>
+							<td><input type="text" name="cos.course_info"></td>
+						</tr>
+					</tbody>
+					<thead>
+						<tr>
+							<th class="text-center">课程负责人</th>
+							<th class="text-center">是否学位课</th>
+							<th class="text-center">备注</th>
+			            </tr>
+	            	</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" name="cos.course_head"/></td>
+							<td><input type="text" name="cos.degree"></td>
+							<td><input type="text" name="cos.info"></td>
+						</tr>
+					</tbody>
+				</table>
+				<p align="center">
+					<input type="submit" id="wincommit" name="wincommit" value="确认" />
+					<input type="submit" name="wincancle" value="取消"/>
+				</p>
+			</form>
+	    </div>
+		<div id="fade"></div>
 	</body>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		var $=function(id)
+		{
+			return document.getElementById(id);
+		}
+	
+		function Winopen(str)
+		{
+			var win=new WinSize();
+			var Tip=$("fade");
+			Tip.style.width=win.W+"px";
+			Tip.style.height=win.H+"px";
+			$("fade").style.display="block";
+			$("win").style.display="block";
+			if(str=='ADD'){
+				$("wincommit").onclick=addCourse;
+			}
+			if(str=='MODIFY'){
+				$("wincommit").onclick=modifyCourse;
+			}
+			if(str=='QUERY'){
+				$("wincommit").onclick=queryCourse;
+			}
+	
+			if(str=='DELETE'){
+				$("wincommit").onclick=deleteCourse;
+			}
+		}
+	
+		function WinSize() //函数：获取尺寸
+		{
+			var winWidth = 0;
+			var winHeight = 0;
+			if (window.innerWidth)
+				winWidth = window.innerWidth;
+			else if ((document.body) && (document.body.clientWidth))
+				winWidth = document.body.clientWidth;
+			if (window.innerHeight)
+				winHeight = window.innerHeight;
+			else if ((document.body) && (document.body.clientHeight))
+				winHeight = document.body.clientHeight;
+			if (document.documentElement  && document.documentElement.clientHeight
+				&& document.documentElement.clientWidth)
+			{
+				winHeight = document.documentElement.clientHeight;
+				winWidth = document.documentElement.clientWidth;
+			}
+			return{"W":winWidth,"H":winHeight}
+		}
+	
+		function addCourse()
+		{
+			var myform=document.forms[0];
+			myform.action="course_addCourse";
+			myform.method="post";
+			myform.submit();
+		}
+		
+		function modifyCourse()
+		{
+			var myform=document.forms[0];
+			myform.action="course_modifyCourse";
+			myform.method="post";
+			myform.submit();
+		}
+		
+		function deleteCourse()
+		{
+			var myform=document.forms[0];
+			myform.action="course_deleteCourse";
+			myform.method="post";
+			myform.submit();
+		}
+		
+		function queryCourse()
+		{
+			var myform=document.forms[0];
+			myform.action="course/course_queryCourse";
+			myform.method="post";
+			myform.submit();
+		}
+	</script>
 </html>

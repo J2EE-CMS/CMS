@@ -11,85 +11,30 @@
 									   maximum-scale=1.0,
 									   user-scalable=no">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
-        <script src="js/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script type="text/javascript">
-		
-			function addRelation()
-			{
-				var myform=document.forms[0];
-				myform.action="relation_addRelation";
-				myform.method="post";
-				myform.submit();
-			}
-			
-			function modifyRelation()
-			{
-				var myform=document.forms[0];
-				myform.action="relation_modifyRelation";
-				myform.method="post";
-				myform.submit();
-			}
-			
-			function deleteRelation()
-			{
-				var myform=document.forms[0];
-				myform.action="relation_deleteRelation";
-				myform.method="post";
-				myform.submit();
-			}
-	
-			function queryRelation()
-			{
-				var myform=document.forms[0];
-				myform.action="relation_queryRelation";
-				myform.method="post";
-				myform.submit();
-			}
-		</script>
 		
 		<style>
-	      	thead {background-color:green;}
+			#bg{background-color:#8FB0D1;position:relative;}
+	      	#win{filter:alpha(opacity=80);opacity:0.80;position:absolute;left:20%;top:50%;z-index:1002;margin:-100px -100px 0;border:4px #000 solid;background:#FFF;display:none;}
+	      	#fade{-moz-opacity:0.50;filter:alpha(opacity=50);opacity:0.50;width:100%;height:100%;position:fixed;left:0%;top:0%;background-color:#f5f5f5;z-index:1001;display:none;}
+	      	#bg thead{background-color:green;}
+	      	#win thead{background-color:yellow;}
 		</style>
 		
 	</head>
 	
 	<body>
-		<ul style="background-color:black" class="nav nav-tabs">
-			<li><a href="#"><strong>培养类别管理</strong></a></li>
-			<li><a href="#">修改</a></li>
-			<li><a href="#">查询</a></li>
-			<li class="pull-right"><a href="home">返回</a></li> 
-		</ul>
-		<form id="courseform" >
-			<table class="table table-bordered">
-				<thead>
-		            <tr>
-		            	<th class="text-center">序号</th>
-		            	<th class="text-center">年级</th>
-						<th class="text-center">培养类别</th>
-						<th class="text-center">课程类别</th>
-					</tr>
-				</thead>
-            	<tbody class="text-center">
-					<tr>
-						<td><input type="text" name="relation.id"></td>
-						<td><input type="text" name="relation.grade"></td>
-						<td><input type="text" name="relation.devtype"></td>
-						<td><input type="text" name="relation.type"></td>
-					</tr>
-				</tbody>
-			</table>
-			<input type="submit" name="relationadd" value="添加" onclick="addRelation()" >
-			<input type="submit" name="relationmodify" value="修改" onclick="modifyRelation()" >
-			<input type="submit" name="relationquery" value="查询" onclick="queryRelation()" >
-		</form>
-	    
-		<div class="table-responsive">
+		<div id="bg" >
+			<ul style="background-color:black" class="nav nav-tabs">
+				<li><a href="#"><strong>培养类别管理</strong></a></li>
+				<li><a href="javascript:void(0);" onclick="Winopen('ADD')">新增</a></li>
+				<li><a href="javascript:void(0);" onclick="Winopen('MODIFY')">修改</a></li>
+				<li><a href="javascript:void(0);" onclick="Winopen('QUERY')">查询</a></li>
+				<li class="pull-right"><a href="home">返回</a></li> 
+			</ul>
+		
 			<table class="table table-hover table-bordered">
 				<thead>
 					<tr>
-						<th class="text-center">序号</th>
 						<th class="text-center">年级</th>
 						<th class="text-center">培养类别</th>
 						<th class="text-center">课程类别</th>
@@ -98,7 +43,6 @@
 				<tbody class="text-center">
 					<s:iterator value="relations" var="relation">
 		                <tr>
-		                	<td><s:property value="#relation.id"/></td>
 		                    <td><s:property value="#relation.grade"/></td>
 		                    <td><s:property value="#relation.devtype"/></td>
 		                    <td><s:property value="#relation.type"/></td>
@@ -107,5 +51,110 @@
 				</tbody>
 			</table>
 		</div>
+		<div id="win">
+			<form id="relationform" >
+				<table class="table table-bordered">
+					<thead>
+			            <tr>
+			            	<th class="text-center">年级</th>
+							<th class="text-center">培养类别</th>
+							<th class="text-center">课程类别</th>
+						</tr>
+					</thead>
+	            	<tbody class="text-center">
+						<tr>
+							<td><input type="text" name="relation.grade"></td>
+							<td><input type="text" name="relation.devtype"></td>
+							<td><input type="text" name="relation.type"></td>
+						</tr>
+					</tbody>
+				</table>
+				<p align="center">
+					<input type="submit" id="wincommit" name="wincommit" value="确认" />
+					<input type="submit" name="wincancle" value="取消"/>
+				</p>
+			</form>
+		</div>		
+		<div id="fade"></div>
 	</body>
+    <script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		var $=function(id)
+		{
+			return document.getElementById(id);
+		}
+	
+		function Winopen(str)
+		{
+			var win=new WinSize();
+			var Tip=$("fade");
+			Tip.style.width=win.W+"px";
+			Tip.style.height=win.H+"px";
+			$("fade").style.display="block";
+			$("win").style.display="block";
+			if(str=='ADD'){
+				$("wincommit").onclick=addRelation;
+			}
+			if(str=='MODIFY'){
+				$("wincommit").onclick=modifyRelation;
+			}
+			if(str=='QUERY'){
+				$("wincommit").onclick=queryRelation;
+			}
+		}
+	
+		function WinSize() //函数：获取尺寸
+		{
+			var winWidth = 0;
+			var winHeight = 0;
+			if (window.innerWidth)
+				winWidth = window.innerWidth;
+			else if ((document.body) && (document.body.clientWidth))
+				winWidth = document.body.clientWidth;
+			if (window.innerHeight)
+				winHeight = window.innerHeight;
+			else if ((document.body) && (document.body.clientHeight))
+				winHeight = document.body.clientHeight;
+			if (document.documentElement  && document.documentElement.clientHeight
+				&& document.documentElement.clientWidth)
+			{
+				winHeight = document.documentElement.clientHeight;
+				winWidth = document.documentElement.clientWidth;
+			}
+			return{"W":winWidth,"H":winHeight}
+		}
+		
+		function addRelation()
+		{
+			var myform=document.forms[0];
+			myform.action="relation_addRelation";
+			myform.method="post";
+			myform.submit();
+		}
+		
+		function modifyRelation()
+		{
+			var myform=document.forms[0];
+			myform.action="relation_modifyRelation";
+			myform.method="post";
+			myform.submit();
+		}
+		
+		function deleteRelation()
+		{
+			var myform=document.forms[0];
+			myform.action="relation_deleteRelation";
+			myform.method="post";
+			myform.submit();
+		}
+
+		function queryRelation()
+		{
+			var myform=document.forms[0];
+			myform.action="relation_queryRelation";
+			myform.method="post";
+			myform.submit();
+		}
+	</script>
 </html>

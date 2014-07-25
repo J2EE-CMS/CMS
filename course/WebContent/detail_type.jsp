@@ -11,100 +11,24 @@
 									   maximum-scale=1.0,
 									   user-scalable=no">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<script src="js/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script type="text/javascript">
-		
-			function addSubtype()
-			{
-				var myform=document.forms[0];
-				myform.action="subtype_addSubtype";
-				myform.method="post";
-				myform.submit();
-			}
-			
-			function modifySubtype()
-			{
-				var myform=document.forms[0];
-				myform.action="subtype_modifySubtype";
-				myform.method="post";
-				myform.submit();
-			}
-			
-			function deleteSubtype()
-			{
-				var myform=document.forms[0];
-				myform.action="subtype_deleteSubtype";
-				myform.method="post";
-				myform.submit();
-			}
-	
-			function querySubtype()
-			{
-				var myform=document.forms[0];
-				myform.action="subtype_querySubtype";
-				myform.method="post";
-				myform.submit();
-			}
-		</script>
 		<style>
-	      	body {background-color:yellow;}
-	      	thead {background-color:green;}
+	      	#bg{background-color:#8FB0D1;position:relative;}
+	      	#win{filter:alpha(opacity=80);opacity:0.80;position:absolute;left:20%;top:50%;z-index:1002;margin:-100px -100px 0;border:4px #000 solid;background:#FFF;display:none;}
+	      	#fade{-moz-opacity:0.50;filter:alpha(opacity=50);opacity:0.50;width:100%;height:100%;position:fixed;left:0%;top:0%;background-color:#f5f5f5;z-index:1001;display:none;}
+	      	#bg thead{background-color:green;}
+	      	#win thead{background-color:yellow;}
 	    </style>
 	</head>
 	<body>
-		<ul style="background-color:black" class="nav nav-tabs">
-			<li><a href="#"><strong>课程细类管理</strong></a></li>
-			<li><a href="#">新增</a></li>
-			<li><a href="#">修改</a></li>
-			<li><a href="#">删除</a></li>
-			<li><a href="#">查询</a></li>	
-			<li class="pull-right"><a href="home">返回</a></li> 
-		</ul>
-		<form id="subtypeform" >
-			<table class="table table-bordered">
-				<thead>
-					<tr>
-						<th class="text-center">课程类别细类码</th>
-						<th class="text-center">课程类别细类名称</th>
-						<th class="text-center">所属课程类别</th>
-						<th class="text-center">序号</th>
-						<th class="text-center" >是否公共细类</th>
-						<th class="text-center">设立单位</th>
-					</tr>
-				</thead>
-				<tbody class="text-center">
-					<tr>
-						<!-- 
-						<td>
-							<select style="width:80px">
-								<option>公必</option>
-								<option>专必</option>
-								<option>公选</option>
-								<option>专选</option>
-							</select>
-						</td> 
-						<td>
-							<input type="radio" name="reexam" value="exam" />是<br>
-							<input type="radio" name="reexam" value="nexam" />否
-						</td> 
-						-->
-						<td><input type="text" name="subtype.subtypecode" style="width:100px"/></td>
-						<td><input type="text" name="subtype.subtypename" style="width:100px"/></td>
-						<td><input type="text" name="subtype.belongtotype" /></td>
-						<td><input type="text" name="subtype.id" style="width:100px"/></td>
-						<td><input type="text" name="subtype.ispublicsubtype" style="width:100px"/></td>
-						<td><input type="text" name="subtype.department" style="width:100px"/></td>
-						
-					</tr>
-				</tbody>
-			</table>
-		</form>
-		<input type="submit" name="subtypeadd" value="添加" onclick="addSubtype()" >
-		<input type="submit" name="subtypemodify" value="修改" onclick="modifySubtype()" >
-		<input type="submit" name="subtypedelete" value="删除" onclick="deleteSubtype()" >
-		<input type="submit" name="subtypequery" value="查询" onclick="querySubtype()" >
-		<div class="table-responsive">
+		<div id="bg">
+			<ul style="background-color:black" class="nav nav-tabs">
+				<li><a href="#"><strong>课程细类管理</strong></a></li>
+				<li><a href="javascript:void(0);" onclick="Winopen('ADD')">新增</a></li>
+				<li><a href="javascript:void(0);" onclick="Winopen('MODIFY')">修改</a></li>
+				<li><a href="javascript:void(0);" onclick="Winopen('QUERY')">查询</a></li>
+				<li><a href="javascript:void(0);" onclick="Winopen('DELETE')">删除</a></li>
+				<li class="pull-right"><a href="home">返回</a></li> 
+			</ul>
 			<table class="table table-hover table-bordered">
 				<thead>
 					<tr>
@@ -130,5 +54,129 @@
 				</tbody>
 			</table>
 		</div>
+		
+		<div id="win" class="table-responsive">
+			<form id="subtypeform" >
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th class="text-center">课程类别细类码</th>
+							<th class="text-center">课程类别细类名称</th>
+							<th class="text-center">所属课程类别</th>
+						</tr>
+					</thead>
+					<tbody class="text-center">
+						<tr>
+							<td><input type="text" name="subtype.subtypecode" style="width:100px"/></td>
+							<td><input type="text" name="subtype.subtypename" style="width:100px"/></td>
+							<td><input type="text" name="subtype.belongtotype" /></td>
+						</tr>
+					</tbody>
+					<thead>
+						<tr>
+							<th class="text-center">序号</th>
+							<th class="text-center" >是否公共细类</th>
+							<th class="text-center">设立单位</th>
+						</tr>
+					</thead>
+					<tbody class="text-center">
+						<tr>
+							<td><input type="text" name="subtype.id" style="width:100px"/></td>
+							<td><input type="text" name="subtype.ispublicsubtype" style="width:100px"/></td>
+							<td><input type="text" name="subtype.department" style="width:100px"/></td>							
+						</tr>
+					</tbody>
+				</table>
+				<p align="center">
+					<input type="submit" id="wincommit" name="wincommit" value="确认" />
+					<input type="submit" name="wincancle" value="取消"/>
+				</p>
+			</form>
+		</div>
+		<div id="fade"></div>
 	</body>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		var $=function(id)
+		{
+			return document.getElementById(id);
+		}
+	
+		function Winopen(str)
+		{
+			var win=new WinSize();
+			var Tip=$("fade");
+			Tip.style.width=win.W+"px";
+			Tip.style.height=win.H+"px";
+			$("fade").style.display="block";
+			$("win").style.display="block";
+			if(str=='ADD'){
+				$("wincommit").onclick=addSubtype;
+			}
+			if(str=='MODIFY'){
+				$("wincommit").onclick=modifySubtype;
+			}
+			if(str=='QUERY'){
+				$("wincommit").onclick=querySubtype;
+			}
+	
+			if(str=='DELETE'){
+				$("wincommit").onclick=deleteSubtype;
+			}
+		}
+	
+		function WinSize() //函数：获取尺寸
+		{
+			var winWidth = 0;
+			var winHeight = 0;
+			if (window.innerWidth)
+				winWidth = window.innerWidth;
+			else if ((document.body) && (document.body.clientWidth))
+				winWidth = document.body.clientWidth;
+			if (window.innerHeight)
+				winHeight = window.innerHeight;
+			else if ((document.body) && (document.body.clientHeight))
+				winHeight = document.body.clientHeight;
+			if (document.documentElement  && document.documentElement.clientHeight
+				&& document.documentElement.clientWidth)
+			{
+				winHeight = document.documentElement.clientHeight;
+				winWidth = document.documentElement.clientWidth;
+			}
+			return{"W":winWidth,"H":winHeight}
+		}
+	
+		function addSubtype()
+		{
+			var myform=document.forms[0];
+			myform.action="subtype_addSubtype";
+			myform.method="post";
+			myform.submit();
+		}
+		
+		function modifySubtype()
+		{
+			var myform=document.forms[0];
+			myform.action="subtype_modifySubtype";
+			myform.method="post";
+			myform.submit();
+		}
+		
+		function deleteSubtype()
+		{
+			var myform=document.forms[0];
+			myform.action="subtype_deleteSubtype";
+			myform.method="post";
+			myform.submit();
+		}
+
+		function querySubtype()
+		{
+			var myform=document.forms[0];
+			myform.action="subtype_querySubtype";
+			myform.method="post";
+			myform.submit();
+		}
+	</script>
 </html>
