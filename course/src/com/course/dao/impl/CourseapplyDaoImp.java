@@ -36,6 +36,7 @@ public class CourseapplyDaoImp implements ICourseapplyDao {
 		Courseapply temp = (Courseapply)criteria.uniqueResult();
 		temp.setStatus(0);
 		temp.setCourseapply(courseapply);
+		sessionFactory.getCurrentSession().update(temp);
 	}
 	
 	@Override
@@ -48,8 +49,6 @@ public class CourseapplyDaoImp implements ICourseapplyDao {
 	
 	@Override
 	public List<Courseapply> queryAllCourseapply() {
-		//Query query = sessionFactory.getCurrentSession().createQuery("from Courseapply");
-		//return query.list();
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Courseapply.class);
 		criteria.add(Restrictions.or(Restrictions.eq("status", 0),Restrictions.eq("status", 1)));
 		List<Courseapply> list = criteria.list();
@@ -58,8 +57,31 @@ public class CourseapplyDaoImp implements ICourseapplyDao {
 	
 	
 	@Override
-	public void commitCourseapply(Courseapply courseapply) {
-		courseapply.setStatus(1);
+	public void modifycommitCourseapply(Courseapply courseapply) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Courseapply.class);
+		criteria.add(Restrictions.eq("c_course_name", courseapply.getC_course_name()));
+		Courseapply temp = (Courseapply)criteria.uniqueResult();
+		//temp.setStatus(1);
+		//temp.setCourseapply(courseapply);
+		if(temp != null){
+			/*temp.setInstitute_course_id(courseapply.getInstitute_course_id());
+			temp.setC_course_name(courseapply.getC_course_name());
+			temp.setE_course_name(courseapply.getE_course_name());
+			temp.setBrief_course_name(courseapply.getBrief_course_name());
+			temp.setFaculty(courseapply.getFaculty());
+			temp.setCredit(courseapply.getCredit());
+			temp.setSub_course_type_module(courseapply.getSub_course_type_module());
+			temp.setSub_course_type(courseapply.getSub_course_type());
+			temp.setCourse_type(courseapply.getCourse_type());
+			temp.setCourse_time(courseapply.getCourse_time());
+			temp.setCourse_time_info(courseapply.getCourse_time_info());
+			temp.setCourse_info(courseapply.getCourse_info());
+			temp.setCourse_head(courseapply.getCourse_head());
+			temp.setDegree(courseapply.isDegree());*/
+			temp.setStatus(1);
+		}
+		System.out.println(temp.getId()+" "+temp.getBrief_course_name()+"  "+temp.getStatus());
+		getSession().update(temp);
 	}
 	
 

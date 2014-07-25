@@ -42,8 +42,8 @@ public class CourseapplyManageImp implements ICourseapplyManage {
 	}
 	
 	@Override
-	public void commitCourseapply(Courseapply courseapply){
-		courseapplyDao.commitCourseapply(courseapply);
+	public void modifycommitCourseapply(Courseapply courseapply){
+		courseapplyDao.modifycommitCourseapply(courseapply);
 	}
 	
 	@Override

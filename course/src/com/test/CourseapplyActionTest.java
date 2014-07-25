@@ -39,8 +39,9 @@ public class CourseapplyActionTest {
 	//@Test
 	public void addCourseapply() {
 		Courseapply temp = new Courseapply();
-		temp.setC_course_name("q");
-		temp.setBrief_course_name("fk");
+		temp.setStatus(4);
+		temp.setC_course_name("fu");
+		temp.setBrief_course_name("ck");
 		test.setCourseapply(temp);
 		test.addCourseapply();
 	}
@@ -96,6 +97,14 @@ public class CourseapplyActionTest {
 	    for(Courseapply capp : list){
 	      System.out.println(capp.getC_course_name()+' '+capp.getCourse_info());
 	    }
+	}
+	
+	@Test
+	public void commitCourseapply(){
+		Courseapply temp = new Courseapply();
+		temp.setC_course_name("e");
+		test.setCourseapply(temp);
+		test.modifycommitCourseapply();
 	}
 	
 }

@@ -41,7 +41,7 @@ public class CourseapplyAction extends ActionSupport{
 	}
 	
 	
-	public String addCourseapply (){
+	public String addCourseapply(){
 		courseapplyManage.addCourseapply(courseapply);
 		return "success";
 	}
@@ -63,8 +63,8 @@ public class CourseapplyAction extends ActionSupport{
 	}
 
 	
-	public String commitCourseapply(){
-		courseapplyManage.commitCourseapply(courseapply);
+	public String modifycommitCourseapply(){
+		courseapplyManage.modifycommitCourseapply(courseapply);
 		return "success";
 	}
 	
@@ -80,6 +80,7 @@ public class CourseapplyAction extends ActionSupport{
 		return "success";
 	}
 	
+	/*  ========  ÉóÅú²¿·Ö    ========  */
 	public String approvalCourseapply(){
 		courseapplyManage.approvalCourseapply(courseapply);
 		return "success";

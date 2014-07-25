@@ -28,7 +28,7 @@
 				<li><a href="javascript:void(0);" onclick="Winopen('QUERY')">查询</a></li>
 				<li><a href="javascript:void(0);" onclick="Winopen('DELETE')">删除</a></li>
 				<li><a href="#">导出</a></li>	
-				<li><a href="#">提交</a></li>	
+				<li><a href="javascript:void(0);" onclick="Winopen('COMMIT')">提交</a></li>	
 				<li class="pull-right"><a href="home">返回</a></li> 
 			</ul>
 			<table class="table table-hover table-bordered">
@@ -235,9 +235,11 @@
 			if(str=='QUERY'){
 				$("wincommit").onclick=queryCourseapply;
 			}
-	
 			if(str=='DELETE'){
 				$("wincommit").onclick=deleteCourseapply;
+			}
+			if(str=='COMMIT'){
+				$("wincommit").onclick=modifycommitCourseapply;
 			}
 		}
 	
@@ -293,5 +295,14 @@
 			myform.method="post";
 			myform.submit();
 		}
+		
+		function modifycommitCourseapply()
+		{
+			var myform=document.forms[0];
+			myform.action="courseapply_modifycommitCourseapply";
+			myform.method="post";
+			myform.submit();
+		}
+		
 	</script>
 </html>

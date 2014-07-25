@@ -29,8 +29,8 @@ public class RelationDaoImp implements IRelationDao {
 	public void modifyRelation(Relation relation) {
 		//getSession().clear();
 		//essionFactory.getCurrentSession().update(relation);
-		Query query = sessionFactory.getCurrentSession().createQuery("from Relation where id=?");
-		query.setInteger(0, relation.getId());
+		Query query = sessionFactory.getCurrentSession().createQuery("from Relation where grade=?");
+		query.setInteger(0, relation.getGrade());
 		Relation costype = (Relation )query.uniqueResult();
 		costype.setRelation(relation);	
 	}

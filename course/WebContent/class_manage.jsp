@@ -239,7 +239,7 @@
 		function queryCourse()
 		{
 			var myform=document.forms[0];
-			myform.action="course/course_queryCourse";
+			myform.action="course_queryCourse";
 			myform.method="post";
 			myform.submit();
 		}

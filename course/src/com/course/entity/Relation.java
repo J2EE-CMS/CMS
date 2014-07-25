@@ -6,16 +6,9 @@ public class Relation {
 	private String devtype;
 	private String type;
 	
-	//默认构造函数
+	/*
 	public Relation(){
 		
-	}
-	
-	public void setRelation (Relation temp) {
-		this.id = temp.id;
-		this.grade = temp.grade;
-		this.devtype = temp.devtype;
-		this.type = temp.type;
 	}
 	
 	public Relation(Integer grade,String devtype,String type) {
@@ -23,6 +16,14 @@ public class Relation {
 		this.grade = grade;
 		this.devtype = devtype;
 		this.type = type;
+	}
+	*/
+	
+	public void setRelation (Relation temp) {
+		//this.id = temp.id;
+		this.grade = temp.grade;
+		this.devtype = temp.devtype;
+		this.type = temp.type;
 	}
 	
 	public Integer getGrade() {
