@@ -15,6 +15,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.course.action.CourseapplyAction;
+import com.course.entity.Course;
 import com.course.entity.Courseapply;
 
 
@@ -36,11 +37,11 @@ public class CourseapplyActionTest {
 	
 
 	
-	//@Test
+	@Test
 	public void addCourseapply() {
 		Courseapply temp = new Courseapply();
-		temp.setStatus(4);
-		temp.setC_course_name("fu");
+		temp.setStatus(2);
+		temp.setC_course_name("test3");
 		temp.setBrief_course_name("ck");
 		test.setCourseapply(temp);
 		test.addCourseapply();
@@ -99,12 +100,24 @@ public class CourseapplyActionTest {
 	    }
 	}
 	
-	@Test
+	//@Test
 	public void commitCourseapply(){
 		Courseapply temp = new Courseapply();
 		temp.setC_course_name("e");
 		test.setCourseapply(temp);
 		test.modifycommitCourseapply();
+	}
+	
+	@Test
+	public void queryCourseapproval(){
+		Courseapply temp = new Courseapply();
+		temp.setC_course_name("test1");
+		test.setCourseapply(temp);
+		test.queryCourseapproval();
+		List<Courseapply> list = test.getCourseapplys();
+		for(Courseapply cappr : list){
+			System.out.println(cappr.getC_course_name() + " " + cappr.getStatus());
+		}
 	}
 	
 }

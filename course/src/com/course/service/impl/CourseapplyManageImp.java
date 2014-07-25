@@ -57,8 +57,8 @@ public class CourseapplyManageImp implements ICourseapplyManage {
 	}
 	
 	@Override
-	public void approvalCourseapply(Courseapply courseapply){
-		courseapplyDao.approvalCourseapply(courseapply);
+	public void modifyapprovalCourseapply(Courseapply courseapply){
+		courseapplyDao.modifyapprovalCourseapply(courseapply);
 	}
 	
 	@Override

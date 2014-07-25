@@ -13,6 +13,6 @@ public interface ICourseapplyManage {
 	public List<Courseapply> queryCourseapply(Courseapply courseapply);
 	
 	public List<Courseapply> queryAllCourseapproval();
-	public void approvalCourseapply(Courseapply courseapply);
+	public void modifyapprovalCourseapply(Courseapply courseapply);
 	public List<Courseapply> queryCourseapproval(Courseapply courseapply);
 }

@@ -33,4 +33,13 @@
 		</action>
 	</package>
 	
+	
+	<package name="courseapprovalActions" namespace="/" extends="abstract_struts">
+		<action name="courseapproval_queryCourseapproval" class="courseapplyAction" method="queryCourseapproval">
+			<result name="queryCourseapproval">/class_check.jsp</result>
+			<result name="fail">/fail.jsp</result>
+			<interceptor-ref name="myInterceptor" />
+		</action>
+	</package>
+	
 </struts>

@@ -74,15 +74,15 @@ public class CourseapplyAction extends ActionSupport{
 		return "queryCourseapply";
 	}
 	
+	/*  ========  审批部分    ========  */
 	public String queryAllCourseapproval(){
 		courseapplys = new ArrayList<Courseapply>();
 		courseapplys = courseapplyManage.queryAllCourseapproval();
 		return "success";
 	}
 	
-	/*  ========  审批部分    ========  */
-	public String approvalCourseapply(){
-		courseapplyManage.approvalCourseapply(courseapply);
+	public String modifyapprovalCourseapply(){
+		courseapplyManage.modifyapprovalCourseapply(courseapply);
 		return "success";
 	}
 	

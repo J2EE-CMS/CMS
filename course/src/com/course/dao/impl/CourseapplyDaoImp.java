@@ -142,10 +142,14 @@ public class CourseapplyDaoImp implements ICourseapplyDao {
 	}
 	
 	@Override
-	public void approvalCourseapply(Courseapply courseapply){
-		if(courseapply.getStatus() == 1){
-			courseapply.setStatus(courseapply.getStatus());
+	public void modifyapprovalCourseapply(Courseapply courseapply){
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Courseapply.class);
+		criteria.add(Restrictions.eq("c_course_name", courseapply.getC_course_name()));
+		Courseapply temp = (Courseapply)criteria.uniqueResult();
+		if(temp != null){
+			temp.setStatus(courseapply.getStatus());
 		}
+		getSession().update(temp);
 	}
 	
 	
@@ -192,6 +196,8 @@ public class CourseapplyDaoImp implements ICourseapplyDao {
 		criteria.add(Restrictions.or(Restrictions.eq("status", 2),Restrictions.eq("status", 3)));
 		
 		List<Courseapply> list = criteria.list();
+		if(list != null)
+			System.out.println("error");
 		return list;
 	}
 	
