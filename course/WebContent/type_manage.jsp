@@ -1,6 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java" contentType="text/html; charset=utf-8" import="java.util.*"
     pageEncoding="utf-8"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 <!DOCTYPE html >
 <html>
 	<head>
@@ -28,7 +34,7 @@
 				<li><a href="#"><strong>课程类型</strong></a></li>
 				<li><a href="javascript:void(0);" onclick="Winopen('ADD')">新增</a></li>
 				<li><a href="javascript:void(0);" onclick="Winopen('MODIFY')">修改</a></li>
-		<!--	<li><a href="javascript:void(0);" onclick="Winopen('QUERY')">查询</a></li>   -->
+				<li><a href="javascript:void(0);" onclick="Winopen('EXPORT')">导出</a></li>
 				<li><a href="javascript:void(0);" onclick="Winopen('DELETE')">删除</a></li>
 		       	<li class="pull-right"><a href="home">返回</a></li> 
 			</ul>
@@ -55,7 +61,7 @@
 		                </tr>
 		        	</s:iterator>
 				</tbody>
-			</table>			
+			</table>
 	    </div>
 		<div id="win">
 			<form id="coursetypeform" >
@@ -126,6 +132,9 @@
 			if(str=='DELETE'){
 				$("wincommit").onclick=deleteCoursetype;
 			}
+			if(str=='EXPORT'){
+				$("wincommit").onclick=OutputToExcel;
+			}
 		}
 	
 		function WinSize() //函数：获取尺寸
@@ -177,6 +186,13 @@
 		{
 			var myform=document.forms[0];
 			myform.action="coursetype_queryCoursetype";
+			myform.method="post";
+			myform.submit();
+		}
+		function OutputToExcel()
+		{
+			var myform=document.forms[0];
+			myform.action="coursetype_QueryCoursetypeOutputToExcel";
 			myform.method="post";
 			myform.submit();
 		}

@@ -15,6 +15,7 @@
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
 		</action>
+		
 	</package>
 	
 	

@@ -84,6 +84,12 @@ public class CoursetypeActionTest {
 		test.modifyCoursetype();
 	}
 	
+	
+	@Test
+	public void getExcel(){
+		
+	}
+	
 	/*  -----------------  ¹¦ÄÜ²âÊÔ½áÊø     --------------------  */
 	
 	

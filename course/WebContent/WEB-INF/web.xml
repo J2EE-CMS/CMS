@@ -68,6 +68,10 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
+	 <mime-mapping>
+        <extension>xls</extension>
+        <mime-type>application/vnd.ms-excel</mime-type>
+    </mime-mapping>
 
 	<!-- 配置spring -->
 	<listener>

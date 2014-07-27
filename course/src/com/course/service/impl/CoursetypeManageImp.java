@@ -8,6 +8,14 @@ import com.course.dao.ICoursetypeDao;
 import com.course.entity.Coursetype;
 import com.course.service.ICoursetypeManage;
 
+import java.io.*;
+
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+
+
 public class CoursetypeManageImp implements ICoursetypeManage {
 	
 	@Resource

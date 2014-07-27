@@ -1,5 +1,6 @@
 package com.course.dao.impl;
 
+import java.io.InputStream;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -69,8 +70,5 @@ public class CoursetypeDaoImp implements ICoursetypeDao {
 		Query query = sessionFactory.getCurrentSession().createQuery("from Coursetype");
 		return query.list();
 	}
-	
-
-
 
 }
