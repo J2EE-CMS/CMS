@@ -34,7 +34,7 @@
 				<li><a href="#"><strong>课程类型</strong></a></li>
 				<li><a href="javascript:void(0);" onclick="Winopen('ADD')">新增</a></li>
 				<li><a href="javascript:void(0);" onclick="Winopen('MODIFY')">修改</a></li>
-				<li><a href="javascript:void(0);" onclick="Winopen('EXPORT')">导出</a></li>
+				<li><a href="javascript:void(0);" onclick="OutputToExcel()">导出</a></li>
 				<li><a href="javascript:void(0);" onclick="Winopen('DELETE')">删除</a></li>
 		       	<li class="pull-right"><a href="home">返回</a></li> 
 			</ul>
