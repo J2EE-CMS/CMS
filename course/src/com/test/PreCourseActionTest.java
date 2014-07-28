@@ -9,7 +9,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.course.action.PreCourseAction;
-import com.course.entity.Course;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
@@ -27,34 +26,28 @@ public class PreCourseActionTest {
 	// @Test
 	public void testAddPreCourse() {
 		preCourseAction.setRelationString("A!B!C&D");
-		preCourseAction.setOp("&&");
-		Course cos = new Course();
-		cos.setId(9);
-		preCourseAction.setCos(cos);
+		preCourseAction.setOp("||");
+		preCourseAction.setCosid(5);
 		preCourseAction.addPreCourse();
 	}
 
 	// @Test
 	public void queryPreCourseResultString() {
-		Course cos = new Course();
-		cos.setId(9);
-		preCourseAction.setCos(cos);
+		preCourseAction.setCosid(9);
+		preCourseAction.queryPreCourse();
 		System.out.println(preCourseAction.queryPreCourseResultString());
 	}
 
 	// @Test
 	public void testQueryPreCourse() {
-		Course cos = new Course();
-		cos.setId(3);
-		preCourseAction.setCos(cos);
+		preCourseAction.setCosid(9);
 		preCourseAction.queryPreCourse();
+		// System.out.println(preCourseAction.getPcoslist().size());
 	}
 
-	// @Test
+	@Test
 	public void testDeletePreCourse() {
-		Course cos = new Course();
-		cos.setId(3);
-		preCourseAction.setCos(cos);
+		preCourseAction.setCosid(0);
 		preCourseAction.deletePreCourse();
 	}
 
@@ -62,30 +55,24 @@ public class PreCourseActionTest {
 	public void testModifyPreCourse() {
 		preCourseAction.setRelationString("aa&bb!cc&cd");
 		preCourseAction.setOp("|");
-		Course cos = new Course();
-		cos.setId(4);
-		preCourseAction.setCos(cos);
+		preCourseAction.setCosid(9);
 		preCourseAction.modifyPreCourse();
 	}
 
 	// @Test
 	public void testApplyPreCourse() {
 		System.out.println("applyTest");
-		preCourseAction.setRelationString("A!B!C|D");
-		preCourseAction.setOp("&&");
-		Course cos = new Course();
-		cos.setId(2);
-		preCourseAction.setCos(cos);
+		preCourseAction.setRelationString("courseA!courseC|courseD");
+		preCourseAction.setOp("&");
+
+		preCourseAction.setCosid(1);
 		preCourseAction.applyPreCourse();
 	}
 
-	@Test
+	// @Test
 	public void testApprovePreCourse() {
-		System.out.println("approveTest");
-		Course cos = new Course();
-		cos.setId(2);
 		preCourseAction.setIsApprove(-1);
-		preCourseAction.setCos(cos);
+		preCourseAction.setCosid(1);
 		preCourseAction.approvePreCourse();
 
 	}
