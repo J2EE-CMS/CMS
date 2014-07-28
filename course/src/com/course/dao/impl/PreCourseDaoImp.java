@@ -48,8 +48,16 @@ public class PreCourseDaoImp implements IPreCourseDao {
 		Criteria crit = getSession().createCriteria(PreCourse.class);
 		if (cos != null) {
 			crit.add(Restrictions.eq("course", cos.getId()));
+			// System.out.println(cos.getId());
 			// crit.add(Restrictions.eq("status",1));
 		}
+		List<PreCourse> list = crit.list();
+		return list;
+	}
+
+	@Override
+	public List<PreCourse> queryAllPreCourseRelations() {
+		Criteria crit = getSession().createCriteria(PreCourse.class);
 		List<PreCourse> list = crit.list();
 		return list;
 	}
