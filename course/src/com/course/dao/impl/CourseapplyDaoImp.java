@@ -83,8 +83,8 @@ public class CourseapplyDaoImp implements ICourseapplyDao {
 		System.out.println(temp.getId()+" "+temp.getBrief_course_name()+"  "+temp.getStatus());
 		getSession().update(temp);
 	}
-	
 
+	
 	@Override
 	public List<Courseapply> queryCourseapply(Courseapply courseapply) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Courseapply.class);
@@ -131,6 +131,8 @@ public class CourseapplyDaoImp implements ICourseapplyDao {
 		return list;
 		
 	}
+
+	
 	
 	/*  ========  审批      ========  */
 	@Override

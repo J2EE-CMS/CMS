@@ -9,9 +9,5 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="E:/Server/poi-3.10-FINAL/lib/commons-codec-1.5.jar"/>
-	<classpathentry kind="lib" path="E:/Server/poi-3.10-FINAL/lib/commons-logging-1.1.jar"/>
-	<classpathentry kind="lib" path="E:/Server/poi-3.10-FINAL/lib/junit-4.11.jar"/>
-	<classpathentry kind="lib" path="E:/Server/poi-3.10-FINAL/lib/log4j-1.2.13.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

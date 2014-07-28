@@ -132,9 +132,6 @@
 			if(str=='DELETE'){
 				$("wincommit").onclick=deleteCoursetype;
 			}
-			if(str=='EXPORT'){
-				$("wincommit").onclick=OutputToExcel;
-			}
 		}
 	
 		function WinSize() //函数：获取尺寸

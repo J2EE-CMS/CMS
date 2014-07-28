@@ -26,8 +26,9 @@
 				<li><a href="javascript:void(0);" onclick="Winopen('ADD')">新增</a></li>
 				<li><a href="javascript:void(0);" onclick="Winopen('MODIFY')">修改</a></li>
 				<li><a href="javascript:void(0);" onclick="Winopen('QUERY')">查询</a></li>
+				<li><a href="javascript:void(0);" onclick="OutputToExcel()">导出所有数据</a></li>
 				<li><a href="javascript:void(0);" onclick="Winopen('DELETE')">删除</a></li>
-				<li><a href="#">导出</a></li>	
+				<li><a href="javascript:void(0);" onclick="Winopen('EXPORT')">导出</a></li>
 				<li><a href="javascript:void(0);" onclick="Winopen('COMMIT')">提交</a></li>	
 				<li class="pull-right"><a href="home">返回</a></li> 
 			</ul>
@@ -238,6 +239,9 @@
 			if(str=='DELETE'){
 				$("wincommit").onclick=deleteCourseapply;
 			}
+			if(str=='EXPORT'){
+				$("wincommit").onclick=OutputToExcel;
+			}
 			if(str=='COMMIT'){
 				$("wincommit").onclick=modifycommitCourseapply;
 			}
@@ -303,6 +307,12 @@
 			myform.method="post";
 			myform.submit();
 		}
-		
+		function OutputToExcel()
+		{
+			var myform=document.forms[0];
+			myform.action="courseapply_QueryCourseapplyOutputToExcel";
+			myform.method="post";
+			myform.submit();
+		}
 	</script>
 </html>

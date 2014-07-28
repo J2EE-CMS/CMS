@@ -15,7 +15,9 @@ coursemanage
 									1、「课程类别、课程类别细类、课程类别细类模块、课程类别与培养类别的对应关系、课程库管理、课程的申请」部分增删改查，集成测试已通过。
 									2、课程库审批和先修课程申请和审批部分的代码实现
 	2014.7.25		 第九次更新：UI修改 &  新增课程库申请部分修复无法“提交”的问题
-	2014.7.25					 更新课程库审批模块</pre>
+	2014.7.25					 更新课程库审批模块
+	2014.7.25		 第十次更新：先修课程：增加返回所有先修课程方法  &  以字符串输出
+								 增加导出功能(暂定)</pre>
 <br />
 <br />
 
@@ -28,6 +30,7 @@ $ tree .
 course.
 │  .classpath
 │  .project
+│  
 │  
 ├─.settings
 │      .jsdtscope
@@ -99,26 +102,29 @@ course.
 │      │  │  ├─interceptor
 │      │  │  │      CheckLogin.class
 │      │  │  │      
-│      │  │  └─service
-│      │  │      │  ICourseapplyManage.class
-│      │  │      │  ICourseManage.class
-│      │  │      │  ICoursetypeManage.class
-│      │  │      │  IPreCourseManage.class
-│      │  │      │  IRelationManage.class
-│      │  │      │  ISubtypeManage.class
-│      │  │      │  ISubtypemoduleManage.class
-│      │  │      │  IUserManage.class
-│      │  │      │  
-│      │  │      └─impl
-│      │  │              CourseapplyManageImp.class
-│      │  │              CourseManageImp.class
-│      │  │              CoursetypeManageImp.class
-│      │  │              PreCourseManageImp.class
-│      │  │              RelationManageImp.class
-│      │  │              SubtypeManageImp.class
-│      │  │              SubtypemoduleManageImp.class
-│      │  │              UserManageImp.class
-│      │  │              
+│      │  │  ├─service
+│      │  │  │  │  ICourseapplyManage.class
+│      │  │  │  │  ICourseManage.class
+│      │  │  │  │  ICoursetypeManage.class
+│      │  │  │  │  IPreCourseManage.class
+│      │  │  │  │  IRelationManage.class
+│      │  │  │  │  ISubtypeManage.class
+│      │  │  │  │  ISubtypemoduleManage.class
+│      │  │  │  │  IUserManage.class
+│      │  │  │  │  
+│      │  │  │  └─impl
+│      │  │  │          CourseapplyManageImp.class
+│      │  │  │          CourseManageImp.class
+│      │  │  │          CoursetypeManageImp.class
+│      │  │  │          PreCourseManageImp.class
+│      │  │  │          RelationManageImp.class
+│      │  │  │          SubtypeManageImp.class
+│      │  │  │          SubtypemoduleManageImp.class
+│      │  │  │          UserManageImp.class
+│      │  │  │          
+│      │  │  └─util
+│      │  │          ExportExcelUtil.class
+│      │  │          
 │      │  └─test
 │      │          CourseapplyActionTest.class
 │      │          CoursetypeActionTest.class
@@ -200,26 +206,29 @@ course.
 │  │  │  ├─interceptor
 │  │  │  │      CheckLogin.java
 │  │  │  │      
-│  │  │  └─service
-│  │  │      │  ICourseapplyManage.java
-│  │  │      │  ICourseManage.java
-│  │  │      │  ICoursetypeManage.java
-│  │  │      │  IPreCourseManage.java
-│  │  │      │  IRelationManage.java
-│  │  │      │  ISubtypeManage.java
-│  │  │      │  ISubtypemoduleManage.java
-│  │  │      │  IUserManage.java
-│  │  │      │  
-│  │  │      └─impl
-│  │  │              CourseapplyManageImp.java
-│  │  │              CourseManageImp.java
-│  │  │              CoursetypeManageImp.java
-│  │  │              PreCourseManageImp.java
-│  │  │              RelationManageImp.java
-│  │  │              SubtypeManageImp.java
-│  │  │              SubtypemoduleManageImp.java
-│  │  │              UserManageImp.java
-│  │  │              
+│  │  │  ├─service
+│  │  │  │  │  ICourseapplyManage.java
+│  │  │  │  │  ICourseManage.java
+│  │  │  │  │  ICoursetypeManage.java
+│  │  │  │  │  IPreCourseManage.java
+│  │  │  │  │  IRelationManage.java
+│  │  │  │  │  ISubtypeManage.java
+│  │  │  │  │  ISubtypemoduleManage.java
+│  │  │  │  │  IUserManage.java
+│  │  │  │  │  
+│  │  │  │  └─impl
+│  │  │  │          CourseapplyManageImp.java
+│  │  │  │          CourseManageImp.java
+│  │  │  │          CoursetypeManageImp.java
+│  │  │  │          PreCourseManageImp.java
+│  │  │  │          RelationManageImp.java
+│  │  │  │          SubtypeManageImp.java
+│  │  │  │          SubtypemoduleManageImp.java
+│  │  │  │          UserManageImp.java
+│  │  │  │          
+│  │  │  └─util
+│  │  │          ExportExcelUtil.java
+│  │  │          
 │  │  └─test
 │  │          CourseapplyActionTest.java
 │  │          CoursetypeActionTest.java
@@ -280,6 +289,7 @@ course.
                 avro-1.6.3.jar
                 c3p0-0.9.2.1.jar
                 cglib-nodep-2.1_3.jar
+                commons-codec-1.5.jar
                 commons-dbcp.jar
                 commons-fileupload-1.3.1.jar
                 commons-io-2.2.jar
@@ -300,12 +310,19 @@ course.
                 jboss-logging-3.1.0.GA.jar
                 jboss-transaction-api_1.1_spec-1.0.1.Final.jar
                 jta-1.1.jar
+                junit-4.11.jar
+                log4j-1.2.13.jar
                 lucene-core-3.6.2.jar
                 mchange-commons-java-0.2.3.4.jar
                 mysql-connector-java-5.1.13-bin.jar
                 ognl-3.0.6.jar
                 ojdbc14.jar
                 paranamer-2.3.jar
+                poi-3.10-FINAL-20140208.jar
+                poi-excelant-3.10-FINAL-20140208.jar
+                poi-ooxml-3.10-FINAL-20140208.jar
+                poi-ooxml-schemas-3.10-FINAL-20140208.jar
+                poi-scratchpad-3.10-FINAL-20140208.jar
                 servlet-api.jar
                 slf4j-api-1.6.1.jar
                 snappy-java-1.0.4.1.jar

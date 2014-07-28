@@ -19,6 +19,16 @@ public class CourseapplyAction extends ActionSupport{
 	private Courseapply courseapply;
 	List<Courseapply> courseapplys;
 	
+	private String Cname;
+	
+	public String getCname() {
+		return Cname;
+	}
+
+	public void setCname(String cname) {
+		Cname = cname;
+	}
+
 	@Resource
 	private ICourseapplyManage courseapplyManage;
 	
@@ -82,6 +92,7 @@ public class CourseapplyAction extends ActionSupport{
 	}
 	
 	public String QueryCourseapplyOutputToExcel(){
+		
 		courseapplys = new ArrayList<Courseapply>();
 		courseapplys = courseapplyManage.queryCourseapply(courseapply);
 		
