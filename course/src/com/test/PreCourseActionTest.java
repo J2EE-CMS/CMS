@@ -31,14 +31,7 @@ public class PreCourseActionTest {
 		preCourseAction.addPreCourse();
 	}
 
-	// @Test
-	public void queryPreCourseResultString() {
-		preCourseAction.setCosid(9);
-		preCourseAction.queryPreCourse();
-		System.out.println(preCourseAction.queryPreCourseResultString());
-	}
-
-	// @Test
+	@Test
 	public void testQueryPreCourse() {
 		preCourseAction.setCosid(9);
 		preCourseAction.queryPreCourse();
@@ -46,6 +39,12 @@ public class PreCourseActionTest {
 	}
 
 	@Test
+	public void testqueryAllPreCourseRelations() {
+		preCourseAction.queryAllPreCourseRelations();
+	}
+
+	// @Test
+
 	public void testDeletePreCourse() {
 		preCourseAction.setCosid(0);
 		preCourseAction.deletePreCourse();

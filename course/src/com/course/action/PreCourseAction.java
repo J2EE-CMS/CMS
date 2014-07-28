@@ -108,8 +108,7 @@ public class PreCourseAction {
 			int sn = 1;// 每组的顺序号
 			// 提取每组的课程之间的操作符
 			for (int i = 0; i < relationsGroup[j].length(); i++) {
-				if (relationsGroup[j].charAt(i) == '&'
-						|| relationsGroup[j].charAt(i) == '|') {
+				if (relationsGroup[j].charAt(i) == '&' || relationsGroup[j].charAt(i) == '|') {
 					optemp.append(relationsGroup[j].charAt(i));
 				}
 			}
@@ -183,8 +182,7 @@ public class PreCourseAction {
 		cos.setId(cosid);
 		pcoslist = pcourseManage.queryPreCourse(cos);
 		for (int i = 0; i < pcoslist.size(); i++) {
-			System.out.println(pcoslist.get(i).getPcos() + ' '
-					+ pcoslist.get(i).getOp());
+			System.out.println(pcoslist.get(i).getPcos() + ' ' + pcoslist.get(i).getOp());
 		}
 
 		pcourseManage.deletePreCourse(cos);
@@ -194,26 +192,25 @@ public class PreCourseAction {
 		}
 	}
 
-	public void queryPreCourse() {
+	public String queryPreCourse() {
 		System.out.println("------queryPreCourseAction------");
 		pcoslist = new ArrayList<PreCourse>();
 		cos = new Course();
 		cos.setId(cosid);
 		pcoslist = pcourseManage.queryPreCourse(cos);
+		// System.out.println(pcoslist.size());
 		/*
 		 * for (int i = 0; i < pcoslist.size(); i++) {
 		 * System.out.println(pcoslist.get(i).getPcos() + ' ' +
 		 * pcoslist.get(i).getOp()); }
 		 */
+		queryPreCourseResultString();
+		return "success";
 	}
 
-	public String queryPreCourseResultString() {
-		pcoslist = new ArrayList<PreCourse>();
-		cos = new Course();
-		cos.setId(cosid);
-		pcoslist = pcourseManage.queryPreCourse(cos);
+	public void queryPreCourseResultString() {
 		if (pcoslist.isEmpty())
-			return null;
+			return;
 
 		PreCourse lastrecord = new PreCourse();
 		lastrecord.setGroup_number(-1);
@@ -222,27 +219,29 @@ public class PreCourseAction {
 		res = "";
 
 		for (int i = 0; i < pcoslist.size(); i++) {
+
 			if (lastrecord.getGroup_number() == -1) {
 				currentrecord = pcoslist.get(i);
-				res += "( " + currentrecord.getPcos() + " ";
+				res += "Course " + currentrecord.getCourse() + ": ( " + currentrecord.getPcos() + " ";
 				lastrecord = pcoslist.get(i);
 			} else {
 				currentrecord = pcoslist.get(i);
-				if (currentrecord.getGroup_number() != lastrecord
-						.getGroup_number()) {
-					res += ") " + ((lastrecord.getOp() == 1) ? "and" : "or")
-							+ " ( " + currentrecord.getPcos() + " ";
+				if (currentrecord.getGroup_number() != lastrecord.getGroup_number()) {
+					res += ") " + ((lastrecord.getOp() == 1) ? "and" : "or") + " ( " + currentrecord.getPcos() + " ";
 				} else {
-					res += ((lastrecord.getOp() == 1) ? "and" : "or") + " "
-							+ currentrecord.getPcos() + " ";
+					res += ((lastrecord.getOp() == 1) ? "and" : "or") + " " + currentrecord.getPcos() + " ";
 				}
 
 			}
 			lastrecord = currentrecord;
+			if (lastrecord.getOp() == -1) {
+				res += ")\n";
+				lastrecord.setGroup_number(-1);
+			}
 		}
-		res += ")";
+		// res += ")";
 		System.out.println(res);
-		return "success";
+
 	}
 
 	public void deletePreCourse() {
@@ -260,8 +259,10 @@ public class PreCourseAction {
 		this.addPreCourse();
 	}
 
-	public void queryAllPreCourseRelations() {
+	public String queryAllPreCourseRelations() {
 		System.out.println("------queryAllPreCourse------");
 		pcoslist = pcourseManage.queryAllPreCourseRelations();
+		queryPreCourseResultString();
+		return "success";
 	}
 }
