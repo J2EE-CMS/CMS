@@ -16,8 +16,18 @@ public class PreCourseAction {
 	private Course cos;
 	private int isApprove;
 	List<PreCourse> pcoslist;
+	private String res;
+
 	@Resource
 	private IPreCourseManage pcourseManage;
+
+	public String getRes() {
+		return res;
+	}
+
+	public void setRes(String res) {
+		this.res = res;
+	}
 
 	public int getIsApprove() {
 		return isApprove;
@@ -98,8 +108,7 @@ public class PreCourseAction {
 			int sn = 1;// 每组的顺序号
 			// 提取每组的课程之间的操作符
 			for (int i = 0; i < relationsGroup[j].length(); i++) {
-				if (relationsGroup[j].charAt(i) == '&'
-						|| relationsGroup[j].charAt(i) == '|') {
+				if (relationsGroup[j].charAt(i) == '&' || relationsGroup[j].charAt(i) == '|') {
 					optemp.append(relationsGroup[j].charAt(i));
 				}
 			}
@@ -169,12 +178,11 @@ public class PreCourseAction {
 		System.out.println("------approvePreCourseAction------");
 
 		pcoslist = new ArrayList<PreCourse>();
-
+		cos = new Course();
 		cos.setId(cosid);
 		pcoslist = pcourseManage.queryPreCourse(cos);
 		for (int i = 0; i < pcoslist.size(); i++) {
-			System.out.println(pcoslist.get(i).getPcos() + ' '
-					+ pcoslist.get(i).getOp());
+			System.out.println(pcoslist.get(i).getPcos() + ' ' + pcoslist.get(i).getOp());
 		}
 
 		pcourseManage.deletePreCourse(cos);
@@ -184,64 +192,88 @@ public class PreCourseAction {
 		}
 	}
 
-	public void queryPreCourse() {
-		System.out.println("------queryPerCourseAction------");
+	public String queryPreCourse() {
+		System.out.println("------queryPreCourseAction------");
 		pcoslist = new ArrayList<PreCourse>();
+		cos = new Course();
 		cos.setId(cosid);
 		pcoslist = pcourseManage.queryPreCourse(cos);
+		// System.out.println(pcoslist.size());
 		/*
 		 * for (int i = 0; i < pcoslist.size(); i++) {
 		 * System.out.println(pcoslist.get(i).getPcos() + ' ' +
 		 * pcoslist.get(i).getOp()); }
 		 */
+		queryPreCourseResultString();
+		return "success";
 	}
 
-	public String queryPreCourseResultString() {
-		pcoslist = new ArrayList<PreCourse>();
-		cos.setId(cosid);
-		pcoslist = pcourseManage.queryPreCourse(cos);
+	public void queryPreCourseResultString() {
 		if (pcoslist.isEmpty())
-			return null;
+			return;
 
 		PreCourse lastrecord = new PreCourse();
 		lastrecord.setGroup_number(-1);
 		;
 		PreCourse currentrecord = new PreCourse();
-		String res = "";
-
+		res = "";
+		StringBuffer resbuff = new StringBuffer();
 		for (int i = 0; i < pcoslist.size(); i++) {
+
 			if (lastrecord.getGroup_number() == -1) {
 				currentrecord = pcoslist.get(i);
-				res += "( " + currentrecord.getPcos() + " ";
+				// res += "Course " + currentrecord.getCourse() + ": ( " +
+				// currentrecord.getPcos() + " ";
+				resbuff.append("Course ").append(currentrecord.getCourse()).append(": ( ")
+						.append(currentrecord.getPcos()).append(" ");
 				lastrecord = pcoslist.get(i);
 			} else {
 				currentrecord = pcoslist.get(i);
-				if (currentrecord.getGroup_number() != lastrecord
-						.getGroup_number()) {
-					res += ") " + ((lastrecord.getOp() == 1) ? "and" : "or")
-							+ " ( " + currentrecord.getPcos() + " ";
+				if (currentrecord.getGroup_number() != lastrecord.getGroup_number()) {
+					// res += ") " + ((lastrecord.getOp() == 1) ? "and" : "or")
+					// + " ( " + currentrecord.getPcos() + " ";
+					resbuff.append(") ").append((lastrecord.getOp() == 1) ? "and" : "or").append(" ( ")
+							.append(currentrecord.getPcos()).append(" ");
 				} else {
-					res += ((lastrecord.getOp() == 1) ? "and" : "or") + " "
-							+ currentrecord.getPcos() + " ";
+					// res += ((lastrecord.getOp() == 1) ? "and" : "or") + " " +
+					// currentrecord.getPcos() + " ";
+					resbuff.append((lastrecord.getOp() == 1) ? "and" : "or").append(" ")
+							.append(currentrecord.getPcos()).append(" ");
 				}
 
 			}
 			lastrecord = currentrecord;
+			if (lastrecord.getOp() == -1) {
+				// res += ")\n";
+				resbuff.append(")\n");
+				lastrecord.setGroup_number(-1);
+			}
 		}
-		res += ")";
-		return res;
+		// res += ")";
+		res = resbuff.toString();
+		System.out.println(res);
+
 	}
 
 	public void deletePreCourse() {
 		System.out.println("------deletePreCourseAction------");
+		cos = new Course();
 		cos.setId(cosid);
 		pcourseManage.deletePreCourse(cos);
 	}
 
 	public void modifyPreCourse() {
 		System.out.println("------modifyPreCourse------");
+		cos = new Course();
 		cos.setId(cosid);
 		pcourseManage.deletePreCourse(cos);
 		this.addPreCourse();
+	}
+
+	public String queryAllPreCourseRelations() {
+		System.out.println("------queryAllPreCourse------");
+		pcoslist = pcourseManage.queryAllPreCourseRelations();
+		queryPreCourseResultString();
+		return "success";
 	}
 }
