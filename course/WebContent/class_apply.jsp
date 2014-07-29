@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
+﻿<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html>
@@ -26,9 +26,8 @@
 				<li><a href="javascript:void(0);" onclick="Winopen('ADD')">新增</a></li>
 				<li><a href="javascript:void(0);" onclick="Winopen('MODIFY')">修改</a></li>
 				<li><a href="javascript:void(0);" onclick="Winopen('QUERY')">查询</a></li>
-				<li><a href="javascript:void(0);" onclick="OutputToExcel()">导出所有数据</a></li>
+				<li><a href="javascript:void(0);" onclick="OutputToExcel()">导出</a></li>
 				<li><a href="javascript:void(0);" onclick="Winopen('DELETE')">删除</a></li>
-				<li><a href="javascript:void(0);" onclick="Winopen('EXPORT')">导出</a></li>
 				<li><a href="javascript:void(0);" onclick="Winopen('COMMIT')">提交</a></li>	
 				<li class="pull-right"><a href="home">返回</a></li> 
 			</ul>
@@ -156,60 +155,6 @@
 			</form>
 		</div>
 		<div id="fade"></div>
-		<!--  
-		<div id="found" class="table-responsive">
-			<table class="table table-hover table-bordered">
-				<thead>
-		            <tr>
-		            	<th class="text-center">院系课程号</th>
-		                <th class="text-center">课程中文名</th>
-						<th class="text-center">课程英文名</th>
-						<th class="text-center">课程简称</th>
-						<th class="text-center">开设单位</th>
-						<th class="text-center">学分</th>						
-						<th class="text-center">课程细类模块</th>
-					</tr>
-	            </thead>
-	            <tbody class="text-center">
-		            <s:iterator value="courseapplys" var="courseapply">
-		                <tr>
-		                    <td><s:property value="#courseapply.institute_course_id"/></td>
-		                    <td><s:property value="#courseapply.c_course_name"/></td>
-		                    <td><s:property value="courseapply.e_course_name"/></td>
-		                    <td><s:property value="#courseapply.brief_course_name"/></td>
-		                    <td><s:property value="#ccourseapply.aculty"/></td>
-		                    <td><s:property value="#courseapply.credit"/></td>
-		                    <td><s:property value="#courseapply.sub_course_type_module"/></td>
-		                </tr>
-		        	</s:iterator>
-				</tbody>
-				<thead>
-		            <tr>
-						<th class="text-center">课程细类</th>
-						<th class="text-center">课程类别</th>
-						<th class="text-center">总学时</th>
-						<th class="text-center">总学时描述</th>
-						<th class="text-center">简介</th>
-						<th class="text-center">课程负责人</th>
-						<th class="text-center">是否学位课</th>
-		            </tr>
-	            </thead>
-				<tbody class="text-center">
-	            	<s:iterator value="courseapplys" var="courseapply">
-	                	<tr>
-		                    <td><s:property value="#courseapply.sub_course_type"/></td>
-		                    <td><s:property value="#courseapply.course_type"/></td>
-		                    <td><s:property value="#courseapply.course_time"/></td>
-		                    <td><s:property value="#courseapply.course_time_info"/></td>
-		                    <td><s:property value="#courseapply.course_info"/></td>
-		                    <td><s:property value="#courseapply.course_head"/></td>
-		                    <td><s:property value="#courseapply.degree"/></td>
-		                </tr>
-		            </s:iterator>
-	            </tbody>
-			</table>
-		</div>
-		-->
 		</body>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -222,7 +167,7 @@
 		function Winopen(str)
 		{
 			var win=new WinSize();
-			var Tip=$("fade");
+			var Tip=document.getElementById("fade");
 			Tip.style.width=win.W+"px";
 			Tip.style.height=win.H+"px";
 			$("fade").style.display="block";
@@ -238,9 +183,6 @@
 			}
 			if(str=='DELETE'){
 				$("wincommit").onclick=deleteCourseapply;
-			}
-			if(str=='EXPORT'){
-				$("wincommit").onclick=OutputToExcel;
 			}
 			if(str=='COMMIT'){
 				$("wincommit").onclick=modifycommitCourseapply;

@@ -26,7 +26,6 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class CoursetypeAction extends ActionSupport  {
 	
-	private InputStream excelFile;
 	private Coursetype coursetype;
 	private List<Coursetype> coursetypes;
 	
@@ -84,20 +83,22 @@ public class CoursetypeAction extends ActionSupport  {
 	
 	public String getAllCoursetypes(){
 		coursetypes = coursetypeManage.getAllCoursetypes();
+		ActionContext.getContext().getSession().put("table",coursetypes);
 		return "allcoursetype";
 	}
 	
 	
 	public String QueryCoursetypeOutputToExcel(){
-		coursetypes = new ArrayList<Coursetype>();
-		coursetypes = coursetypeManage.getAllCoursetypes();
+		List<Coursetype> tem = (List<Coursetype>)ActionContext.getContext().getSession().get("table");
+		//coursetypes = new ArrayList<Coursetype>();
+		//coursetypes = coursetypeManage.getAllCoursetypes();
 		
 		ExportExcelUtil ex = new ExportExcelUtil();
         String title = "课程类别"; 
         String[] headers = { "序号","课程类别码","课程类别","课程性质","是否需要重考","是否需要重修"};
         List<String[]> dataset = new ArrayList<String[]>(); 
-        for(int i=0;i<coursetypes.size();i++) {
-        	Coursetype temp = coursetypes.get(i); 
+        for(int i=0;i<tem.size();i++) {
+        	Coursetype temp = tem.get(i); 
         	dataset.add(new String[]{temp.getId() + "",temp.getTypecore()+ "",temp.getType()+ "",temp.getQuality()+ "",temp.getReexamine()+ "",temp.getRetake()});
         }
         /*

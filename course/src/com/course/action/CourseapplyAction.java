@@ -13,6 +13,7 @@ import com.course.entity.Courseapply;
 import com.course.entity.Coursetype;
 import com.course.service.ICourseapplyManage;
 import com.course.util.ExportExcelUtil;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CourseapplyAction extends ActionSupport{
@@ -76,6 +77,7 @@ public class CourseapplyAction extends ActionSupport{
 	public String queryAllCourseapply(){
 		courseapplys = new ArrayList<Courseapply>();
 		courseapplys = courseapplyManage.queryAllCourseapply();
+		ActionContext.getContext().getSession().put("table",courseapplys);
 		return "allcourseapply";
 	}
 
@@ -88,20 +90,21 @@ public class CourseapplyAction extends ActionSupport{
 	public String queryCourseapply(){
 		courseapplys = new ArrayList<Courseapply>();
 		courseapplys = courseapplyManage.queryCourseapply(courseapply);
+		ActionContext.getContext().getSession().put("table",courseapplys);
 		return "queryCourseapply";
 	}
 	
 	public String QueryCourseapplyOutputToExcel(){
-		
-		courseapplys = new ArrayList<Courseapply>();
-		courseapplys = courseapplyManage.queryCourseapply(courseapply);
+		List<Courseapply> tem = (List<Courseapply>)ActionContext.getContext().getSession().get("table");
+		//courseapplys = new ArrayList<Courseapply>();
+		//courseapplys = courseapplyManage.queryCourseapply(courseapply);
 		
 		ExportExcelUtil ex = new ExportExcelUtil();
 		String title = "课程库申请";
 		String[] headers = { "院系课程号","课程中文名","课程英文名","课程简称","开设单位","学分","课程细类模块","课程细类","课程类别","总学时","总学时描述","简介","课程负责人","是否学位课"};
         List<String[]> dataset = new ArrayList<String[]>(); 
-        for(int i=0;i<courseapplys.size();i++) {
-        	Courseapply temp = courseapplys.get(i); 
+        for(int i=0;i<tem.size();i++) {
+        	Courseapply temp = tem.get(i); 
         	dataset.add(new String[]{temp.getInstitute_course_id() + "",temp.getC_course_name()+ "",temp.getE_course_name()+ "",temp.getBrief_course_name()+ "",temp.getFaculty()+ temp.getCredit() + temp.getSub_course_type_module() + temp.getSub_course_type() + temp.getCourse_type() + "",temp.getCourse_time() + "",temp.getCourse_time_info()+"",temp.getCourse_info()+"",temp.getCourse_head()+temp.isDegree()});
         }
         /*
@@ -145,6 +148,7 @@ public class CourseapplyAction extends ActionSupport{
 	public String queryAllCourseapproval(){
 		courseapplys = new ArrayList<Courseapply>();
 		courseapplys = courseapplyManage.queryAllCourseapproval();
+		ActionContext.getContext().getSession().put("table",courseapplys);
 		return "success";
 	}
 	
@@ -156,19 +160,19 @@ public class CourseapplyAction extends ActionSupport{
 	public String queryCourseapproval(){
 		courseapplys = new ArrayList<Courseapply>();
 		courseapplys = courseapplyManage.queryCourseapproval(courseapply);
+		ActionContext.getContext().getSession().put("table",courseapplys);
 		return "queryCourseapproval";
 	}
 	
 	public String QueryCourseapprovalOutputToExcel(){
-		courseapplys = new ArrayList<Courseapply>();
-		courseapplys = courseapplyManage.queryCourseapproval(courseapply);
+		List<Courseapply> tem = (List<Courseapply>)ActionContext.getContext().getSession().get("table");
 		
 		ExportExcelUtil ex = new ExportExcelUtil();
 		String title = "课程库审批";
 		String[] headers = { "院系课程号","课程中文名","课程英文名","课程简称","开设单位","学分","课程细类模块","课程细类","课程类别","总学时","总学时描述","简介","课程负责人","是否学位课"};
         List<String[]> dataset = new ArrayList<String[]>(); 
-        for(int i=0;i<courseapplys.size();i++) {
-        	Courseapply temp = courseapplys.get(i); 
+        for(int i=0;i<tem.size();i++) {
+        	Courseapply temp = tem.get(i); 
         	dataset.add(new String[]{temp.getInstitute_course_id() + "",temp.getC_course_name()+ "",temp.getE_course_name()+ "",temp.getBrief_course_name()+ "",temp.getFaculty()+ temp.getCredit() + temp.getSub_course_type_module() + temp.getSub_course_type() + temp.getCourse_type() + "",temp.getCourse_time() + "",temp.getCourse_time_info()+"",temp.getCourse_info()+"",temp.getCourse_head()+temp.isDegree()});
         }
         /*
