@@ -27,33 +27,16 @@
 				<li><a href="javascript:void(0);" onclick="Winopen('QUERY')">查询</a></li>
 				<li class="pull-right"><a href="home">返回</a></li> 
 			</ul>
-			<table class="table table-hover table-bordered">
+			<table id="show" class="table table-hover table-bordered">
 				<thead>
 		            <tr>
-		            	<th class="text-center">院系课程号</th>
 		                <th class="text-center">课程中文名</th>
+		            	<th class="text-center">院系课程号</th>
 						<th class="text-center">课程英文名</th>
 						<th class="text-center">课程简称</th>
 						<th class="text-center">开设单位</th>
 						<th class="text-center">学分</th>						
 						<th class="text-center">课程细类模块</th>
-					</tr>
-	            </thead>
-	            <tbody class="text-center">
-		            <s:iterator value="courseapplys" var="courseapply">
-		                <tr>
-		                    <td><s:property value="#courseapply.institute_course_id"/></td>
-		                    <td><s:property value="#courseapply.c_course_name"/></td>
-		                    <td><s:property value="#courseapply.e_course_name"/></td>
-		                    <td><s:property value="#courseapply.brief_course_name"/></td>
-		                    <td><s:property value="#courseapply.faculty"/></td>
-		                    <td><s:property value="#courseapply.credit"/></td>
-		                    <td><s:property value="#courseapply.sub_course_type_module"/></td>
-		                </tr>
-		        	</s:iterator>
-				</tbody>
-				<thead>
-		            <tr>
 						<th class="text-center">课程细类</th>
 						<th class="text-center">课程类别</th>
 						<th class="text-center">总学时</th>
@@ -61,11 +44,18 @@
 						<th class="text-center">简介</th>
 						<th class="text-center">课程负责人</th>
 						<th class="text-center">是否学位课</th>
-		            </tr>
+					</tr>
 	            </thead>
-				<tbody class="text-center">
-	            	<s:iterator value="courseapplys" var="courseapply">
-	                	<tr>
+	            <tbody class="text-center">
+		            <s:iterator value="courseapplys" var="courseapply">
+		                <tr>
+		                    <td><s:property value="#courseapply.c_course_name"/></td>
+		                    <td><s:property value="#courseapply.institute_course_id"/></td>
+		                    <td><s:property value="#courseapply.e_course_name"/></td>
+		                    <td><s:property value="#courseapply.brief_course_name"/></td>
+		                    <td><s:property value="#courseapply.faculty"/></td>
+		                    <td><s:property value="#courseapply.credit"/></td>
+		                    <td><s:property value="#courseapply.sub_course_type_module"/></td>
 		                    <td><s:property value="#courseapply.sub_course_type"/></td>
 		                    <td><s:property value="#courseapply.course_type"/></td>
 		                    <td><s:property value="#courseapply.course_time"/></td>
@@ -74,29 +64,18 @@
 		                    <td><s:property value="#courseapply.course_head"/></td>
 		                    <td><s:property value="#courseapply.degree"/></td>
 		                </tr>
-		            </s:iterator>
-	            </tbody>
+		        	</s:iterator>
+				</tbody>
 			</table>
 		</div>
 		<div id="win" class="table-responsive">
 			<form id="courseaaplyform" >
 				<div class="table-responsive">
-					<table class="table table-bordered">
+					<table id="cin" class="table table-bordered">
 						<thead>
 				            <tr>
 				                <th class="text-center">课程中文名</th>
 								<th class="text-center">状态</th>
-							</tr>
-						</thead>
-		            	<tbody class="text-center">
-							<tr>
-								<td><input type="text" name="courseapply.c_course_name"></td>
-								<td><input type="text" name="courseapply.status"/></td>
-							</tr>
-						</tbody>
-						
-						<thead>
-				            <tr>
 				            	<th class="text-center">院系课程号</th>
 								<th class="text-center">课程英文名</th>
 								<th class="text-center">课程简称</th>
@@ -104,6 +83,8 @@
 						</thead>
 		            	<tbody class="text-center">
 							<tr>
+								<td><input id="pk" type="text" name="courseapply.c_course_name"></td>
+								<td><input id="ic" type="text" name="courseapply.status"/></td>
 								<td><input type="text" name="courseapply.institute_course_id"></td>
 								<td><input type="text" name="courseapply.e_course_name"></td>
 								<td><input type="text" name="courseapply.brief_course_name"/></td>
@@ -115,40 +96,32 @@
 								<th class="text-center">学分</th>						
 								<th class="text-center">课程细类模块</th>
 								<th class="text-center">课程细类</th>
+								<th class="text-center">课程类别</th>
 							</tr>
 						</thead>
 		            	<tbody class="text-center">
 							<tr>
-								<td><input type="text" name="courseapply.sub_course_type"></td>
 								<td><input type="text" name="courseapply.faculty"></td>
 								<td><input type="text" name="courseapply.credit"></td>
 								<td><input type="text" name="courseapply.sub_course_type_module"></td>
+								<td><input type="text" name="courseapply.sub_course_type"></td>
+								<td><input type="text" name="courseapply.course_type"/></td>
 							</tr>
 						</tbody>
 						<thead>
 							<tr>
-								<th class="text-center">课程类别</th>
 								<th class="text-center">总学时</th>
 								<th class="text-center">总学时描述</th>
 								<th class="text-center">简介</th>
-				            </tr>
-		            	</thead>
-						<tbody>
-							<tr>
-								<td><input type="text" name="courseapply.course_info"></td>
-								<td><input type="text" name="courseapply.course_type"/></td>
-								<td><input type="text" name="courseapply.course_time"></td>
-								<td><input type="text" name="courseapply.course_time_info"></td>
-							</tr>
-						</tbody>
-						<thead>
-							<tr>
 								<th class="text-center">课程负责人</th>
 								<th class="text-center">是否学位课</th>
 				            </tr>
 		            	</thead>
 						<tbody>
 							<tr>
+								<td><input type="text" name="courseapply.course_time"></td>
+								<td><input type="text" name="courseapply.course_time_info"></td>
+								<td><input type="text" name="courseapply.course_info"></td>
 								<td><input type="text" name="courseapply.course_head"/></td>
 								<td><input type="text" name="courseapply.degree"></td>
 							</tr>
@@ -163,34 +136,87 @@
 			</form>
 		</div>
 		<div id="fade"></div>
-		
-		</body>
+	</body>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script type="text/javascript">
-		var $=function(id)
-		{
-			return document.getElementById(id);
-		}
+		var preId;
+		
+		$(document).ready(function(){
+			$("#show tr:gt(0)").click(function(){
+				//this是html对象，$(this)是jquery对象
+				mychange(this);
+				//this.hidden = "hidden";
+				var line = [];
+				$(this).children("td").each(function(i){
+					var c = $(this).text();
+					line.push(c);
+				});
+				$("#cin td").each(function(i){
+					$(this).find("input").val(line[i]);
+				});
+			});
 	
+			
+		});
+		
+		function mychange(nId){
+			if(preId){
+				$(preId).css("background-color","#8FB0D1");
+			}
+			if(nId){
+				if(nId==preId){
+					preId = null;
+					return ;
+				}
+				$(nId).css("background-color","yellow");
+				preId = nId;
+			}		
+		}
 		function Winopen(str)
 		{
-			var win=new WinSize();
-			var Tip=$("fade");
-			Tip.style.width=win.W+"px";
-			Tip.style.height=win.H+"px";
-			$("fade").style.display="block";
-			$("win").style.display="block";
-			
+			//var win=new WinSize();
+			var Tip=document.getElementById("fade");
+			//Tip.style.width=win.W+"px";
+			//Tip.style.height=win.H+"px";
+			Tip.style.display="block";
+			document.getElementById("win").style.display="block";
+			if(str=='ADD'){
+				$("#cin td").each(function(i){
+					$(this).find("input").val(null);
+				});
+				$("#pk").focus();
+				document.getElementById("wincommit").onclick=addCourseapproval;
+			}
 			if(str=='MODIFY'){
-				$("wincommit").onclick=modifyapprovalCourseapply;
+				var cid = $("#pk").val();
+				if(cid != ""){
+					$("#pk").attr("readonly","true");
+					$("#ic").focus();
+				}	
+				else{
+					$("#pk").focus();
+				}
+				document.getElementById("wincommit").onclick=modifyapprovalCourseapply;
 			}
 			if(str=='QUERY'){
-				$("wincommit").onclick=queryCourseapproval;
+				document.getElementById("wincommit").onclick=queryCourseapproval;
 			}
 	
+			if(str=='DELETE'){
+				var cid = $("#pk").val();
+				if(cid != ""){
+					$("#cin td").each(function(i){
+						$(this).find("input").attr("readonly","true");
+					});
+				}
+				else{
+					$("#pk").focus();
+				}
+				document.getElementById("wincommit").onclick=deleteCourseapproval;
+			}
 		}
-	
+
 		function WinSize() //函数：获取尺寸
 		{
 			var winWidth = 0;

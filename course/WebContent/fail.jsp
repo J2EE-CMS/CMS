@@ -8,6 +8,6 @@
 	</head>
 	<body>
 		<p>²Ù×÷Ê§°Ü£¡</p>
-		<button type="button"><a href="login.jsp">·µ»Ø</a></button>
+		<a href="login.jsp">·µ»Ø</a>
 	</body>
 </html>

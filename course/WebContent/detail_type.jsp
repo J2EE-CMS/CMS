@@ -13,10 +13,10 @@
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<style>
 	      	#bg{background-color:#8FB0D1;position:relative;}
-	      	#win{filter:alpha(opacity=80);opacity:0.80;position:absolute;left:20%;top:50%;z-index:1002;margin:-100px -100px 0;border:4px #000 solid;background:#FFF;display:none;}
+	      	#win{filter:alpha(opacity=80);opacity:0.80;position:absolute;top:30%;z-index:1002;border:4px #000 solid;background:#FFF;display:none;}
 	      	#fade{-moz-opacity:0.50;filter:alpha(opacity=50);opacity:0.50;width:100%;height:100%;position:fixed;left:0%;top:0%;background-color:#f5f5f5;z-index:1001;display:none;}
 	      	#bg thead{background-color:green;}
-	      	#win thead{background-color:yellow;}
+	      	#cin thead{background-color:yellow;}
 	    </style>
 	</head>
 	<body>
@@ -29,13 +29,13 @@
 				<li><a href="javascript:void(0);" onclick="Winopen('DELETE')">删除</a></li>
 				<li class="pull-right"><a href="home">返回</a></li> 
 			</ul>
-			<table class="table table-hover table-bordered">
+			<table id="show" class="table table-hover table-bordered">
 				<thead>
 					<tr>
+						<th class="text-center">序号</th>
 						<th class="text-center">课程类别细类码</th>
 						<th class="text-center">课程类别细类名称</th>
 						<th class="text-center">所属课程类别</th>
-						<th class="text-center">序号</th>
 						<th class="text-center" >是否公共细类</th>
 						<th class="text-center">设立单位</th>
 					</tr>
@@ -43,10 +43,10 @@
 				<tbody class="text-center">
 					<s:iterator value="subtypeList" var="subtype">
 		                <tr>
+		                    <td><s:property value="#subtype.id"/></td>
 		                    <td><s:property value="#subtype.subtypecode"/></td>
 		                    <td><s:property value="#subtype.subtypename"/></td>
 		                    <td><s:property value="#subtype.belongtotype"/></td>
-		                    <td><s:property value="#subtype.id"/></td>
 		                    <td><s:property value="#subtype.ispublicsubtype"/></td>
 		                    <td><s:property value="#subtype.department"/></td>
 		                </tr>
@@ -55,35 +55,27 @@
 			</table>
 		</div>
 		
-		<div id="win" class="table-responsive">
+		<div id="win" >
 			<form id="subtypeform" >
-				<table class="table table-bordered">
-					<thead>
-						<tr>
-							<th class="text-center">课程类别细类码</th>
-							<th class="text-center">课程类别细类名称</th>
-							<th class="text-center">所属课程类别</th>
-						</tr>
-					</thead>
-					<tbody class="text-center">
-						<tr>
-							<td><input type="text" name="subtype.subtypecode" style="width:100px"/></td>
-							<td><input type="text" name="subtype.subtypename" style="width:100px"/></td>
-							<td><input type="text" name="subtype.belongtotype" /></td>
-						</tr>
-					</tbody>
+				<table id="cin" class="table table-bordered">
 					<thead>
 						<tr>
 							<th class="text-center">序号</th>
+							<th class="text-center">课程类别细类码</th>
+							<th class="text-center">课程类别细类名称</th>
+							<th class="text-center">所属课程类别</th>
 							<th class="text-center" >是否公共细类</th>
 							<th class="text-center">设立单位</th>
 						</tr>
 					</thead>
 					<tbody class="text-center">
 						<tr>
-							<td><input type="text" name="subtype.id" style="width:100px"/></td>
-							<td><input type="text" name="subtype.ispublicsubtype" style="width:100px"/></td>
-							<td><input type="text" name="subtype.department" style="width:100px"/></td>							
+							<td><input type="text" id="pk" name="subtype.id" /></td>
+							<td><input type="text" id="stc" name="subtype.subtypecode"/></td>
+							<td><input type="text" name="subtype.subtypename" /></td>
+							<td><input type="text" name="subtype.belongtotype" /></td>
+							<td><input type="text" name="subtype.ispublicsubtype" /></td>
+							<td><input type="text" name="subtype.department" /></td>	
 						</tr>
 					</tbody>
 				</table>
@@ -98,34 +90,83 @@
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script type="text/javascript">
-		var $=function(id)
-		{
-			return document.getElementById(id);
-		}
+		var preId;
+		
+		$(document).ready(function(){
+			$("#show tr:gt(0)").click(function(){
+				//this是html对象，$(this)是jquery对象
+				mychange(this);
+				//this.hidden = "hidden";
+				var line = [];
+				$(this).children("td").each(function(i){
+					var c = $(this).text();
+					line.push(c);
+				});
+				$("#cin td").each(function(i){
+					$(this).find("input").val(line[i]);
+				});
+			});
 	
+			
+		});
+		
+		function mychange(nId){
+			if(preId){
+				$(preId).css("background-color","#8FB0D1");
+			}
+			if(nId){
+				if(nId==preId){
+					preId = null;
+					return ;
+				}
+				$(nId).css("background-color","yellow");
+				preId = nId;
+			}		
+		}
 		function Winopen(str)
 		{
-			var win=new WinSize();
-			var Tip=$("fade");
-			Tip.style.width=win.W+"px";
-			Tip.style.height=win.H+"px";
-			$("fade").style.display="block";
-			$("win").style.display="block";
+			//var win=new WinSize();
+			var Tip=document.getElementById("fade");
+			//Tip.style.width=win.W+"px";
+			//Tip.style.height=win.H+"px";
+			Tip.style.display="block";
+			document.getElementById("win").style.display="block";
 			if(str=='ADD'){
-				$("wincommit").onclick=addSubtype;
+				$("#cin td").each(function(i){
+					$(this).find("input").val(null);
+				});
+				$("#pk").focus();
+				document.getElementById("wincommit").onclick=addSubtype;
 			}
 			if(str=='MODIFY'){
-				$("wincommit").onclick=modifySubtype;
+				var cid = $("#pk").val();
+				if(cid != ""){
+					$("#pk").attr("readonly","true");
+					$("#stc").focus();
+				}	
+				else{
+					$("#pk").focus();
+				}
+				document.getElementById("wincommit").onclick=modifySubtype;
 			}
 			if(str=='QUERY'){
-				$("wincommit").onclick=querySubtype;
+				document.getElementById("wincommit").onclick=querySubtype;
 			}
 	
 			if(str=='DELETE'){
-				$("wincommit").onclick=deleteSubtype;
+				var cid = $("#pk").val();
+				if(cid != ""){
+					$("#cin td").each(function(i){
+						$(this).find("input").attr("readonly","true");
+					});
+				}
+				else{
+					$("#pk").focus();
+				}
+				document.getElementById("wincommit").onclick=deleteSubtype;
 			}
 		}
-	
+		
 		function WinSize() //函数：获取尺寸
 		{
 			var winWidth = 0;

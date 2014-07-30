@@ -12,7 +12,7 @@
     <id name="id">
     
       <!-- generate the key of table, key generator -->
-      <generator class="native"/>  
+      <!-- <generator class="native"/>   -->
     </id>
     
     <!-- set column name -->

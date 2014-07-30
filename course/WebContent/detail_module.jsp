@@ -32,7 +32,7 @@
 				<li><a href="javascript:void(0);" onclick="Winopen('DELETE')">删除</a></li>
 				<li class="pull-right"><a href="home">返回</a></li> 	       
 			</ul>
-			<table class="table table-hover table-bordered">
+			<table id="show" class="table table-hover table-bordered">
 	            <thead>
 		            <tr>
 		            	<th class="text-center">序号</th>
@@ -61,7 +61,7 @@
 		</div>
 		<div id="win">
 			<form id="subtypemoduleform" >
-				<table class="table table-bordered">
+				<table id="cin" class="table table-bordered">
 					<thead>
 			            <tr>
 			            	<th class="text-center">序号</th>
@@ -72,8 +72,8 @@
 					</thead>
 	            	<tbody class="text-center">
 						<tr>
-							<td><input type="text" name="subtypemodule.id"></td>
-							<td><input type="text" name="subtypemodule.module_name"></td>
+							<td><input id="pk" type="text" name="subtypemodule.id"></td>
+							<td><input id="mn" type="text" name="subtypemodule.module_name"></td>
 							<td><input type="text" name="subtypemodule.subtype_code"></td>
 							<td><input type="text" name="subtypemodule.subtype_name"/></td>
 						</tr>
@@ -104,31 +104,81 @@
        <script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script type="text/javascript">
-		var $=function(id)
-		{
-			return document.getElementById(id);
-		}
+		
+		var preId;
 	
+		$(document).ready(function(){
+			$("#show tr:gt(0)").click(function(){
+				//this是html对象，$(this)是jquery对象
+				mychange(this);
+				//this.hidden = "hidden";
+				var line = [];
+				$(this).children("td").each(function(i){
+					var c = $(this).text();
+					line.push(c);
+				});
+				$("#cin td").each(function(i){
+					$(this).find("input").val(line[i]);
+				});
+			});
+	
+			
+		});
+		
+		function mychange(nId){
+			if(preId){
+				$(preId).css("background-color","#8FB0D1");
+			}
+			if(nId){
+				if(nId==preId){
+					preId = null;
+					return ;
+				}
+				$(nId).css("background-color","yellow");
+				preId = nId;
+			}		
+		}
 		function Winopen(str)
 		{
 			var win=new WinSize();
-			var Tip=$("fade");
-			Tip.style.width=win.W+"px";
-			Tip.style.height=win.H+"px";
-			$("fade").style.display="block";
-			$("win").style.display="block";
+			var Tip=document.getElementById("fade");
+			//Tip.style.width=win.W+"px";
+			//Tip.style.height=win.H+"px";
+			Tip.style.display="block";
+			document.getElementById("win").style.display="block";
 			if(str=='ADD'){
-				$("wincommit").onclick=addSubtypemodule;
+				$("#cin td").each(function(i){
+					$(this).find("input").val(null);
+				});
+				$("#pk").focus();
+				document.getElementById("wincommit").onclick=addSubtypemodule;
 			}
 			if(str=='MODIFY'){
-				$("wincommit").onclick=modifySubtypemodule;
+				var cid = $("#pk").val();
+				if(cid != ""){
+					$("#pk").attr("readonly","true");
+					$("#mn").focus();
+				}	
+				else{
+					$("#pk").focus();
+				}
+				document.getElementById("wincommit").onclick=modifySubtypemodule;
 			}
 			if(str=='QUERY'){
-				$("wincommit").onclick=querySubtypemodule;
+				document.getElementById("wincommit").onclick=querySubtypemodule;
 			}
 	
 			if(str=='DELETE'){
-				$("wincommit").onclick=deleteSubtypemodule;
+				var cid = $("#pk").val();
+				if(cid != ""){
+					$("#cin td").each(function(i){
+						$(this).find("input").attr("readonly","true");
+					});
+				}
+				else{
+					$("#pk").focus();
+				}
+				document.getElementById("wincommit").onclick=deleteSubtypemodule;
 			}
 		}
 	
