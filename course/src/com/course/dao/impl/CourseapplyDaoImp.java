@@ -9,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 
 import com.course.dao.ICourseapplyDao;
+import com.course.entity.Course;
 import com.course.entity.Courseapply;
 
 public class CourseapplyDaoImp implements ICourseapplyDao {
@@ -78,7 +79,7 @@ public class CourseapplyDaoImp implements ICourseapplyDao {
 			temp.setCourse_info(courseapply.getCourse_info());
 			temp.setCourse_head(courseapply.getCourse_head());
 			temp.setDegree(courseapply.isDegree());*/
-			temp.setStatus(1);
+			temp.setStatus(2);
 		}
 		System.out.println(temp.getId()+" "+temp.getBrief_course_name()+"  "+temp.getStatus());
 		getSession().update(temp);
@@ -89,47 +90,52 @@ public class CourseapplyDaoImp implements ICourseapplyDao {
 	public List<Courseapply> queryCourseapply(Courseapply courseapply) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Courseapply.class);
 		
-		if(courseapply.getInstitute_course_id() != 0){
-			criteria.add(Restrictions.eq("institute_course_id", courseapply.getInstitute_course_id()));
+		/*
+		if (begin_time != null) {
+			criteria.add(Restrictions.ge("approval_time", begin_time));
 		}
-		
-		if(courseapply.getC_course_name()!=null && !courseapply.getC_course_name().equals("")){
+		if (end_time != null) {
+			criteria.add(Restrictions.le("approval_time", end_time));
+		}*/
+		if (courseapply.getInstitute_course() != 0) {
+			criteria.add(Restrictions.eq("institute_course",
+					courseapply.getInstitute_course()));
+		}
+		if (courseapply.getC_course_name() != null
+				&& !courseapply.getC_course_name().equals("")) {
 			criteria.add(Restrictions.eq("c_course_name", courseapply.getC_course_name()));
 		}
-		
-		if(courseapply.getE_course_name()!=null && !courseapply.getE_course_name().equals("")){
+		if (courseapply.getE_course_name() != null
+				&& !courseapply.getE_course_name().equals("")) {
 			criteria.add(Restrictions.eq("e_course_name", courseapply.getE_course_name()));
 		}
-		
-		if(courseapply.getBrief_course_name() !=null && !courseapply.getBrief_course_name().equals("")){
-			criteria.add(Restrictions.eq("brief_course_name", courseapply.getBrief_course_name()));
+		if (courseapply.getBrief_course_name() != null
+				&& !courseapply.getBrief_course_name().equals("")) {
+			criteria.add(Restrictions.eq("brief_course_name",
+					courseapply.getBrief_course_name()));
 		}
-		
-		if(courseapply.getFaculty()!=null && !courseapply.getFaculty().equals("")){
+		if (courseapply.getFaculty() != null && !courseapply.getFaculty().equals("")) {
 			criteria.add(Restrictions.eq("faculty", courseapply.getFaculty()));
 		}
-		
-		if(courseapply.getCredit() != 0){
-			criteria.add(Restrictions.eq("credit", courseapply.getFaculty()));
+		if (courseapply.getCredit() != 0) {
+			criteria.add(Restrictions.eq("credit", courseapply.getCredit()));
 		}
-		
-		if(courseapply.getCourse_type() != 0){
+		if (courseapply.getCourse_type() != 0) {
 			criteria.add(Restrictions.eq("course_type", courseapply.getCourse_type()));
 		}
-		
-		if(courseapply.getSub_course_type() != 0){
-			criteria.add(Restrictions.eq("sub_course_type", courseapply.getSub_course_type()));
+		if (courseapply.getSub_course_type() != 0) {
+			criteria.add(Restrictions.eq("sub_course_type",
+					courseapply.getSub_course_type()));
 		}
-		
-		if(courseapply.getSub_course_type_module() != 0){
-			criteria.add(Restrictions.eq("sub_course_type_module", courseapply.getSub_course_type_module()));
+		if (courseapply.getSub_course_type_module() != 0) {
+			criteria.add(Restrictions.eq("sub_course_type_module",
+					courseapply.getSub_course_type_module()));
 		}
-		
 		criteria.add(Restrictions.or(Restrictions.eq("status", 0),Restrictions.eq("status", 1)));
-		
+
 		List<Courseapply> list = criteria.list();
 		return list;
-		
+
 	}
 
 	
@@ -159,40 +165,39 @@ public class CourseapplyDaoImp implements ICourseapplyDao {
 	public List<Courseapply> queryCourseapproval(Courseapply courseapply){
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Courseapply.class);
 		
-		if(courseapply.getInstitute_course_id() != 0){
-			criteria.add(Restrictions.eq("institute_course_id", courseapply.getInstitute_course_id()));
+		if (courseapply.getInstitute_course() != 0) {
+			criteria.add(Restrictions.eq("institute_course",
+					courseapply.getInstitute_course()));
 		}
-		
-		if(courseapply.getC_course_name()!=null && !courseapply.getC_course_name().equals("")){
+		if (courseapply.getC_course_name() != null
+				&& !courseapply.getC_course_name().equals("")) {
 			criteria.add(Restrictions.eq("c_course_name", courseapply.getC_course_name()));
 		}
-		
-		if(courseapply.getE_course_name()!=null && !courseapply.getE_course_name().equals("")){
+		if (courseapply.getE_course_name() != null
+				&& !courseapply.getE_course_name().equals("")) {
 			criteria.add(Restrictions.eq("e_course_name", courseapply.getE_course_name()));
 		}
-		
-		if(courseapply.getBrief_course_name() !=null && !courseapply.getBrief_course_name().equals("")){
-			criteria.add(Restrictions.eq("brief_course_name", courseapply.getBrief_course_name()));
+		if (courseapply.getBrief_course_name() != null
+				&& !courseapply.getBrief_course_name().equals("")) {
+			criteria.add(Restrictions.eq("brief_course_name",
+					courseapply.getBrief_course_name()));
 		}
-		
-		if(courseapply.getFaculty()!=null && !courseapply.getFaculty().equals("")){
+		if (courseapply.getFaculty() != null && !courseapply.getFaculty().equals("")) {
 			criteria.add(Restrictions.eq("faculty", courseapply.getFaculty()));
 		}
-		
-		if(courseapply.getCredit() != 0){
-			criteria.add(Restrictions.eq("credit", courseapply.getFaculty()));
+		if (courseapply.getCredit() != 0) {
+			criteria.add(Restrictions.eq("credit", courseapply.getCredit()));
 		}
-		
-		if(courseapply.getCourse_type() != 0){
+		if (courseapply.getCourse_type() != 0) {
 			criteria.add(Restrictions.eq("course_type", courseapply.getCourse_type()));
 		}
-		
-		if(courseapply.getSub_course_type() != 0){
-			criteria.add(Restrictions.eq("sub_course_type", courseapply.getSub_course_type()));
+		if (courseapply.getSub_course_type() != 0) {
+			criteria.add(Restrictions.eq("sub_course_type",
+					courseapply.getSub_course_type()));
 		}
-		
-		if(courseapply.getSub_course_type_module() != 0){
-			criteria.add(Restrictions.eq("sub_course_type_module", courseapply.getSub_course_type_module()));
+		if (courseapply.getSub_course_type_module() != 0) {
+			criteria.add(Restrictions.eq("sub_course_type_module",
+					courseapply.getSub_course_type_module()));
 		}
 		
 		criteria.add(Restrictions.or(Restrictions.eq("status", 2),Restrictions.eq("status", 3)));

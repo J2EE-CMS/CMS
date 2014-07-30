@@ -82,8 +82,7 @@ public class CourseDaoImp implements ICourseDao {
 			System.out.println("end time: " + end_time.toString() + "\t");
 			crit.add(Restrictions.le("approval_time", end_time));
 		}
-		if (cos.getInstitute_course() != null
-				&& !cos.getInstitute_course().equals("")) {
+		if (cos.getInstitute_course() != 0) {
 			crit.add(Restrictions.eq("institute_course",
 					cos.getInstitute_course()));
 		}
@@ -132,8 +131,7 @@ public class CourseDaoImp implements ICourseDao {
 				+ cos.getId()
 				+ "\t"
 				+ "institute_course:"
-				+ (cos.getInstitute_course().equals("") ? "NULL" : cos
-						.getInstitute_course()) + "\t" + "c_course_name:"
+				+ (cos.getInstitute_course()) + "\t" + "c_course_name:"
 				+ cos.getC_course_name() + "\t" + "e_course_name:"
 				+ cos.getE_course_name() + "\t" + "brief_course_name:"
 				+ cos.getBrief_course_name() + "\t" + "faculty:"

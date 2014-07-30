@@ -3,17 +3,17 @@ package com.course.entity;
 import java.util.Date;
 
 public class Course {
-	int id;
-	String institute_course, c_course_name, e_course_name, brief_course_name,
+	int institute_course,id;
+	String c_course_name, e_course_name, brief_course_name,
 			faculty;
 
 	int credit;
 	int sub_course_type_module, sub_course_type, course_type;
 	String course_time, course_time_info;
 	String course_info;
-	String course_head;// ͨ课程负责人
+	String course_head;// 通璇剧▼璐熻矗浜�
 	Date approval_time;
-	boolean degree;// (是否学士学位，医科选填)
+	boolean degree;// (鏄惁瀛﹀＋瀛︿綅锛屽尰绉戦�濉�
 	int status;//
 	String info;
 
@@ -46,11 +46,13 @@ public class Course {
 		this.id = id;
 	}
 
-	public String getInstitute_course() {
+	
+
+	public int getInstitute_course() {
 		return institute_course;
 	}
 
-	public void setInstitute_course(String institute_course) {
+	public void setInstitute_course(int institute_course) {
 		this.institute_course = institute_course;
 	}
 

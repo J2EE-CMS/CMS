@@ -37,7 +37,7 @@ public class CourseapplyActionTest {
 	
 
 	
-	@Test
+	//@Test
 	public void addCourseapply() {
 		Courseapply temp = new Courseapply();
 		temp.setStatus(2);
@@ -108,7 +108,7 @@ public class CourseapplyActionTest {
 		test.modifycommitCourseapply();
 	}
 	
-	@Test
+	//@Test
 	public void queryCourseapproval(){
 		Courseapply temp = new Courseapply();
 		temp.setC_course_name("test1");

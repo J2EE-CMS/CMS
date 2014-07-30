@@ -105,7 +105,7 @@ public class CourseapplyAction extends ActionSupport{
         List<String[]> dataset = new ArrayList<String[]>(); 
         for(int i=0;i<tem.size();i++) {
         	Courseapply temp = tem.get(i); 
-        	dataset.add(new String[]{temp.getInstitute_course_id() + "",temp.getC_course_name()+ "",temp.getE_course_name()+ "",temp.getBrief_course_name()+ "",temp.getFaculty()+ temp.getCredit() + temp.getSub_course_type_module() + temp.getSub_course_type() + temp.getCourse_type() + "",temp.getCourse_time() + "",temp.getCourse_time_info()+"",temp.getCourse_info()+"",temp.getCourse_head()+temp.isDegree()});
+        	dataset.add(new String[]{temp.getInstitute_course() + "",temp.getC_course_name()+ "",temp.getE_course_name()+ "",temp.getBrief_course_name()+ "",temp.getFaculty()+ temp.getCredit() + temp.getSub_course_type_module() + temp.getSub_course_type() + temp.getCourse_type() + "",temp.getCourse_time() + "",temp.getCourse_time_info()+"",temp.getCourse_info()+"",temp.getCourse_head()+temp.isDegree()});
         }
         /*
         OutputStream out = null;
@@ -173,7 +173,7 @@ public class CourseapplyAction extends ActionSupport{
         List<String[]> dataset = new ArrayList<String[]>(); 
         for(int i=0;i<tem.size();i++) {
         	Courseapply temp = tem.get(i); 
-        	dataset.add(new String[]{temp.getInstitute_course_id() + "",temp.getC_course_name()+ "",temp.getE_course_name()+ "",temp.getBrief_course_name()+ "",temp.getFaculty()+ temp.getCredit() + temp.getSub_course_type_module() + temp.getSub_course_type() + temp.getCourse_type() + "",temp.getCourse_time() + "",temp.getCourse_time_info()+"",temp.getCourse_info()+"",temp.getCourse_head()+temp.isDegree()});
+        	dataset.add(new String[]{temp.getInstitute_course() + "",temp.getC_course_name()+ "",temp.getE_course_name()+ "",temp.getBrief_course_name()+ "",temp.getFaculty()+ temp.getCredit() + temp.getSub_course_type_module() + temp.getSub_course_type() + temp.getCourse_type() + "",temp.getCourse_time() + "",temp.getCourse_time_info()+"",temp.getCourse_info()+"",temp.getCourse_head()+temp.isDegree()});
         }
         /*
         OutputStream out = null;

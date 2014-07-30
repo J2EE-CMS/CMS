@@ -19,7 +19,7 @@
     <property name="status"/>
     <property name="apply_time"/>
     <property name="approval_time"/>
-    <property name="institute_course_id"/>
+    <property name="institute_course"/>
     <property name="c_course_name"/>
     <property name="e_course_name"/>
     <property name="brief_course_name"/>

@@ -8,7 +8,7 @@ public class Courseapply {
 	int status;//0:待提交；1:待审批；2:审批通过�?1:审批不�?�?
 	Date apply_time;
 	Date approval_time;
-	int institute_course_id;
+	int institute_course;
 	String c_course_name, e_course_name, brief_course_name;
 	String faculty;
 	int credit;
@@ -23,12 +23,12 @@ public class Courseapply {
 		
 	}
 	
-	public Courseapply(int id,int status,Date apply_time,Date approval_time,int institute_course_id,String c_course_name,String e_course_name,String brief_course_name,String faculty,int credit,int sub_course_type_module,int sub_course_type,int course_type,String course_time,String course_time_info,String course_info,String course_head,boolean degree) {
+	public Courseapply(int id,int status,Date apply_time,Date approval_time,int institute_course,String c_course_name,String e_course_name,String brief_course_name,String faculty,int credit,int sub_course_type_module,int sub_course_type,int course_type,String course_time,String course_time_info,String course_info,String course_head,boolean degree) {
 		this.id = id;
 		this.status = status;
 		this.apply_time = apply_time;
 		this.approval_time = approval_time;
-		this.institute_course_id = institute_course_id;
+		this.institute_course = institute_course;
 		this.c_course_name = c_course_name;
 		this.e_course_name = e_course_name;
 		this.brief_course_name = brief_course_name;
@@ -50,7 +50,7 @@ public class Courseapply {
 		this.status = courseapp.getStatus();
 		this.apply_time = courseapp.getApply_time();
 		this.approval_time = courseapp.getApproval_time();
-		this.institute_course_id = courseapp.getInstitute_course_id();
+		this.institute_course = courseapp.getInstitute_course();
 		this.c_course_name = courseapp.getC_course_name();
 		this.e_course_name = courseapp.getE_course_name();
 		this.brief_course_name = courseapp.getBrief_course_name();
@@ -90,12 +90,16 @@ public class Courseapply {
 	public void setApproval_time(Date approval_time) {
 		this.approval_time = approval_time;
 	}
-	public int getInstitute_course_id() {
-		return institute_course_id;
+	
+	
+	public int getInstitute_course() {
+		return institute_course;
 	}
-	public void setInstitute_course_id(int institute_course_id) {
-		this.institute_course_id = institute_course_id;
+
+	public void setInstitute_course(int institute_course) {
+		this.institute_course = institute_course;
 	}
+
 	public String getC_course_name() {
 		return c_course_name;
 	}
