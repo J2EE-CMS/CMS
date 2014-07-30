@@ -9,20 +9,20 @@ import com.course.entity.Course;
 import com.course.entity.PreCourse;
 import com.course.service.IPreCourseManage;
 
-public class PreCourseManageImp implements IPreCourseManage{
+public class PreCourseManageImp implements IPreCourseManage {
 
-	@Resource 
+	@Resource
 	private IPreCourseDao preCourseDao;
-	
+
 	@Override
 	public void addPreCourse(PreCourse pcos) {
 		preCourseDao.addPreCourse(pcos);
 	}
 
-	//@Override
-	//public void modifyPreCourse(PreCourse pcos) {
-	//	preCourseDao.modifyPreCourse(pcos);
-	//}
+	// @Override
+	// public void modifyPreCourse(PreCourse pcos) {
+	// preCourseDao.modifyPreCourse(pcos);
+	// }
 
 	@Override
 	public void deletePreCourse(Course cos) {
@@ -31,8 +31,13 @@ public class PreCourseManageImp implements IPreCourseManage{
 
 	@Override
 	public List<PreCourse> queryPreCourse(Course cos) {
+		System.out.println("PreCourseManage------queryPreCourse");
 		return preCourseDao.queryPreCourse(cos);
 	}
-	
+
+	@Override
+	public List<PreCourse> queryAllPreCourseRelations() {
+		return preCourseDao.queryAllPreCourseRelations();
+	}
 
 }
