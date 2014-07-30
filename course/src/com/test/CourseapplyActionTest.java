@@ -41,7 +41,7 @@ public class CourseapplyActionTest {
 	public void addCourseapply() {
 		Courseapply temp = new Courseapply();
 		temp.setStatus(2);
-		temp.setC_course_name("test3");
+		temp.setC_course_name("e");
 		temp.setBrief_course_name("ck");
 		test.setCourseapply(temp);
 		test.addCourseapply();
@@ -100,13 +100,13 @@ public class CourseapplyActionTest {
 	    }
 	}
 	
-	//@Test
-	public void commitCourseapply(){
-		Courseapply temp = new Courseapply();
-		temp.setC_course_name("e");
-		test.setCourseapply(temp);
-		test.modifycommitCourseapply();
-	}
+	@Test
+		public void commitCourseapply(){
+			Courseapply temp = new Courseapply();
+			temp.setC_course_name("e");
+			test.setCourseapply(temp);
+			test.modifycommitCourseapply();
+		}
 	
 	//@Test
 	public void queryCourseapproval(){
