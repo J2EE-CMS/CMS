@@ -8,7 +8,16 @@ public class PreCourse {
 	
 	int sn;
 	int group_number;
+	
 	int status;//0琛ㄧず鍏堜慨璇剧▼鍏崇郴鏃犳晥锛�琛ㄧず鍏崇郴鏈夋晥
+	
+	private Course cos;
+	public Course getCos() {
+		return cos;
+	}
+	public void setCos(Course cos) {
+		this.cos = cos;
+	}
 	public int getOp() {
 		return op;
 	}

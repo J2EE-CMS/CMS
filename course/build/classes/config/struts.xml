@@ -15,6 +15,14 @@
 		namespace="/">
 		<interceptors>
 			<interceptor name="checkLogin" class="checkLoginInterceptor" />
+			<interceptor name="checkAdminCollegePublic" class="checkAdminCollegePublicInterceptor" />
+			<interceptor name="checkCollegePublic" class="checkCollegePublicInterceptor" />
+			<interceptor name="checkAdminCollege" class="checkAdminCollegeInterceptor" />
+			<interceptor name="checkAdminPublic" class="checkAdminPublicInterceptor" />
+			<interceptor name="checkPublic" class="checkPublicInterceptor" />
+			<interceptor name="checkCollege" class="checkCollegeInterceptor" />
+			<interceptor name="checkAdmin" class="checkAdminInterceptor" />
+			<interceptor name="checkRoot" class="checkRootInterceptor" />
 			<interceptor-stack name="myInterceptor">
 				<interceptor-ref name="checkLogin" />
 				<interceptor-ref name="defaultStack" />
@@ -25,6 +33,7 @@
 
 		<global-results>
 			<result name="checkLoginFail">/login.jsp</result>
+			<result name="checkRoleFail">/login.jsp</result>
 		</global-results>
 	</package>
 	
@@ -48,7 +57,7 @@
 		<action name="class_apply" class="courseapplyAction" method="queryAllCourseapply">
 			<result name="allcourseapply">/class_apply.jsp</result>
 		</action>
-		<action name="class_check" class="courseapplyAction" method="queryAllCourseapproval">
+		<action name="class_check" >
 			<result name="success">/class_check.jsp</result>
 		</action>
 		<action name="type_manage" class="coursetypeAction" method="getAllCoursetypes">
@@ -68,6 +77,10 @@
 		</action>
 		<action name="relation_check" >
 			<result name="success">/relation_check.jsp</result>
+		</action>
+		<action name="user_manage" class="userAction" method="getAllUsers">
+			<result name="alluser">/user_manage.jsp</result>
+			<interceptor-ref name="checkRoot" />
 		</action>
 	</package>
 	

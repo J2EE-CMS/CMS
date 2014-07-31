@@ -19,11 +19,40 @@ public class Courseapply {
 	boolean degree;
 	
 	
+	private Coursetype coursetype;
+	private Subtype subtype;
+	private Subtypemodule subtypemodule;
+	
+	
+	public Coursetype getCoursetype() {
+		return coursetype;
+	}
+
+	public void setCoursetype(Coursetype coursetype) {
+		this.coursetype = coursetype;
+	}
+
+	public Subtype getSubtype() {
+		return subtype;
+	}
+
+	public void setSubtype(Subtype subtype) {
+		this.subtype = subtype;
+	}
+
+	public Subtypemodule getSubtypemodule() {
+		return subtypemodule;
+	}
+
+	public void setSubtypemodule(Subtypemodule subtypemodule) {
+		this.subtypemodule = subtypemodule;
+	}
+
 	public Courseapply(){
 		
 	}
 	
-	public Courseapply(int id,int status,Date apply_time,Date approval_time,int institute_course,String c_course_name,String e_course_name,String brief_course_name,String faculty,int credit,int sub_course_type_module,int sub_course_type,int course_type,String course_time,String course_time_info,String course_info,String course_head,boolean degree) {
+	public Courseapply(int id,int status,Date apply_time,Date approval_time,int institute_course_id,String c_course_name,String e_course_name,String brief_course_name,String faculty,int credit,int sub_course_type_module,int sub_course_type,int course_type,String course_time,String course_time_info,String course_info,String course_head,boolean degree) {
 		this.id = id;
 		this.status = status;
 		this.apply_time = apply_time;
@@ -90,7 +119,6 @@ public class Courseapply {
 	public void setApproval_time(Date approval_time) {
 		this.approval_time = approval_time;
 	}
-	
 	
 	public int getInstitute_course() {
 		return institute_course;

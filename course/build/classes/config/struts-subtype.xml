@@ -12,16 +12,19 @@
 			<result name="querysubtype" type="redirect">/detail_type.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
+			<interceptor-ref name="checkAdmin"/>
 		</action>
 		<action name="subtype_*" class="subtypeAction" method="{1}">
 			<result name="success" type="redirectAction">detail_type</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
+			<interceptor-ref name="checkAdmin"/>
 		</action>
 		<action name="testSubtype" class="subtypeAction" method="getAllSubtypes">
 			<result name="success">/testSubtype.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
+			<interceptor-ref name="checkAdmin"/>
 		</action>
 	</package>
 	

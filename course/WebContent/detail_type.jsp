@@ -46,7 +46,7 @@
 		                    <td><s:property value="#subtype.id"/></td>
 		                    <td><s:property value="#subtype.subtypecode"/></td>
 		                    <td><s:property value="#subtype.subtypename"/></td>
-		                    <td><s:property value="#subtype.belongtotype"/></td>
+		                    <td><s:property value="#subtype.coursetype.id"/></td>
 		                    <td><s:property value="#subtype.ispublicsubtype"/></td>
 		                    <td><s:property value="#subtype.department"/></td>
 		                </tr>

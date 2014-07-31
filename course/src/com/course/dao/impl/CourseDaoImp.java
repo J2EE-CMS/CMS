@@ -11,6 +11,9 @@ import org.hibernate.criterion.Restrictions;
 
 import com.course.dao.ICourseDao;
 import com.course.entity.Course;
+import com.course.entity.Coursetype;
+import com.course.entity.Subtype;
+import com.course.entity.Subtypemodule;
 
 public class CourseDaoImp implements ICourseDao {
 	private SessionFactory sessionFactory;
@@ -26,6 +29,18 @@ public class CourseDaoImp implements ICourseDao {
 	@Override
 	public void addCourse(Course cos) {
 		System.out.println("------CourseDaoImp.AddCourse------");
+		Coursetype coursetype = new Coursetype();
+		Subtype subtype = new Subtype();
+		Subtypemodule subtypemodule = new Subtypemodule();
+		
+		coursetype.setId(cos.getCourse_type());
+		subtype.setId(cos.getSub_course_type());
+		subtypemodule.setId(cos.getSub_course_type_module());
+		
+		cos.setCoursetype(coursetype);
+		cos.setSubtype(subtype);
+		cos.setSubtypemodule(subtypemodule);
+		
 		getSession().save(cos);
 
 	}
@@ -106,14 +121,14 @@ public class CourseDaoImp implements ICourseDao {
 			crit.add(Restrictions.eq("credit", cos.getCredit()));
 		}
 		if (cos.getCourse_type() != 0) {
-			crit.add(Restrictions.eq("course_type", cos.getCourse_type()));
+			crit.add(Restrictions.eq("coursetype.id", cos.getCourse_type()));
 		}
 		if (cos.getSub_course_type() != 0) {
-			crit.add(Restrictions.eq("sub_course_type",
+			crit.add(Restrictions.eq("subtype.id",
 					cos.getSub_course_type()));
 		}
 		if (cos.getSub_course_type_module() != 0) {
-			crit.add(Restrictions.eq("sub_course_type_module",
+			crit.add(Restrictions.eq("subtypemodule.id",
 					cos.getSub_course_type_module()));
 		}
 		crit.add(Restrictions.eq("status", cos.getStatus()));

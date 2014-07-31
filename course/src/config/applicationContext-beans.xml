@@ -16,8 +16,16 @@
     
 	<!-- 登录检测 -->
 	<bean name="checkLoginInterceptor" class="com.course.interceptor.CheckLogin" scope="prototype"></bean>
+	<bean name="checkAdminCollegePublicInterceptor" class="com.course.interceptor.CheckAAdminCollegePublic" scope="prototype"></bean>
+	<bean name="checkCollegePublicInterceptor" class="com.course.interceptor.CheckCollegePublic" scope="prototype"></bean>
+	<bean name="checkAdminCollegeInterceptor" class="com.course.interceptor.CheckAdminCollege" scope="prototype"></bean>
+	<bean name="checkAdminPublicInterceptor" class="com.course.interceptor.CheckAdminPublic" scope="prototype"></bean>
+	<bean name="checkPublicInterceptor" class="com.course.interceptor.CheckPubli" scope="prototype"></bean>
+	<bean name="checkCollegeInterceptor" class="com.course.interceptor.CheckCollege" scope="prototype"></bean>
+	<bean name="checkAdminInterceptor" class="com.course.interceptor.CheckAdmin" scope="prototype"></bean>
+	<bean name="checkRootInterceptor" class="com.course.interceptor.CheckRoot" scope="prototype"></bean>
 	
-	<!-- 用户管理   --> 
+	<!-- 用户管理 -->
 	<bean name="userAction" class="com.course.action.UserAction" scope="prototype"></bean>
 	
 	<bean name="userManage" class="com.course.service.impl.UserManageImp"></bean>
@@ -25,7 +33,6 @@
 	<bean name="userDao" class="com.course.dao.impl.UserDaoImp">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	
 	
 	<!-- 课程库 -->
 	<bean name="courseAction" class="com.course.action.CourseAction" scope="prototype"></bean>

@@ -49,9 +49,9 @@
 		                <tr>
 		                    <td><s:property value="#subtypemodule.id"/></td>
 		                    <td><s:property value="#subtypemodule.module_name"/></td>
-		                    <td><s:property value="#subtypemodule.subtype_code"/></td>
-		                    <td><s:property value="#subtypemodule.subtype_name"/></td>
-		                    <td><s:property value="#subtypemodule.course_type"/></td>
+		                    <td><s:property value="#subtypemodule.subtype.id"/></td>
+		                    <td><s:property value="#subtypemodule.subtype.id"/></td>
+		                    <td><s:property value="#subtypemodule.coursetype.id"/></td>
 		                    <td><s:property value="#subtypemodule.version"/></td>
 		                    <td><s:property value="#subtypemodule.public_subtype"/></td>
 		                </tr>

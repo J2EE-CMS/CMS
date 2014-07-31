@@ -62,9 +62,9 @@
 		                    <td><s:property value="#cos.brief_course_name"/></td>
 		                    <td><s:property value="#cos.faculty"/></td>
 		                    <td><s:property value="#cos.credit"/></td>
-		                    <td><s:property value="#cos.sub_course_type_module"/></td>
-		                    <td><s:property value="#cos.sub_course_type"/></td>
-		                    <td><s:property value="#cos.course_type"/></td>
+		                    <td><s:property value="#cos.subtypemodule.id"/></td>
+		                    <td><s:property value="#cos.subtype.id"/></td>
+		                    <td><s:property value="#cos.coursetype.type"/></td>
 		                    <td><s:property value="#cos.course_time"/></td>
 		                    <td><s:property value="#cos.course_time_info"/></td>
 		                    <td><s:property value="#cos.course_info"/></td>

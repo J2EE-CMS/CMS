@@ -2,12 +2,17 @@ package com.course.entity;
 
 public class Subtypemodule {
 	private int id;
-	private String module_name;
+	private int module_name;
 	private String subtype_code;
-	private String subtype_name;
-	private String course_type;
+	private int subtype_name;
+	private int course_type;
 	private String version;
-	private String public_subtype;
+	private boolean public_subtype;
+	
+	private Coursetype coursetype;
+	
+	private Subtype subtype;
+	
 	/*
 	public Subtypemodule(){
 		
@@ -33,56 +38,7 @@ public class Subtypemodule {
 		this.version = temp.getVersion();
 		this.public_subtype = temp.getPublic_subtype();
 	}
-	
-	public String getModule_name(){
-		return module_name;
-	}
-	
-	public void setModule_name(String module_name) {
-		this.module_name = module_name;
-	}
-	
-	public String getSubtype_code() {
-		return subtype_code;
-	}
-	
-	public void setSubtype_code(String subtype_code) {
-		this.subtype_code = subtype_code;
-	}
-	
-	public String getSubtype_name() {
-		return subtype_name;
-	}
-	
-	public void setSubtype_name(String subtype_name) {
-		this.subtype_name = subtype_name;
-	}
-	
-	public String getCourse_type() {
-		return course_type;
-	}
-	
-	public void setCourse_type(String course_type) {
-			this.course_type = course_type;
-	}
-	
-	public String getVersion() {
-		return version;
-	}
-	
-	public void setVersion(String version) {
-			this.version = version;
-	}
-	
-	
-	public String getPublic_subtype() {
-		return public_subtype;
-	}
-	
-	public void setPublic_subtype(String public_subtype) {
-			this.public_subtype = public_subtype;
-	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -90,4 +46,71 @@ public class Subtypemodule {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	public int getModule_name() {
+		return module_name;
+	}
+
+	public void setModule_name(int module_name) {
+		this.module_name = module_name;
+	}
+
+	public String getSubtype_code() {
+		return subtype_code;
+	}
+
+	public void setSubtype_code(String subtype_code) {
+		this.subtype_code = subtype_code;
+	}
+
+	public int getSubtype_name() {
+		return subtype_name;
+	}
+
+	public void setSubtype_name(int subtype_name) {
+		this.subtype_name = subtype_name;
+	}
+
+	public int getCourse_type() {
+		return course_type;
+	}
+
+	public void setCourse_type(int course_type) {
+		this.course_type = course_type;
+	}
+
+	public String getVersion() {
+		return version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
+	}
+
+	public boolean getPublic_subtype() {
+		return public_subtype;
+	}
+
+	public void setPublic_subtype(boolean public_subtype) {
+		this.public_subtype = public_subtype;
+	}
+
+	public Coursetype getCoursetype() {
+		return coursetype;
+	}
+
+	public void setCoursetype(Coursetype coursetype) {
+		this.coursetype = coursetype;
+	}
+
+	public Subtype getSubtype() {
+		return subtype;
+	}
+
+	public void setSubtype(Subtype subtype) {
+		this.subtype = subtype;
+	}
+	
+	
+	
 }

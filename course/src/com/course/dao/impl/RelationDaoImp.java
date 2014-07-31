@@ -56,7 +56,10 @@ public class RelationDaoImp implements IRelationDao {
 	//test
 	@Override
 	public void addRelation(Relation relation){
-		//getSession().save(relation);
+		Coursetype coursetype = new Coursetype();
+		coursetype.setId(relation.getType());
+		relation.setCoursetype(coursetype);
+		
 		sessionFactory.getCurrentSession().save(relation);
 	}
 }

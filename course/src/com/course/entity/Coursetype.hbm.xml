@@ -12,14 +12,20 @@
     <id name="id">
     
       <!-- generate the key of table, key generator -->
-      
+      <generator class="native"/>  
     </id>
     
     <!-- set column name -->
     <property name="typecore"/>
-    <property name="type"/>
+    
+  	<property name="type"/>
+    
     <property name="quality"/>
+    
     <property name="reexamine"/>
+    
     <property name="retake"/>
+    
+    
   </class>
 </hibernate-mapping>

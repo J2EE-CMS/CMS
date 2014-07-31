@@ -1,5 +1,7 @@
 package com.course.entity;
 
+import java.util.Set;
+
 public class Coursetype {
 	private int id;
 	private String typecore;
@@ -8,6 +10,7 @@ public class Coursetype {
 	private String reexamine;
 	private String retake;
 	
+	private Set<Subtype> subtype;
 	/*
 	public Coursetype(){
 		
@@ -23,6 +26,7 @@ public class Coursetype {
 	}
 	*/
 	
+
 	public void setCoursetype(Coursetype cos){
 		this.type = cos.type;
 		this.typecore = cos.typecore;
@@ -31,6 +35,14 @@ public class Coursetype {
 		this.retake = cos.retake;
 	}
 	
+	public Set<Subtype> getSubtype() {
+		return subtype;
+	}
+
+	public void setSubtype(Set<Subtype> subtype) {
+		this.subtype = subtype;
+	}
+
 	public int getId() {
 		return id;
 	}

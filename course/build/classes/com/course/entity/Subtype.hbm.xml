@@ -10,16 +10,31 @@
   <class name="com.course.entity.Subtype" table="sub_type">
   <!-- 设置主键 -->
     <id name="id">
-    
       <!-- generate the key of table, key generator -->
       <generator class="native"/>  
     </id>
     
     <!-- set column name -->
-    <property name="subtypecode"/>
+    <property 
+    	name="subtypecode"
+    />
+    
     <property name="subtypename"/>
-    <property name="belongtotype"/>
+    <!--	 
+   	<property 
+   		name="subtypename"
+   		column=""
+    	type=""
+    	length="" 
+    /> -->
+    
+    
+<!--    <property name="belongtotype"/>  -->
+	<many-to-one name="coursetype" column="belongtotype" class="Coursetype" fetch="select" />
+	    
     <property name="ispublicsubtype"/>
+    
     <property name="department"/>
+    
   </class>
 </hibernate-mapping>

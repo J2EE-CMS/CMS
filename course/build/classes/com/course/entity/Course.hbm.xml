@@ -22,9 +22,16 @@
     <property name="brief_course_name"/>
     <property name="faculty"/>
     <property name="credit"/>
-    <property name="course_type"/>
-    <property name="sub_course_type"/>
-    <property name="sub_course_type_module"/>
+    
+    <!--<property name="course_type"/> -->
+    <many-to-one name="coursetype" column="course_type"/>
+    
+    <!--<property name="sub_course_type"/> -->
+    <many-to-one name="subtype" column="sub_course_type"/>
+    
+    <!--<property name="sub_course_type_module"/> -->
+    <many-to-one name="subtypemodule" column="sub_course_type_module"/>
+    
     <property name="course_time"/>
     <property name="course_time_info"/>
     <property name="course_info"/>

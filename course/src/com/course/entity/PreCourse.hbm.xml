@@ -14,7 +14,9 @@
       <generator class="native"/>  
     </id>    
     <!-- set column name -->
-    <property name="course"/>
+  <!--  <property name="course"/>  -->
+  	<many-to-one name="cos" column="course"/>
+    
     <property name="pcos" />
     <property name="op" />
     <property name="sn"/>

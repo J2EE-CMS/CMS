@@ -1,5 +1,7 @@
 package com.course.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import com.course.dao.IUserDao;
@@ -22,7 +24,7 @@ public class UserManageImp implements IUserManage {
 	@Override
 	public void addUser(User user) {
 		System.out.println("------UserManageImp.adddUser--------"+user.getName());
-		userDao.AddUser(user);
+		userDao.addUser(user);
 		
 	}
 
@@ -37,5 +39,15 @@ public class UserManageImp implements IUserManage {
 	public void deleteUser(User user) {
 		System.out.println("------UserManageImp.deleteUser--------"+user.getName());
 		userDao.deleteUser(user);
+	}
+
+	@Override
+	public List<User> getAllUsers() {
+		return userDao.getAllUsers();
+	}
+	
+	@Override
+	public List<User> queryUsers(User user) {
+		return userDao.queryUsers(user);
 	}
 }

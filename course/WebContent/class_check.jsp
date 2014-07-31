@@ -50,14 +50,14 @@
 		            <s:iterator value="courseapplys" var="courseapply">
 		                <tr>
 		                    <td><s:property value="#courseapply.c_course_name"/></td>
-		                    <td><s:property value="#courseapply.institute_course_id"/></td>
+		                    <td><s:property value="#courseapply.institute_course"/></td>
 		                    <td><s:property value="#courseapply.e_course_name"/></td>
 		                    <td><s:property value="#courseapply.brief_course_name"/></td>
 		                    <td><s:property value="#courseapply.faculty"/></td>
 		                    <td><s:property value="#courseapply.credit"/></td>
-		                    <td><s:property value="#courseapply.sub_course_type_module"/></td>
-		                    <td><s:property value="#courseapply.sub_course_type"/></td>
-		                    <td><s:property value="#courseapply.course_type"/></td>
+		                    <td><s:property value="#courseapply.subtypemodule.id"/></td>
+		                    <td><s:property value="#courseapply.subtype.id"/></td>
+		                    <td><s:property value="#courseapply.coursetype.id"/></td>
 		                    <td><s:property value="#courseapply.course_time"/></td>
 		                    <td><s:property value="#courseapply.course_time_info"/></td>
 		                    <td><s:property value="#courseapply.course_info"/></td>

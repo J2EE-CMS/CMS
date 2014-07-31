@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Course {
 	int institute_course,id;
-	String c_course_name, e_course_name, brief_course_name,
+	String  c_course_name, e_course_name, brief_course_name,
 			faculty;
 
 	int credit;
@@ -16,6 +16,34 @@ public class Course {
 	boolean degree;// (鏄惁瀛﹀＋瀛︿綅锛屽尰绉戦�濉�
 	int status;//
 	String info;
+
+	private Coursetype coursetype;
+	private Subtype subtype;
+	private Subtypemodule subtypemodule;
+	
+	public Coursetype getCoursetype() {
+		return coursetype;
+	}
+
+	public void setCoursetype(Coursetype coursetype) {
+		this.coursetype = coursetype;
+	}
+
+	public Subtype getSubtype() {
+		return subtype;
+	}
+
+	public void setSubtype(Subtype subtype) {
+		this.subtype = subtype;
+	}
+
+	public Subtypemodule getSubtypemodule() {
+		return subtypemodule;
+	}
+
+	public void setSubtypemodule(Subtypemodule subtypemodule) {
+		this.subtypemodule = subtypemodule;
+	}
 
 	void setCourse(Course cos) {
 		this.id = cos.getId();
@@ -45,8 +73,6 @@ public class Course {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	
 
 	public int getInstitute_course() {
 		return institute_course;

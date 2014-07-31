@@ -1,5 +1,7 @@
 package com.course.action;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import com.course.entity.User;
@@ -8,27 +10,14 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class UserAction extends ActionSupport {
 	
-	private User user;
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Resource  
 	private IUserManage userManage;
-	
-
-	public void setUserManage(IUserManage userManage) {
-		this.userManage = userManage;
-	}
-	
-	public IUserManage getUserManage() {
-		return userManage;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
+	private User user;
+	private List<User> userList;
 	
 	public String addUser()
 	{
@@ -52,5 +41,40 @@ public class UserAction extends ActionSupport {
 		return "success";
 	}
 	
+	public String getAllUsers(){
+		setUserList(userManage.getAllUsers());
+		return "alluser";
+	}
+	
+	public String queryUsers(){
+		setUserList(userManage.queryUsers(user));
+		return "queryUsers";
+	}
+	
+	
+	
+	public void setUserManage(IUserManage userManage) {
+		this.userManage = userManage;
+	}
+	
+	public IUserManage getUserManage() {
+		return userManage;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	public List<User> getUserList() {
+		return userList;
+	}
+
+	public void setUserList(List<User> userList) {
+		this.userList = userList;
+	}
 	
 }

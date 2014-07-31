@@ -54,6 +54,13 @@
 					<li><a href="relation_check">先修关系审批</a></li>
 				</ul>
 			</li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">用户 <b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a href="user_manage">用户管理</a></li>
+				</ul>
+			</li>
 		</ul>
 		<p align="center" style="margin:80px; font-size:24px">欢迎登录！</p>
 		<script src="js/jquery.min.js"></script>

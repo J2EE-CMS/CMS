@@ -4,7 +4,9 @@ public class Relation {
 	private Integer id;
 	private Integer grade;
 	private String devtype;
-	private String type;
+	private int type;
+	
+	private Coursetype coursetype;
 	
 	/*
 	public Relation(){
@@ -19,6 +21,14 @@ public class Relation {
 	}
 	*/
 	
+	public Coursetype getCoursetype() {
+		return coursetype;
+	}
+
+	public void setCoursetype(Coursetype coursetype) {
+		this.coursetype = coursetype;
+	}
+
 	public void setRelation (Relation temp) {
 		//this.id = temp.id;
 		this.grade = temp.grade;
@@ -41,10 +51,10 @@ public class Relation {
 		this.devtype = devtype;
 	}
 	
-	public String getType() {
+	public int getType() {
 		return type;
 	}
-	public void setType(String type) {
+	public void setType(int type) {
 		this.type = type;
 	}
 

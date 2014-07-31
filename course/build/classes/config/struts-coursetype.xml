@@ -9,11 +9,13 @@
 			<result name="querycoursetype" type="redirect">/type_manage.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
+			<interceptor-ref name="checkAdmin"/>
 		</action>
 		<action name="coursetype_*" class="coursetypeAction" method="{1}">
 			<result name="success" type="redirectAction">type_manage</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
+			<interceptor-ref name="checkAdmin"/>
 		</action>
 		
 	</package>

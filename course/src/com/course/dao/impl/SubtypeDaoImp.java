@@ -7,7 +7,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
  
 
+
 import com.course.dao.ISubtypeDao;
+import com.course.entity.Coursetype;
 import com.course.entity.Subtype;
 
 public class SubtypeDaoImp implements ISubtypeDao {
@@ -25,7 +27,20 @@ public class SubtypeDaoImp implements ISubtypeDao {
 	
 	@Override
 	public void addSubtype(Subtype subtype) {
+		Coursetype coursetype = new Coursetype();
+		coursetype.setId(subtype.getBelongtotype());
+		
+		subtype.setCoursetype(coursetype);
 		getSession().save(subtype);
+		
+		/*
+		String hql = "from Subtype as subtype where subtype.id=?";
+		Query query = getSession().createQuery(hql);
+		query.setInteger(0, 1);
+
+		Subtype sub = (Subtype) query.uniqueResult();
+		System.out.println(sub.getCoursetype().getQuality());
+		*/
 	}
 	
 	@Override
@@ -36,6 +51,10 @@ public class SubtypeDaoImp implements ISubtypeDao {
 	@Override
 	public void modifySubtype(Subtype subtype) {
 		//getSession().clear();
+		Coursetype coursetype = new Coursetype();
+		coursetype.setId(subtype.getBelongtotype());
+		
+		subtype.setCoursetype(coursetype);
 		getSession().update(subtype);
 	}
 	

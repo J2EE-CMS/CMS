@@ -1,9 +1,16 @@
 package com.course.dao.impl;
 
+import java.awt.image.RescaleOp;
+import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 
 import com.course.dao.IUserDao;
+import com.course.entity.User;
 import com.course.entity.User;
 
 public class UserDaoImp implements IUserDao {
@@ -19,8 +26,8 @@ public class UserDaoImp implements IUserDao {
 	}
 
 	@Override
-	public void AddUser(User user) {
-		System.out.println("-------UserDaoImp.AddUser-----------"
+	public void addUser(User user) {
+		System.out.println("-------UserDaoImp.addUser-----------"
 				+ user.getName());
 		getSession().save(user);
 	}
@@ -37,6 +44,24 @@ public class UserDaoImp implements IUserDao {
 		System.out.println("-------UserDaoImp.deleteUser-----------"
 				+ user.getName());
 		getSession().delete(user);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<User> getAllUsers(){
+		String hql = "from User";
+		Query query = getSession().createQuery(hql);
+		return query.list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<User> queryUsers(User user){
+		
+		Criteria criteria = getSession().createCriteria(User.class);
+		criteria.add(Restrictions.and(Restrictions.eq("name", user.getName()),Restrictions.eq("password", user.getPassword())));
+		List list = criteria.list();
+		return list;
 	}
 
 }

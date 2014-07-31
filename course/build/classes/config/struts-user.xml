@@ -3,26 +3,19 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 
-<struts>	
-	<!-- 与spring集成的写法，action等交予spring管理 -->
-	<!-- <package name="loginAction" namespace="/" extends="abstract_struts">
-		<action name="login" class="loginAction">
-			<result name="success" type="redirect">userMain</result>
-			<result name="fail">/fail.jsp</result>
-		</action>
-
-		 该action只负责跳转，用struts提供的ActionSupport 
-		<action name="userMain" class="userMainAction">
-			<result name="success">/userMain.jsp</result>
-			<interceptor-ref name="myInterceptor" />
-		</action>
-	</package>
--->
-	<package name="userActions" namespace="/user" extends="abstract_struts">
+<struts>
+	<package name="userActions" namespace="/" extends="abstract_struts">
 		<action name="user_*" class="userAction" method="{1}">
-			<result name="success" type="redirect">/{2}.jsp</result>
+			<result name="success" type="redirectAction">user_manage</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
+			<interceptor-ref name="checkRoot" />
+		</action>
+		<action name="user_queryUsers" class="userAction" method="queryUsers">
+			<result name="queryUsers">/user_manage.jsp</result>
+			<result name="fail">/fail.jsp</result>
+			<interceptor-ref name="myInterceptor" />
+			<interceptor-ref name="checkRoot" />
 		</action>
 	</package>
 

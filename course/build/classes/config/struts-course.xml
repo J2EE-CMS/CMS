@@ -10,11 +10,13 @@
             <result name="success" >/class_manage.jsp</result>
             <result name="fail">/fail.jsp</result>
             <interceptor-ref name="myInterceptor" />
+            <interceptor-ref name="checkAdmin"/>
         </action>
         <action name="course_*" class="courseAction" method="{1}">
             <result name="success" type="redirectAction">class_manage</result>
             <result name="fail">/fail.jsp</result>
             <interceptor-ref name="myInterceptor" />
+            <interceptor-ref name="checkAdmin"/>
         </action>
     </package>
 
@@ -25,11 +27,13 @@
 			<result name="queryCourseapply">/class_apply.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
+			<interceptor-ref name="checkCollegePublic"/>
 		</action>
 		<action name="courseapply_*" class="courseapplyAction" method="{1}">
 			<result name="success" type="redirectAction">class_apply</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
+			<interceptor-ref name="checkCollegePublic"/>
 		</action>
 	</package>
 	
@@ -39,6 +43,7 @@
 			<result name="queryCourseapproval">/class_check.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
+			<interceptor-ref name="checkAdmin"/>
 		</action>
 	</package>
 	

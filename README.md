@@ -17,7 +17,11 @@ coursemanage
 	2014.7.25		 第九次更新：UI修改 &  新增课程库申请部分修复无法“提交”的问题
 	2014.7.25					 更新课程库审批模块
 	2014.7.28		 第十次更新：先修课程：增加返回所有先修课程方法  &  以字符串输出
-								 增加导出功能(暂定)</pre>
+								 增加导出功能(暂定)
+	2014.7.31		 第11次更新：1、增加针对用户权限的拦截器 
+										Ps:默认用户数据库为空，需要自行添加。
+										Pss:用户权限分为root/admin/public/college
+								 2、数据库表的修正 & 关联</pre>
 <br />
 <br />
 
@@ -30,10 +34,11 @@ $ tree .
 course.
 │  .classpath
 │  .project
-│  
+│ 
 │  
 ├─.settings
 │      .jsdtscope
+│      org.eclipse.core.resources.prefs
 │      org.eclipse.jdt.core.prefs
 │      org.eclipse.wst.common.component
 │      org.eclipse.wst.common.project.facet.core.xml
@@ -100,7 +105,15 @@ course.
 │      │  │  │      CharsetEncodingFilter.class
 │      │  │  │      
 │      │  │  ├─interceptor
+│      │  │  │      CheckAdmin.class
+│      │  │  │      CheckAdminCollege.class
+│      │  │  │      CheckAdminCollegePublic.class
+│      │  │  │      CheckAdminPublic.class
+│      │  │  │      CheckCollege.class
+│      │  │  │      CheckCollegePublic.class
 │      │  │  │      CheckLogin.class
+│      │  │  │      CheckPublic.class
+│      │  │  │      CheckRoot.class
 │      │  │  │      
 │      │  │  ├─service
 │      │  │  │  │  ICourseapplyManage.class
@@ -204,7 +217,15 @@ course.
 │  │  │  │      CharsetEncodingFilter.java
 │  │  │  │      
 │  │  │  ├─interceptor
+│  │  │  │      CheckAdmin.java
+│  │  │  │      CheckAdminCollege.java
+│  │  │  │      CheckAdminCollegePublic.java
+│  │  │  │      CheckAdminPublic.java
+│  │  │  │      CheckCollege.java
+│  │  │  │      CheckCollegePublic.java
 │  │  │  │      CheckLogin.java
+│  │  │  │      CheckPublic.java
+│  │  │  │      CheckRoot.java
 │  │  │  │      
 │  │  │  ├─service
 │  │  │  │  │  ICourseapplyManage.java
@@ -266,6 +287,7 @@ course.
     │  success.jsp
     │  training_class.jsp
     │  type_manage.jsp
+    │  user_manage.jsp
     │  
     ├─css
     │      bootstrap.min.css
@@ -351,6 +373,8 @@ course.
                 struts2-json-plugin-2.3.16.3.jar
                 struts2-spring-plugin-2.3.16.3.jar
                 xwork-core-2.3.16.3.jar
+                
+
 .
 
 ```

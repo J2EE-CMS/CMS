@@ -17,9 +17,15 @@
     
     <!-- set column name -->
     <property name="typecore"/>
-    <property name="type"/>
+    
+  	<property name="type"/>
+    
     <property name="quality"/>
+    
     <property name="reexamine"/>
+    
     <property name="retake"/>
+    
+    
   </class>
 </hibernate-mapping>

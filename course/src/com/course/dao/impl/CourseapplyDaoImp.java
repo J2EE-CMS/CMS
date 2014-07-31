@@ -11,6 +11,9 @@ import org.hibernate.criterion.Restrictions;
 import com.course.dao.ICourseapplyDao;
 import com.course.entity.Course;
 import com.course.entity.Courseapply;
+import com.course.entity.Coursetype;
+import com.course.entity.Subtype;
+import com.course.entity.Subtypemodule;
 
 public class CourseapplyDaoImp implements ICourseapplyDao {
 	
@@ -26,6 +29,18 @@ public class CourseapplyDaoImp implements ICourseapplyDao {
 
 	@Override
 	public void addCourseapply (Courseapply courseapply) {
+		Coursetype coursetype = new Coursetype();
+		Subtype subtype = new Subtype();
+		Subtypemodule subtypemodule = new Subtypemodule();
+		
+		coursetype.setId(courseapply.getCourse_type());
+		subtype.setId(courseapply.getSub_course_type());
+		subtypemodule.setId(courseapply.getSub_course_type_module());
+		
+		courseapply.setCoursetype(coursetype);
+		courseapply.setSubtype(subtype);
+		courseapply.setSubtypemodule(subtypemodule);
+		
 		courseapply.setStatus(0);
 		this.getSession().save(courseapply);
 	}
@@ -121,14 +136,14 @@ public class CourseapplyDaoImp implements ICourseapplyDao {
 			criteria.add(Restrictions.eq("credit", courseapply.getCredit()));
 		}
 		if (courseapply.getCourse_type() != 0) {
-			criteria.add(Restrictions.eq("course_type", courseapply.getCourse_type()));
+			criteria.add(Restrictions.eq("coursetype.id", courseapply.getCourse_type()));
 		}
 		if (courseapply.getSub_course_type() != 0) {
-			criteria.add(Restrictions.eq("sub_course_type",
+			criteria.add(Restrictions.eq("subtype.id",
 					courseapply.getSub_course_type()));
 		}
 		if (courseapply.getSub_course_type_module() != 0) {
-			criteria.add(Restrictions.eq("sub_course_type_module",
+			criteria.add(Restrictions.eq("subtypemodule.id",
 					courseapply.getSub_course_type_module()));
 		}
 		criteria.add(Restrictions.or(Restrictions.eq("status", 0),Restrictions.eq("status", 1)));
@@ -189,14 +204,14 @@ public class CourseapplyDaoImp implements ICourseapplyDao {
 			criteria.add(Restrictions.eq("credit", courseapply.getCredit()));
 		}
 		if (courseapply.getCourse_type() != 0) {
-			criteria.add(Restrictions.eq("course_type", courseapply.getCourse_type()));
+			criteria.add(Restrictions.eq("coursetype.id", courseapply.getCourse_type()));
 		}
 		if (courseapply.getSub_course_type() != 0) {
-			criteria.add(Restrictions.eq("sub_course_type",
+			criteria.add(Restrictions.eq("subtype.id",
 					courseapply.getSub_course_type()));
 		}
 		if (courseapply.getSub_course_type_module() != 0) {
-			criteria.add(Restrictions.eq("sub_course_type_module",
+			criteria.add(Restrictions.eq("subtypemodule.id",
 					courseapply.getSub_course_type_module()));
 		}
 		

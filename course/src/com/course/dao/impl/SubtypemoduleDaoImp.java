@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.course.dao.ISubtypemoduleDao;
 import com.course.entity.Coursetype;
+import com.course.entity.Subtype;
 import com.course.entity.Subtypemodule;
 
 public class SubtypemoduleDaoImp implements ISubtypemoduleDao {
@@ -30,6 +31,15 @@ public class SubtypemoduleDaoImp implements ISubtypemoduleDao {
 	
 	@Override
 	public void addSubtypemodule(Subtypemodule subtypemodule) {
+		Coursetype coursetype = new Coursetype();
+		coursetype.setId(subtypemodule.getCourse_type());
+		
+		Subtype subtype = new Subtype();
+		subtype.setId(subtypemodule.getSubtype_name());
+		
+		subtypemodule.setCoursetype(coursetype);
+		subtypemodule.setSubtype(subtype);
+		
 		if(subtypemodule != null){
 			this.getSession().save(subtypemodule);
 		}

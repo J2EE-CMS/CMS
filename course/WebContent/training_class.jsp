@@ -45,7 +45,7 @@
 		                <tr>
 		                    <td><s:property value="#relation.grade"/></td>
 		                    <td><s:property value="#relation.devtype"/></td>
-		                    <td><s:property value="#relation.type"/></td>
+		                    <td><s:property value="#relation.coursetype.id"/></td>
 		                </tr>
 		        	</s:iterator>
 				</tbody>

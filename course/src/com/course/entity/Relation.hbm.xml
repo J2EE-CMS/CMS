@@ -18,6 +18,8 @@
     <!-- set column name -->
     <property name="grade"/>
     <property name="devtype"/>
-    <property name="type"/>
+<!--     <property name="type"/>   -->
+	<many-to-one name="coursetype" column="coursetype_id" class="Coursetype" fetch="select"/>
+    
   </class>
 </hibernate-mapping>
