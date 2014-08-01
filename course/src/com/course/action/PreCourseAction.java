@@ -1,6 +1,7 @@
 package com.course.action;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -93,7 +94,7 @@ public class PreCourseAction {
 		this.pcourseManage = pcourseManage;
 	}
 
-	private void string2list(int isapply) {// 0表示申请，1表示申请通过，-1申请不通过
+	private void string2list(int isapply) {// 0琛ㄧず鐢宠锛�琛ㄧず鐢宠閫氳繃锛�1鐢宠涓嶉�杩�
 		String[] relationsGroup;
 		if (relationString == null) {
 			relationString = "";
@@ -103,23 +104,23 @@ public class PreCourseAction {
 		relationsGroup = relationString.split("!");
 		pcoslist = new ArrayList<PreCourse>();
 		for (int j = 0; relationsGroup != null && j < relationsGroup.length; j++) {
-			String[] preCourseName;// 用于记录每组课程的名字
-			StringBuffer optemp = new StringBuffer();// 用于保存每组课程间的操作符，&或者|
-			int sn = 1;// 每组的顺序号
-			// 提取每组的课程之间的操作符
+			String[] preCourseName;// 鐢ㄤ簬璁板綍姣忕粍璇剧▼鐨勫悕瀛�
+			StringBuffer optemp = new StringBuffer();// 鐢ㄤ簬淇濆瓨姣忕粍璇剧▼闂寸殑鎿嶄綔绗︼紝&鎴栬�|
+			int sn = 1;// 姣忕粍鐨勯『搴忓彿
+			// 鎻愬彇姣忕粍鐨勮绋嬩箣闂寸殑鎿嶄綔绗�
 			for (int i = 0; i < relationsGroup[j].length(); i++) {
 				if (relationsGroup[j].charAt(i) == '&' || relationsGroup[j].charAt(i) == '|') {
 					optemp.append(relationsGroup[j].charAt(i));
 				}
 			}
-			// 提取每组课程的名字
+			// 鎻愬彇姣忕粍璇剧▼鐨勫悕瀛�
 			preCourseName = relationsGroup[j].split("\\&|\\|");
 
-			// 添加组与组之间的操作符，最后一组不用无操作符
+			// 娣诲姞缁勪笌缁勪箣闂寸殑鎿嶄綔绗︼紝鏈�悗涓�粍涓嶇敤鏃犳搷浣滅
 			if (op != null && j < op.length()) {
 				optemp.append(op.charAt(j));
 			}
-			// 将内容转成PreCourse的内容
+			// 灏嗗唴瀹硅浆鎴怭reCourse鐨勫唴瀹�
 
 			PreCourse pcos = new PreCourse();
 			for (int i = 0; i < optemp.length(); i++) {
@@ -211,7 +212,7 @@ public class PreCourseAction {
 	public void queryPreCourseResultString() {
 		if (pcoslist.isEmpty())
 			return;
-
+		
 		PreCourse lastrecord = new PreCourse();
 		lastrecord.setGroup_number(-1);
 		;
@@ -224,7 +225,7 @@ public class PreCourseAction {
 				currentrecord = pcoslist.get(i);
 				// res += "Course " + currentrecord.getCourse() + ": ( " +
 				// currentrecord.getPcos() + " ";
-				resbuff.append("Course ").append(currentrecord.getCourse()).append(": ( ")
+				resbuff.append("Course ").append(currentrecord.getCos().getId()).append(": ( ")
 						.append(currentrecord.getPcos()).append(" ");
 				lastrecord = pcoslist.get(i);
 			} else {
@@ -276,4 +277,5 @@ public class PreCourseAction {
 		queryPreCourseResultString();
 		return "success";
 	}
+	
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 import com.course.dao.IPreCourseDao;
@@ -40,7 +41,7 @@ public class PreCourseDaoImp implements IPreCourseDao {
 	@Override
 	public void deletePreCourse(Course cos) {
 		Criteria crit = getSession().createCriteria(PreCourse.class);
-		crit.add(Restrictions.eq("course", cos.getId()));
+		crit.add(Restrictions.eq("cos.id", cos.getId()));
 		List<PreCourse> list = crit.list();
 		for (PreCourse pcos : list) {
 			getSession().delete(pcos);
@@ -50,8 +51,10 @@ public class PreCourseDaoImp implements IPreCourseDao {
 	@Override
 	public List<PreCourse> queryPreCourse(Course cos) {
 		Criteria crit = getSession().createCriteria(PreCourse.class);
+		crit.addOrder(Order.asc("id"));
+
 		if (cos != null) {
-			crit.add(Restrictions.eq("course", cos.getId()));
+			crit.add(Restrictions.eq("cos.id", cos.getId()));
 		}
 		List<PreCourse> list = crit.list();
 		return list;
@@ -60,6 +63,7 @@ public class PreCourseDaoImp implements IPreCourseDao {
 	@Override
 	public List<PreCourse> queryAllPreCourseRelations() {
 		Criteria crit = getSession().createCriteria(PreCourse.class);
+		crit.addOrder(Order.asc("id"));
 		List<PreCourse> list = crit.list();
 		return list;
 	}

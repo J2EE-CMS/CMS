@@ -61,4 +61,8 @@ public class PreCourse {
 	public void setPcos(String pcos) {
 		this.pcos = pcos;
 	}
+	
+	public int compareTo(PreCourse pcos){
+		return (this.getId() < pcos.getId())?1:0;
+	}
 }
