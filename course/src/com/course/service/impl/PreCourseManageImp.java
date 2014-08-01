@@ -40,4 +40,10 @@ public class PreCourseManageImp implements IPreCourseManage {
 		return preCourseDao.queryAllPreCourseRelations();
 	}
 
+	@Override
+	public void approvePreCourse(Course cos, int isApprove) {
+		preCourseDao.approvePreCourse(cos, isApprove);
+		
+	}
+
 }

@@ -100,13 +100,13 @@ public class PreCourseAction {
 			relationString = "";
 			op = "";
 		}
-
+		int sn=1;
 		relationsGroup = relationString.split("!");
 		pcoslist = new ArrayList<PreCourse>();
 		for (int j = 0; relationsGroup != null && j < relationsGroup.length; j++) {
 			String[] preCourseName;// 鐢ㄤ簬璁板綍姣忕粍璇剧▼鐨勫悕瀛�
 			StringBuffer optemp = new StringBuffer();// 鐢ㄤ簬淇濆瓨姣忕粍璇剧▼闂寸殑鎿嶄綔绗︼紝&鎴栬�|
-			int sn = 1;// 姣忕粍鐨勯『搴忓彿
+			
 			// 鎻愬彇姣忕粍鐨勮绋嬩箣闂寸殑鎿嶄綔绗�
 			for (int i = 0; i < relationsGroup[j].length(); i++) {
 				if (relationsGroup[j].charAt(i) == '&' || relationsGroup[j].charAt(i) == '|') {
@@ -170,6 +170,10 @@ public class PreCourseAction {
 	public void applyPreCourse() {
 		System.out.println("------applyPreCourseAction------");
 		this.string2list(0);
+		Course cos = new Course();
+		cos.setId(cosid);
+		if(pcourseManage.queryPreCourse(cos).size()!=0)
+			return;
 		for (int i = 0; i < pcoslist.size(); i++) {
 			pcourseManage.addPreCourse(pcoslist.get(i));
 		}
@@ -181,16 +185,7 @@ public class PreCourseAction {
 		pcoslist = new ArrayList<PreCourse>();
 		cos = new Course();
 		cos.setId(cosid);
-		pcoslist = pcourseManage.queryPreCourse(cos);
-		for (int i = 0; i < pcoslist.size(); i++) {
-			System.out.println(pcoslist.get(i).getPcos() + ' ' + pcoslist.get(i).getOp());
-		}
-
-		pcourseManage.deletePreCourse(cos);
-		for (PreCourse pcos : pcoslist) {
-			pcos.setStatus(isApprove);
-			pcourseManage.addPreCourse(pcos);
-		}
+		pcourseManage.approvePreCourse(cos, isApprove);
 	}
 
 	public String queryPreCourse() {

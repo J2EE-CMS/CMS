@@ -64,14 +64,14 @@ public class PreCourseActionTest {
 		preCourseAction.setRelationString("courseA!courseC|courseD");
 		preCourseAction.setOp("&");
 
-		preCourseAction.setCosid(1);
+		preCourseAction.setCosid(2);
 		preCourseAction.applyPreCourse();
 	}
 
-	// @Test
+	 @Test
 	public void testApprovePreCourse() {
-		preCourseAction.setIsApprove(-1);
-		preCourseAction.setCosid(1);
+		preCourseAction.setIsApprove(1);
+		preCourseAction.setCosid(2);
 		preCourseAction.approvePreCourse();
 
 	}

@@ -15,4 +15,6 @@ public interface IPreCourseDao {
 
 	public List<PreCourse> queryAllPreCourseRelations();
 
+	public void approvePreCourse(Course cos, int isApprove);
+
 }

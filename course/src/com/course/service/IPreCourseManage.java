@@ -14,4 +14,6 @@ public interface IPreCourseManage {
 	public List<PreCourse> queryPreCourse(Course cos);
 
 	public List<PreCourse> queryAllPreCourseRelations();
+
+	public void approvePreCourse(Course cos, int isApprove);
 }

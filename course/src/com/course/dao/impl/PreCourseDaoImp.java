@@ -26,6 +26,7 @@ public class PreCourseDaoImp implements IPreCourseDao {
 
 	@Override
 	public void addPreCourse(PreCourse pcos) {
+		
 		Course cos = new Course();
 		cos.setId(pcos.getCourse());
 		pcos.setCos(cos);
@@ -66,6 +67,20 @@ public class PreCourseDaoImp implements IPreCourseDao {
 		crit.addOrder(Order.asc("id"));
 		List<PreCourse> list = crit.list();
 		return list;
+	}
+
+	@Override
+	public void approvePreCourse(Course cos, int isApprove) {
+		Criteria crit = getSession().createCriteria(PreCourse.class);
+		if (cos != null) {
+			crit.add(Restrictions.eq("cos.id", cos.getId()));
+		}
+		List<PreCourse> list = crit.list();
+		System.out.println(" "+ list.size()+" "+ isApprove);
+		for(PreCourse pcos : list){
+			pcos.setStatus(isApprove);
+			getSession().update(pcos);
+		}
 	}
 
 }
