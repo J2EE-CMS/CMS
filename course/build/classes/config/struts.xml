@@ -57,7 +57,7 @@
 		<action name="class_apply" class="courseapplyAction" method="queryAllCourseapply">
 			<result name="allcourseapply">/class_apply.jsp</result>
 		</action>
-		<action name="class_check" >
+		<action name="class_check" class="courseapplyAction" method="queryAllCourseapproval">
 			<result name="success">/class_check.jsp</result>
 		</action>
 		<action name="type_manage" class="coursetypeAction" method="getAllCoursetypes">

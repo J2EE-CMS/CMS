@@ -31,6 +31,7 @@
 				<thead>
 		            <tr>
 		            	<th class="text-center">序号</th>
+		            	<th class="text-center">状态</th>
 		                <th class="text-center">课程中文名</th>
 		            	<th class="text-center">院系课程号</th>
 						<th class="text-center">课程英文名</th>
@@ -51,6 +52,7 @@
 		            <s:iterator value="courseapplys" var="courseapply">
 		                <tr>
 		                	<td><s:property value="#courseapply.id"/></td>
+		                	<td><s:property value="#courseapply.status"/></td>
 		                    <td><s:property value="#courseapply.c_course_name"/></td>
 		                    <td><s:property value="#courseapply.institute_course"/></td>
 		                    <td><s:property value="#courseapply.e_course_name"/></td>
@@ -77,8 +79,8 @@
 						<thead>
 				            <tr>
 				            	<th class="text-center">序号</th>
+				            	<th class="text-center">状态</th>
 				                <th class="text-center">课程中文名</th>
-								<th class="text-center">状态</th>
 				            	<th class="text-center">院系课程号</th>
 								<th class="text-center">课程英文名</th>
 								<th class="text-center">课程简称</th>
@@ -87,8 +89,8 @@
 		            	<tbody class="text-center">
 							<tr>
 								<td><input id="pk" type="text" name="courseapply.id"></td>
-								<td><input type="text" name="courseapply.c_course_name"></td>
 								<td><input id="ic" type="text" name="courseapply.status"/></td>
+								<td><input type="text" name="courseapply.c_course_name"></td>
 								<td><input type="text" name="courseapply.institute_course_id"></td>
 								<td><input type="text" name="courseapply.e_course_name"></td>
 								<td><input type="text" name="courseapply.brief_course_name"/></td>

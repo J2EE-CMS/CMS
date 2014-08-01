@@ -35,6 +35,7 @@
 			<table id="show" class="table table-hover table-bordered">
 				<thead>
 					<tr>
+						<th class="text-center">序号</th>
 						<th class="text-center">年级</th>
 						<th class="text-center">培养类别</th>
 						<th class="text-center">课程类别</th>
@@ -43,6 +44,7 @@
 				<tbody class="text-center">
 					<s:iterator value="relations" var="relation">
 		                <tr>
+		                	<td><s:property value="#relation.id"/></td>
 		                    <td><s:property value="#relation.grade"/></td>
 		                    <td><s:property value="#relation.devtype"/></td>
 		                    <td><s:property value="#relation.coursetype.id"/></td>
@@ -56,6 +58,7 @@
 				<table id="cin" class="table table-bordered">
 					<thead>
 			            <tr>
+			            	<th class="text-center">序号</th>
 			            	<th class="text-center">年级</th>
 							<th class="text-center">培养类别</th>
 							<th class="text-center">课程类别</th>
@@ -63,7 +66,8 @@
 					</thead>
 	            	<tbody class="text-center">
 						<tr>
-							<td><input id="pk" type="text" name="relation.grade"></td>
+							<td><input id="pk" type="text" name="relation.id"></td>
+							<td><input type="text" name="relation.grade"></td>
 							<td><input id="dt" type="text" name="relation.devtype"></td>
 							<td><input type="text" name="relation.type"></td>
 						</tr>

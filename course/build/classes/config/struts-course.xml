@@ -45,6 +45,12 @@
 			<interceptor-ref name="myInterceptor" />
 			<interceptor-ref name="checkAdmin"/>
 		</action>
+		<action name="courseapproval_*" class="courseapplyAction" method="{1}">
+			<result name="success" type="redirectAction">class_check</result>
+			<result name="fail">/fail.jsp</result>
+			<interceptor-ref name="myInterceptor" />
+			<interceptor-ref name="checkAdmin"/>
+		</action>
 	</package>
 	
 </struts>

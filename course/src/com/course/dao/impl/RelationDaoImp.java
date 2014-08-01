@@ -28,11 +28,18 @@ public class RelationDaoImp implements IRelationDao {
 	@Override
 	public void modifyRelation(Relation relation) {
 		//getSession().clear();
-		//essionFactory.getCurrentSession().update(relation);
+		/*
 		Query query = sessionFactory.getCurrentSession().createQuery("from Relation where grade=?");
 		query.setInteger(0, relation.getGrade());
 		Relation costype = (Relation )query.uniqueResult();
-		costype.setRelation(relation);	
+		costype.setRelation(relation);*/
+		Coursetype coursetype = new Coursetype();
+		if(relation.getType() == 0)
+			relation.setType(-1);
+		coursetype.setId(relation.getType());
+		
+		relation.setCoursetype(coursetype);
+		getSession().update(relation);
 	}
 	
 	

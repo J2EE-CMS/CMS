@@ -92,29 +92,18 @@ public class CourseapplyDaoImp implements ICourseapplyDao {
 	
 	@Override
 	public void modifycommitCourseapply(Courseapply courseapply) {
+		
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Courseapply.class);
 		criteria.add(Restrictions.eq("c_course_name", courseapply.getC_course_name()));
 		Courseapply temp = (Courseapply)criteria.uniqueResult();
 		//temp.setStatus(1);
 		//temp.setCourseapply(courseapply);
 		if(temp != null){
-			/*temp.setInstitute_course_id(courseapply.getInstitute_course_id());
-			temp.setC_course_name(courseapply.getC_course_name());
-			temp.setE_course_name(courseapply.getE_course_name());
-			temp.setBrief_course_name(courseapply.getBrief_course_name());
-			temp.setFaculty(courseapply.getFaculty());
-			temp.setCredit(courseapply.getCredit());
-			temp.setSub_course_type_module(courseapply.getSub_course_type_module());
-			temp.setSub_course_type(courseapply.getSub_course_type());
-			temp.setCourse_type(courseapply.getCourse_type());
-			temp.setCourse_time(courseapply.getCourse_time());
-			temp.setCourse_time_info(courseapply.getCourse_time_info());
-			temp.setCourse_info(courseapply.getCourse_info());
-			temp.setCourse_head(courseapply.getCourse_head());
-			temp.setDegree(courseapply.isDegree());*/
+			
 			temp.setStatus(2);
 		}
 		System.out.println(temp.getId()+" "+temp.getBrief_course_name()+"  "+temp.getStatus());
+				
 		getSession().update(temp);
 	}
 
@@ -187,17 +176,29 @@ public class CourseapplyDaoImp implements ICourseapplyDao {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Courseapply.class);
 		criteria.add(Restrictions.eq("c_course_name", courseapply.getC_course_name()));
 		Courseapply temp = (Courseapply)criteria.uniqueResult();
+		//temp.setStatus(1);
+		//temp.setCourseapply(courseapply);
 		if(temp != null){
+			
 			temp.setStatus(courseapply.getStatus());
 		}
+		System.out.println(temp.getId()+" "+temp.getBrief_course_name()+"  "+temp.getStatus());
+				
 		getSession().update(temp);
 	}
 	
 	
 	@Override
 	public List<Courseapply> queryCourseapproval(Courseapply courseapply){
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Courseapply.class);
+Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Courseapply.class);
 		
+		/*
+		if (begin_time != null) {
+			criteria.add(Restrictions.ge("approval_time", begin_time));
+		}
+		if (end_time != null) {
+			criteria.add(Restrictions.le("approval_time", end_time));
+		}*/
 		if (courseapply.getInstitute_course() != 0) {
 			criteria.add(Restrictions.eq("institute_course",
 					courseapply.getInstitute_course()));
@@ -237,7 +238,7 @@ public class CourseapplyDaoImp implements ICourseapplyDao {
 		
 		List<Courseapply> list = criteria.list();
 		if(list != null)
-			System.out.println("error");
+			System.out.println("error list");
 		return list;
 	}
 	
