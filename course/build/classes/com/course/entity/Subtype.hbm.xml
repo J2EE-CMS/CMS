@@ -30,7 +30,7 @@
     
     
 <!--    <property name="belongtotype"/>  -->
-	<many-to-one name="coursetype" column="belongtotype" class="Coursetype" fetch="select" />
+	<many-to-one name="coursetype" column="belongtotype" />
 	    
     <property name="ispublicsubtype"/>
     

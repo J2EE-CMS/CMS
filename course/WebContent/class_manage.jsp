@@ -36,6 +36,7 @@
 			<table id="show" class="table table-hover table-bordered">
 	            <thead>
 		            <tr>
+		            	<th class="text-center">序号</th>
 		                <th class="text-center">课程中文名</th>
 		            	<th class="text-center">院系课程号</th>
 						<th class="text-center">课程英文名</th>
@@ -56,6 +57,7 @@
 	            <tbody class="text-center">
 		            <s:iterator value="allCourse" var="cos">
 		                <tr>
+		                	<td><s:property value="#cos.id"/></td>
 		                    <td><s:property value="#cos.c_course_name"/></td>
 		                    <td><s:property value="#cos.institute_course"/></td>
 		                    <td><s:property value="#cos.e_course_name"/></td>
@@ -64,7 +66,7 @@
 		                    <td><s:property value="#cos.credit"/></td>
 		                    <td><s:property value="#cos.subtypemodule.id"/></td>
 		                    <td><s:property value="#cos.subtype.id"/></td>
-		                    <td><s:property value="#cos.coursetype.type"/></td>
+		                    <td><s:property value="#cos.coursetype.id"/></td>
 		                    <td><s:property value="#cos.course_time"/></td>
 		                    <td><s:property value="#cos.course_time_info"/></td>
 		                    <td><s:property value="#cos.course_info"/></td>
@@ -81,6 +83,7 @@
 				<table id="cin" class="table table-bordered">
 					<thead>
 			            <tr>
+			            	<th class="text-center">序号</th>
 			                <th class="text-center">课程中文名</th>
 			            	<th class="text-center">院系课程号</th>
 							<th class="text-center">课程英文名</th>
@@ -90,7 +93,8 @@
 					</thead>
 	            	<tbody class="text-center">
 						<tr>
-							<td><input id="pk" type="text" name="cos.c_course_name"></td>
+							<td><input id="pk" type="text" name="cos.id"></td>
+							<td><input type="text" name="cos.c_course_name"></td>
 							<td><input id="ic" type="text" name="cos.institute_course"></td>
 							<td><input type="text" name="cos.e_course_name"></td>
 							<td><input type="text" name="cos.brief_course_name"/></td>

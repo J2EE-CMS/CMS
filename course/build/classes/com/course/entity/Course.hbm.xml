@@ -17,14 +17,14 @@
     
     <!-- set column name -->
     <property name="institute_course"/>
-    <property name="c_course_name"/>
+    <property name="c_course_name" unique="true"/>
     <property name="e_course_name"/>
     <property name="brief_course_name"/>
     <property name="faculty"/>
     <property name="credit"/>
     
     <!--<property name="course_type"/> -->
-    <many-to-one name="coursetype" column="course_type"/>
+    <many-to-one name="coursetype" column="course_type" />
     
     <!--<property name="sub_course_type"/> -->
     <many-to-one name="subtype" column="sub_course_type"/>

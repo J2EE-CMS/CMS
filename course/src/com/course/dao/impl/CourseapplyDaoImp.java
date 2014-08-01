@@ -47,11 +47,30 @@ public class CourseapplyDaoImp implements ICourseapplyDao {
 	
 	@Override
 	public void modifyCourseapply(Courseapply courseapply) {
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Courseapply.class);
+		/*Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Courseapply.class);
 		criteria.add(Restrictions.eq("c_course_name", courseapply.getC_course_name()));
 		Courseapply temp = (Courseapply)criteria.uniqueResult();
 		temp.setCourseapply(courseapply);
-		sessionFactory.getCurrentSession().update(temp);
+		sessionFactory.getCurrentSession().update(temp);*/
+		Coursetype coursetype = new Coursetype();
+		coursetype.setId(courseapply.getCourse_type());
+		
+		Subtype subtype = new Subtype();
+		if(courseapply.getSub_course_type() == 0)
+			courseapply.setSub_course_type(-1);
+		subtype.setId(courseapply.getSub_course_type());
+		
+		Subtypemodule subtypemodule = new Subtypemodule();
+		if(courseapply.getSub_course_type_module() == 0)
+			courseapply.setSub_course_type_module(-1);
+		subtypemodule.setId(courseapply.getSub_course_type_module());
+		
+		courseapply.setCoursetype(coursetype);
+		courseapply.setSubtype(subtype);
+		courseapply.setSubtypemodule(subtypemodule);
+		
+		//c.setInfo(cos.getInfo());
+		getSession().update(courseapply);
 	}
 	
 	@Override

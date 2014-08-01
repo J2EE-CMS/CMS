@@ -34,6 +34,7 @@
 			<table id="show" class="table table-hover table-bordered">
 				<thead>
 		            <tr>
+		            	<th class="text-center">序号</th>
 		                <th class="text-center">课程中文名</th>
 		            	<th class="text-center">院系课程号</th>
 						<th class="text-center">课程英文名</th>
@@ -53,6 +54,7 @@
 	            <tbody class="text-center">
 		            <s:iterator value="courseapplys" var="courseapply">
 		                <tr>
+		                	<td><s:property value="#courseapply.id"/></td>
 		                    <td><s:property value="#courseapply.c_course_name"/></td>
 		                    <td><s:property value="#courseapply.institute_course"/></td>
 		                    <td><s:property value="#courseapply.e_course_name"/></td>
@@ -78,6 +80,7 @@
 					<table id="cin" class="table table-bordered">
 						<thead>
 				            <tr>
+				            	<th class="text-center">序号</th>
 				                <th class="text-center">课程中文名</th>
 				            	<th class="text-center">院系课程号</th>
 								<th class="text-center">课程英文名</th>
@@ -87,11 +90,12 @@
 						</thead>
 		            	<tbody class="text-center">
 							<tr>
-								<td><input id="pk" type="text" name="courseapply.c_course_name"></td>
+								<td><input id="pk" type="text" name="courseapply.id"></td>
+								<td><input type="text" name="courseapply.c_course_name"></td>
 								<td><input id="ic" type="text" name="courseapply.institute_course"></td>
 								<td><input type="text" name="courseapply.e_course_name"></td>
 								<td><input type="text" name="courseapply.brief_course_name"/></td>
-								<td><input type="text" name="courseapply.sub_course_type"></td>
+								<td><input type="text" name="courseapply.faculty"></td>
 							</tr>
 						</tbody>
 						<thead>
@@ -105,11 +109,11 @@
 						</thead>
 		            	<tbody class="text-center">
 							<tr>
-								<td><input type="text" name="courseapply.faculty"></td>
 								<td><input type="text" name="courseapply.credit"></td>
 								<td><input type="text" name="courseapply.sub_course_type_module"></td>
-								<td><input type="text" name="courseapply.course_info"></td>
-								<td><input type="text" name="courseapply.course_type"/></td>
+								<td><input type="text" name="courseapply.sub_course_type"></td>
+								<td><input type="text" name="courseapply.course_type"></td>
+								<td><input type="text" name="courseapply.course_time"/></td>
 							</tr>
 						</tbody>
 						<thead>
@@ -122,8 +126,8 @@
 		            	</thead>
 						<tbody>
 							<tr>
-								<td><input type="text" name="courseapply.course_time"></td>
 								<td><input type="text" name="courseapply.course_time_info"></td>
+								<td><input type="text" name="courseapply.info"></td>
 								<td><input type="text" name="courseapply.course_head"/></td>
 								<td><input type="text" name="courseapply.degree"></td>
 							</tr>

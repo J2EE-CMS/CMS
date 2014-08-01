@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html >
 <html>
@@ -27,7 +27,6 @@
 					<li><a href="type_manage">类别管理</a></li>
 					<li><a href="detail_type">课程细类</a></li>
 					<li><a href="detail_module">细类模块</a></li>
-					<li><div id="txt"></div></li>
 				</ul>
 			</li>
 			<li class="dropdown">
@@ -67,35 +66,4 @@
 		<script src="js/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 	</body>
-	<script type="text/javascript">
-	function startTime()
-	{
-		var weekday=new Array(7)
-		weekday[0]="星期日"
-		weekday[1]="星期一"
-		weekday[2]="星期二"
-		weekday[3]="星期三"
-		weekday[4]="星期四"
-		weekday[5]="星期五"
-		weekday[6]="星期六"
-		var today=new Date()
-		var d = today.getDay()
-		var h=today.getHours()
-		var m=today.getMinutes()
-		var s=today.getSeconds()
-		// add a zero in front of numbers<10
-		m=checkTime(m)
-		s=checkTime(s)
-		document.getElementById('txt').innerHTML=weekday[(d)%7]+" "+h+":"+m+":"+s
-		//document.write(weekday[(d)%7]+" "+h+":"+m+":"+s)
-		t=setTimeout('startTime()',1000)
-	}
-
-	function checkTime(i)
-	{
-		if (i<10) 
-			{i="0" + i}
-		return i
-	}
-	</script>
 </html>
