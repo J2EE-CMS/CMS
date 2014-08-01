@@ -13,6 +13,8 @@ import org.hibernate.criterion.Restrictions;
 
 import com.course.dao.ICoursetypeDao;
 import com.course.entity.Coursetype;
+import com.course.entity.PreCourse;
+import com.course.entity.Subtype;
 
 public class CoursetypeDaoImp implements ICoursetypeDao {
 	
@@ -40,12 +42,19 @@ public class CoursetypeDaoImp implements ICoursetypeDao {
 		
 		//根据非主键查找时，使用hql/Criteria
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Coursetype.class);
-		//eq:=;lt:<；。。。。
 		criteria.add(Restrictions.eq("id", coursetype.getId()));
 		//criteria.add(Restrictions.eq("type", type));
 		
 		coursetype = (Coursetype)criteria.uniqueResult();
-		sessionFactory.getCurrentSession().delete(coursetype);
+		
+		
+		
+		Criteria temp = sessionFactory.getCurrentSession().createCriteria(Subtype.class);
+		temp.add(Restrictions.eq("coursetype.id", coursetype.getId()));
+
+		if(temp.uniqueResult() == null){
+			sessionFactory.getCurrentSession().delete(coursetype);
+		}
 	}
 	
 	

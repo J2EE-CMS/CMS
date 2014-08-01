@@ -50,7 +50,6 @@ public class CourseapplyDaoImp implements ICourseapplyDao {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Courseapply.class);
 		criteria.add(Restrictions.eq("c_course_name", courseapply.getC_course_name()));
 		Courseapply temp = (Courseapply)criteria.uniqueResult();
-		temp.setStatus(0);
 		temp.setCourseapply(courseapply);
 		sessionFactory.getCurrentSession().update(temp);
 	}

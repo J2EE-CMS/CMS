@@ -50,7 +50,7 @@ public class SubtypeDaoImp implements ISubtypeDao {
 	
 	@Override
 	public void modifySubtype(Subtype subtype) {
-		//getSession().clear();
+		getSession().clear();
 		Coursetype coursetype = new Coursetype();
 		coursetype.setId(subtype.getBelongtotype());
 		

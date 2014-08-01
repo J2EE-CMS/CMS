@@ -12,6 +12,7 @@ import org.hibernate.criterion.Restrictions;
 import com.course.dao.ICourseDao;
 import com.course.entity.Course;
 import com.course.entity.Coursetype;
+import com.course.entity.PreCourse;
 import com.course.entity.Subtype;
 import com.course.entity.Subtypemodule;
 
@@ -49,11 +50,10 @@ public class CourseDaoImp implements ICourseDao {
 	@Override
 	public void modifyCourse(Course cos) {
 		System.out.println("------CourseDaoImp.modifyCourse------");
-
-		String hql = "from Course as course where course.c_course_name=?";
+		
+		/*String hql = "from Course as course where course.c_course_name=?";
 		Query query = getSession().createQuery(hql);
 		query.setString(0, cos.getC_course_name());
-
 		Course c = (Course) query.uniqueResult();
 		if (c != null) {
 			c.setC_course_name(cos.getC_course_name());
@@ -63,11 +63,33 @@ public class CourseDaoImp implements ICourseDao {
 			c.setCredit(cos.getCredit());
 			c.setCourse_time(cos.getCourse_time());
 			c.setCourse_time_info(cos.getCourse_time_info());
-			c.setCourse_type(cos.getCourse_type());
-			c.setInfo(cos.getInfo());
-			getSession().update(c);
-		}
-
+			 */
+			Coursetype coursetype = new Coursetype();
+			coursetype.setId(cos.getCourse_type());
+			
+			Subtype subtype = new Subtype();
+			if(cos.getSub_course_type() == 0)
+				cos.setSub_course_type(-1);
+			subtype.setId(cos.getSub_course_type());
+			
+			Subtypemodule subtypemodule = new Subtypemodule();
+			if(cos.getSub_course_type_module() == 0)
+				cos.setSub_course_type_module(-1);
+			subtypemodule.setId(cos.getSub_course_type_module());
+			
+			cos.setCoursetype(coursetype);
+			cos.setSubtype(subtype);
+			cos.setSubtypemodule(subtypemodule);
+			
+			//c.setInfo(cos.getInfo());
+			getSession().update(cos);
+		
+		//String temp = "update Course as cose set cose.course_type=? where cose.c_course_name=?";
+		//Query que = getSession().createQuery("temp");
+		//que.setInteger(0, cos.getCourse_type());
+		//que.setString(1, cos.getC_course_name());
+		//que.executeUpdate();
+		
 	}
 
 	@Override
@@ -77,10 +99,15 @@ public class CourseDaoImp implements ICourseDao {
 		Query query = getSession().createQuery(hql);
 		query.setString(0, cos.getC_course_name());
 
+		//Criteria temp = sessionFactory.getCurrentSession().createCriteria(PreCourse.class);
+		//temp.add(Restrictions.eq("course", cos.getId()));
+		
+		//if(temp.uniqueResult() == null){
 		Course c = (Course) query.uniqueResult();
 		if (c != null) {
 			getSession().delete(c);
 		}
+		//}
 	}
 
 	@Override

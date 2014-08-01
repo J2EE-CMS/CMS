@@ -25,6 +25,7 @@ public class Course {
 		return coursetype;
 	}
 
+
 	public void setCoursetype(Coursetype coursetype) {
 		this.coursetype = coursetype;
 	}

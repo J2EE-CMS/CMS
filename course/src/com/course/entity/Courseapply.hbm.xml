@@ -16,7 +16,7 @@
     </id>
     
     <!-- set column name -->
-    <property name="status"/>
+    <property name="status" update="false"/>
     <property name="apply_time"/>
     <property name="approval_time"/>
     <property name="institute_course"/>
