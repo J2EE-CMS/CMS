@@ -104,7 +104,11 @@ public class CourseDaoImp implements ICourseDao {
 		
 		//if(temp.uniqueResult() == null){
 		Course c = (Course) query.uniqueResult();
-		if (c != null) {
+		
+		Criteria temp = sessionFactory.getCurrentSession().createCriteria(PreCourse.class);
+		temp.add(Restrictions.eq("cos.id", cos.getId()));
+		
+		if ((c != null)  &&  (temp.list().size()==0)) {
 			getSession().delete(c);
 		}
 		//}

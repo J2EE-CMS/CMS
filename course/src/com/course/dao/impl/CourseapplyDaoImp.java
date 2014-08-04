@@ -1,11 +1,13 @@
 package com.course.dao.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 import com.course.dao.ICourseapplyDao;
@@ -94,7 +96,7 @@ public class CourseapplyDaoImp implements ICourseapplyDao {
 	public void modifycommitCourseapply(Courseapply courseapply) {
 		
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Courseapply.class);
-		criteria.add(Restrictions.eq("c_course_name", courseapply.getC_course_name()));
+		criteria.add(Restrictions.eq("id", courseapply.getId()));
 		Courseapply temp = (Courseapply)criteria.uniqueResult();
 		//temp.setStatus(1);
 		//temp.setCourseapply(courseapply);
@@ -174,13 +176,35 @@ public class CourseapplyDaoImp implements ICourseapplyDao {
 	@Override
 	public void modifyapprovalCourseapply(Courseapply courseapply){
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Courseapply.class);
-		criteria.add(Restrictions.eq("c_course_name", courseapply.getC_course_name()));
+		criteria.add(Restrictions.eq("id", courseapply.getId()));
 		Courseapply temp = (Courseapply)criteria.uniqueResult();
 		//temp.setStatus(1);
 		//temp.setCourseapply(courseapply);
 		if(temp != null){
 			
 			temp.setStatus(courseapply.getStatus());
+			if(temp.getStatus()==3){
+				Date date = new Date();
+				courseapply.setApproval_time(date);
+				Course cos = new Course();
+				cos.setCourse(courseapply);
+				
+				System.out.println(" !!!: "+ courseapply.getInstitute_course());
+				
+				Coursetype coursetype = new Coursetype();
+				Subtype subtype = new Subtype();
+				Subtypemodule subtypemodule = new Subtypemodule();
+				
+				coursetype.setId(courseapply.getCourse_type());
+				subtype.setId(courseapply.getSub_course_type());
+				subtypemodule.setId(courseapply.getSub_course_type_module());
+				
+				cos.setCoursetype(coursetype);
+				cos.setSubtype(subtype);
+				cos.setSubtypemodule(subtypemodule);
+				
+				getSession().save(cos);
+			}
 		}
 		System.out.println(temp.getId()+" "+temp.getBrief_course_name()+"  "+temp.getStatus());
 				
@@ -235,7 +259,7 @@ Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Courseappl
 		}
 		
 		criteria.add(Restrictions.or(Restrictions.eq("status", 2),Restrictions.eq("status", 3)));
-		
+		criteria.addOrder(Order.asc("status"));
 		List<Courseapply> list = criteria.list();
 		if(list != null)
 			System.out.println("error list");

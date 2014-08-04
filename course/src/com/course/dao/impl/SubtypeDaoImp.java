@@ -2,15 +2,21 @@ package com.course.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
  
 
 
+import org.hibernate.criterion.Restrictions;
+
 import com.course.dao.ISubtypeDao;
+import com.course.entity.Course;
+import com.course.entity.Courseapply;
 import com.course.entity.Coursetype;
 import com.course.entity.Subtype;
+import com.course.entity.Subtypemodule;
 
 public class SubtypeDaoImp implements ISubtypeDao {
 
@@ -45,7 +51,26 @@ public class SubtypeDaoImp implements ISubtypeDao {
 	
 	@Override
 	public void deleteSubtype(Subtype subtype){
-		getSession().delete(subtype);
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Subtype.class);
+		criteria.add(Restrictions.eq("id", subtype.getId()));
+		subtype = (Subtype)criteria.uniqueResult();
+		
+		Criteria temp2 = sessionFactory.getCurrentSession().createCriteria(Subtypemodule.class);
+		temp2.add(Restrictions.eq("subtype.id", subtype.getId()));
+		
+		Criteria temp3 = sessionFactory.getCurrentSession().createCriteria(Course.class);
+		temp3.add(Restrictions.eq("subtype.id", subtype.getId()));
+		
+		Criteria temp4 = sessionFactory.getCurrentSession().createCriteria(Courseapply.class);
+		temp4.add(Restrictions.eq("subtype.id", subtype.getId()));
+		
+		//if(temp3.list() != null)
+		//	System.out.println("error");
+		
+		if((temp2.list().size() == 0)  &&  (temp3.list().size() == 0)  &&  (temp4.list().size() == 0)){
+			getSession().delete(subtype);
+		}
+		
 	}
 	
 	@Override

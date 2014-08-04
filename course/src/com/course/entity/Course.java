@@ -3,7 +3,7 @@ package com.course.entity;
 import java.util.Date;
 
 public class Course {
-	int institute_course,id;
+	int institute_course, id;
 	String  c_course_name, e_course_name, brief_course_name,
 			faculty;
 
@@ -15,11 +15,36 @@ public class Course {
 	Date approval_time;
 	boolean degree;// (鏄惁瀛﹀＋瀛︿綅锛屽尰绉戦�濉�
 	int status;//
+	//开设单位:sis_comm_yxxx
 	String info;
 
 	private Coursetype coursetype;
 	private Subtype subtype;
 	private Subtypemodule subtypemodule;
+	
+	
+	public void setCourse(Courseapply cosapp) {
+		this.id = cosapp.getId();
+		//this.status = cosapp.getStatus();
+		this.status = 1;
+		this.approval_time = cosapp.getApproval_time();
+		this.institute_course = cosapp.getInstitute_course();
+		this.c_course_name = cosapp.getC_course_name();
+		this.e_course_name = cosapp.getE_course_name();
+		this.brief_course_name = cosapp.getBrief_course_name();
+		this.faculty = cosapp.getFaculty();
+		this.credit = cosapp.getCredit();
+		this.sub_course_type_module = cosapp.sub_course_type_module;
+		this.sub_course_type = cosapp.getSub_course_type();
+		this.course_type = cosapp.getCourse_type();
+		this.course_time = cosapp.getCourse_time();
+		this.course_time_info = cosapp.getCourse_time_info();
+		this.course_info = cosapp.getCourse_info();
+		this.course_head = cosapp.getCourse_head();
+		this.degree = cosapp.isDegree();
+		this.info = cosapp.getInfo();
+	}
+	
 	
 	public Coursetype getCoursetype() {
 		return coursetype;
@@ -210,5 +235,9 @@ public class Course {
 	public void setInfo(String info) {
 		this.info = info;
 	}
-
+	public String returnDegree(){
+		if(isDegree() == true)
+			return "true";
+		return "false";
+	}
 }

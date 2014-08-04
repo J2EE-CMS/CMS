@@ -1,7 +1,6 @@
 package com.course.action;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -17,10 +16,18 @@ public class PreCourseAction {
 	private Course cos;
 	private int isApprove;
 	List<PreCourse> pcoslist;
+	List<Course> reslist;
 	private String res;
-
 	@Resource
 	private IPreCourseManage pcourseManage;
+
+	public List<Course> getReslist() {
+		return reslist;
+	}
+
+	public void setReslist(List<Course> reslist) {
+		this.reslist = reslist;
+	}
 
 	public String getRes() {
 		return res;
@@ -100,13 +107,13 @@ public class PreCourseAction {
 			relationString = "";
 			op = "";
 		}
-		int sn=1;
+		int sn = 1;
 		relationsGroup = relationString.split("!");
 		pcoslist = new ArrayList<PreCourse>();
 		for (int j = 0; relationsGroup != null && j < relationsGroup.length; j++) {
 			String[] preCourseName;// 鐢ㄤ簬璁板綍姣忕粍璇剧▼鐨勫悕瀛�
 			StringBuffer optemp = new StringBuffer();// 鐢ㄤ簬淇濆瓨姣忕粍璇剧▼闂寸殑鎿嶄綔绗︼紝&鎴栬�|
-			
+
 			// 鎻愬彇姣忕粍鐨勮绋嬩箣闂寸殑鎿嶄綔绗�
 			for (int i = 0; i < relationsGroup[j].length(); i++) {
 				if (relationsGroup[j].charAt(i) == '&' || relationsGroup[j].charAt(i) == '|') {
@@ -161,7 +168,7 @@ public class PreCourseAction {
 
 	public void addPreCourse() {
 		System.out.println("------addPreCourseAction------");
-		this.string2list(1);
+		this.string2list(0);
 		for (int i = 0; i < pcoslist.size() && !relationString.equals(""); i++) {
 			pcourseManage.addPreCourse(pcoslist.get(i));
 		}
@@ -172,7 +179,7 @@ public class PreCourseAction {
 		this.string2list(0);
 		Course cos = new Course();
 		cos.setId(cosid);
-		if(pcourseManage.queryPreCourse(cos).size()!=0)
+		if (pcourseManage.queryPreCourse(cos).size() != 0)
 			return;
 		for (int i = 0; i < pcoslist.size(); i++) {
 			pcourseManage.addPreCourse(pcoslist.get(i));
@@ -207,10 +214,8 @@ public class PreCourseAction {
 	public void queryPreCourseResultString() {
 		if (pcoslist.isEmpty())
 			return;
-		
 		PreCourse lastrecord = new PreCourse();
 		lastrecord.setGroup_number(-1);
-		;
 		PreCourse currentrecord = new PreCourse();
 		res = "";
 		StringBuffer resbuff = new StringBuffer();
@@ -251,6 +256,51 @@ public class PreCourseAction {
 
 	}
 
+	public void queryPreCourseResultList() {
+		if (pcoslist.isEmpty())
+			return;
+		Course tmpcos;
+		reslist = new ArrayList<Course>();
+		PreCourse lastrecord = new PreCourse();
+		lastrecord.setOp(-1);
+		PreCourse currentrecord = new PreCourse();
+		StringBuffer resbuff = new StringBuffer();
+		for (int i = 0; i < pcoslist.size(); i++) {
+
+			currentrecord = pcoslist.get(i);
+			if (lastrecord.getOp() == -1) {
+				resbuff.append(" ( ").append(currentrecord.getPcos()).append(" ");
+				lastrecord.setGroup_number(currentrecord.getGroup_number());
+			} else {
+				if (currentrecord.getGroup_number() != lastrecord.getGroup_number()) {
+
+					resbuff.append(") ").append((lastrecord.getOp() == 1) ? "and" : "or").append(" ( ")
+							.append(currentrecord.getPcos()).append(" ");
+				} else {
+					resbuff.append((lastrecord.getOp() == 1) ? "and" : "or").append(" ")
+							.append(currentrecord.getPcos()).append(" ");
+				}
+			}
+
+			if (currentrecord.getOp() == -1) {
+				tmpcos = new Course();
+				tmpcos.setId(currentrecord.getCos().getId());
+				tmpcos.setC_course_name(currentrecord.getCos().getC_course_name());
+				resbuff.append(")");
+				tmpcos.setInfo(resbuff.toString());
+				reslist.add(tmpcos);
+				resbuff.delete(0, resbuff.length());
+			}
+			lastrecord = currentrecord;
+
+		}
+		System.out.println("This is querylist:\n");
+		for (Course ctmp : reslist) {
+			System.out.println("" + ctmp.getId() + " " + ctmp.getC_course_name() + " " + ctmp.getInfo());
+		}
+
+	}
+
 	public void deletePreCourse() {
 		System.out.println("------deletePreCourseAction------");
 		cos = new Course();
@@ -270,7 +320,8 @@ public class PreCourseAction {
 		System.out.println("------queryAllPreCourse------");
 		pcoslist = pcourseManage.queryAllPreCourseRelations();
 		queryPreCourseResultString();
+		queryPreCourseResultList();
 		return "success";
 	}
-	
+
 }

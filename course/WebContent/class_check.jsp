@@ -91,7 +91,7 @@
 								<td><input id="pk" type="text" name="courseapply.id"></td>
 								<td><input id="ic" type="text" name="courseapply.status"/></td>
 								<td><input type="text" name="courseapply.c_course_name"></td>
-								<td><input type="text" name="courseapply.institute_course_id"></td>
+								<td><input type="text" name="courseapply.institute_course"></td>
 								<td><input type="text" name="courseapply.e_course_name"></td>
 								<td><input type="text" name="courseapply.brief_course_name"/></td>
 							</tr>

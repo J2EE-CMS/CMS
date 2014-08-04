@@ -30,7 +30,7 @@
 				<li><a href="javascript:void(0);" onclick="Winopen('MODIFY')">修改</a></li>
 				<li><a href="javascript:void(0);" onclick="Winopen('QUERY')">查询</a></li>
 				<li><a href="javascript:void(0);" onclick="Winopen('DELETE')">删除</a></li>
-				<li><a href="#">导出</a></li>	
+				<li><a href="javascript:void(0);" onclick="OutputToExcel()">导出</a></li>
 				<li class="pull-right"><a href="home">返回</a></li> 	       
 			</ul>
 			<table id="show" class="table table-hover table-bordered">
@@ -224,6 +224,19 @@
 				}
 				document.getElementById("wincommit").onclick=deleteCourse;
 			}
+			
+			if(str=='COMMIT'){
+				var cid = $("#pk").val();
+				if(cid != ""){
+					$("#cin td").each(function(i){
+						$(this).find("input").attr("readonly","true");
+					});
+				}
+				else{
+					$("#pk").focus();
+				}
+				document.getElementById("wincommit").onclick=modifycommitCourseapply;
+			}
 		}
 	
 		function WinSize() //函数：获取尺寸
@@ -275,6 +288,13 @@
 		{
 			var myform=document.forms[0];
 			myform.action="course_queryCourse";
+			myform.method="post";
+			myform.submit();
+		}
+		function OutputToExcel()
+		{
+			var myform=document.forms[0];
+			myform.action="course_QueryCourseapplyOutputToExcel";
 			myform.method="post";
 			myform.submit();
 		}

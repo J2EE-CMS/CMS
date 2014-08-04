@@ -7,8 +7,8 @@ public class Coursetype {
 	private String typecore;
 	private String type;
 	private String quality;
-	private String reexamine;
-	private String retake;
+	private String reexamine;//
+	private String retake;//
 	
 	private Set<Subtype> subtype;
 	/*

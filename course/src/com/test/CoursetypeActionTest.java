@@ -85,7 +85,7 @@ public class CoursetypeActionTest {
 	}
 	
 	
-	@Test
+	//@Test
 	public void getExcel(){
 		
 	}

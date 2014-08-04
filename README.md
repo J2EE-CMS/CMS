@@ -1,4 +1,9 @@
 coursemanage
+
+	团队项目界面：https://github.com/J2EE-CMS/CMS（待定）
+		Owners(admin)		:SnowMastercx
+		commit(read&write)	:SnowMastercx、lyleslie、kason--、michael---、EaconTang
+		Ta(read)			:allenhoum	
 ============
 项目说明（待补）
 
@@ -22,7 +27,8 @@ coursemanage
 										Ps:默认用户数据库为空，需要自行添加。
 										Pss:用户权限分为root/admin/public/college
 								 2、数据库表的修正 & 关联
-	2014.8.01		 第12次更新：修复课程库的管理、申请&审批无法修改；修复先修关系处理时查询所有结果的处理。</pre>
+	2014.8.01		 第12次更新：修复课程库的管理、申请&审批无法修改；修复先修关系处理时查询所有结果的处理。
+	2014.8.04		 第13次更新：修复课程细类无法删除的问题，增加一个lise用于存储先修课程设定返回值</pre>
 <br />
 <br />
 

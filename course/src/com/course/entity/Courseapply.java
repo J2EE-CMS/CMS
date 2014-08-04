@@ -17,8 +17,17 @@ public class Courseapply {
 	String course_info;
 	String course_head;
 	boolean degree;
+	String info;
 	
 	
+	public String getInfo() {
+		return info;
+	}
+
+	public void setInfo(String info) {
+		this.info = info;
+	}
+
 	private Coursetype coursetype;
 	private Subtype subtype;
 	private Subtypemodule subtypemodule;
@@ -52,7 +61,7 @@ public class Courseapply {
 		
 	}
 	
-	public Courseapply(int id,int status,Date apply_time,Date approval_time,int institute_course_id,String c_course_name,String e_course_name,String brief_course_name,String faculty,int credit,int sub_course_type_module,int sub_course_type,int course_type,String course_time,String course_time_info,String course_info,String course_head,boolean degree) {
+	public Courseapply(int id,int status,Date apply_time,Date approval_time,int institute_course,String c_course_name,String e_course_name,String brief_course_name,String faculty,int credit,int sub_course_type_module,int sub_course_type,int course_type,String course_time,String course_time_info,String course_info,String course_head,boolean degree) {
 		this.id = id;
 		this.status = status;
 		this.apply_time = apply_time;
@@ -207,5 +216,10 @@ public class Courseapply {
 		this.degree = degree;
 	}
 	
+	public String returnDegree(){
+		if(isDegree() == true)
+			return "true";
+		return "false";
+	}
 	
 }

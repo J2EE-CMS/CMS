@@ -11,8 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.course.action.PreCourseAction;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {
-		"classpath:/config/applicationContext-beans.xml",
+@ContextConfiguration(locations = { "classpath:/config/applicationContext-beans.xml",
 		"classpath:/config/applicationContext-common.xml" })
 public class PreCourseActionTest {
 
@@ -23,7 +22,7 @@ public class PreCourseActionTest {
 	public static void setUpBeforeClass() throws Exception {
 	}
 
-//	@Test
+	// @Test
 	public void testAddPreCourse() {
 		preCourseAction.setRelationString("A&B");
 		preCourseAction.setOp("");
@@ -31,47 +30,47 @@ public class PreCourseActionTest {
 		preCourseAction.addPreCourse();
 	}
 
-	//@Test
+	// @Test
 	public void testQueryPreCourse() {
 		preCourseAction.setCosid(4);
 		preCourseAction.queryPreCourse();
 		// System.out.println(preCourseAction.getPcoslist().size());
 	}
 
-	@Test
+	//@Test
 	public void testqueryAllPreCourseRelations() {
 		preCourseAction.queryAllPreCourseRelations();
 	}
 
-	 //@Test
+	// @Test
 
 	public void testDeletePreCourse() {
 		preCourseAction.setCosid(5);
 		preCourseAction.deletePreCourse();
 	}
 
-//	 @Test
+	 @Test
 	public void testModifyPreCourse() {
 		preCourseAction.setRelationString("aa&bb!cc&cd");
 		preCourseAction.setOp("|");
-		preCourseAction.setCosid(7);
+		preCourseAction.setCosid(2);
 		preCourseAction.modifyPreCourse();
 	}
 
 	// @Test
 	public void testApplyPreCourse() {
 		System.out.println("applyTest");
-		preCourseAction.setRelationString("courseA!courseC|courseD");
-		preCourseAction.setOp("&");
+		preCourseAction.setRelationString("courseX");
+		preCourseAction.setOp("");
 
 		preCourseAction.setCosid(2);
 		preCourseAction.applyPreCourse();
 	}
 
-	 @Test
+	// @Test
 	public void testApprovePreCourse() {
 		preCourseAction.setIsApprove(1);
-		preCourseAction.setCosid(2);
+		preCourseAction.setCosid(1);
 		preCourseAction.approvePreCourse();
 
 	}
