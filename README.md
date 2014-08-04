@@ -41,7 +41,7 @@ $ tree .
 course.
 │  .classpath
 │  .project
-│ 
+│  
 │  
 ├─.settings
 │      .jsdtscope
@@ -336,6 +336,7 @@ course.
                 jackson-core-asl-1.9.2.jar
                 jackson-mapper-asl-1.9.2.jar
                 javassist-3.18.1-GA.jar
+                jaxr-api.jar
                 jboss-logging-3.1.0.GA.jar
                 jboss-transaction-api_1.1_spec-1.0.1.Final.jar
                 jta-1.1.jar
@@ -380,8 +381,6 @@ course.
                 struts2-json-plugin-2.3.16.3.jar
                 struts2-spring-plugin-2.3.16.3.jar
                 xwork-core-2.3.16.3.jar
-                
-
 .
 
 ```
