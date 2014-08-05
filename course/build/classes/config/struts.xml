@@ -72,10 +72,10 @@
 		<action name="training_class" class="relationAction" method="getAllRelations">
 			<result name="allrelation">/training_class.jsp</result>
 		</action>
-		<action name="relation_apply">
+		<action name="relation_apply" class="preCourseAction" method="queryAllPreCourseRelations">
 			<result name="success">/relation_apply.jsp</result>
 		</action>
-		<action name="relation_check" >
+		<action name="relation_check" class="preCourseAction" method="queryAllPreCourseRelations">
 			<result name="success">/relation_check.jsp</result>
 		</action>
 		<action name="user_manage" class="userAction" method="getAllUsers">

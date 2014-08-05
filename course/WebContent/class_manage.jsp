@@ -36,7 +36,7 @@
 			<table id="show" class="table table-hover table-bordered">
 	            <thead>
 		            <tr>
-		            	<th class="text-center">序号</th>
+		            	<th class="text-center">ID</th>
 		                <th class="text-center">课程中文名</th>
 		            	<th class="text-center">院系课程号</th>
 						<th class="text-center">课程英文名</th>
@@ -83,7 +83,7 @@
 				<table id="cin" class="table table-bordered">
 					<thead>
 			            <tr>
-			            	<th class="text-center">序号</th>
+			            	<th class="text-center">ID</th>
 			                <th class="text-center">课程中文名</th>
 			            	<th class="text-center">院系课程号</th>
 							<th class="text-center">课程英文名</th>
@@ -133,7 +133,12 @@
 							<td><input type="text" name="cos.course_time_info"></td>
 							<td><input type="text" name="cos.course_info"></td>
 							<td><input type="text" name="cos.course_head"/></td>
-							<td><input type="text" name="cos.degree"></td>
+							<td>
+								<select name="cos.degree" class="form-control">
+									<option value="学位课">学位课</option>
+									<option value="非学位课">非学位课</option>
+								</select>
+							</td>
 							<td><input type="text" name="cos.info"></td>
 						</tr>
 					</tbody>

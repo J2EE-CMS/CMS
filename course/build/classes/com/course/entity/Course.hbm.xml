@@ -16,7 +16,7 @@
     </id>
     
     <!-- set column name -->
-    <property name="institute_course"/>
+    <property name="institute_course" unique="true"/>
     <property name="c_course_name" unique="true"/>
     <property name="e_course_name"/>
     <property name="brief_course_name"/>

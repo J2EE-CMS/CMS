@@ -16,7 +16,7 @@
     </id>
     
     <!-- set column name -->
-    <property name="name"/>
+    <property name="name" unique="true"/>
     <property name="password"/>
     <property name="role"/>
   </class>

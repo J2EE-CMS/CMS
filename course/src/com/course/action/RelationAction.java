@@ -55,15 +55,21 @@ public class RelationAction extends ActionSupport {
 		//relationManage.getAllRelations(relation);
 		relations = new ArrayList<Relation>();
 		relations = relationManage.getAllRelations();
+		if(relations.isEmpty())
+			System.out.println("return is null");
 		return "allrelation";
 	}
 
 	public String modifyRelation() {
+		if((relation.getId()==0) || (relation.getType() == 0) || (relation.getGrade() == 0) || (relation.getDevtype() == null))
+			System.out.println("error input");
 		relationManage.modifyRelation(relation);
 		return "success";
 	}
 	
 	public String addRelation() {
+		if((relation.getId()==0) || (relation.getType() == 0) || (relation.getGrade() == 0) || (relation.getDevtype() == null))
+			System.out.println("error input");
 		relationManage.addRelation(relation);
 		return "success";
 	}
@@ -71,6 +77,8 @@ public class RelationAction extends ActionSupport {
 	public String findByGrade() {
 		relations = new ArrayList<Relation>();
 		relations = relationManage.findByGrade(relation);
+		if(relations.isEmpty())
+			System.out.println("return is null");
 		return "queryrelation";
 	}
 }

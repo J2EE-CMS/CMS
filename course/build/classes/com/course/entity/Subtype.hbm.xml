@@ -15,9 +15,9 @@
     </id>
     
     <!-- set column name -->
-    <property name="subtypecode"/>
+    <property name="subtypecode" unique="true"/>
     
-    <property name="subtypename"/>
+    <property name="subtypename" unique="true"/>
     
     
 <!--    <property name="belongtotype"/>  -->

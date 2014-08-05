@@ -31,12 +31,16 @@ public class CourseDaoImp implements ICourseDao {
 	public void addCourse(Course cos) {
 		System.out.println("------CourseDaoImp.AddCourse------");
 		Coursetype coursetype = new Coursetype();
+		
 		Subtype subtype = new Subtype();
+		cos.setCoursetype(coursetype);
+		
 		Subtypemodule subtypemodule = new Subtypemodule();
+		subtype.setId(cos.getSub_course_type());
 		
 		coursetype.setId(cos.getCourse_type());
-		subtype.setId(cos.getSub_course_type());
-		subtypemodule.setId(cos.getSub_course_type_module());
+		
+		subtypemodule.setId(cos.getSub_course_type_module()==0?999:cos.getSub_course_type_module());
 		
 		cos.setCoursetype(coursetype);
 		cos.setSubtype(subtype);
@@ -68,13 +72,9 @@ public class CourseDaoImp implements ICourseDao {
 			coursetype.setId(cos.getCourse_type());
 			
 			Subtype subtype = new Subtype();
-			if(cos.getSub_course_type() == 0)
-				cos.setSub_course_type(-1);
 			subtype.setId(cos.getSub_course_type());
 			
 			Subtypemodule subtypemodule = new Subtypemodule();
-			if(cos.getSub_course_type_module() == 0)
-				cos.setSub_course_type_module(-1);
 			subtypemodule.setId(cos.getSub_course_type_module());
 			
 			cos.setCoursetype(coursetype);
@@ -162,7 +162,7 @@ public class CourseDaoImp implements ICourseDao {
 			crit.add(Restrictions.eq("subtypemodule.id",
 					cos.getSub_course_type_module()));
 		}
-		crit.add(Restrictions.eq("status", cos.getStatus()));
+	//crit.add(Restrictions.eq("status", cos.getStatus()));
 
 		List<Course> list = crit.list();
 		for (Course c : list) {
@@ -189,7 +189,7 @@ public class CourseDaoImp implements ICourseDao {
 				+ cos.getCourse_time_info() + "\t" + "course_info:"
 				+ cos.getCourse_info() + "\t" + "course_head:"
 				+ cos.getCourse_head() + "\t" + "approval_time:"
-				+ cos.getApproval_time() + "\t" + "degree:" + cos.isDegree()
+				+ cos.getApproval_time() + "\t" + "degree:" + cos.getDegree()
 				+ "\t" + "status:" + cos.getStatus() + "\t" + "info:"
 				+ cos.getInfo() + "\n");
 

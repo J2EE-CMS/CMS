@@ -14,9 +14,9 @@
     </id>
     
     <!-- set column name -->
-    <property name="module_name"/>
+    <property name="module_name" unique="true"/>
  
-	<property name="subtype_code"/>
+	<property name="subtype_code" unique="true"/>
  
 <!--  <property name="subtype_name"/>  -->	
 	<many-to-one name="subtype" column="subtype_name"/>

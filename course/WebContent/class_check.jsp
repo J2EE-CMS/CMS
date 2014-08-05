@@ -30,7 +30,7 @@
 			<table id="show" class="table table-hover table-bordered">
 				<thead>
 		            <tr>
-		            	<th class="text-center">序号</th>
+		            	<th class="text-center">ID</th>
 		            	<th class="text-center">状态</th>
 		                <th class="text-center">课程中文名</th>
 		            	<th class="text-center">院系课程号</th>
@@ -78,7 +78,7 @@
 					<table id="cin" class="table table-bordered">
 						<thead>
 				            <tr>
-				            	<th class="text-center">序号</th>
+				            	<th class="text-center">ID</th>
 				            	<th class="text-center">状态</th>
 				                <th class="text-center">课程中文名</th>
 				            	<th class="text-center">院系课程号</th>
@@ -89,7 +89,12 @@
 		            	<tbody class="text-center">
 							<tr>
 								<td><input id="pk" type="text" name="courseapply.id"></td>
-								<td><input id="ic" type="text" name="courseapply.status"/></td>
+								<td>
+									<select name="courseapply.status" class="form-control">
+										<option value="审批通过">审批通过</option>
+										<option value="审批不通过">审批不通过</option>
+									</select>
+								</td>
 								<td><input type="text" name="courseapply.c_course_name"></td>
 								<td><input type="text" name="courseapply.institute_course"></td>
 								<td><input type="text" name="courseapply.e_course_name"></td>
@@ -129,7 +134,12 @@
 								<td><input type="text" name="courseapply.course_time_info"></td>
 								<td><input type="text" name="courseapply.course_info"></td>
 								<td><input type="text" name="courseapply.course_head"/></td>
-								<td><input type="text" name="courseapply.degree"></td>
+								<td>
+									<select name="courseapply.degree" class="form-control">
+										<option value="学位课">学位课</option>
+										<option value="非学位课">非学位课</option>
+									</select>
+								</td>
 							</tr>
 						</tbody>
 						

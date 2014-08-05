@@ -1,8 +1,8 @@
 package com.course.entity;
 
 public class Relation {
-	private Integer id;
-	private Integer grade;
+	private int id;
+	private int grade;
 	private String devtype;
 	private int type;
 	
@@ -36,10 +36,10 @@ public class Relation {
 		this.type = temp.type;
 	}
 	
-	public Integer getGrade() {
+	public int getGrade() {
 		return grade;
 	}
-	public void setGrade(Integer grade) {
+	public void setGrade(int grade) {
 		this.grade = grade;
 	}
 	
@@ -58,11 +58,11 @@ public class Relation {
 		this.type = type;
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 }

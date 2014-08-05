@@ -50,7 +50,7 @@ public class SubtypeActionTest {
 		System.out.println(list.size());
 		for(int i=0;i<list.size();i++){
 			System.out.println( list.get(i).getId()+"\t"+list.get(i).getSubtypecode()+"\t"+list.get(i).getSubtypename()+
-					"\t"+list.get(i).getBelongtotype()+"\t"+list.get(i).isIspublicsubtype()+"\t"+list.get(i).getDepartment()+"\n");
+					"\t"+list.get(i).getBelongtotype()+"\t"+list.get(i).getIspublicsubtype()+"\t"+list.get(i).getDepartment()+"\n");
 		}
 	}
 	
@@ -62,7 +62,7 @@ public class SubtypeActionTest {
 		System.out.println(list.size());
         for(Subtype subtype:list){  
             System.out.println(subtype.getId()+"\t"+subtype.getSubtypecode()+"\t"+subtype.getSubtypename()+
-					"\t"+subtype.getBelongtotype()+"\t"+subtype.isIspublicsubtype()+"\t"+subtype.getDepartment()+"\n");  
+					"\t"+subtype.getBelongtotype()+"\t"+subtype.getIspublicsubtype()+"\t"+subtype.getDepartment()+"\n");  
         } 
 	}
 
@@ -74,7 +74,7 @@ public class SubtypeActionTest {
 		System.out.println(list.size());
         for(Subtype subtype:list){  
             System.out.println(subtype.getId()+"\t"+subtype.getSubtypecode()+"\t"+subtype.getSubtypename()+
-					"\t"+subtype.getBelongtotype()+"\t"+subtype.isIspublicsubtype()+"\t"+subtype.getDepartment()+"\n");  
+					"\t"+subtype.getBelongtotype()+"\t"+subtype.getIspublicsubtype()+"\t"+subtype.getDepartment()+"\n");  
         } 
 	}
 	
@@ -85,7 +85,7 @@ public class SubtypeActionTest {
 		System.out.println(list.size());
         for(Subtype subtype:list){  
             System.out.println(subtype.getId()+"\t"+subtype.getSubtypecode()+"\t"+subtype.getSubtypename()+
-					"\t"+subtype.getBelongtotype()+"\t"+subtype.isIspublicsubtype()+"\t"+subtype.getDepartment()+"\n");  
+					"\t"+subtype.getBelongtotype()+"\t"+subtype.getIspublicsubtype()+"\t"+subtype.getDepartment()+"\n");  
         } 
 	}
 }

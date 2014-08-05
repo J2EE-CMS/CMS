@@ -74,22 +74,36 @@ public class Coursetype {
 	public void setQuality (String quality) {
 		this.quality = quality;
 	}
+
 	
-	public String getReexamine () {
+	
+	public String getReexamine() {
 		return reexamine;
 	}
-	
+
 	public void setReexamine(String reexamine) {
-			this.reexamine = reexamine;
+		this.reexamine = reexamine;
 	}
-	
-	public String getRetake () {
+
+	public String getRetake() {
 		return retake;
 	}
-	
+
 	public void setRetake(String retake) {
-			this.retake = retake;
+		this.retake = retake;
+	}
+
+	/*
+	public String returnReexamine(){
+		if(isReexamine() == true)
+			return "true";
+		return "false";
 	}
 	
-	
+	public String returnRetake(){
+		if(isRetake() == true)
+			return "true";
+		return "false";
+	}
+	*/
 }

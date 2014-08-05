@@ -5,7 +5,8 @@ public class Subtype {
 	private String subtypecode;		//¿Î³ÌÏ¸ÀàÂë
 	private String subtypename;		//¿Î³ÌÏ¸ÀàÃû
 	private int belongtotype;	//ËùÊô¿Î³ÌÀà±ð
-	
+	private String ispublicsubtype;	//ÊÇ·ñ¹«¹²Ï¸Àà
+	private String department;		//ÉèÁ¢µ¥Î»
 	
 
 	public int getBelongtotype() {
@@ -16,8 +17,7 @@ public class Subtype {
 		this.belongtotype = belongtotype;
 	}
 
-	private boolean ispublicsubtype;	//ÊÇ·ñ¹«¹²Ï¸Àà
-	private String department;		//ÉèÁ¢µ¥Î»
+	
 
 	private Coursetype coursetype;
 	
@@ -65,14 +65,12 @@ public class Subtype {
 	public void setSubtypename(String subtypename) {
 		this.subtypename = subtypename;
 	}
-	
-	
 
-	public boolean isIspublicsubtype() {
+	public String getIspublicsubtype() {
 		return ispublicsubtype;
 	}
 
-	public void setIspublicsubtype(boolean ispublicsubtype) {
+	public void setIspublicsubtype(String ispublicsubtype) {
 		this.ispublicsubtype = ispublicsubtype;
 	}
 

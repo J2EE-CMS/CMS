@@ -109,7 +109,7 @@ public class CourseAction extends ActionSupport {
         List<String[]> dataset = new ArrayList<String[]>(); 
         for(int i=0;i<tem.size();i++) {
         	Course temp = tem.get(i); 
-        	dataset.add(new String[]{temp.getId() +"",temp.getC_course_name() + "",temp.getInstitute_course() + "",temp.getE_course_name()+ "",temp.getBrief_course_name()+ "",temp.getFaculty() + "",temp.getCredit() + "",temp.getSubtypemodule().getId() + "",temp.getSubtype().getId() + "",temp.getCoursetype().getId() +"",temp.getCourse_time() + "",temp.getCourse_time_info() + "",temp.getCourse_info() + "",temp.getCourse_head() + "",temp.returnDegree() +"",temp.getInfo()});
+        	dataset.add(new String[]{temp.getId() +"",temp.getC_course_name() + "",temp.getInstitute_course() + "",temp.getE_course_name()+ "",temp.getBrief_course_name()+ "",temp.getFaculty() + "",temp.getCredit() + "",temp.getSubtypemodule().getId() + "",temp.getSubtype().getId() + "",temp.getCoursetype().getId() +"",temp.getCourse_time() + "",temp.getCourse_time_info() + "",temp.getCourse_info() + "",temp.getCourse_head() + "",temp.getDegree() +"",temp.getInfo()});
         }
         /*
         OutputStream out = null;

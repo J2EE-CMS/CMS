@@ -35,7 +35,7 @@
 			<table id="show" class="table table-hover table-bordered">
 				<thead>
 					<tr>
-						<th class="text-center">序号</th>
+						<th class="text-center">ID</th>
 						<th class="text-center">年级</th>
 						<th class="text-center">培养类别</th>
 						<th class="text-center">课程类别</th>
@@ -58,7 +58,7 @@
 				<table id="cin" class="table table-bordered">
 					<thead>
 			            <tr>
-			            	<th class="text-center">序号</th>
+			            	<th class="text-center">ID</th>
 			            	<th class="text-center">年级</th>
 							<th class="text-center">培养类别</th>
 							<th class="text-center">课程类别</th>

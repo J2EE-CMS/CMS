@@ -30,22 +30,25 @@
 				<li><a href="javascript:void(0);" onclick="Winopen('MODIFY')">修改</a></li>
 				<li><a href="javascript:void(0);" onclick="Winopen('QUERY')">查询</a></li>
 				<li><a href="javascript:void(0);" onclick="Winopen('DELETE')">删除</a></li>
-				<li><a href="#">导出</a></li>	
-				<li><a href="#">提交</a></li>	
+				<li><a href="javascript:void(0);" onclick="OutputToExcel()">导出</a></li>
 				<li class="pull-right"><a href="home">返回</a></li> 
 			</ul>
 			<table id="show" class="table table-hover table-bordered">
 				<thead>
 					<tr>
 						<th class="text-center">课程号</th>
+						<th class="text-center">课程中文名</th>
 						<th class="text-center">先修关系</th>
+						<th class="text-center">状态</th>
 					</tr>
 				</thead>
 				<tbody class="text-center">
-					<s:iterator value="" var="">
+					<s:iterator value="reslist" var="course">
 		                <tr>
-		                    <td><s:property value=""/></td>
-		                    <td><s:property value=""/></td>
+		                    <td><s:property value="#course.id"/></td>
+		                    <td><s:property value="#course.c_course_name"/></td>
+		                    <td><s:property value="#course.info"/></td>
+		                    <td><s:property value="#course.status"/></td>
 		                </tr>
 		        	</s:iterator>
 				</tbody>
@@ -63,7 +66,7 @@
 					</thead>
 	            	<tbody class="text-center">
 						<tr>
-							<td><input type="text" name="course"></td>
+							<td><input type="text" name="cosid"></td>
 							<td><input type="text" name="relationString"></td>
 							<td><input type="text" name="op"></td>
 						</tr>
@@ -194,7 +197,7 @@
 		function addPreCourse()
 		{
 			var myform=document.forms[0];
-			myform.action="precourse_addPreCourse";
+			myform.action="precourse_applyPreCourse";
 			myform.method="post";
 			myform.submit();
 		}
@@ -219,6 +222,13 @@
 		{
 			var myform=document.forms[0];
 			myform.action="precourse_queryPreCourse";
+			myform.method="post";
+			myform.submit();
+		}
+		function OutputToExcel()
+		{
+			var myform=document.forms[0];
+			myform.action="precourse_QueryPrecourseOutputToExcel";
 			myform.method="post";
 			myform.submit();
 		}

@@ -29,7 +29,7 @@ public class CheckRoot implements Interceptor {
 		System.out.println("------CheckRole.intercept------");
 		Map session=ActionContext.getContext().getSession();
 
-		if("root".equals(session.get("user.role"))){
+		if("root".equals(session.get("user.role")) || "super".equals(session.get("user.role"))){
 			return arg0.invoke();
 		}
 		

@@ -5,7 +5,7 @@ import java.util.Date;
 public class Courseapply {
 	
 	int id;
-	int status;//0:å¾…æäº¤ï¼›1:å¾…å®¡æ‰¹ï¼›2:å®¡æ‰¹é€šè¿‡ï¼?1:å®¡æ‰¹ä¸é?è¿?
+	String status;//¡°´ıÉóÅú¡±
 	Date apply_time;
 	Date approval_time;
 	int institute_course;
@@ -16,7 +16,7 @@ public class Courseapply {
 	String course_time, course_time_info;
 	String course_info;
 	String course_head;
-	boolean degree;
+	String degree;
 	String info;
 	
 	
@@ -61,7 +61,7 @@ public class Courseapply {
 		
 	}
 	
-	public Courseapply(int id,int status,Date apply_time,Date approval_time,int institute_course,String c_course_name,String e_course_name,String brief_course_name,String faculty,int credit,int sub_course_type_module,int sub_course_type,int course_type,String course_time,String course_time_info,String course_info,String course_head,boolean degree) {
+	public Courseapply(int id,String status,Date apply_time,Date approval_time,int institute_course,String c_course_name,String e_course_name,String brief_course_name,String faculty,int credit,int sub_course_type_module,int sub_course_type,int course_type,String course_time,String course_time_info,String course_info,String course_head,String degree) {
 		this.id = id;
 		this.status = status;
 		this.apply_time = apply_time;
@@ -101,7 +101,7 @@ public class Courseapply {
 		this.course_time_info = courseapp.getCourse_time_info();
 		this.course_info = courseapp.getCourse_info();
 		this.course_head = courseapp.getCourse_head();
-		this.degree = courseapp.isDegree();
+		this.degree = courseapp.getDegree();
 	}
 	
 	public int getId() {
@@ -110,12 +110,15 @@ public class Courseapply {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getStatus() {
+	
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(int status) {
+
+	public void setStatus(String status) {
 		this.status = status;
 	}
+
 	public Date getApply_time() {
 		return apply_time;
 	}
@@ -209,17 +212,21 @@ public class Courseapply {
 	public void setCourse_head(String course_head) {
 		this.course_head = course_head;
 	}
-	public boolean isDegree() {
+	
+	
+	public String getDegree() {
 		return degree;
 	}
-	public void setDegree(boolean degree) {
+
+	public void setDegree(String degree) {
 		this.degree = degree;
 	}
 	
+	/*
 	public String returnDegree(){
 		if(isDegree() == true)
 			return "true";
 		return "false";
 	}
-	
+	*/
 }

@@ -2,12 +2,12 @@ package com.course.entity;
 
 public class Subtypemodule {
 	private int id;
-	private int module_name;
+	private String module_name;
 	private String subtype_code;
 	private int subtype_name;
 	private int course_type;
 	private String version;
-	private boolean public_subtype;
+	private String public_subtype;
 	
 	private Coursetype coursetype;
 	
@@ -47,11 +47,11 @@ public class Subtypemodule {
 		this.id = id;
 	}
 
-	public int getModule_name() {
+	public String getModule_name() {
 		return module_name;
 	}
 
-	public void setModule_name(int module_name) {
+	public void setModule_name(String module_name) {
 		this.module_name = module_name;
 	}
 
@@ -85,13 +85,13 @@ public class Subtypemodule {
 
 	public void setVersion(String version) {
 		this.version = version;
-	}
+	}	
 
-	public boolean getPublic_subtype() {
+	public String getPublic_subtype() {
 		return public_subtype;
 	}
 
-	public void setPublic_subtype(boolean public_subtype) {
+	public void setPublic_subtype(String public_subtype) {
 		this.public_subtype = public_subtype;
 	}
 

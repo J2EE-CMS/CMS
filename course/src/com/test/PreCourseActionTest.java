@@ -30,14 +30,14 @@ public class PreCourseActionTest {
 		preCourseAction.addPreCourse();
 	}
 
-	// @Test
+	 @Test
 	public void testQueryPreCourse() {
-		preCourseAction.setCosid(4);
+		preCourseAction.setCosid(5);
 		preCourseAction.queryPreCourse();
 		// System.out.println(preCourseAction.getPcoslist().size());
 	}
 
-	//@Test
+	@Test
 	public void testqueryAllPreCourseRelations() {
 		preCourseAction.queryAllPreCourseRelations();
 	}
@@ -49,11 +49,11 @@ public class PreCourseActionTest {
 		preCourseAction.deletePreCourse();
 	}
 
-	 @Test
+	//@Test
 	public void testModifyPreCourse() {
 		preCourseAction.setRelationString("aa&bb!cc&cd");
 		preCourseAction.setOp("|");
-		preCourseAction.setCosid(2);
+		preCourseAction.setCosid(3);
 		preCourseAction.modifyPreCourse();
 	}
 
@@ -63,7 +63,7 @@ public class PreCourseActionTest {
 		preCourseAction.setRelationString("courseX");
 		preCourseAction.setOp("");
 
-		preCourseAction.setCosid(2);
+		preCourseAction.setCosid(3);
 		preCourseAction.applyPreCourse();
 	}
 

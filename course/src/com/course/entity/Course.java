@@ -13,8 +13,8 @@ public class Course {
 	String course_info;
 	String course_head;// 通璇剧▼璐熻矗浜�
 	Date approval_time;
-	boolean degree;// (鏄惁瀛﹀＋瀛︿綅锛屽尰绉戦�濉�
-	int status;//
+	String degree;// (鏄惁瀛﹀＋瀛︿綅锛屽尰绉戦�濉�
+	String status;//
 	//开设单位:sis_comm_yxxx
 	String info;
 
@@ -26,7 +26,7 @@ public class Course {
 	public void setCourse(Courseapply cosapp) {
 		this.id = cosapp.getId();
 		//this.status = cosapp.getStatus();
-		this.status = 1;
+		this.status = "待审批";
 		this.approval_time = cosapp.getApproval_time();
 		this.institute_course = cosapp.getInstitute_course();
 		this.c_course_name = cosapp.getC_course_name();
@@ -41,7 +41,7 @@ public class Course {
 		this.course_time_info = cosapp.getCourse_time_info();
 		this.course_info = cosapp.getCourse_info();
 		this.course_head = cosapp.getCourse_head();
-		this.degree = cosapp.isDegree();
+		this.degree = cosapp.getDegree();
 		this.info = cosapp.getInfo();
 	}
 	
@@ -87,7 +87,7 @@ public class Course {
 		this.course_info = cos.getCourse_info();
 		this.course_head = cos.getCourse_head();
 		this.approval_time = cos.getApproval_time();
-		this.degree = cos.isDegree();
+		this.degree = cos.getDegree();
 		this.status = cos.getStatus();
 		this.info = cos.getInfo();
 	}
@@ -212,21 +212,25 @@ public class Course {
 		this.approval_time = approval_time;
 	}
 
-	public boolean isDegree() {
+	public String getDegree() {
 		return degree;
 	}
 
-	public void setDegree(boolean degree) {
+	public void setDegree(String degree) {
 		this.degree = degree;
 	}
 
-	public int getStatus() {
+	
+
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(int status) {
+
+	public void setStatus(String status) {
 		this.status = status;
 	}
+
 
 	public String getInfo() {
 		return info;
@@ -235,9 +239,11 @@ public class Course {
 	public void setInfo(String info) {
 		this.info = info;
 	}
+	/*
 	public String returnDegree(){
 		if(isDegree() == true)
 			return "true";
 		return "false";
 	}
+	*/
 }

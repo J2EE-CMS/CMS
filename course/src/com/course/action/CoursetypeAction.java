@@ -60,35 +60,44 @@ public class CoursetypeAction extends ActionSupport  {
 	public String addCoursetype()
 	{
 		System.out.println("-------CoursetypeAction add------");
-		if(coursetypeManage!=null){
-			coursetypeManage.addCoursetype(coursetype);
-		}
-		else{
-			System.out.println("coursetypeManage is null");
-		}
+		if((coursetype.getId() == 0) || (coursetype.getType() == null)  || (coursetype.getQuality() == null)  ||  (coursetype.getSubtype() == null)  || (coursetype.getTypecore() == null))
+			System.out.println("error input");
+		coursetypeManage.addCoursetype(coursetype);
+			
 		return "success";
 	}
 	
 	public String deleteCoursetype()
 	{
+		System.out.println("-------CoursetypeAction delete------");
+		if(coursetype.getId() == 0)
+			System.out.println("null input");
 		coursetypeManage.deleteCoursetype(coursetype);
 		return "success";
 	}
 	
 	public String modifyCoursetype()
 	{
+		System.out.println("-------CoursetypeAction modify------");
+		if((coursetype.getId() == 0) || (coursetype.getType() == null)  || (coursetype.getQuality() == null)  ||  (coursetype.getSubtype() == null)  || (coursetype.getTypecore() == null))
+			System.out.println("error input");
 		coursetypeManage.modifyCoursetype(coursetype);
+		
 		return "success";
 	}
 	
 	public String getAllCoursetypes(){
+		System.out.println("-------CoursetypeAction getAll------");
 		coursetypes = coursetypeManage.getAllCoursetypes();
 		ActionContext.getContext().getSession().put("table",coursetypes);
+		if(coursetypes.isEmpty())
+			System.out.println("return is null");
 		return "allcoursetype";
 	}
 	
 	
 	public String QueryCoursetypeOutputToExcel(){
+		System.out.println("-------CoursetypeAction output------");
 		List<Coursetype> tem = (List<Coursetype>)ActionContext.getContext().getSession().get("table");
 		//coursetypes = new ArrayList<Coursetype>();
 		//coursetypes = coursetypeManage.getAllCoursetypes();
@@ -101,16 +110,7 @@ public class CoursetypeAction extends ActionSupport  {
         	Coursetype temp = tem.get(i); 
         	dataset.add(new String[]{temp.getId() + "",temp.getTypecore()+ "",temp.getType()+ "",temp.getQuality()+ "",temp.getReexamine()+ "",temp.getRetake()});
         }
-        /*
-        OutputStream out = null;
-		try {
-			out = new FileOutputStream("C://output.xls");
-			ex.exportExcel(title,headers, dataset, out);
-		    out.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		*/
+       
         HttpServletResponse response = null;//创建一个HttpServletResponse对象 
 		OutputStream out = null;//创建一个输出流对象 
 		try { 

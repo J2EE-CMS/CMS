@@ -23,72 +23,61 @@
 		<div id="bg">
 			<ul style="background-color:black" class="nav nav-tabs">
 				<li><a href="#"><strong>新增先修关系审批</strong></a></li>
-				<li><a href="javascript:void(0);" onclick="Winopen('MODIFY')">审批</a></li>
+				<li><a href="javascript:void(0);" onclick="Winopen('APPROVE')">审批</a></li>
 				<li><a href="javascript:void(0);" onclick="Winopen('QUERY')">查询</a></li>
-				<li><a href="#">导出</a></li>	
 				<li class="pull-right"><a href="home">返回</a></li> 
 			</ul>
 			<table id="show" class="table table-hover table-bordered">
 				<thead>
 					<tr>
-						<th class="text-center">审批状态</th>
-						<th class="text-center">总课程号</th>
-						<th class="text-center">院系课程号</th>
+						<th class="text-center">课程号</th>
 						<th class="text-center">课程中文名</th>
-						<th class="text-center">课程英文名</th>
-						<th class="text-center">原开设单位</th>
-						<th class="text-center">先修课程</th>
+						<th class="text-center">先修关系</th>
+						<th class="text-center">状态</th>
 					</tr>
 				</thead>
 				<tbody class="text-center">
-					<tr>
-						<td>已通过</td>
-						<td>总课程号1</td>
-						<td>院系课程号1</td>
-						<td>课程中文名1</td>
-						<td>课程英文名1</td>
-						<td>原开设单位1</td>
-						<td>先修课程1</td>
-					</tr>
-					<tr>
-						<td>未通过</td>
-						<td>总课程号2</td>
-						<td>院系课程号2</td>
-						<td>课程中文名2</td>
-						<td>课程英文名2</td>
-						<td>原开设单位2</td>
-						<td>先修课程2</td>
-					</tr>
+					<s:iterator value="reslist" var="course">
+		                <tr>
+		                    <td><s:property value="#course.id"/></td>
+		                    <td><s:property value="#course.c_course_name"/></td>
+		                    <td><s:property value="#course.info"/></td>
+		                    <td><s:property value="#course.status"/></td>
+		                </tr>
+		        	</s:iterator>
 				</tbody>
 			</table>
 		</div>
-		<div id="win" class="table-responsive">
-			<table id="cin" class="table table-bordered">
-				<thead>
-					<tr>
-						<th class="text-center">总课程号</th>
-						<th class="text-center">院系课程号</th>
-						<th class="text-center">课程中文名</th>
-						<th class="text-center">课程英文名</th>
-						<th class="text-center">原开设单位</th>
-						<th class="text-center">先修课程</th>
-					</tr>
-				</thead>
-				<tbody class="text-center">
-					<tr>
-						<td><input id="pk" type="text" name="c_number" style="width:100px"/></td>
-						<td><input id="ic" type="text" name="s_number" style="width:100px"/></td>
-						<td><input type="text" name="ch_name" style="width:120px"/></td>
-						<td><input type="text" name="en_name" style="width:100px"/></td>
-						<td><input type="text" name="place" style="width:100px"/></td>
-						<td><input type="text" name="prerequisite" /></td>
-					</tr>
-				</tbody>
-			</table>
-			<p align="center">
-				<input type="submit" id="wincommit" name="wincommit" value="确认" />
-				<input type="submit" name="wincancle" value="取消"/>
-			</p>
+		<div id="win">
+			<form id="precourseform" >
+				<table id="cin" class="table table-bordered">
+					<thead>
+			            <tr>
+			            	<th id="pk" class="text-center">课程号</th>
+							<th id="ic" class="text-center">关系</th>
+							<th class="text-center">运算符</th>
+							<th class="text-center">状态</th>
+						</tr>
+					</thead>
+	            	<tbody class="text-center">
+						<tr>
+							<td><input type="text" name="cosid"></td>
+							<td><input type="text" name="relationString"></td>
+							<td><input type="text" name="op"></td>
+							<td>
+								<select name=isApprove class="form-control">
+									<option value=1>审批通过</option>
+									<option value=-1>审批不通过</option>
+								</select>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<p align="center">
+					<input type="submit" id="wincommit" name="wincommit" value="确认" />
+					<input type="submit" name="wincancle" value="取消"/>
+				</p>
+			</form>
 		</div>
 		<div id="fade"></div>
 	</body>
@@ -143,7 +132,7 @@
 				$("#pk").focus();
 				//document.getElementById("wincommit").onclick=add;
 			}
-			if(str=='MODIFY'){
+			if(str=='APPROVE'){
 				var cid = $("#pk").val();
 				if(cid != ""){
 					$("#pk").attr("readonly","true");
@@ -152,10 +141,10 @@
 				else{
 					$("#pk").focus();
 				}
-				//document.getElementById("wincommit").onclick=modify;
+				document.getElementById("wincommit").onclick=approvePreCourse;
 			}
 			if(str=='QUERY'){
-				//document.getElementById("wincommit").onclick=query;
+				document.getElementById("wincommit").onclick=queryPreCourse;
 			}
 	
 			if(str=='DELETE'){
@@ -192,6 +181,20 @@
 			}
 			return{"W":winWidth,"H":winHeight}
 		}
+		function approvePreCourse()
+		{
+			var myform=document.forms[0];
+			myform.action="precourse_approvePreCourse";
+			myform.method="post";
+			myform.submit();
+		}
 		
+		function queryPreCourse()
+		{
+			var myform=document.forms[0];
+			myform.action="precourse_queryPreCourse";
+			myform.method="post";
+			myform.submit();
+		}
 	</script>
 </html>

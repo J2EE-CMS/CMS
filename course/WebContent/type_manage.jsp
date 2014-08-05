@@ -41,7 +41,7 @@
 			<table id="show" class="table table-hover table-bordered">
 				<thead>
 					<tr>
-						<th class="text-center">序号</th>
+						<th class="text-center">ID</th>
 						<th class="text-center">课程类别码</th>
 						<th class="text-center">课程类别</th>
 						<th class="text-center">课程性质</th>
@@ -68,7 +68,7 @@
 				<table id="cin" class="table table-bordered">
 					<thead>
 			            <tr>
-			            	<th class="text-center">序号</th>
+			            	<th class="text-center">ID</th>
 							<th class="text-center">课程类别码</th>
 							<th class="text-center">课程类别</th>
 							<th class="text-center">课程性质</th>
@@ -82,18 +82,18 @@
 							<td><input id="tc" type="text" name="coursetype.typecore"></td>
 							<td><input type="text" name="coursetype.type"></td>
 							<td><input type="text" name="coursetype.quality"/></td>
-							<td><input type="text" name="coursetype.reexamine"/></td>
-							<td><input type="text" name="coursetype.retake"/></td>
-							<!-- 
 							<td>
-								<input type="radio" value="yes" name="coursetype.reexamine" id="eyes">是
-								<input type="radio" value="yes" name="coursetype.reexamine" id="eno">否
+								<select name="coursetype.reexamine" class="form-control">
+									<option value="需要重考">需要重考</option>
+									<option value="不需要重考">不需要重考</option>
+								</select>
 							</td>
 							<td>
-								<input type="radio" value="yes" name="coursetype.retake" id="tyes">是
-								<input type="radio" value="no" name="coursetype.retake" id="tno">否
-							</td> 
-							-->
+								<select name="coursetype.retake" class="form-control">
+									<option value="需要重修">需要重修</option>
+									<option value="不需要重修">不需要重修</option>
+								</select>
+							</td>
 						</tr>
 					</tbody>
 				</table>

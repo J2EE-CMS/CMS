@@ -32,7 +32,7 @@
 			<table id="show" class="table table-hover table-bordered">
 				<thead>
 					<tr>
-						<th class="text-center">序号</th>
+						<th class="text-center">ID</th>
 						<th class="text-center">课程类别细类码</th>
 						<th class="text-center">课程类别细类名称</th>
 						<th class="text-center">所属课程类别</th>
@@ -60,7 +60,7 @@
 				<table id="cin" class="table table-bordered">
 					<thead>
 						<tr>
-							<th class="text-center">序号</th>
+							<th class="text-center">ID</th>
 							<th class="text-center">课程类别细类码</th>
 							<th class="text-center">课程类别细类名称</th>
 							<th class="text-center">所属课程类别</th>
@@ -74,7 +74,12 @@
 							<td><input type="text" id="stc" name="subtype.subtypecode"/></td>
 							<td><input type="text" name="subtype.subtypename" /></td>
 							<td><input type="text" name="subtype.belongtotype" /></td>
-							<td><input type="text" name="subtype.ispublicsubtype" /></td>
+							<td>
+								<select name="subtype.ispublicsubtype" class="form-control">
+									<option value="公共细类">公共细类</option>
+									<option value="非公共细类">非公共细类</option>
+								</select>
+							</td>
 							<td><input type="text" name="subtype.department" /></td>	
 						</tr>
 					</tbody>

@@ -86,7 +86,7 @@ public class SubtypeDaoImp implements ISubtypeDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Subtype> getAllSubtypes(){
-		String hql = "from Subtype";
+		String hql = "from Subtype where id>0";
 		Query query = getSession().createQuery(hql);
 		return query.list();
 	}

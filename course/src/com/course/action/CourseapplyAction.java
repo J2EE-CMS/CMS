@@ -105,7 +105,7 @@ public class CourseapplyAction extends ActionSupport{
         List<String[]> dataset = new ArrayList<String[]>(); 
         for(int i=0;i<tem.size();i++) {
         	Courseapply temp = tem.get(i); 
-        	dataset.add(new String[]{temp.getId() +"",temp.getC_course_name() + "",temp.getInstitute_course() + "",temp.getE_course_name()+ "",temp.getBrief_course_name()+ "",temp.getFaculty() + "",temp.getCredit() + "",temp.getSubtypemodule().getId() + "",temp.getSubtype().getId() + "",temp.getCoursetype().getId() +"",temp.getCourse_time() + "",temp.getCourse_time_info() + "",temp.getCourse_info() + "",temp.getCourse_head() + "",temp.returnDegree()});
+        	dataset.add(new String[]{temp.getId() +"",temp.getC_course_name() + "",temp.getInstitute_course() + "",temp.getE_course_name()+ "",temp.getBrief_course_name()+ "",temp.getFaculty() + "",temp.getCredit() + "",temp.getSubtypemodule().getId() + "",temp.getSubtype().getId() + "",temp.getCoursetype().getId() +"",temp.getCourse_time() + "",temp.getCourse_time_info() + "",temp.getCourse_info() + "",temp.getCourse_head() + "",temp.getDegree()});
         }
         /*
         OutputStream out = null;
@@ -169,11 +169,11 @@ public class CourseapplyAction extends ActionSupport{
 		
 		ExportExcelUtil ex = new ExportExcelUtil();
 		String title = "课程库审批";
-		String[] headers = { "院系课程号","课程中文名","课程英文名","课程简称","开设单位","学分","课程细类模块","课程细类","课程类别","总学时","总学时描述","简介","课程负责人","是否学位课"};
+		String[] headers = { "序号","课程中文名","院系课程号","课程英文名","课程简称","开设单位","学分","课程细类模块","课程细类","课程类别","总学时","总学时描述","简介","课程负责人","是否学位课"};
         List<String[]> dataset = new ArrayList<String[]>(); 
         for(int i=0;i<tem.size();i++) {
         	Courseapply temp = tem.get(i); 
-        	dataset.add(new String[]{temp.getInstitute_course() + "",temp.getC_course_name()+ "",temp.getE_course_name()+ "",temp.getBrief_course_name()+ "",temp.getFaculty()+ temp.getCredit() + temp.getSub_course_type_module() + temp.getSub_course_type() + temp.getCourse_type() + "",temp.getCourse_time() + "",temp.getCourse_time_info()+"",temp.getCourse_info()+"",temp.getCourse_head()+temp.isDegree()});
+        	dataset.add(new String[]{temp.getId() +"",temp.getC_course_name() + "",temp.getInstitute_course() + "",temp.getE_course_name()+ "",temp.getBrief_course_name()+ "",temp.getFaculty() + "",temp.getCredit() + "",temp.getSubtypemodule().getId() + "",temp.getSubtype().getId() + "",temp.getCoursetype().getId() +"",temp.getCourse_time() + "",temp.getCourse_time_info() + "",temp.getCourse_info() + "",temp.getCourse_head() + "",temp.getDegree()});
         }
         /*
         OutputStream out = null;

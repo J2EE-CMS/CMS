@@ -17,6 +17,7 @@
 	      	#fade{-moz-opacity:0.50;filter:alpha(opacity=50);opacity:0.50;width:100%;height:100%;position:fixed;left:0%;top:0%;background-color:#f5f5f5;z-index:1001;display:none;}
 	      	#bg thead{background-color:green;}
 	      	#win thead{background-color:yellow;}
+	      	select{width:120px}
 	    </style>
 	</head>
 	<body>
@@ -34,7 +35,7 @@
 			<table id="show" class="table table-hover table-bordered">
 				<thead>
 		            <tr>
-		            	<th class="text-center">序号</th>
+		            	<th class="text-center">ID</th>
 		                <th class="text-center">课程中文名</th>
 		            	<th class="text-center">院系课程号</th>
 						<th class="text-center">课程英文名</th>
@@ -49,6 +50,7 @@
 						<th class="text-center">简介</th>
 						<th class="text-center">课程负责人</th>
 						<th class="text-center">是否学位课</th>
+		            	<th class="text-center">状态</th>
 					</tr>
 	            </thead>
 	            <tbody class="text-center">
@@ -69,6 +71,7 @@
 		                    <td><s:property value="#courseapply.course_info"/></td>
 		                    <td><s:property value="#courseapply.course_head"/></td>
 		                    <td><s:property value="#courseapply.degree"/></td>
+		                	<td><s:property value="#courseapply.status"/></td>
 		                </tr>
 		        	</s:iterator>
 				</tbody>
@@ -76,48 +79,46 @@
 		</div>
 		<div id="win" class="table-responsive">
 			<form id="courseaaplyform" >
-				<div class="table-responsive">
 					<table id="cin" class="table table-bordered">
 						<thead>
 				            <tr>
-				            	<th class="text-center">序号</th>
+				            	<th class="text-center">ID</th>
 				                <th class="text-center">课程中文名</th>
 				            	<th class="text-center">院系课程号</th>
 								<th class="text-center">课程英文名</th>
 								<th class="text-center">课程简称</th>
-								<th class="text-center">开设单位</th>
 							</tr>
 						</thead>
 		            	<tbody class="text-center">
 							<tr>
-								<td><input id="pk" type="text" name="courseapply.id"></td>
-								<td><input type="text" name="courseapply.c_course_name"></td>
-								<td><input id="ic" type="text" name="courseapply.institute_course"></td>
-								<td><input type="text" name="courseapply.e_course_name"></td>
-								<td><input type="text" name="courseapply.brief_course_name"/></td>
-								<td><input type="text" name="courseapply.faculty"></td>
+								<td><input id="caid" type="text" name="courseapply.id"></td>
+								<td><input id="cacn" type="text" name="courseapply.c_course_name"></td>
+								<td><input id="caic" type="text" name="courseapply.institute_course"></td>
+								<td><input id="caen" type="text" name="courseapply.e_course_name"></td>
+								<td><input id="cabn" type="text" name="courseapply.brief_course_name"/></td>
 							</tr>
 						</tbody>
 						<thead>
 				            <tr>
+								<th class="text-center">开设单位</th>
 								<th class="text-center">学分</th>						
 								<th class="text-center">课程细类模块</th>
 								<th class="text-center">课程细类</th>
 								<th class="text-center">课程类别</th>
-								<th class="text-center">总学时</th>
 							</tr>
 						</thead>
 		            	<tbody class="text-center">
 							<tr>
-								<td><input type="text" name="courseapply.credit"></td>
-								<td><input type="text" name="courseapply.sub_course_type_module"></td>
-								<td><input type="text" name="courseapply.sub_course_type"></td>
-								<td><input type="text" name="courseapply.course_type"></td>
-								<td><input type="text" name="courseapply.course_time"/></td>
+								<td><input id="caf" type="text" name="courseapply.faculty"></td>
+								<td><input id="cac" type="text" name="courseapply.credit"></td>
+								<td><input id="catm" type="text" name="courseapply.sub_course_type_module"></td>
+								<td><input id="cast" type="text" name="courseapply.sub_course_type"></td>
+								<td><input id="cact" type="text" name="courseapply.course_type"></td>
 							</tr>
 						</tbody>
 						<thead>
 							<tr>
+								<th class="text-center">总学时</th>
 								<th class="text-center">总学时描述</th>
 								<th class="text-center">简介</th>
 								<th class="text-center">课程负责人</th>
@@ -126,18 +127,24 @@
 		            	</thead>
 						<tbody>
 							<tr>
+								<td><input type="text" name="courseapply.course_time"/></td>
 								<td><input type="text" name="courseapply.course_time_info"></td>
-								<td><input type="text" name="courseapply.info"></td>
-								<td><input type="text" name="courseapply.course_head"/></td>
-								<td><input type="text" name="courseapply.degree"></td>
+								<td><input type="text" name="courseapply.course_info"></td>
+								<td><input type="text" name="courseapply.course_head"></td>
+								<td>
+									<select name="courseapply.degree" class="form-control">
+										<option value="学位课">学位课</option>
+										<option value="非学位课">非学位课</option>
+									</select>
+								</td>
 							</tr>
 						</tbody>
 					</table>
-				</div>
 				<p align="center">
 					<input type="submit" id="wincommit" name="wincommit" value="确认" />
 					<input type="submit" name="wincancle" value="取消"/>
 				</p>
+					<p align="center" id="em" ></p>
 			</form>
 		</div>
 		<div id="fade"></div>
@@ -161,8 +168,6 @@
 					$(this).find("input").val(line[i]);
 				});
 			});
-	
-			
 		});
 		
 		function mychange(nId){
@@ -190,17 +195,20 @@
 				$("#cin td").each(function(i){
 					$(this).find("input").val(null);
 				});
-				$("#pk").focus();
+				$("#caid").focus();
+				$("#caid:text").select();
 				document.getElementById("wincommit").onclick=addCourseapply;
 			}
 			if(str=='MODIFY'){
-				var cid = $("#pk").val();
+				var cid = $("#caid").val();
 				if(cid != ""){
-					$("#pk").attr("readonly","true");
-					$("#ic").focus();
+					$("#caid").attr("readonly","true");
+					$("#caic").focus();
+					$("#caic:text").select();
 				}	
 				else{
-					$("#pk").focus();
+					$("#caid").focus();
+					$("#caid:text").select();
 				}
 				document.getElementById("wincommit").onclick=modifyCourseapply;
 			}
@@ -209,27 +217,29 @@
 			}
 	
 			if(str=='DELETE'){
-				var cid = $("#pk").val();
+				var cid = $("#caid").val();
 				if(cid != ""){
 					$("#cin td").each(function(i){
 						$(this).find("input").attr("readonly","true");
 					});
 				}
 				else{
-					$("#pk").focus();
+					$("#caid").focus();
+					$("#caid:text").select();
 				}
 				document.getElementById("wincommit").onclick=deleteCourseapply;
 			}
 
 			if(str=='COMMIT'){
-				var cid = $("#pk").val();
+				var cid = $("#caid").val();
 				if(cid != ""){
 					$("#cin td").each(function(i){
 						$(this).find("input").attr("readonly","true");
 					});
 				}
 				else{
-					$("#pk").focus();
+					$("#caid").focus()
+					$("#caid:text").select();
 				}
 				document.getElementById("wincommit").onclick=modifycommitCourseapply;
 			}
@@ -255,13 +265,49 @@
 			}
 			return{"W":winWidth,"H":winHeight}
 		}
-	
+		
+		var EVal;
+		function checkValidate(){
+			$("#em").text("");
+			if($.trim($("#caid").val())==""){
+				EVal = "ID不能为空";
+				$("#caid").focus();
+				$("#caid:text").select();
+				$("#em").text(EVal);
+				$("#em").css("color","red");
+				return false;
+			}
+			else{
+				if(isNaN($("#caid").val())){
+					EVal = "ID必须为数字";
+					$("#caid").focus();
+					$("#caid:text").select();
+					$("#em").text(EVal);
+					$("#em").css("color","red");
+					return false;
+				}
+				if($("#caid").val()<=0){
+					EVal = "ID必须大于0";
+					$("#caid").focus();
+					$("#caid:text").select();
+					$("#em").text(EVal);
+					$("#em").css("color","red");
+					return false;
+				}
+			}
+		}
+		
 		function addCourseapply()
 		{
-			var myform=document.forms[0];
-			myform.action="courseapply_addCourseapply";
-			myform.method="post";
-			myform.submit();
+			if(checkValidate()!=false){
+				var myform=document.forms[0];
+				myform.action="courseapply_addCourseapply";
+				myform.method="post";
+				myform.submit();
+			}
+			else{
+				return false;
+			}
 		}
 		
 		function modifyCourseapply()
@@ -295,6 +341,7 @@
 			myform.method="post";
 			myform.submit();
 		}
+		
 		function OutputToExcel()
 		{
 			var myform=document.forms[0];

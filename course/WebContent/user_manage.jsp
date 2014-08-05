@@ -32,7 +32,7 @@
 			<table id="show" class="table table-hover table-bordered">
 				<thead>
 					<tr>
-						<th class="text-center">序号</th>
+						<th class="text-center">ID</th>
 						<th class="text-center">用户名</th>
 						<th class="text-center">密码</th>
 						<th class="text-center">角色</th>
@@ -56,7 +56,7 @@
 				<table id="cin" class="table table-bordered">
 					<thead>
 						<tr>
-							<th class="text-center">序号</th>
+							<th class="text-center">ID</th>
 							<th class="text-center">用户名</th>
 							<th class="text-center">密码</th>
 							<th class="text-center">角色</th>

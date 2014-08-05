@@ -29,7 +29,7 @@ public class CheckPublic implements Interceptor {
 		System.out.println("------CheckRole.intercept------");
 		Map session=ActionContext.getContext().getSession();
 
-		if("public".equals(session.get("user.role"))){
+		if("public".equals(session.get("user.role")) || "super".equals(session.get("user.role"))){
 			return arg0.invoke();
 		}
 		

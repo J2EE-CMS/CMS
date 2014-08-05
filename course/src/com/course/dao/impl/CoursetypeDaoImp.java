@@ -86,7 +86,7 @@ public class CoursetypeDaoImp implements ICoursetypeDao {
 	
 	@Override
 	public List<Coursetype> getAllCoursetypes(){
-		Query query = sessionFactory.getCurrentSession().createQuery("from Coursetype");
+		Query query = sessionFactory.getCurrentSession().createQuery("from Coursetype where id>0");
 		return query.list();
 	}
 
