@@ -38,7 +38,7 @@ CREATE TABLE `subtypemodule` (
 -- 导出表中的数据 `subtypemodule`
 -- 
 
-INSERT INTO `subtypemodule` VALUES (0, '0', '0', 0, 0, '0', '0');
+INSERT INTO `subtypemodule` VALUES (999, '0', '0', 0, 0, '0', '0');
 INSERT INTO `subtypemodule` VALUES (1, '中国文明', 'KCXL1', 7, 4, '1', '公共细类');
 INSERT INTO `subtypemodule` VALUES (2, '人文基础与经典阅读', 'KCXL2', 7, 4, '1', '公共细类');
 INSERT INTO `subtypemodule` VALUES (3, '全球视野', 'KCXL3', 7, 4, '1', '公共细类');

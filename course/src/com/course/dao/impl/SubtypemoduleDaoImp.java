@@ -92,7 +92,7 @@ public class SubtypemoduleDaoImp implements ISubtypemoduleDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Subtypemodule> getAllSubtypemodules(){
-		Query query = sessionFactory.getCurrentSession().createQuery("from Subtypemodule where id>0");
+		Query query = sessionFactory.getCurrentSession().createQuery("from Subtypemodule where id<999");
 		return query.list();
 	}
 	
