@@ -42,7 +42,7 @@ $ tree .
 course.
 │  .classpath
 │  .project
-│  
+│  1.txt
 │  
 ├─.settings
 │      .jsdtscope
@@ -114,14 +114,8 @@ course.
 │      │  │  │      
 │      │  │  ├─interceptor
 │      │  │  │      CheckAdmin.class
-│      │  │  │      CheckAdminCollege.class
-│      │  │  │      CheckAdminCollegePublic.class
-│      │  │  │      CheckAdminPublic.class
 │      │  │  │      CheckCollege.class
-│      │  │  │      CheckCollegePublic.class
 │      │  │  │      CheckLogin.class
-│      │  │  │      CheckPublic.class
-│      │  │  │      CheckRoot.class
 │      │  │  │      
 │      │  │  ├─service
 │      │  │  │  │  ICourseapplyManage.class
@@ -226,14 +220,8 @@ course.
 │  │  │  │      
 │  │  │  ├─interceptor
 │  │  │  │      CheckAdmin.java
-│  │  │  │      CheckAdminCollege.java
-│  │  │  │      CheckAdminCollegePublic.java
-│  │  │  │      CheckAdminPublic.java
 │  │  │  │      CheckCollege.java
-│  │  │  │      CheckCollegePublic.java
 │  │  │  │      CheckLogin.java
-│  │  │  │      CheckPublic.java
-│  │  │  │      CheckRoot.java
 │  │  │  │      
 │  │  │  ├─service
 │  │  │  │  │  ICourseapplyManage.java
@@ -282,13 +270,10 @@ course.
     │  class_apply.jsp
     │  class_check.jsp
     │  class_manage.jsp
-    │  courseMan.jsp
-    │  detail_model.jsp
     │  detail_module.jsp
     │  detail_type.jsp
     │  fail.jsp
     │  home.jsp
-    │  index.jsp
     │  login.jsp
     │  relation_apply.jsp
     │  relation_check.jsp
