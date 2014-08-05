@@ -24,7 +24,6 @@
 			<result name="success">/testSubtype.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
-			<interceptor-ref name="checkAdmin"/>
 		</action>
 	</package>
 	

@@ -32,19 +32,13 @@ public class CourseapplyDaoImp implements ICourseapplyDao {
 	@Override
 	public void addCourseapply (Courseapply courseapply) {
 		Coursetype coursetype = new Coursetype();
-		if(courseapply.getSub_course_type() == 0)
-			courseapply.setSub_course_type(-1);
 		coursetype.setId(courseapply.getCourse_type());
 		
 		Subtype subtype = new Subtype();
-		if(courseapply.getSub_course_type() == 0)
-			courseapply.setSub_course_type(-1);
 		subtype.setId(courseapply.getSub_course_type());
 		
 		Subtypemodule subtypemodule = new Subtypemodule();
-		if(courseapply.getSub_course_type_module() == 0)
-			courseapply.setSub_course_type_module(-1);
-		subtypemodule.setId(courseapply.getSub_course_type_module());
+		subtypemodule.setId(courseapply.getSub_course_type_module()==0?999:courseapply.getSub_course_type_module());
 		
 		courseapply.setCoursetype(coursetype);
 		courseapply.setSubtype(subtype);
@@ -65,21 +59,16 @@ public class CourseapplyDaoImp implements ICourseapplyDao {
 		coursetype.setId(courseapply.getCourse_type());
 		
 		Subtype subtype = new Subtype();
-		if(courseapply.getSub_course_type() == 0)
-			courseapply.setSub_course_type(-1);
 		subtype.setId(courseapply.getSub_course_type());
 		
 		Subtypemodule subtypemodule = new Subtypemodule();
-		if(courseapply.getSub_course_type_module() == 0)
-			courseapply.setSub_course_type_module(-1);
-		subtypemodule.setId(courseapply.getSub_course_type_module());
+		subtypemodule.setId(courseapply.getSub_course_type_module()==0?999:courseapply.getSub_course_type_module());
 		
 		courseapply.setCoursetype(coursetype);
 		courseapply.setSubtype(subtype);
 		courseapply.setSubtypemodule(subtypemodule);
 		
 		courseapply.setStatus("δ�ύ");
-		//c.setInfo(cos.getInfo());
 		getSession().update(courseapply);
 	}
 	

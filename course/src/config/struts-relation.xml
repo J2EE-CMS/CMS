@@ -12,7 +12,6 @@
 			<result name="queryrelation">/training_class.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
-			<interceptor-ref name="checkAdmin"/>
 		</action>
 		<action name="relation_*" class="relationAction" method="{1}">
 			<result name="success" type="redirectAction">training_class</result>

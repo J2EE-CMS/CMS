@@ -1,0 +1,7 @@
+Mysql:
+	show datebases;
+	user test;
+	show tables;
+	insert into user values(1,"root","123","root");
+
+

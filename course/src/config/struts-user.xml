@@ -9,13 +9,13 @@
 			<result name="success" type="redirectAction">user_manage</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
-			<interceptor-ref name="checkRoot" />
+			<interceptor-ref name="checkAdmin" />
 		</action>
 		<action name="user_queryUsers" class="userAction" method="queryUsers">
 			<result name="queryUsers">/user_manage.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
-			<interceptor-ref name="checkRoot" />
+			<interceptor-ref name="checkAdmin" />
 		</action>
 	</package>
 

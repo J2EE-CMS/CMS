@@ -17,6 +17,7 @@
 			<result name="success" type="redirectAction">detail_module</result>
 			<result name="fail">/fail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
+			<interceptor-ref name="checkAdmin"/>
 		</action>
 	</package> 
 	

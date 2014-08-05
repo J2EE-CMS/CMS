@@ -31,15 +31,11 @@ public class CourseDaoImp implements ICourseDao {
 	public void addCourse(Course cos) {
 		System.out.println("------CourseDaoImp.AddCourse------");
 		Coursetype coursetype = new Coursetype();
-		
 		Subtype subtype = new Subtype();
-		cos.setCoursetype(coursetype);
-		
 		Subtypemodule subtypemodule = new Subtypemodule();
-		subtype.setId(cos.getSub_course_type());
-		
+
+		subtype.setId(cos.getSub_course_type());		
 		coursetype.setId(cos.getCourse_type());
-		
 		subtypemodule.setId(cos.getSub_course_type_module()==0?999:cos.getSub_course_type_module());
 		
 		cos.setCoursetype(coursetype);
@@ -75,7 +71,7 @@ public class CourseDaoImp implements ICourseDao {
 			subtype.setId(cos.getSub_course_type());
 			
 			Subtypemodule subtypemodule = new Subtypemodule();
-			subtypemodule.setId(cos.getSub_course_type_module());
+			subtypemodule.setId(cos.getSub_course_type_module()==0?999:cos.getSub_course_type_module());
 			
 			cos.setCoursetype(coursetype);
 			cos.setSubtype(subtype);

@@ -6,13 +6,11 @@
 <struts>	
 	<!-- 与spring集成的写法，action等交予spring管理 -->
 	
-	<!-- 			 课程类别管理  			-->	
 	<package name="precourseActions" namespace="" extends="abstract_struts">
 		<action name="precourse_queryPreCourse" class="preCourseAction" method="queryPreCourse">
             <result name="success" >/relation_apply.jsp</result>
             <result name="fail">/fail.jsp</result>
             <interceptor-ref name="myInterceptor" />
-            <interceptor-ref name="checkAdmin"/>
         </action>
         <action name="precourse_approvePreCourse" class="preCourseAction" method="approvePreCourse">
 			<result name="success" type="redirectAction">relation_check</result>
@@ -24,9 +22,7 @@
 			<result name="success" type="redirectAction">relation_apply</result>
 			<result name="fail" type="redirectAction">relation_apply</result>
 			<interceptor-ref name="myInterceptor" />
-			<interceptor-ref name="checkAdminCollege"/>
+			<interceptor-ref name="checkAdmin"/>
 		</action>
 	</package>
-	
-	
 </struts>
