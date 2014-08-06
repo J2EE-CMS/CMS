@@ -20,7 +20,7 @@
         </action>
 		<action name="precourse_*" class="preCourseAction" method="{1}">
 			<result name="success" type="redirectAction">relation_apply</result>
-			<result name="fail" type="redirectAction">relation_apply</result>
+            <result name="fail">/addfail.jsp</result>
 			<interceptor-ref name="myInterceptor" />
 			<interceptor-ref name="checkAdmin"/>
 		</action>

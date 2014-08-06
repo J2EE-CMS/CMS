@@ -23,15 +23,25 @@ public class CourseManageImp implements ICourseManage {
 	}
 
 	@Override
-	public void addCourse(Course cos) {
+	public boolean addCourse(Course cos) {
 		System.out.println("------CourseManageImp.addCourse------");
-		courseDao.addCourse(cos);
+		if(courseDao.addCourse(cos)){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 
 	@Override
-	public void modifyCourse(Course cos) {
+	public boolean modifyCourse(Course cos) {
 		System.out.println("------CourseManageImp.modifyCourse------");
-		courseDao.modifyCourse(cos);
+		if(courseDao.modifyCourse(cos)){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 
 	@Override

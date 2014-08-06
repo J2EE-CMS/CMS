@@ -6,9 +6,9 @@ import java.util.List;
 import com.course.entity.Course;
 
 public interface ICourseManage {
-	public void addCourse(Course cos);
+	public boolean addCourse(Course cos);
 
-	public void modifyCourse(Course cos);
+	public boolean modifyCourse(Course cos);
 
 	public void deleteCourse(Course cos);
 

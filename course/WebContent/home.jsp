@@ -61,7 +61,7 @@
 					<li><a href="user_manage">用户管理</a></li>
 				</ul>
 			</li>
-			<li class="pull-right"><a href="login">退出</a></li> 
+			<li class="pull-right"><a href="login.jsp">退出</a></li> 
 		</ul>
 		<p align="center" style="margin:80px; font-size:24px">欢迎登录！</p>
 		<script src="js/jquery.min.js"></script>

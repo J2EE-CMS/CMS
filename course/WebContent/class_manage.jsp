@@ -95,7 +95,7 @@
 						<tr>
 							<td><input id="pk" type="text" name="cos.id"></td>
 							<td><input type="text" name="cos.c_course_name"></td>
-							<td><input id="ic" type="text" name="cos.institute_course"></td>
+							<td><input id="cic" type="text" name="cos.institute_course"></td>
 							<td><input type="text" name="cos.e_course_name"></td>
 							<td><input type="text" name="cos.brief_course_name"/></td>
 							<td><input type="text" name="cos.faculty"></td>
@@ -112,7 +112,7 @@
 					</thead>
 	            	<tbody class="text-center">
 						<tr>
-							<td><input type="text" name="cos.credit"></td>
+							<td><input id="cc" type="text" name="cos.credit"></td>
 							<td><input type="text" name="cos.sub_course_type_module"></td>
 							<td><input type="text" name="cos.sub_course_type"></td>
 							<td><input type="text" name="cos.course_type"/></td>
@@ -147,6 +147,7 @@
 					<input type="submit" id="wincommit" name="wincommit" value="确认" />
 					<input type="submit" name="wincancle" value="取消"/>
 				</p>
+				<p align="center" id="em" ></p>
 			</form>
 	    </div>
 		<div id="fade"></div>
@@ -206,7 +207,7 @@
 				var cid = $("#pk").val();
 				if(cid != ""){
 					$("#pk").attr("readonly","true");
-					$("#ic").focus();
+					$("#cic").focus();
 				}	
 				else{
 					$("#pk").focus();
@@ -264,21 +265,88 @@
 			}
 			return{"W":winWidth,"H":winHeight}
 		}
-	
+		
+		var EVal;
+		function checkValidate(){
+			$("#em").text("");
+			if($.trim($("#cic").val())==""){
+				EVal = "院系课程号不能为空";
+				$("#cic").focus();
+				$("#cic:text").select();
+				$("#em").text(EVal);
+				$("#em").css("color","red");
+				return false;
+			}
+			else{
+				if(isNaN($("#cic").val())){
+					EVal = "院系课程号必须为数字";
+					$("#cic").focus();
+					$("#cic:text").select();
+					$("#em").text(EVal);
+					$("#em").css("color","red");
+					return false;
+				}
+				if($("#cic").val()<=0){
+					EVal = "院系课程号必须大于0";
+					$("#cic").focus();
+					$("#cic:text").select();
+					$("#em").text(EVal);
+					$("#em").css("color","red");
+					return false;
+				}
+			}
+			if($.trim($("#cc").val())==""){
+				EVal = "学分不能为空";
+				$("#cc").focus();
+				$("#cc:text").select();
+				$("#em").text(EVal);
+				$("#em").css("color","red");
+				return false;
+			}
+			else{
+				if(isNaN($("#cc").val())){
+					EVal = "学分必须为数字";
+					$("#cc").focus();
+					$("#cc:text").select();
+					$("#em").text(EVal);
+					$("#em").css("color","red");
+					return false;
+				}
+				if($("#cc").val()<=0){
+					EVal = "学分必须大于0";
+					$("#cc").focus();
+					$("#cc:text").select();
+					$("#em").text(EVal);
+					$("#em").css("color","red");
+					return false;
+				}
+			}
+		}
+		
 		function addCourse()
 		{
-			var myform=document.forms[0];
-			myform.action="course_addCourse";
-			myform.method="post";
-			myform.submit();
+			if(checkValidate()!=false){
+				var myform=document.forms[0];
+				myform.action="course_addCourse";
+				myform.method="post";
+				myform.submit();
+			}
+			else{
+				return false;
+			}
 		}
 		
 		function modifyCourse()
 		{
-			var myform=document.forms[0];
-			myform.action="course_modifyCourse";
-			myform.method="post";
-			myform.submit();
+			if(checkValidate()!=false){
+				var myform=document.forms[0];
+				myform.action="course_modifyCourse";
+				myform.method="post";
+				myform.submit();
+			}
+			else{
+				return false;
+			}
 		}
 		
 		function deleteCourse()

@@ -85,6 +85,10 @@ public class CourseapplyDaoImp implements ICourseapplyDao {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Courseapply.class);
 		//criteria.add(Restrictions.or(Restrictions.eq("status", "未提交"),Restrictions.eq("status", "审批不通过"),Restrictions.eq("status", "审批通过")));
 		List<Courseapply> list = criteria.list();
+		for(Courseapply  temp : list){
+			if(temp.getSub_course_type_module() == 1)
+				temp.setSub_course_type_module(0);
+		}
 		return list;
 	}
 	

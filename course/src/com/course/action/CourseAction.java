@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.ServletActionContext;
 
 import com.course.entity.Course;
-import com.course.entity.Courseapply;
 import com.course.service.ICourseManage;
 import com.course.util.ExportExcelUtil;
 import com.opensymphony.xwork2.ActionContext;
@@ -68,14 +67,20 @@ public class CourseAction extends ActionSupport {
 
 	public String addCourse() {
 		System.out.println("-------CourseAction.addCourse------");
-		courseManage.addCourse(cos);
-		return "success";
+		if(courseManage.addCourse(cos)){
+			return "success";
+		}
+		else{
+			return "fail";
+		}
 	}
 
 	public String modifyCourse() {
 		System.out.println("-------CourseAction.modifyCourse------");
-		courseManage.modifyCourse(cos);
-		return "success";
+		if(courseManage.modifyCourse(cos)){
+			return "success";
+		}
+		return "fail";
 	}
 
 	public String deleteCourse() {

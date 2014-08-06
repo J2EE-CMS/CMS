@@ -59,15 +59,15 @@
 				<table id="cin" class="table table-bordered">
 					<thead>
 			            <tr>
-			            	<th id="pk" class="text-center">课程号</th>
-							<th id="ic" class="text-center">关系</th>
+			            	<th class="text-center">课程号</th>
+							<th class="text-center">关系</th>
 							<th class="text-center">运算符</th>
 						</tr>
 					</thead>
 	            	<tbody class="text-center">
 						<tr>
-							<td><input type="text" name="cosid"></td>
-							<td><input type="text" name="relationString"></td>
+							<td><input id="pk"  type="text" name="cosid"></td>
+							<td><input id="ic" type="text" name="relationString"></td>
 							<td><input type="text" name="op"></td>
 						</tr>
 					</tbody>
@@ -95,9 +95,10 @@
 					var c = $(this).text();
 					line.push(c);
 				});
-				$("#cin td").each(function(i){
-					$(this).find("input").val(line[i]);
-				});
+				$("#pk").val(line[0]);
+				//$("#cin td").each(function(i){
+				//	$(this).find("input").val(line[i]);
+				//});
 			});
 	
 			

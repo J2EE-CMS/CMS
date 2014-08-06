@@ -192,7 +192,12 @@ public class PreCourseAction extends ActionSupport{
 		if (pcourseManage.queryPreCourse(cos).size() != 0)
 			return "fail";
 		for (int i = 0; i < pcoslist.size(); i++) {
-			pcourseManage.addPreCourse(pcoslist.get(i));
+			if(pcourseManage.addPreCourse(pcoslist.get(i))){
+				
+			}
+			else{
+				return "fail";
+			}
 		}
 		return "success";
 	}

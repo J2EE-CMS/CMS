@@ -14,7 +14,7 @@
         </action>
         <action name="course_*" class="courseAction" method="{1}">
             <result name="success" type="redirectAction">class_manage</result>
-            <result name="fail">/fail.jsp</result>
+            <result name="fail">/coursefail.jsp</result>
             <interceptor-ref name="myInterceptor" />
             <interceptor-ref name="checkAdmin"/>
         </action>

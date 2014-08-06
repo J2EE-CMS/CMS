@@ -144,7 +144,7 @@
 					<input type="submit" id="wincommit" name="wincommit" value="确认" />
 					<input type="submit" name="wincancle" value="取消"/>
 				</p>
-					<p align="center" id="em" ></p>
+				<p align="center" id="em" ></p>
 			</form>
 		</div>
 		<div id="fade"></div>
@@ -269,6 +269,7 @@
 		var EVal;
 		function checkValidate(){
 			$("#em").text("");
+			/*
 			if($.trim($("#caid").val())==""){
 				EVal = "ID不能为空";
 				$("#caid").focus();
@@ -295,6 +296,59 @@
 					return false;
 				}
 			}
+			*/
+			if($.trim($("#caic").val())==""){
+				EVal = "院系课程号不能为空";
+				$("#caic").focus();
+				$("#caic:text").select();
+				$("#em").text(EVal);
+				$("#em").css("color","red");
+				return false;
+			}
+			else{
+				if(isNaN($("#caic").val())){
+					EVal = "院系课程号必须为数字";
+					$("#caic").focus();
+					$("#caic:text").select();
+					$("#em").text(EVal);
+					$("#em").css("color","red");
+					return false;
+				}
+				if($("#caic").val()<=0){
+					EVal = "院系课程号必须大于0";
+					$("#caic").focus();
+					$("#caic:text").select();
+					$("#em").text(EVal);
+					$("#em").css("color","red");
+					return false;
+				}
+			}
+			if($.trim($("#cac").val())==""){
+				EVal = "学分不能为空";
+				$("#cac").focus();
+				$("#cac:text").select();
+				$("#em").text(EVal);
+				$("#em").css("color","red");
+				return false;
+			}
+			else{
+				if(isNaN($("#cac").val())){
+					EVal = "学分必须为数字";
+					$("#cac").focus();
+					$("#cac:text").select();
+					$("#em").text(EVal);
+					$("#em").css("color","red");
+					return false;
+				}
+				if($("#cac").val()<=0){
+					EVal = "学分必须大于0";
+					$("#cac").focus();
+					$("#cac:text").select();
+					$("#em").text(EVal);
+					$("#em").css("color","red");
+					return false;
+				}
+			}
 		}
 		
 		function addCourseapply()
@@ -312,10 +366,15 @@
 		
 		function modifyCourseapply()
 		{
-			var myform=document.forms[0];
-			myform.action="courseapply_modifyCourseapply";
-			myform.method="post";
-			myform.submit();
+			if(checkValidate()!=false){
+				var myform=document.forms[0];
+				myform.action="courseapply_modifyCourseapply";
+				myform.method="post";
+				myform.submit();
+			}
+			else{
+				return false;
+			}
 		}
 		
 		function deleteCourseapply()

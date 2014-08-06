@@ -27,14 +27,14 @@
 
 		<global-results>
 			<result name="checkLoginFail">/login.jsp</result>
-			<result name="checkRoleFail">/login.jsp</result>
+			<result name="checkRoleFail">/rolefail.jsp</result>
 		</global-results>
 	</package>
 	
 	<package name="loginAction" namespace="/" extends="abstract_struts">
 		<action name="login" class="loginAction">
 			<result name="success" type="redirect">home</result>
-			<result name="fail">/login.jsp</result>
+			<result name="fail">/loginfail.jsp</result>
 		</action>
 
 		<!-- 该action只负责跳转，用struts提供的ActionSupport -->

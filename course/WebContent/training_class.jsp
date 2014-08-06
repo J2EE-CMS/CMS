@@ -67,7 +67,7 @@
 	            	<tbody class="text-center">
 						<tr>
 							<td><input id="pk" type="text" name="relation.id"></td>
-							<td><input type="text" name="relation.grade"></td>
+							<td><input id="rg" type="text" name="relation.grade"></td>
 							<td><input id="dt" type="text" name="relation.devtype"></td>
 							<td><input type="text" name="relation.type"></td>
 						</tr>
@@ -77,6 +77,7 @@
 					<input type="submit" id="wincommit" name="wincommit" value="确认" />
 					<input type="submit" name="wincancle" value="取消"/>
 				</p>
+				<p align="center" id="em" ></p>
 			</form>
 		</div>		
 		<div id="fade"></div>
@@ -182,20 +183,61 @@
 			return{"W":winWidth,"H":winHeight}
 		}
 		
+		var EVal;
+		function checkValidate(){
+			$("#em").text("");
+			if($.trim($("#rg").val())==""){
+				EVal = "年级不能为空";
+				$("#rg").focus();
+				$("#rg:text").select();
+				$("#em").text(EVal);
+				$("#em").css("color","red");
+				return false;
+			}
+			else{
+				if(isNaN($("#rg").val())){
+					EVal = "年级必须为数字";
+					$("#rg").focus();
+					$("#rg:text").select();
+					$("#em").text(EVal);
+					$("#em").css("color","red");
+					return false;
+				}
+				if($("#rg").val()<=0){
+					EVal = "年级必须大于0";
+					$("#rg").focus();
+					$("#rg:text").select();
+					$("#em").text(EVal);
+					$("#em").css("color","red");
+					return false;
+				}
+			}
+		}
+		
 		function addRelation()
 		{
-			var myform=document.forms[0];
-			myform.action="relation_addRelation";
-			myform.method="post";
-			myform.submit();
+			if(checkValidate()!=false){
+				var myform=document.forms[0];
+				myform.action="relation_addRelation";
+				myform.method="post";
+				myform.submit();
+			}
+			else{
+				return false;
+			}
 		}
 		
 		function modifyRelation()
 		{
-			var myform=document.forms[0];
-			myform.action="relation_modifyRelation";
-			myform.method="post";
-			myform.submit();
+			if(checkValidate()!=false){
+				var myform=document.forms[0];
+				myform.action="relation_modifyRelation";
+				myform.method="post";
+				myform.submit();
+			}
+			else{
+				return false;
+			}
 		}
 		
 		function deleteRelation()

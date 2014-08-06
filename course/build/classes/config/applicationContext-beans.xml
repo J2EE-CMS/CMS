@@ -18,7 +18,7 @@
 	<bean name="checkCollegeInterceptor" class="com.course.interceptor.CheckCollege" scope="prototype"></bean>
 	<bean name="checkAdminInterceptor" class="com.course.interceptor.CheckAdmin" scope="prototype"></bean>
 	
-	<!-- 用户管理     --> 
+	<!-- 用户管理    --> 
 	<bean name="userAction" class="com.course.action.UserAction" scope="prototype"></bean>
 	
 	<bean name="userManage" class="com.course.service.impl.UserManageImp"></bean>
@@ -26,7 +26,7 @@
 	<bean name="userDao" class="com.course.dao.impl.UserDaoImp">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	
+	 
 	<!-- 课程库 -->
 	<bean name="courseAction" class="com.course.action.CourseAction" scope="prototype"></bean>
 	

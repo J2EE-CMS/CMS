@@ -25,13 +25,18 @@ public class PreCourseDaoImp implements IPreCourseDao {
 	}
 
 	@Override
-	public void addPreCourse(PreCourse pcos) {
-		
-		Course cos = new Course();
-		cos.setId(pcos.getCourse());
-		pcos.setCos(cos);
-		
-		getSession().save(pcos);
+	public boolean addPreCourse(PreCourse pcos) {
+		Criteria crit = getSession().createCriteria(Course.class);
+		crit.add(Restrictions.eq("id", pcos.getCourse()));
+		if (crit.uniqueResult() != null) {
+			Course cos = new Course();
+			cos.setId(pcos.getCourse());
+			pcos.setCos(cos);
+
+			getSession().save(pcos);
+			return true;
+		}
+		return false;
 	}
 
 	// @Override

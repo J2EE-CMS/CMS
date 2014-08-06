@@ -15,8 +15,13 @@ public class PreCourseManageImp implements IPreCourseManage {
 	private IPreCourseDao preCourseDao;
 
 	@Override
-	public void addPreCourse(PreCourse pcos) {
-		preCourseDao.addPreCourse(pcos);
+	public boolean addPreCourse(PreCourse pcos) {
+		if(preCourseDao.addPreCourse(pcos)){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 
 	// @Override

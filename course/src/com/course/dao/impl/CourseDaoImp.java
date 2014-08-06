@@ -11,6 +11,7 @@ import org.hibernate.criterion.Restrictions;
 
 import com.course.dao.ICourseDao;
 import com.course.entity.Course;
+import com.course.entity.Courseapply;
 import com.course.entity.Coursetype;
 import com.course.entity.PreCourse;
 import com.course.entity.Subtype;
@@ -28,8 +29,10 @@ public class CourseDaoImp implements ICourseDao {
 	}
 
 	@Override
-	public void addCourse(Course cos) {
+	public boolean addCourse(Course cos) {
 		System.out.println("------CourseDaoImp.AddCourse------");
+		if(!addcheckCourse(cos, 0))
+			return false;
 		Coursetype coursetype = new Coursetype();
 		Subtype subtype = new Subtype();
 		Subtypemodule subtypemodule = new Subtypemodule();
@@ -43,14 +46,15 @@ public class CourseDaoImp implements ICourseDao {
 		cos.setSubtypemodule(subtypemodule);
 		
 		getSession().save(cos);
-
+		return true;
 	}
 
 	// 可修改字段包括：课程中文名称、课程英文名称、课程简称、原开设单位、学分、总学时、总学时备注、课程类型、备注。
 	@Override
-	public void modifyCourse(Course cos) {
+	public boolean modifyCourse(Course cos) {
 		System.out.println("------CourseDaoImp.modifyCourse------");
-		
+		if(!addcheckCourse(cos, 1))
+			return false;
 		/*String hql = "from Course as course where course.c_course_name=?";
 		Query query = getSession().createQuery(hql);
 		query.setString(0, cos.getC_course_name());
@@ -85,7 +89,7 @@ public class CourseDaoImp implements ICourseDao {
 		//que.setInteger(0, cos.getCourse_type());
 		//que.setString(1, cos.getC_course_name());
 		//que.executeUpdate();
-		
+		return true;
 	}
 
 	@Override
@@ -115,6 +119,10 @@ public class CourseDaoImp implements ICourseDao {
 		System.out.println("------CourseDaoImp.queryCourse------");
 
 		Criteria crit = getSession().createCriteria(Course.class);
+
+		if (cos.getId() != 0) {
+			crit.add(Restrictions.eq("id", cos.getId()));
+		}
 
 		if (begin_time != null) {
 			System.out.println("begin time: " + begin_time.toString() + "\t");
@@ -196,5 +204,70 @@ public class CourseDaoImp implements ICourseDao {
 		Criteria crit = getSession().createCriteria(Course.class);
 		List<Course> list = crit.list();
 		return list;
+	}
+	
+	private boolean addcheckCourse(Course cos, int checktype) {
+
+		List<Course> coslist = null;
+		Criteria crit = null;
+		// 检查中文名和院系课程号
+		if (checktype == 0) {// 添加
+			crit = getSession().createCriteria(Course.class);
+			crit.add(Restrictions.or(Restrictions.eq("c_course_name", cos.getC_course_name()),
+					Restrictions.eq("institute_course", cos.getInstitute_course())));
+			coslist = crit.list();
+			if (coslist.size() != 0) {
+				return false;
+			}
+		} else if (checktype == 1) {// 修改
+			crit = getSession().createCriteria(Course.class);
+			crit.add(Restrictions.or(Restrictions.eq("c_course_name", cos.getC_course_name()),
+					Restrictions.eq("institute_course", cos.getInstitute_course())));
+			coslist = crit.list();
+			if (coslist.size() > 1) {
+				System.out.println("课程中文名或课程英文名存在");
+				return false;
+			}
+		}
+		// 检查类型，对应关系
+		Coursetype costype = null;
+		Subtype subtype = null;
+		Subtypemodule subtm = null;
+
+		crit = getSession().createCriteria(Coursetype.class);
+		crit.add(Restrictions.eq("id", cos.getCourse_type()));
+		costype = (Coursetype) crit.uniqueResult();
+		if (costype == null) {
+			System.out.println("类别不存在");
+			return false;
+		}
+
+		crit = getSession().createCriteria(Subtype.class);
+		crit.add(Restrictions.eq("id", cos.getSub_course_type()));
+		subtype = (Subtype) crit.uniqueResult();
+		if (subtype == null) {
+			System.out.println("细类不存在");
+			return false;
+		}
+		if (costype.getId() != subtype.getCoursetype().getId()) {
+			System.out.println(costype.getId() + " " + subtype.getBelongtotype() + " 细类与类别不对应");
+			return false;
+		}
+
+		if (cos.getSub_course_type_module() != 0) {
+			crit = getSession().createCriteria(Subtypemodule.class);
+			crit.add(Restrictions.eq("id", cos.getSub_course_type_module()));
+			subtm = (Subtypemodule) crit.uniqueResult();
+			if (subtm == null) {
+				System.out.println("细类模块不存在");
+				return false;
+			}
+			if (subtm.getSubtype().getId() != subtype.getId()) {
+				System.out.println("细类模块与细类不对应");
+				return false;
+			}
+		}
+		getSession().clear();
+		return true;
 	}
 }

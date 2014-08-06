@@ -61,6 +61,7 @@ public class CourseapplyAction extends ActionSupport{
 	
 	public String addCourseapply(){
 		courseapplyManage.addCourseapply(courseapply);
+		
 		return "success";
 	}
 	
@@ -77,7 +78,10 @@ public class CourseapplyAction extends ActionSupport{
 	public String queryAllCourseapply(){
 		courseapplys = new ArrayList<Courseapply>();
 		courseapplys = courseapplyManage.queryAllCourseapply();
+	
 		ActionContext.getContext().getSession().put("table",courseapplys);
+		//Courseapply temp;
+		
 		return "allcourseapply";
 	}
 
