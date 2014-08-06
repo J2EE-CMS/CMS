@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 -- 
 -- 主机: localhost
--- 生成日期: 2014 年 08 月 05 日 14:19
+-- 生成日期: 2014 年 08 月 06 日 06:28
 -- 服务器版本: 5.0.51
 -- PHP 版本: 5.2.6
 
@@ -44,7 +44,7 @@ CREATE TABLE `course` (
   KEY `FK_q8sk5673kx4nnro5aqgf5wf6r` (`course_type`),
   KEY `FK_jxte3nyd6g7kqou8wbyemjt4g` (`sub_course_type`),
   KEY `FK_jptjs38hoqfxhvvl3fhl8kxis` (`sub_course_type_module`)
-) ENGINE=MyISAM  DEFAULT CHARSET=gb2312 AUTO_INCREMENT=14 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=gb2312 AUTO_INCREMENT=4 ;
 
 -- 
 -- 导出表中的数据 `course`
@@ -53,7 +53,6 @@ CREATE TABLE `course` (
 INSERT INTO `course` VALUES (1, 1, 'C语言', 'E_Name1', 'B_Name', 'XXXX1', 1, 2, 4, -1, '72', 'none', 'none', 'none', NULL, '学位课', NULL, 'none');
 INSERT INTO `course` VALUES (2, 2, '数据库', 'E_Name2', 'B_Name2', 'XXXX2', 2, 2, 4, -1, '72', 'none', 'none', 'none', NULL, '学位课', NULL, 'none');
 INSERT INTO `course` VALUES (3, 3, 'Web安全', 'E_Name3', 'B_Name3', 'XXXX3', 2, 3, 5, -1, '2', 'none', 'none', 'none', NULL, '学位课', NULL, 'none');
-INSERT INTO `course` VALUES (13, 5, '5', '5', '5', '5', 5, 3, 5, 999, '5', '5', '5', '5', NULL, '学位课', NULL, '5');
 
 -- --------------------------------------------------------
 
@@ -184,11 +183,11 @@ CREATE TABLE `subtypemodule` (
 -- 导出表中的数据 `subtypemodule`
 -- 
 
-INSERT INTO `subtypemodule` VALUES (999, '0', '0', 0, 0, '0', '0');
 INSERT INTO `subtypemodule` VALUES (1, '中国文明', 'KCXL1', 7, 4, '1', '公共细类');
 INSERT INTO `subtypemodule` VALUES (2, '人文基础与经典阅读', 'KCXL2', 7, 4, '1', '公共细类');
 INSERT INTO `subtypemodule` VALUES (3, '全球视野', 'KCXL3', 7, 4, '1', '公共细类');
 INSERT INTO `subtypemodule` VALUES (4, '科技、经济、社会', 'KCXL4', 7, 4, '1', '公共细类');
+INSERT INTO `subtypemodule` VALUES (999, '0', '0', 0, 0, '0', '0');
 
 -- --------------------------------------------------------
 
