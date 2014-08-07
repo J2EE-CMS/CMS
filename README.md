@@ -33,7 +33,8 @@ coursemanage
 								 精简用户权限：
 									超级管理员：super
 									管理员	  ：admin
-									院系管理员：college</pre>
+									院系管理员：college
+	2014.8.07		 第15次更新：增加简单异常处理</pre>
 <br />
 <br />
 
@@ -46,7 +47,6 @@ $ tree .
 course.
 │  .classpath
 │  .project
-│  1.txt
 │  
 ├─.settings
 │      .jsdtscope
@@ -62,107 +62,17 @@ course.
 │      ├─com
 │      │  ├─course
 │      │  │  ├─action
-│      │  │  │      CourseAction.class
-│      │  │  │      CourseapplyAction.class
-│      │  │  │      CoursetypeAction.class
-│      │  │  │      LoginAction.class
-│      │  │  │      PreCourseAction.class
-│      │  │  │      RelationAction.class
-│      │  │  │      SubtypeAction.class
-│      │  │  │      SubtypemoduleAction.class
-│      │  │  │      UserAction.class
-│      │  │  │      
 │      │  │  ├─dao
-│      │  │  │  │  ICourseapplyDao.class
-│      │  │  │  │  ICourseDao.class
-│      │  │  │  │  ICoursetypeDao.class
-│      │  │  │  │  IPreCourseDao.class
-│      │  │  │  │  IRelationDao.class
-│      │  │  │  │  ISubtypeDao.class
-│      │  │  │  │  ISubtypemoduleDao.class
-│      │  │  │  │  IUserDao.class
-│      │  │  │  │  
 │      │  │  │  └─impl
-│      │  │  │          CourseapplyDaoImp.class
-│      │  │  │          CourseDaoImp.class
-│      │  │  │          CoursetypeDaoImp.class
-│      │  │  │          PreCourseDaoImp.class
-│      │  │  │          RelationDaoImp.class
-│      │  │  │          SubtypeDaoImp.class
-│      │  │  │          SubtypemoduleDaoImp.class
-│      │  │  │          UserDaoImp.class
-│      │  │  │          
 │      │  │  ├─entity
-│      │  │  │      Course.class
-│      │  │  │      Course.hbm.xml
-│      │  │  │      Courseapply.class
-│      │  │  │      Courseapply.hbm.xml
-│      │  │  │      Coursetype.class
-│      │  │  │      Coursetype.hbm.xml
-│      │  │  │      PreCourse.class
-│      │  │  │      PreCourse.hbm.xml
-│      │  │  │      Relation.class
-│      │  │  │      Relation.hbm.xml
-│      │  │  │      Subtype.class
-│      │  │  │      Subtype.hbm.xml
-│      │  │  │      Subtypemodule.class
-│      │  │  │      Subtypemodule.hbm.xml
-│      │  │  │      User.class
-│      │  │  │      User.hbm.xml
-│      │  │  │      
 │      │  │  ├─exception
-│      │  │  │      MyException.class
-│      │  │  │      
 │      │  │  ├─filter
-│      │  │  │      CharsetEncodingFilter.class
-│      │  │  │      
 │      │  │  ├─interceptor
-│      │  │  │      CheckAdmin.class
-│      │  │  │      CheckCollege.class
-│      │  │  │      CheckLogin.class
-│      │  │  │      
 │      │  │  ├─service
-│      │  │  │  │  ICourseapplyManage.class
-│      │  │  │  │  ICourseManage.class
-│      │  │  │  │  ICoursetypeManage.class
-│      │  │  │  │  IPreCourseManage.class
-│      │  │  │  │  IRelationManage.class
-│      │  │  │  │  ISubtypeManage.class
-│      │  │  │  │  ISubtypemoduleManage.class
-│      │  │  │  │  IUserManage.class
-│      │  │  │  │  
 │      │  │  │  └─impl
-│      │  │  │          CourseapplyManageImp.class
-│      │  │  │          CourseManageImp.class
-│      │  │  │          CoursetypeManageImp.class
-│      │  │  │          PreCourseManageImp.class
-│      │  │  │          RelationManageImp.class
-│      │  │  │          SubtypeManageImp.class
-│      │  │  │          SubtypemoduleManageImp.class
-│      │  │  │          UserManageImp.class
-│      │  │  │          
 │      │  │  └─util
-│      │  │          ExportExcelUtil.class
-│      │  │          
 │      │  └─test
-│      │          CourseapplyActionTest.class
-│      │          CoursetypeActionTest.class
-│      │          PreCourseActionTest.class
-│      │          RelationActionTest.class
-│      │          SubtypeActionTest.class
-│      │          SubtypemoduleActionTest.class
-│      │          
 │      └─config
-│              applicationContext-beans.xml
-│              applicationContext-common.xml
-│              struts-course.xml
-│              struts-coursetype.xml
-│              struts-precourse.xml
-│              struts-relation.xml
-│              struts-subtype.xml
-│              struts-subtypemodule.xml
-│              struts-user.xml
-│              struts.xml
 │              
 ├─src
 │  ├─com
@@ -271,16 +181,20 @@ course.
 │          struts.xml
 │          
 └─WebContent
+    │  addfail.jsp
     │  class_apply.jsp
     │  class_check.jsp
     │  class_manage.jsp
+    │  coursefail.jsp
     │  detail_module.jsp
     │  detail_type.jsp
     │  fail.jsp
     │  home.jsp
     │  login.jsp
+    │  loginfail.jsp
     │  relation_apply.jsp
     │  relation_check.jsp
+    │  rolefail.jsp
     │  success.jsp
     │  training_class.jsp
     │  type_manage.jsp
